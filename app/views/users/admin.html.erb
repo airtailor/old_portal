@@ -28,18 +28,3 @@
     <p><%= @count %></p>
   <% end %>
 </div>
-
-<div class="admin-column">
-  <p><b class="caps">Late</b></p>
-  <% @users.each do |user| %>
-  <% @count = 0 %>
-    <% @orders.each do |order| %>
-
-      <% if order.user_id == user.id && order.status == "late" %>
-        <% @count = @count + 1 %>
-      <% end %>
-    <% end %>
-    <p><%= @count %></p>
-  <% end %>
-</div>
-

@@ -5,19 +5,20 @@ class OrdersController < ApplicationController
     if current_user.is_admin?
       @user = User.find_by(id: params[:user_id])
       @orders = Order.where(user_id: @user.id)
-      @items = Item.all
-      @alterations = Alteration.all
+      @alts = []
+      @orders.each do |order|
+        @alts.push(JSON.parse(order.alterations))
+      end
     else
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
-      @items = Item.all
-      @alterations = Alteration.all
     end
   end
 
+  {"Shirt #1"=>"Add Collar Buttons, Add Snaps Under Collar", "Pants #1"=>"Add Button, Add Clasp"}
+  def to_hash(string)
+
+  end
+
 end
-
-
-# @user = User.find_by(id: params[:id])
-# @orders = Order.where(user_id: @user.id)
 

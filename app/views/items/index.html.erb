@@ -1,20 +1,12 @@
 <div class="section-header order-show">
   <h2>Orders / <%= @order.id %></h2>
-  <p><%= @order.status %></p>
+  
 </div>
 
 <div id="item-section">
-  <% @items.each do |item| %>
-    <div class="item">
-        <h3 class="caps">#<%= @count = @count + 1 %>. <%= item.item_name %></h3>
-        <% @alterations.each do |alteration| %>
-          <% if alteration.item_id == item.id %>
-            <li><%= alteration.alteration %></li>
-          <% end %>
-        <% end %>
-        <p><b>Notes:</b> <%= item.notes %></p>
-    </div>
-  <% end %>
+<% @items.each do |item| %>
+  <%= item %><br>
+<% end %>
 </div>
 
 

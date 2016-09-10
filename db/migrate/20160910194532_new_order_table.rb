@@ -7,6 +7,7 @@ class NewOrderTable < ActiveRecord::Migration
       t.string :total
       t.string :alterations
       t.references :user, index: true, foreign_key: true
+      t.timestamps null: false
     end
   end
 end

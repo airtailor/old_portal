@@ -9,32 +9,18 @@
     <% end %>
 </div>
 
-<div id="status-column" class="order-column">
-<h3>Status</h3>
-    <% @orders.each do |order| %>
-      <%= order.status %><br><br>
-    <% end %>
-</div>
-
 <div id="customer-column" class="order-column">
 <h3>Customer</h3>
     <% @orders.each do |order| %>
-      <%= order.customer %><br><br>
+      <%= order.name %><br><br>
     <% end %>
 </div>
 
 <div id="description-column" class="order-column">
 <h3># of Items</h3>
-    <% @orders.each do |order| %>
-      <% @count = 0 %>
-      <% @items.each do |item| %>
-        <% if item.order_id == order.id %>
-          <% @count = @count + 1 %>
-        <% end %>
-
-      <% end %><%= @count %><br><br>
-    <% end %>
-
+    <% @alts.each do |alt| %>
+      <%= alt.length %><br><br>
+    <% end %> 
 </div>
 
 

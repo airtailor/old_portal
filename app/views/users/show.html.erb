@@ -8,7 +8,6 @@
     <div id="orders-quick-glance">
       <div id="orders-quick-glance-text">
         <p><%= @orders.count %> <span class="caps">Orders at your shop</span></p>
-        <p><%= @late_orders.count %> <span class="caps">Orders are late</span></p>
       </div>
 
       <a id="view-orders" href="/users/<%= @user.id %>/orders" class="caps">View Orders</a>

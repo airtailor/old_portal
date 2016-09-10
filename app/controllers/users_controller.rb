@@ -22,12 +22,10 @@ class UsersController < ApplicationController
   def show
     if current_user.is_admin?
       @user = User.find_by(id: params[:id])
-      # @orders = Order.where(user_id: @user.id)
-      # @late_orders = @orders.where(status: "late")
+      @orders = Order.where(user_id: @user.id)
     else
       @user = current_user
-      # @orders = Order.where(user_id: current_user.id)
-      # @late_orders = @orders.where(status: "late")
+      @orders = Order.where(user_id: current_user.id)
     end
   end
 
