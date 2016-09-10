@@ -1,0 +1,14 @@
+<div class="section-header">
+  <h2>Messages / All</h2>
+</div>
+
+<div id="all-conversations">
+  <% @conversations.each do |conversation| %>
+    <% @users.each do |user| %>
+      <% if conversation.recipient_id == user.id.to_s %>
+          <b><%= link_to user.business_name, conversation_messages_path(conversation) %></b><br>
+          Unread messages: <%= conversation.messages.where(read: false).count %>
+      <% end %><br>
+    <% end %>
+  <% end %>
+</div>

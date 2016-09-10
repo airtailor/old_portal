@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="tailor-main">
+    <div class="tailor-welcome">
+      <h2>Greetings <%= @user.business_name %></h2>
+      <p>Here's what's happening with your shop right now:</p>
+    </div>
+
+    <div id="orders-quick-glance">
+      <div id="orders-quick-glance-text">
+        <p><%= @orders.count %> <span class="caps">Orders at your shop</span></p>
+        <p><%= @late_orders.count %> <span class="caps">Orders are late</span></p>
+      </div>
+
+      <a id="view-orders" href="/users/<%= @user.id %>/orders" class="caps">View Orders</a>
+    </div>
+
+    <div id="messages-quick-glance">
+      <p class="caps">You have [variable] messages awaiting your reply.</p>
+      <a href="#" id="view-messages" class="caps">View Messages</a>
+    </div>
+
+ <!--    <p><%= @user.business_name %><br>
+        <%= @user.user_name %><br>
+        <%= @user.phone %><br>
+        <%= @user.street %> #<%= @user.unit %><br>
+        <%= @user.city %>, <%= @user.state %> <%= @user.zip %><br>
+        <%= @user.country %></p><br> -->
+
+  </div>
+</div>

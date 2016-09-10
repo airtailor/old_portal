@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AirTailorPortal</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <aside>
+    <% if current_user %>
+    <a href="/admin"><img src="/assets/logo" alt="air tailor logo" id="logo"></a><br><br>
+    <nav>
+      <ul>
+        <% if current_user.email == "brian@airtailor.com" %>
+          <li><a href="/admin">Home</a></li>
+          <li><a href="/conversations">Messages</a></li>
+          <li><a href="#">Account</a></li>
+          <li><%= link_to "Logout", '/logout' %></li>
+        <% else %>
+          <li><a href="/users/<%= current_user.id %>">Home</a></li>
+          <li><a href="/users/<%= current_user.id %>/orders">Orders</a></li>
+          <li><a href="/conversations/1/messages">Messages</a></li>
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Help</a></li>
+          <li><%= link_to "Logout", '/logout' %></li>
+        <% end %>
+      </ul>
+    </nav>
+      <br>
+      Business: <%= current_user.business_name %><br>
+      User: <%= current_user.user_name %>
+    <% end %>
+
+  </aside>
+
+  <main>
+
+<%= yield %>
+
+  </main>
+
+</body>
+</html>

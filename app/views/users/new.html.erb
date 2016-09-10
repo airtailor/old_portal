@@ -1,0 +1,23 @@
+<div class="tailor-main">
+  <h2>Add New Tailor Shop</h2>
+
+  <%= form_for :user, url: '/users' do |f| %>
+
+    Business Name: <%= f.text_field :business_name %><br>
+    User Name: <%= f.text_field :user_name %><br>
+    Email: <%= f.text_field :email %><br>
+    Password: <%= f.password_field :password %><br>
+    Password Confirmation: <%= f.password_field :password_confirmation %><br>
+    Phone: <%= f.text_field :phone %><br>
+    Street: <%= f.text_field :street %><br>
+    Unit: <%= f.text_field :unit %><br>
+    City: <%= f.text_field :city %><br>
+    State: <%= f.text_field :state %><br>
+    Zip: <%= f.text_field :zip %><br>
+    Country: <%= f.text_field :country %><br>
+    Time Zone: <%= f.text_field :timezone %><br>
+
+    <%= f.submit "Submit" %>
+
+  <% end %>
+</div>

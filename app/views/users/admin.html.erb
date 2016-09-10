@@ -1,0 +1,45 @@
+<div class="section-header">
+  <h2>Admin Home</h2>
+</div>
+
+<div class="admin-welcome">
+  <h2>Greetings Master</h2>
+  <p>Here's the latest on your minions:</p>
+  <%= link_to "Add Minion", "users/new" %>
+</div>
+
+<div class="admin-column">
+  <p><b class="caps">Tailors</b></p>
+  <% @users.each do |user| %>
+      <p><%= link_to user.business_name, user %></p>
+  <% end %>
+</div>
+
+<div class="admin-column">
+  <p><b class="caps">Orders</b></p>
+  <% @users.each do |user| %>
+  <% @count = 0 %>
+    <% @orders.each do |order| %>
+
+      <% if order.user_id == user.id %>
+        <% @count = @count + 1 %>
+      <% end %>
+    <% end %>
+    <p><%= @count %></p>
+  <% end %>
+</div>
+
+<div class="admin-column">
+  <p><b class="caps">Late</b></p>
+  <% @users.each do |user| %>
+  <% @count = 0 %>
+    <% @orders.each do |order| %>
+
+      <% if order.user_id == user.id && order.status == "late" %>
+        <% @count = @count + 1 %>
+      <% end %>
+    <% end %>
+    <p><%= @count %></p>
+  <% end %>
+</div>
+
