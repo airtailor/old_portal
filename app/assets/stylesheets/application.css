@@ -20,6 +20,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: cardo;
+  font-size: 14px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -284,4 +285,38 @@ nav li:last-of-type {
 
 #message-body {
   margin-bottom: 20px;
+}
+
+/* edit user page */
+
+#edit-user-copy {
+  width: 250px;
+  float: left;
+  padding-left: 30px;
+  padding-right: 60px;
+}
+
+#edit-user-form {
+  width:  500px;
+  float: left;
+  margin-bottom: 200px;
+}
+
+#edit-user-form p {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+#edit-user-form input {
+  width: 100%;
+  height: 20px;
+  font-size: 12px;
+}
+
+#edit-user-form input[type="submit"] {
+  height: 30px;
+  background-color: yellow;
+  font-weight: bold;
+  border: solid black 2px;
+  border-radius: 10px;
 }
