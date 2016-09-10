@@ -4,7 +4,7 @@
 
 
 <div id="all-conversations">
-  <% @messages.each do |message| %>
+  <% @messages.sort_by{|t| - t.created_at.to_i}.first(5).each do |message| %>
     <div id="message-body">
       <% if message.user_id == @admin.id %>
         <div id="admin-message">
