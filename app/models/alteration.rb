@@ -1,4 +1,4 @@
 class Alteration < ActiveRecord::Base
-  belongs_to :item
-  belongs_to :order
+  # belongs_to :item
+  # belongs_to :order
 end

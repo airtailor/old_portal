@@ -6,13 +6,27 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# User.create(email: "brian@faketailor.com", password: "12345", business_name: "Fake Tailor", user_name: "Brian", phone: "616-456-7890", street: "123 Fake St.", unit: "1", city: "Grand Rapids", state: "MI", country: "USA", timezone: "eastern")
 
-# User.create(email: "brian@airtailor.com", password: "12345", business_name: "Air Tailor", user_name: "Brian", phone: "616-780-4457", street: "123 Awesome St.", unit: "53", city: "Grand Rapids", state: "MI", country: "USA", timezone: "eastern")
+blah = User.create(email: "brian@faketailor.com", password: "12345", business_name: "Fake Tailor", user_name: "Brian", phone: "616-456-7890", street: "123 Fake St.", unit: "1", city: "Grand Rapids", state: "MI", country: "USA", timezone: "eastern")
 
-# User.create(email: "joshua@imaginarytailor.com", password: "12345", business_name: "Imaginary Tailor", user_name: "Joshua", phone: "347-456-7890", street: "123 Imaginary St.", unit: "2", city: "Los Angeles", state: "CA", country: "USA", timezone: "pacific")
+User.create(email: "brian@airtailor.com", password: "12345", business_name: "Air Tailor", user_name: "Brian", phone: "616-780-4457", street: "123 Awesome St.", unit: "53", city: "Grand Rapids", state: "MI", country: "USA", timezone: "eastern")
 
-# User.create(email: "vlad@mythicaltailor.com", password: "12345", business_name: "Mythical Tailor", user_name: "Vlad", phone: "313-456-7890", street: "123 Myth Way", unit: "3", city: "Austin", state: "TX", country: "USA", timezone: "central")
+User.create(email: "joshua@imaginarytailor.com", password: "12345", business_name: "Imaginary Tailor", user_name: "Joshua", phone: "347-456-7890", street: "123 Imaginary St.", unit: "2", city: "Los Angeles", state: "CA", country: "USA", timezone: "pacific")
+
+User.create(email: "vlad@mythicaltailor.com", password: "12345", business_name: "Mythical Tailor", user_name: "Vlad", phone: "313-456-7890", street: "123 Myth Way", unit: "3", city: "Austin", state: "TX", country: "USA", timezone: "central")
+
+# t.string :name
+#       t.integer :shopify_id
+#       t.integer :unique_id
+#       t.string :total
+#       t.string :alterations
+#       t.references :user, index: true, foreign_key: true
+Order.create(name: "customer 1", 
+  shopify_id: 1234, 
+  unique_id: 909090, 
+  total: "50.00", 
+  alterations: '{\"Shirt #1\"=>\"Add Collar Buttons, Add Snaps Under Collar\", \"Pants #1\"=>\"Add Button, Add Clasp\"}', 
+  user_id: blah.id)
 
 # Order.create(user_id: 1, status: "2 days to go", customer: "Bugs Bunny")
 # Order.create(user_id: 1, status: "3 days to go", customer: "Elmer Fudd")
@@ -41,8 +55,8 @@
 # Alteration.create(order_id: 3, item_id: 6, alteration: "hem pants legs")
 # Alteration.create(order_id: 3, item_id: 6, alteration: "add button")
 
-# Conversation.create(sender_id: 4, recipient_id: 1)
-# Message.create(user_id: 4, conversation_id: 1, text: "Testing message system", read: false)
+Conversation.create(sender_id: 4, recipient_id: 1)
+Message.create(user_id: 4, conversation_id: 1, text: "Testing message system", read: false)
 
 Message.create(user_id: 1, conversation_id: 1, text: "Hey! It works.", read: false)
 
