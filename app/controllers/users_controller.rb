@@ -62,8 +62,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     @user.assign_attributes(user_params)
-    #byebug
-
 
    if @user.valid?
      @user.update_attributes(user_params)
