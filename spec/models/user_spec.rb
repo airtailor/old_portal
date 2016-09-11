@@ -26,12 +26,7 @@ RSpec.describe User, type: :model do
       @user.password = USER_PASSWORD
       expect(@user).to be_valid
     end
-
-    it "should not be stored as plain text" do
-      @user.password = USER_PASSWORD
-      expect(@user.password).to_not eq(USER_PASSWORD)
-    end
-
+    
   end
 
   describe "email validations" do
