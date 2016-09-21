@@ -9,9 +9,10 @@ Rails.application.routes.draw do
 
   get '/api/order' =>'api#recieve'
 
-  resources :conversations do
-    resources :messages
-  end
+    resources :conversations do
+      resources :messages
+    end
+
 
   resources :users do
     resources :orders do

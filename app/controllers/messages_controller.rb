@@ -1,11 +1,21 @@
 class MessagesController < ApplicationController
 
   def index
-    @message = Message.new
-    @conversation = Conversation.find_by(id: params[:conversation_id])
-    @messages = Message.where(conversation_id: @conversation.id)
-    @business = User.find_by(id: @conversation.recipient_id)
-    @admin = User.find_by(id: @conversation.sender_id)
+    if current_user.is_admin?
+      @message = Message.new
+      @conversation = Conversation.find_by(id: params[:conversation_id])
+      @messages = Message.where(conversation_id: @conversation.id)
+      @business = User.find_by(id: @conversation.recipient_id)
+      @admin = User.find_by(id: @conversation.sender_id)
+    elsif
+      @message = Message.new
+      @conversation = Conversation.find_by(recipient_id: current_user.id)
+      @messages = Message.where(conversation_id: @conversation.id)
+      @business = User.find_by(id: current_user.id)
+      @admin = User.find_by(id: @conversation.sender_id)
+    else
+      redirect_to @user
+    end
   end
 
   def new
