@@ -1,5 +1,5 @@
 <div class="section-header">
-    <h2>Create New Tailor Shop</h2>
+    <h2>Edit <%= @user.business_name %></h2>
 </div>
 
 <div id="edit-user-copy">
@@ -34,7 +34,7 @@
     <p>Country:</p> <%= f.text_field :country %>
     <p>Time Zone:</p> <%= f.text_field :timezone %>
     <br><br>
-    <%= f.submit "Create" %>
+    <%= f.submit "Update" %>
 
   <% end %>
 </div>

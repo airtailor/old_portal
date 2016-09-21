@@ -19,7 +19,7 @@
 <hr>
   <p><b class="caps">Tailors</b></p>
   <% @users.each do |user| %>
-      <p><%= link_to user.business_name, user %></p>
+      <p><%= link_to user.business_name, user %> <small>&mdash; (<a href="/users/<%= user.id %>/edit">edit</a>)</small></p>
   <% end %>
 
 

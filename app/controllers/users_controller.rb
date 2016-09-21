@@ -61,23 +61,37 @@ class UsersController < ApplicationController
   end
 
   def create
-     @user = User.new(user_params).save
-     # if @user.save
-        # session[:user_id] = @user.id
-        redirect_to "/admin"
-     # else
-       # redirect_to "/users/new"
-     # end
+    if current_user.is_admin?
+       @user = User.new(user_params)
+       if @user.save
+          #session[:user_id] = @user.id
+          redirect_to @user
+       else
+         redirect_to new_user_path
+       end
+     else
+       redirect_to "/"
+     end
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
+    if current_user.is_admin?
+      @user = User.find_by(id: params[:id])
+    else
+      @user = current_user
+    end
   end
 
   def update
     @user = User.find_by(id: params[:id])
-    @user.update_attributes(user_params)
-    redirect_to @user
+    @user.assign_attributes(user_params)
+
+   if @user.valid?
+     @user.update_attributes(user_params)
+     redirect_to @user
+   else
+     redirect_to edit_user_path
+   end
   end
 
   def destroy
