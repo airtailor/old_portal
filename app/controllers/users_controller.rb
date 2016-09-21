@@ -11,6 +11,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def admin_show
+    if current_user.is_admin?
+      @users = User.all
+      @order = Order.find_by(id: params[:id])
+      @owner = User.find_by(id: @order.user_id)
+      @alterations = JSON.parse(@order.alterations)
+    else
+      redirect_to "/"
+    end
+  end
+
+  def update_order
+    # byebug
+    order ={user_id:params['new_owner']}
+    @order = Order.find_by(id: params[:order_id])
+    @order.update_attributes(order)
+    redirect_to :back
+  end
+
+
+
+
+
   def index
     if current_user.is_admin?
       @users = User.all

@@ -2,12 +2,14 @@ Rails.application.routes.draw do
   root "users#show"
 
   get '/admin' => 'users#admin'
+  put '/admin/order' => 'users#update_order'
+  get '/admin/order/:id' => 'users#admin_show'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  get '/api/order' =>'api#recieve'
+  post '/api/order' =>'api#recieve'
 
   resources :conversations do
     resources :messages
