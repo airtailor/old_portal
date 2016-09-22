@@ -1,3 +1,5 @@
+<!-- Tailor Show Page -->
+
 <div class="container">
   <div class="tailor-main">
     <div class="tailor-welcome">
@@ -7,23 +9,48 @@
 
     <div id="orders-quick-glance">
       <div id="orders-quick-glance-text">
-        <p><%= @orders.count %> <span class="caps">Orders at your shop</span></p>
+        <p><span id="new-messages"><%= @orders.count %></span> <span class="caps">Orders at your shop</span></p>
       </div>
 
       <a id="view-orders" href="/users/<%= @user.id %>/orders" class="caps">View Orders</a>
     </div>
 
-    <div id="messages-quick-glance">
-      <p class="caps">You have [variable] messages awaiting your reply.</p>
-      <a href="#" id="view-messages" class="caps">View Messages</a>
-    </div>
 
- <!--    <p><%= @user.business_name %><br>
-        <%= @user.user_name %><br>
-        <%= @user.phone %><br>
-        <%= @user.street %> #<%= @user.unit %><br>
-        <%= @user.city %>, <%= @user.state %> <%= @user.zip %><br>
-        <%= @user.country %></p><br> -->
+    <% if @conversation %>
+      <!-- if user has a conversation started, this shows how many unread messages they have and a link to go to those messages -->
+        <div id="messages-quick-glance">
+          <% if current_user.is_admin? %>
+
+            <p class="caps">You have <span id="new-messages">&thinsp;<%= @conversation.messages.where(read: false).count %>&thinsp;</span> messages awaiting your reply.</p>
+
+            <a href="/conversations/<%= @conversation.id %>/messages" id="view-messages" class="caps">View Messages</a>
+
+          <% else %>
+
+            <p class="caps">You have <span id="new-messages">&thinsp;<%= @conversation.messages.where(user_read: false).count %>&thinsp;</span> messages awaiting your reply.</p>
+
+            <a href="/conversations" id="view-messages" class="caps">View Messages</a>
+          <% end %>
+        </div>
+    <% else %>
+      <!-- if user has 0 conversations it shows 0 messages and has a link to start a conversation -->
+
+        <div id="messages-quick-glance">
+          <p class="caps">You haven't sent any messages yet.</p>
+          <% if current_user.is_admin? %>
+            <%= form_for @new_conversation do |f| %>
+            <%= f.text_field :recipient_id, :value => @user.id, :type => 'hidden' %>
+            <%= f.text_field :sender_id, :value => current_user.id, :type => 'hidden' %>
+            <%= f.submit "Click Here", :id => "view-messages-submit", :class => "caps" %>
+    <% end %>
+          <% else %>
+            <a href="/conversations" id="view-messages" class="caps">Get Started</a>
+          <% end %>
+        </div>
+    <% end %>
+
 
   </div>
+  <!-- close tailor main div -->
 </div>
+<!-- close container div -->

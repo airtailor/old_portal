@@ -31,9 +31,6 @@ class UsersController < ApplicationController
   end
 
 
-
-
-
   def index
     if current_user.is_admin?
       @users = User.all
@@ -46,9 +43,19 @@ class UsersController < ApplicationController
     if current_user.is_admin?
       @user = User.find_by(id: params[:id])
       @orders = Order.where(user_id: @user.id)
+      if Conversation.exists?(recipient_id: @user.id)
+        @conversation = Conversation.find_by(recipient_id: @user.id)
+        @messages = Message.where(conversation_id: @conversation.id)
+      else
+        @new_conversation = Conversation.new
+      end
     else
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
+      if Conversation.exists?(recipient_id: @user.id)
+        @conversation = Conversation.find_by(recipient_id: current_user.id)
+        @messages = Message.where(conversation_id: @conversation.id)
+      end
     end
   end
 

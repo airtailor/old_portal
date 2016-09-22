@@ -2,12 +2,32 @@
   <h2>Messages / <%= @business.business_name %></h2>
 </div>
 
+  <div id="new-message-form">
+    <%= form_for [@conversation, @message] do |f| %>
+        <p>Write New Message:</p>
+        <%= f.text_field :conversation_id, :value => @conversation.id, :type => 'hidden' %>
+        <%= f.text_field :user_id, :value => current_user.id, :type => 'hidden' %>
+
+        <% if current_user.is_admin? %>
+          <%= f.text_field :read, :value => true, :type => 'hidden' %>
+          <%= f.text_field :user_read, :value => false, :type => 'hidden' %>
+        <% else %>
+          <%= f.text_field :read, :value => false, :type => 'hidden' %>
+          <%= f.text_field :user_read, :value => true, :type => 'hidden' %>
+        <% end %>
+
+        <p><%= f.text_area :text, size: "80x15" %></p>
+        <%= f.submit "Add Message", :class => "btn btn-default" %>
+    <% end %>
+  </div>
+
 
 <div id="all-conversations">
-  <% @messages.sort_by{|t| - t.created_at.to_i}.first(5).each do |message| %>
+  <% @messages.sort_by{|t| - t.created_at.to_i}.first(10).each do |message| %>
     <div id="message-body">
       <% if message.user_id == @admin.id %>
         <div id="admin-message">
+        <% puts @admin.business_name %>
         <b><%= @admin.business_name %></b> <br>
       <% elsif message.user_id == @business.id %>
         <div id="tailor-message">
@@ -20,13 +40,4 @@
   <% end %>
 </div>
 
-  <div id="new-message-form">
-    <%= form_for [@conversation, @message] do |f| %>
-        <p>Write New Message:</p>
-        <%= f.text_field :conversation_id, :value => @conversation.id, :type => 'hidden' %>
-        <%= f.text_field :user_id, :value => current_user.id, :type => 'hidden' %>
-        <%= f.text_field :read, :value => false, :type => 'hidden' %>
-        <p><%= f.text_area :text, size: "80x15" %></p>
-        <%= f.submit "Add Message", :class => "btn btn-default" %>
-    <% end %>
-  </div>
+

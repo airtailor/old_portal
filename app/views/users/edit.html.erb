@@ -17,23 +17,23 @@
 
 <div id="edit-user-form">
 
-  <%= form_for :user, url: '/users' do |f| %>
-    <p>Email:</p> <%= f.text_field :email %>
-    <p>Password:</p> <%= f.password_field :password %>
-    <p>Password Confirmation:</p> <%= f.password_field :password_confirmation %><br><br><br>
+    <%= form_for @user, url: {action: 'update'} do |f| %>
+        <p>Email:</p> <%= f.text_field :email %>
+        <p>Password:</p> <%= f.password_field :password %>
+        <p>Password Confirmation:</p> <%= f.password_field :password_confirmation %><br><br><br>
 
-    <p>Business Name:</p> <%= f.text_field :business_name %>
-    <p>Main Contact Name:</p> <%= f.text_field :user_name %>
-    <p>Phone:</p> <%= f.text_field :phone %><br><br><br>
+        <p>Business Name:</p> <%= f.text_field :business_name %>
+        <p>Main Contact Name:</p> <%= f.text_field :user_name %>
+        <p>Phone:</p> <%= f.text_field :phone %><br><br><br>
 
-    <p>Street:</p> <%= f.text_field :street %>
-    <p>Unit:</p> <%= f.text_field :unit %>
-    <p>City:</p> <%= f.text_field :city %>
-    <p>State:</p> <%= f.text_field :state %>
-    <p>Zip:</p> <%= f.text_field :zip %>
-    <p>Country:</p> <%= f.text_field :country %>
-    <p>Time Zone:</p> <%= f.text_field :timezone %>
-    <br><br>
+        <p>Street:</p> <%= f.text_field :street %>
+        <p>Unit:</p> <%= f.text_field :unit %>
+        <p>City:</p> <%= f.text_field :city %>
+        <p>State:</p> <%= f.text_field :state %>
+        <p>Zip:</p> <%= f.text_field :zip %>
+        <p>Country:</p> <%= f.text_field :country %>
+        <p>Time Zone:</p> <%= f.text_field :timezone %>
+        <br><br>
     <%= f.submit "Update" %>
 
   <% end %>

@@ -1,14 +1,36 @@
-<div class="section-header">
-  <h2>Messages / All</h2>
-</div>
 
-<div id="all-conversations">
-  <% @conversations.each do |conversation| %>
-    <% @users.each do |user| %>
-      <% if conversation.recipient_id == user.id.to_s %>
-          <b><%= link_to user.business_name, conversation_messages_path(conversation) %></b><br>
-          Unread messages: <%= conversation.messages.where(read: false).count %>
+<% if current_user.is_admin? %>
+  <div class="section-header">
+    <h2>Messages / All</h2>
+  </div>
+
+  <div id="all-conversations">
+    <% @conversations.each do |conversation| %>
+      <% @users.each do |user| %>
+        <% if conversation.recipient_id == user.id.to_s %>
+            <p><b><%= link_to user.business_name, conversation_messages_path(conversation) %></b><br>
+
+            Unread messages: <%= conversation.messages.where(read: false).count %><p>
+        <% end %>
       <% end %><br>
     <% end %>
-  <% end %>
+  </div>
+
+<% else %>
+
+  <div class="section-header">
+    <h2>Messages</h2>
+  </div>
+  <div id="all-conversations">
+    <p>Communication is king! Use this feature to communicate any questions about alteration orders with an Air Tailor Client Service Team member.</p>
+  </div>
+
+  <div id="new-conversation-form">
+    <%= form_for @conversation do |f| %>
+        <%= f.text_field :recipient_id, :value => current_user.id, :type => 'hidden' %>
+        <%= f.text_field :sender_id, :value => 2, :type => 'hidden' %>
+        <%= f.submit "Click Here", :class => "btn btn-default" %>
+    <% end %>
+  </div>
 </div>
+<% end %>

@@ -172,6 +172,11 @@ nav li:last-of-type {
   float: left;
 }
 
+#orders-quick-glance-text p {
+  line-height: 100px;
+  margin: 0;
+}
+
 #orders-quick-glance span {
   padding-left: 20px;
 }
@@ -214,6 +219,27 @@ nav li:last-of-type {
   margin-top: 25px;
   float: right;
   font-size: 12px;
+}
+
+#view-messages-submit {
+  border: none;
+  background-color: white;
+  text-align: center;
+  width: 120px;
+  height: 45px;
+  border: 1px solid black;
+  margin-top: 25px;
+  float: right;
+  font-size: 12px;
+}
+
+#view-messages-submit:hover {
+  cursor: pointer;
+}
+
+#new-messages {
+  color: red;
+  font-size: 18px;
 }
 
 /* orders index page */
@@ -259,10 +285,15 @@ nav li:last-of-type {
   margin-top: 50px;
 }
 
+#new-conversation-form {
+  text-align: center;
+}
+
 /* messages index page */
 
 #new-message-form {
   text-align: left;
+  margin-left: 30px;
   margin-bottom: 100px;
 }
 
