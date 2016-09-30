@@ -27,14 +27,18 @@
     <div id="message-body">
       <% if message.user_id == @admin.id %>
         <div id="admin-message">
-        <% puts @admin.business_name %>
-        <b><%= @admin.business_name %></b> <br>
+        <b><%= @admin.business_name %> // </b>
       <% elsif message.user_id == @business.id %>
         <div id="tailor-message">
-        <b><%= @business.business_name %></b><br>
+        <b><%= @business.business_name %> // </b>
       <% end %>
+        <% if message.order_id %>
+          Order #: <%= message.order_id %> //
+        <% end %>
         <%= message.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y at %I:%M %p") %><br>
+        <hr>
         <%= message.text %><br><br>
+
       </div>
     </div>
   <% end %>

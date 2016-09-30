@@ -1,29 +1,60 @@
 <div class="section-header order-show">
   <h2>Orders / <%= @order.id %></h2>
-
 </div>
 
+<!-- begin item info section -->
 <div id="item-section">
   <% @items.each do |item| %>
     <%= item %><br>
   <% end %>
-  <button id="order-completed">Order Completed</button>
-</div>
 
+  <!-- begin message section -->
+  <div id="order-message-section">
+    <h4>Ask a question about this order</h4>
+
+  <% if @conversation %>
+    <div id="order-new-message-form">
+      <%= form_for [@conversation, @message] do |f| %>
+          <%= f.text_field :conversation_id, :value => @conversation.id, :type => 'hidden' %>
+          <%= f.text_field :user_id, :value => current_user.id, :type => 'hidden' %>
+          <%= f.text_field :order_id, :value => @order.id.to_s, :type => 'hidden' %>
+
+          <% if current_user.is_admin? %>
+            <%= f.text_field :read, :value => true, :type => 'hidden' %>
+            <%= f.text_field :user_read, :value => false, :type => 'hidden' %>
+          <% else %>
+            <%= f.text_field :read, :value => false, :type => 'hidden' %>
+            <%= f.text_field :user_read, :value => true, :type => 'hidden' %>
+          <% end %>
+
+          <p><%= f.text_area :text, size: "60x10" %></p>
+          <%= f.submit "Add Message", :class => "btn btn-default" %>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+<!-- end message section -->
+  <button id="order-completed">Fulfill Order</button>
+</div>
+<!-- end item info section -->
+
+
+<!-- begin customer measurments section -->
 <div id="customer-measurements">
   <h3>Customer Measurements</h3>
   <button id="measurements-front">Front</button>
   <button id="measurements-back">Back</button>
   <button id="measurements-edit">Edit</button>
 
+<!-- images of clothes -->
   <img id="clothes-front-image" src="/assets/clothes-front-red.png" alt="">
   <img id="clothes-back-image" src="/assets/clothes-back-red.png" alt="">
+<!-- end -->
 
-
+<!-- divs showing customer's current measurements -->
   <div class="clothes-front measurement sleeve-length"><%= @measurement.sleeve_length %>"</div>
 
   <div class="clothes-front measurement shoulder-to-waist"><%= @measurement.shoulder_to_waist %>"</div>
-
 
   <div class="clothes-front measurement chest-bust"><%= @measurement.chest_bust %>"</div>
 
@@ -52,9 +83,10 @@
   <div class="clothes-back measurement forearm"><%= @measurement.forearm %>"</div>
 
   <div class="clothes-back measurement inseam"><%= @measurement.inseam %>"</div>
+<!-- end of measurement divs -->
 
-
-<%= form_for @measurement, {action: 'update'} do |f| %>
+<!-- form to update customer's measurements -->
+  <%= form_for @measurement, {action: 'update'} do |f| %>
         <%= f.text_field :customer_name, :type => 'hidden' %>
         <%= f.number_field :sleeve_length, :class => 'clothes-front measurement sleeve-length' %>
         <%= f.number_field :shoulder_to_waist, :class => 'clothes-front measurement shoulder-to-waist' %>
@@ -72,12 +104,11 @@
         <%= f.number_field :elbow, :class => 'clothes-back measurement elbow' %>
         <%= f.number_field :forearm, :class => 'clothes-back measurement forearm' %>
         <%= f.number_field :inseam, :class => 'clothes-back measurement inseam' %>
-
     <button id="measurements-save"><%= f.submit "Save" %></button>
-
   <% end %>
-
+<!-- end of measurements form -->
 </div>
+<!-- end of customer measurements section -->
 
 
 

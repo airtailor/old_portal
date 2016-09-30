@@ -294,17 +294,26 @@ nav li:last-of-type {
   margin-bottom: 50px;
 }
 
+#order-message-section {
+  margin-top: 50px;
+}
+
+#order-new-message-form {
+  text-align: left;
+}
+
 #order-completed {
   clear: both;
-  text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-right: 25px;
-  padding-left: 25px;
+  width: 200px;
   background-color: pink;
   border: 2px hotpink solid;
   margin-top: 50px;
+  margin-left: 40%;
 }
+
+
 
 /* customer measurements */
 

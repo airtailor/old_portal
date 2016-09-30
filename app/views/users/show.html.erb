@@ -39,10 +39,10 @@
           <p class="caps">You haven't sent any messages yet.</p>
           <% if current_user.is_admin? %>
             <%= form_for @new_conversation do |f| %>
-            <%= f.text_field :recipient_id, :value => @user.id, :type => 'hidden' %>
-            <%= f.text_field :sender_id, :value => current_user.id, :type => 'hidden' %>
-            <%= f.submit "Click Here", :id => "view-messages-submit", :class => "caps" %>
-    <% end %>
+              <%= f.text_field :recipient_id, :value => @user.id, :type => 'hidden' %>
+              <%= f.text_field :sender_id, :value => current_user.id, :type => 'hidden' %>
+              <%= f.submit "Click Here", :id => "view-messages-submit", :class => "caps" %>
+            <% end %>
           <% else %>
             <a href="/conversations" id="view-messages" class="caps">Get Started</a>
           <% end %>
