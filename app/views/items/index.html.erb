@@ -4,9 +4,59 @@
 
 <!-- begin item info section -->
 <div id="item-section">
-  <% @items.each do |item| %>
-    <%= item %><br>
-  <% end %>
+  <!-- begin lists of item alterations -->
+  <div id="item-alteration-lists">
+
+    <% if @items.any? { |s| s.include?('Pants') } %>
+      <div class="alteration-list">
+        <div class="alterations-image">
+          <img id="pants" src="/assets/pants.jpg" alt="">
+        </div>
+        <div class="alterations-text">
+          <h3 class="caps">Pants</h3>
+          <% @items.each do |item| %>
+            <% if item.include? "Pants" %>
+              <li><%= item %></li>
+            <% end %>
+          <% end %><br>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @items.any? { |s| s.include?('Shirt') } %>
+      <div class="alteration-list">
+        <div class="alterations-image">
+          <img id="shirt" src="/assets/shirt.png" alt="">
+        </div>
+        <div class="alterations-text">
+          <h3 class="caps">Shirts</h3>
+          <% @items.each do |item| %>
+            <% if item.include? "Shirt" %>
+              <li><%= item %></li>
+            <% end %>
+          <% end %><br>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @items.any? { |s| s.include?('Dress') } %>
+      <div class="alteration-list">
+        <div class="alterations-image">
+          <img id="dress" src="/assets/dress.jpg" alt="">
+        </div>
+        <div class="alterations-text">
+          <h3 class="caps">Dresses</h3>
+          <% @items.each do |item| %>
+            <% if item.include? "Dress" %>
+              <li><%= item %></li>
+            <% end %>
+          <% end %><br>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- end lists of item alterations -->
 
   <!-- begin message section -->
   <div id="order-message-section">
@@ -28,13 +78,15 @@
           <% end %>
 
           <p><%= f.text_area :text, size: "60x10" %></p>
-          <%= f.submit "Add Message", :class => "btn btn-default" %>
+          <button id="submit-order-message"><%= f.submit "Add Message" %></button>
       <% end %>
     </div>
   <% end %>
   </div>
 <!-- end message section -->
-  <button id="order-completed">Fulfill Order</button>
+  <div id="order-completed">
+    <button>Fulfill Order</button>
+  </div>
 </div>
 <!-- end item info section -->
 
