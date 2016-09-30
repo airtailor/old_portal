@@ -4,24 +4,30 @@
 
 <div class="admin-welcome">
   <h2>Greetings Master</h2>
-  <p>Here's the latest on your minions:</p>
-  <%= link_to "Add Minion", "users/new" %>
+  <p>Here's the latest:</p>
+
 </div>
 
+<div id="admin-orders">
+  <p><b class="caps">Manage New Orders</b></p>
+    <% @orders.each do |order| %>
+        <a href="/admin/order/<%=order.id%>">
+          <%= order.shopify_id %> - <%= order.name %> - <%= order.total %><br>
+        </a>
+        <p></p>
+    <% end %>
+</div>
 
-<p><b class="caps">Orders</b></p>
-  <% @orders.each do |order| %>
-      <a href="/admin/order/<%=order.id%>">
-        <%= order.shopify_id %> - <%= order.name %> - <%= order.total %><br>
-      </a>
-      <p></p>
-  <% end %>
 <hr>
-  <p><b class="caps">Tailors</b></p>
+
+<div id="minions">
+  <p><b class="caps">Manage Tailors</b><br> <small><%= link_to "Add New Tailor", "users/new" %></small></p>
+
   <% @users.each do |user| %>
       <p><%= link_to user.business_name, user %> <small>&mdash; (<a href="/users/<%= user.id %>/edit">edit</a>)</small></p>
   <% end %>
 
+</div>
 
 
 

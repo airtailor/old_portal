@@ -27,14 +27,14 @@
 
 
           <li><a href="/users/<%= current_user.id %>/edit">Account</a></li>
-          <li><a href="#">Help</a></li>
+          <li><a href="https://airtailor.zendesk.com/hc/en-us" target="blank">Help</a></li>
           <li><%= link_to "Logout", '/logout' %></li>
         <% end %>
       </ul>
     </nav>
       <br>
-      Business: <%= current_user.business_name %><br>
-      User: <%= current_user.user_name %>
+      <p>Business: <%= current_user.business_name %></p>
+      <p>User: <%= current_user.user_name %></p>
     <% end %>
 
   </aside>

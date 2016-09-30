@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   post '/api/order' =>'api#recieve'
 
+  resources :measurements
+
   resources :conversations do
     resources :messages
   end
@@ -20,6 +22,8 @@ Rails.application.routes.draw do
       resources :items
     end
   end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -47,8 +47,6 @@ a {
 aside {
   height: 100vh;
   width: 14%;
-  min-width: 125px;
-  max-width: 200px;
   float: left;
   margin: 0;
   border-right: black 1px solid ;
@@ -63,7 +61,7 @@ aside {
 
 main {
   height: 100vh;
-  width: 85%;
+  width: 84%;
   float: left;
 }
 
@@ -139,6 +137,23 @@ nav li:last-of-type {
 .admin-column span {
   font-size: 18px;
   font-family: montserrat;
+}
+
+#admin-orders {
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+#minions {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+/* order assignment page */
+
+#order-assignment {
+  margin-left: 30px;
+  margin-top: 50px;
 }
 
 
@@ -268,13 +283,195 @@ nav li:last-of-type {
 }
 
 #item-section {
+  float: left;
   margin-top: 50px;
+  margin-left: 30px;
+  width: 40%;
 }
 
 .item {
   padding-left: 30px;
   margin-bottom: 50px;
 }
+
+#order-completed {
+  clear: both;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 25px;
+  padding-left: 25px;
+  background-color: pink;
+  border: 2px hotpink solid;
+  margin-top: 50px;
+}
+
+/* customer measurements */
+
+#customer-measurements {
+  float: right;
+  text-align: center;
+  margin-top: 20px;
+  margin-right: 10%;
+  position: relative;
+  width: 375px;
+}
+
+#customer-measurements button {
+  border: 2px solid hotpink;
+  background-color: pink;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 50px;
+  height: 25px;
+}
+
+#measurements-save {
+  position: absolute;
+  top: 52px;
+  left: 295px;
+  opacity: 0;
+}
+
+#measurements-save input {
+  width: 100%;
+  height: 100%;
+  background-color: pink;
+  border: none;
+}
+
+#clothes-front-image, #clothes-back-image {
+  position: absolute;
+  width: 100%;
+  transition: all 2s ease;
+  top: 85px;
+}
+
+#clothes-front-image {
+  opacity: 1;
+  right: 0px;
+}
+
+#clothes-back-image {
+  opacity: 0;
+  right: 0px;
+}
+
+#customer-measurements span {
+  padding: 10px;
+}
+
+.measurement {
+  position: absolute;
+  transition: all 2s ease;
+}
+
+div.measurement {
+  width: 35px;
+  height: 25px;
+  background-color: white;
+  border: 2px solid hotpink;
+  line-height: 25px;
+}
+
+input.measurement {
+  width: 40px;
+  height: 25px;
+  opacity: 0;
+  line-height: 25px;
+  text-align: center;
+  border: 1px solid pink;
+}
+
+.clothes-front {
+  opacity: 1;
+}
+
+.clothes-back {
+  opacity: 0;
+}
+
+.sleeve-length {
+  top: 110px;
+  left: 55px;
+}
+
+.shoulder-to-waist {
+  top: 135px;
+  left: 200px;
+}
+
+.chest-bust {
+  top: 183px;
+  left: 137px;
+}
+
+.upper-torso {
+  top: 233px;
+  left: 137px;
+}
+
+.waist {
+  top: 288px;
+  left: 137px;
+}
+
+.pant-length {
+  top: 385px;
+  left: 72px;
+}
+
+.hips {
+  top: 325px;
+  left: 257px;
+}
+
+.thigh {
+  top: 440px;
+  left: 127px;
+}
+
+.knee {
+  top: 518px;
+  left: 125px;
+}
+
+.calf {
+  top: 597px;
+  left: 123px;
+}
+
+.ankle {
+  top: 660px;
+  left: 122px;
+}
+
+.back-width {
+  top: 132px;
+  left: 167px;
+}
+
+.bicep {
+  top: 145px;
+  left: 45px;
+}
+
+.elbow {
+  top: 183px;
+  left: 22px;
+}
+
+.forearm {
+  top: 225px;
+  left: 5px;
+}
+
+.inseam  {
+  top: 650px;
+  left: 170px;
+ }
+
+
 
 /* conversations index page */
 
@@ -321,14 +518,14 @@ nav li:last-of-type {
 /* edit user page */
 
 #edit-user-copy {
-  width: 250px;
+  width: 30%;
   float: left;
-  padding-left: 30px;
-  padding-right: 60px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 #edit-user-form {
-  width:  500px;
+  width: 60%;
   float: left;
   margin-bottom: 200px;
 }

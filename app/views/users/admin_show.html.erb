@@ -2,32 +2,34 @@
   <h2>Admin Order Assignment Page</h2>
 </div>
 
-<p><b class="caps">Orders</b></p>
-  Customer: <%= @order.name %><br>
-  Total Charges: $<%= @order.total %><br>
-  Shopify Order ID: <%= @order.shopify_id %><br>
-  Order Date: <%= @order.created_at %><br>
+<div id="order-assignment">
+  <p><b class="caps">Order:</b></p>
+  <p>Customer: <%= @order.name %></p>
+  <p>Total Charges: $<%= @order.total %></p>
+  <p>Shopify Order ID: <%= @order.shopify_id %></p>
+  <p>Order Date: <%= @order.created_at %></p>
   <br>
   Alterations:<br>
   <% @alterations.each do |alteration| %>
     <li><%= alteration %><br></li>
   <% end %>
 
-<br>
+  <br>
 
-<form method="POST" action="/admin/order">
-  <input type="hidden" name="_method" value="PUT">
-  <input type="hidden" name="order_id" value="<%= @order.id %>">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <form method="POST" action="/admin/order">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="order_id" value="<%= @order.id %>">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-      <select name="new_owner">
-      <option>
-        <% if @owner %><%= @owner.business_name %><% end %>
-         - <%= @order.user_id %>
-       </option>
-      <% @users.each do |user| %>
-      <option value="<%= user.id %>"><%= user.business_name %></option>
-      <% end %>
-    </select>
-    <button type="submit">Submit</button>
-</form>
+        <select name="new_owner">
+        <option>
+          <% if @owner %><%= @owner.business_name %><% end %>
+           - <%= @order.user_id %>
+         </option>
+        <% @users.each do |user| %>
+        <option value="<%= user.id %>"><%= user.business_name %></option>
+        <% end %>
+      </select>
+      <button type="submit">Submit</button>
+  </form>
+</div>

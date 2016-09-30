@@ -12,6 +12,10 @@ class OrdersController < ApplicationController
     else
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
+      @alts = []
+      @orders.each do |order|
+        @alts.push(JSON.parse(order.alterations))
+      end
     end
   end
 
