@@ -9,6 +9,11 @@
     <% end %>
 </div>
 
+<div id="id-column" class="order-column">
+<h3>Status</h3>
+
+</div>
+
 <div id="customer-column" class="order-column">
 <h3>Customer</h3>
     <% @orders.each do |order| %>
@@ -17,10 +22,10 @@
 </div>
 
 <div id="description-column" class="order-column">
-<h3># of Items</h3>
+<h3>Quantity</h3>
     <% @alts.each do |alt| %>
       <%= alt.length %><br><br>
-    <% end %> 
+    <% end %>
 </div>
 
 

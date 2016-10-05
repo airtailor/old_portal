@@ -7,7 +7,7 @@
   <!-- begin lists of item alterations -->
   <div id="item-alteration-lists">
 
-    <% if @items.any? { |s| s.include?('Pants') } %>
+    <% if @items.any? { |s| s.include?('Pants #1') } %>
       <div class="alteration-list">
         <div class="alterations-image">
           <img id="pants" src="/assets/pants.jpg" alt="">
@@ -15,7 +15,39 @@
         <div class="alterations-text">
           <h3 class="caps">Pants</h3>
           <% @items.each do |item| %>
-            <% if item.include? "Pants" %>
+            <% if item.include? "Pants #1" %>
+              <li><%= item %></li>
+            <% end %>
+          <% end %><br>
+        </div>
+      </div>
+    <% end %>
+
+        <% if @items.any? { |s| s.include?('Pants #2') } %>
+      <div class="alteration-list">
+        <div class="alterations-image">
+          <img id="pants" src="/assets/pants.jpg" alt="">
+        </div>
+        <div class="alterations-text">
+          <h3 class="caps">Pants</h3>
+          <% @items.each do |item| %>
+            <% if item.include? "Pants #2" %>
+              <li><%= item %></li>
+            <% end %>
+          <% end %><br>
+        </div>
+      </div>
+    <% end %>
+
+        <% if @items.any? { |s| s.include?('Pants #3') } %>
+      <div class="alteration-list">
+        <div class="alterations-image">
+          <img id="pants" src="/assets/pants.jpg" alt="">
+        </div>
+        <div class="alterations-text">
+          <h3 class="caps">Pants</h3>
+          <% @items.each do |item| %>
+            <% if item.include? "Pants #3" %>
               <li><%= item %></li>
             <% end %>
           <% end %><br>
@@ -77,7 +109,7 @@
             <%= f.text_field :user_read, :value => true, :type => 'hidden' %>
           <% end %>
 
-          <p><%= f.text_area :text, size: "60x10" %></p>
+          <p><%= f.text_area :text, size: "60x10", :placeholder => 'Enter order number and message' %></p>
           <button id="submit-order-message"><%= f.submit "Add Message" %></button>
       <% end %>
     </div>

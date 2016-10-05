@@ -16,6 +16,7 @@
 
 /* general styles and layout */
 
+
 body {
   padding: 0;
   margin: 0;
@@ -388,7 +389,7 @@ nav li:last-of-type {
 #clothes-front-image, #clothes-back-image {
   position: absolute;
   width: 100%;
-  transition: all 2s ease;
+  transition: all 1s ease;
   top: 85px;
 }
 
