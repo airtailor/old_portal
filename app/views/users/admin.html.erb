@@ -10,12 +10,13 @@
 
 <div id="admin-orders">
   <p><b class="caps">Manage New Orders</b></p>
+  <% if @orders.length == 0 %>
+    No New Orders
+  <% else %>
     <% @orders.each do |order| %>
-        <a href="/admin/order/<%=order.id%>">
-          <%= order.shopify_id %> - <%= order.name %> - <%= order.total %><br>
-        </a>
-        <p></p>
+      <a href="/admin/order/<%=order.id%>"><%= order.shopify_id %> - <%= order.name %> - <%= order.total %></a><br><br>
     <% end %>
+  <% end %>
 </div>
 
 

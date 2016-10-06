@@ -90,6 +90,8 @@
     <% else %>
       <%= form_for [@user, @order], {action: 'update'} do |f| %>
         <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
+        <%= f.text_field :arrival_date, :value => Time.current, :type => 'hidden' %>
+        <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
         <button id="check-garment"><%= f.submit "Check Garment In" %></button>
       <% end %>
     <% end %>

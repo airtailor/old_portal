@@ -3,9 +3,10 @@ class UsersController < ApplicationController
   before_filter :authorize
 
   def admin
+    @counter = 0
     if current_user.is_admin?
       @users = User.all
-      @orders = Order.all
+      @orders = Order.where(user_id: nil)
     else
       redirect_to current_user
     end

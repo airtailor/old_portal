@@ -32,6 +32,18 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
+.red {
+  color: red;
+}
+
+.orange {
+  color: orange;
+}
+
+.green {
+  color: green;
+}
+
 a {
   text-decoration: none;
 }
@@ -266,7 +278,7 @@ nav li:last-of-type {
 }
 
 .order-column {
-  width: 10%;
+  width: 12%;
   float: left;
   padding-left: 5px;
   padding-right: 10%;
@@ -342,6 +354,7 @@ nav li:last-of-type {
 
 #order-completed {
   text-align: right;
+  margin-bottom: 100px;
 }
 
 #order-completed button{

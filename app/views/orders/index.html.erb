@@ -6,17 +6,24 @@
   <div id="id-column" class="order-column">
   <h3>Order #</h3>
       <% @orders.each do |order| %>
-        <a href="/users/<%= order.user_id %>/orders/<%= order.id %>/items">#<%= order.shopify_id %></a><br><br>
+        <button><a href="/users/<%= order.user_id %>/orders/<%= order.id %>/items">#<%= order.shopify_id %></a></button><br><br>
       <% end %>
   </div>
 
   <div id="id-column" class="order-column">
   <h3>Status</h3>
     <% @orders.each do |order| %>
-      <% if order.arrived %>
-        Arrived<br><br>
+      <% if order.due_date %>
+        <% status = (((order.due_date-Time.current).to_f)/86400).round %>
+        <% if status == 0 %>
+          <span class="red">Due today</span><br><br>
+        <% elsif status < 0 %>
+          <span class="red"><%= status.abs %> days late</span><br><br>
+        <% else %>
+          <span class="orange"><%= status %> days to go</span><br><br>
+        <% end %>
       <% else %>
-        On the Way<br><br>
+        <span class="green">On the way</span><br><br>
       <% end %>
     <% end %>
 

@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006181901) do
+ActiveRecord::Schema.define(version: 20161006202120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alterations", force: :cascade do |t|
+    t.integer  "item_id"
+    t.string   "alteration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "order_id"
+  end
+
+  add_index "alterations", ["item_id"], name: "index_alterations_on_item_id", using: :btree
+  add_index "alterations", ["order_id"], name: "index_alterations_on_order_id", using: :btree
 
   create_table "conversations", force: :cascade do |t|
     t.string   "sender_id"
@@ -22,6 +33,16 @@ ActiveRecord::Schema.define(version: 20161006181901) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "order_id"
+    t.string   "item_name"
+    t.string   "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "items", ["order_id"], name: "index_items_on_order_id", using: :btree
 
   create_table "measurements", force: :cascade do |t|
     t.integer  "sleeve_length"
@@ -66,11 +87,12 @@ ActiveRecord::Schema.define(version: 20161006181901) do
     t.string   "total"
     t.string   "alterations"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "arrival_date"
     t.boolean  "complete"
     t.boolean  "arrived"
+    t.datetime "due_date"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -94,6 +116,7 @@ ActiveRecord::Schema.define(version: 20161006181901) do
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
+  add_foreign_key "alterations", "items"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "orders", "users"
