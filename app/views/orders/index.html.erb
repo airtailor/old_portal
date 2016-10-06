@@ -2,30 +2,38 @@
   <h2>Orders</h2>
 </div>
 
-<div id="id-column" class="order-column">
-<h3>Order #</h3>
+<div id="order-columns">
+  <div id="id-column" class="order-column">
+  <h3>Order #</h3>
+      <% @orders.each do |order| %>
+        <a href="/users/<%= order.user_id %>/orders/<%= order.id %>/items">#<%= order.id %></a><br><br>
+      <% end %>
+  </div>
+
+  <div id="id-column" class="order-column">
+  <h3>Status</h3>
     <% @orders.each do |order| %>
-      <a href="/users/<%= order.user_id %>/orders/<%= order.id %>/items">#<%= order.id %></a><br><br>
+      <% if order.arrived %>
+        Arrived
+      <% else %>
+        On the Way
+      <% end %>
     <% end %>
+
+  </div>
+
+  <div id="customer-column" class="order-column">
+  <h3>Customer</h3>
+      <% @orders.each do |order| %>
+        <%= order.name %><br><br>
+      <% end %>
+  </div>
+
+  <div id="description-column" class="order-column">
+  <h3>Quantity</h3>
+      <% @alts.each do |alt| %>
+        <%= alt.length %><br><br>
+      <% end %>
+  </div>
+
 </div>
-
-<div id="id-column" class="order-column">
-<h3>Status</h3>
-
-</div>
-
-<div id="customer-column" class="order-column">
-<h3>Customer</h3>
-    <% @orders.each do |order| %>
-      <%= order.name %><br><br>
-    <% end %>
-</div>
-
-<div id="description-column" class="order-column">
-<h3>Quantity</h3>
-    <% @alts.each do |alt| %>
-      <%= alt.length %><br><br>
-    <% end %>
-</div>
-
-
