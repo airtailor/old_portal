@@ -117,7 +117,11 @@
   </div>
 <!-- end message section -->
   <div id="order-completed">
-    <button>Fulfill Order</button>
+    <% if @order.arrived %>
+      <button>Fulfill Order</button>
+    <% else %>
+      <button>Check Garment In</button>
+    <% end %>
   </div>
 </div>
 <!-- end item info section -->
