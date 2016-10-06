@@ -18,15 +18,14 @@
     <% end %>
 </div>
 
-<hr>
 
 <div id="minions">
-  <p><b class="caps">Manage Tailors</b><br> <small><%= link_to "Add New Tailor", "users/new" %></small></p>
+  <p><b class="caps">Manage Tailors</b></p>
 
   <% @users.each do |user| %>
       <p><%= link_to user.business_name, user %> <small>&mdash; (<a href="/users/<%= user.id %>/edit">edit</a>)</small></p>
-  <% end %>
-
+  <% end %><br>
+  <button><%= link_to "Add New Tailor", "users/new" %></button>
 </div>
 
 

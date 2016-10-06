@@ -8,6 +8,9 @@ class ItemsController < ApplicationController
     @order = Order.find_by(id: params[:order_id])
     @user = User.find_by(id: params[:user_id])
 
+
+    # @order.update_attribute(:arrived, true)
+
     # begin customer measurement section
     if Measurement.exists?(customer_name: @order.name)
       @measurement = Measurement.where(customer_name: @order.name).first

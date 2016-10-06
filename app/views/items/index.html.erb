@@ -7,7 +7,7 @@
   <!-- begin lists of item alterations -->
   <div id="item-alteration-lists">
 
-    <% if @items.any? { |s| s.include?('Pants #1') } %>
+    <% if @items.any? { |s| s.include?('Pants') } %>
       <div class="alteration-list">
         <div class="alterations-image">
           <img id="pants" src="/assets/pants.jpg" alt="">
@@ -16,38 +16,6 @@
           <h3 class="caps">Pants</h3>
           <% @items.each do |item| %>
             <% if item.include? "Pants #1" %>
-              <li><%= item %></li>
-            <% end %>
-          <% end %><br>
-        </div>
-      </div>
-    <% end %>
-
-        <% if @items.any? { |s| s.include?('Pants #2') } %>
-      <div class="alteration-list">
-        <div class="alterations-image">
-          <img id="pants" src="/assets/pants.jpg" alt="">
-        </div>
-        <div class="alterations-text">
-          <h3 class="caps">Pants</h3>
-          <% @items.each do |item| %>
-            <% if item.include? "Pants #2" %>
-              <li><%= item %></li>
-            <% end %>
-          <% end %><br>
-        </div>
-      </div>
-    <% end %>
-
-        <% if @items.any? { |s| s.include?('Pants #3') } %>
-      <div class="alteration-list">
-        <div class="alterations-image">
-          <img id="pants" src="/assets/pants.jpg" alt="">
-        </div>
-        <div class="alterations-text">
-          <h3 class="caps">Pants</h3>
-          <% @items.each do |item| %>
-            <% if item.include? "Pants #3" %>
               <li><%= item %></li>
             <% end %>
           <% end %><br>
@@ -118,9 +86,12 @@
 <!-- end message section -->
   <div id="order-completed">
     <% if @order.arrived %>
-      <button>Fulfill Order</button>
+      <button id="fulfill-order">Fulfill Order</button>
     <% else %>
-      <button>Check Garment In</button>
+      <%= form_for [@user, @order], {action: 'update'} do |f| %>
+        <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
+        <button id="check-garment"><%= f.submit "Check Garment In" %></button>
+      <% end %>
     <% end %>
   </div>
 </div>
