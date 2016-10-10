@@ -1,0 +1,14 @@
+<% @customers.each do |customer| %>
+  <%= customer.unique_id %><br>
+  <%= customer.first_name %><br>
+  <%= customer.last_name %><br>
+  <%= customer.email %><br>
+  <%= customer.address1 %><br>
+  <%= customer.address2 %><br>
+  <%= customer.city %><br>
+  <%= customer.state %><br>
+  <%= customer.country %><br>
+  <%= customer.zip %><br>
+  <%= customer.phone %><br><br>
+<% end %>
+

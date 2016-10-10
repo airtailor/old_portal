@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   post '/api/order' =>'api#recieve'
 
+  resources :customers
+
   resources :measurements
 
   resources :conversations do
