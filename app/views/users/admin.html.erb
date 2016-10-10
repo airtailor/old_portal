@@ -5,43 +5,35 @@
 <div class="admin-welcome">
   <h2>Greetings Master</h2>
   <p>Here's the latest:</p>
-
 </div>
 
-<div id="admin-orders">
-  <p><b class="caps">Manage New Orders</b></p>
-  <% if @orders.length == 0 %>
-    No New Orders
-  <% else %>
-    <% @orders.each do |order| %>
-      <a href="/admin/order/<%=order.id%>"><%= order.shopify_id %> - <%= order.name %> - <%= order.total %></a><br><br>
+
+
+<div id="admin-manage-area">
+
+  <div id="minions">
+    <p><b class="caps">Manage Tailors</b></p>
+
+    <% @users.each do |user| %>
+        <p><%= link_to user.business_name, user %> <small>&mdash; (<a href="/users/<%= user.id %>/edit">edit</a>)</small></p>
+    <% end %><br>
+    <button><%= link_to "Add New Tailor", "users/new" %></button>
+  </div>
+
+  <div id="admin-orders">
+    <p><b class="caps">Manage New Orders</b></p>
+    <% if @orders.length == 0 %>
+      No New Orders
+    <% else %>
+      <% @orders.each do |order| %>
+        <a href="/admin/order/<%=order.id%>"><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></a><br><br>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
 
-<div id="minions">
-  <p><b class="caps">Manage Tailors</b></p>
 
-  <% @users.each do |user| %>
-      <p><%= link_to user.business_name, user %> <small>&mdash; (<a href="/users/<%= user.id %>/edit">edit</a>)</small></p>
-  <% end %><br>
-  <button><%= link_to "Add New Tailor", "users/new" %></button>
 </div>
 
 
 
-<!-- <div class="admin-column">
-  <p><b class="caps">Orders</b></p>
-  <%# @users.each do |user| %>
-  <%# @count = 0 %>
-    <%# @orders.each do |order| %>
-
-      <%# if order.user_id == user.id %>
-        <%# @count = @count + 1 %>
-      <%# end %>
-    <%# end %>
-    <p><%#= @count %></p>
-  <%# end %>
-</div>
- -->

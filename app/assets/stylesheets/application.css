@@ -152,15 +152,18 @@ nav li:last-of-type {
   font-family: montserrat;
 }
 
+#admin-manage-area {
+  overflow: auto;
+  width: 60%;
+  margin: 0 auto;
+}
+
 #admin-orders {
-  width: 40%;
-  float: left;
-  margin-left: 19%;
+  float: right;
 }
 
 #minions {
   float: left;
-  width: 40%;
 }
 
 /* order assignment page */
@@ -170,6 +173,9 @@ nav li:last-of-type {
   margin-top: 50px;
 }
 
+#next-order {
+  margin-left: 30px;
+}
 
 /* tailor home page */
 
@@ -273,17 +279,31 @@ nav li:last-of-type {
 
 /* orders index page */
 
-#order-columns {
-  margin-left: 30px;
+.order-column {
+  width: 24%;
+  float: left;
 }
 
-.order-column {
-  width: 12%;
-  float: left;
-  padding-left: 5px;
-  padding-right: 10%;
-  text-align: left;
+.order-row {
+  padding-left: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow: auto;
+  height: 40px;
+  line-height: 40px;
 }
+
+.order-row:hover {
+  background-color: lightgray;
+}
+
+.order-row-header {
+  overflow: auto;
+  margin-left: 40px;
+  margin-top: 30px;
+}
+
+
 
 /* orders show page */
 
@@ -292,7 +312,7 @@ nav li:last-of-type {
 }
 
 .order-show h2, .order-show p {
-  width: 150px;
+  width: 300px;
   float: left;
 }
 
@@ -343,6 +363,11 @@ nav li:last-of-type {
   text-align: left;
 }
 
+textarea#message_text {
+  padding: 10px;
+  border: 1px solid black;
+}
+
 #submit-order-message {
   background-color: white;
 }
@@ -352,9 +377,18 @@ nav li:last-of-type {
   background-color: white;
 }
 
+#submit-order-message input:hover {
+  cursor: pointer;
+}
+
+input#submit-order-message:hover {
+  cursor: pointer;
+}
+
 #order-completed {
   text-align: right;
   margin-bottom: 100px;
+  margin-top: 50px;
 }
 
 #order-completed button{
@@ -364,9 +398,11 @@ nav li:last-of-type {
   width: 300px;
   background-color: pink;
   border: 2px hotpink solid;
-  margin-top: 50px;
   font-weight: bold;
 }
+
+
+
 #check-garment input {
   font-weight: bold;
   width: 100%;
@@ -374,6 +410,16 @@ nav li:last-of-type {
   background-color: pink;
   border: none;
 }
+
+button#check-garment:hover {
+  cursor: pointer;
+}
+
+#check-garment input:hover {
+  cursor: pointer;
+}
+
+
 
 
 
@@ -546,11 +592,17 @@ input.measurement {
 
 /* conversations index page */
 
+#all-messages {
+  padding-left: 10%;
+  max-width: 80%;
+  min-width: 800px;
+}
+
 #all-conversations {
   padding-left: 10%;
   max-width: 80%;
   min-width: 800px;
-  margin-top: 50px;
+  padding-top: 50px;
 }
 
 #new-conversation-form {
@@ -562,24 +614,26 @@ input.measurement {
 #new-message-form {
   text-align: left;
   margin-left: 30px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 #admin-message {
-  width: 80%;
+  width: 70%;
   border: solid #47BB47 2px;
   background-color: #C7F4C7;
   border-radius: 10px;
   padding: 20px;
+  box-shadow: 0 2px grey;
 }
 
 #tailor-message {
-  width: 80%;
+  width: 70%;
   margin-left: 19%;
   border: solid #CC3236 2px;
   background-color: #FFCFD0;
   border-radius: 10px;
   padding: 20px;
+  box-shadow: 0 2px grey;
 }
 
 #message-body {
@@ -596,7 +650,7 @@ input.measurement {
 }
 
 #edit-user-form {
-  width: 60%;
+  width: 40%;
   float: left;
   margin-bottom: 200px;
 }
@@ -610,6 +664,11 @@ input.measurement {
   width: 100%;
   height: 20px;
   font-size: 12px;
+}
+
+#edit-user-form input {
+  background-color: lightcyan;
+  width:  ;
 }
 
 #edit-user-form input[type="submit"] {

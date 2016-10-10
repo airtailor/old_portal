@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def admin
     if current_user.is_admin?
-      @users = User.all
+      @users = User.where.not(id: 2)
       @orders = Order.where(user_id: nil)
     else
       redirect_to current_user
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     if current_user.is_admin?
       @users = User.all
       @order = Order.find_by(id: params[:id])
+      @next = @order.id + 1
       @owner = User.find_by(id: @order.user_id)
       @alterations = JSON.parse(@order.alterations)
     else

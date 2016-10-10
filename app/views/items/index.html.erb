@@ -1,5 +1,5 @@
 <div class="section-header order-show">
-  <h2>Orders / <%= @order.id %></h2>
+  <h2>Orders / <%= @order.shopify_id %></h2>
 </div>
 
 <!-- begin item info section -->
@@ -67,7 +67,7 @@
       <%= form_for [@conversation, @message] do |f| %>
           <%= f.text_field :conversation_id, :value => @conversation.id, :type => 'hidden' %>
           <%= f.text_field :user_id, :value => current_user.id, :type => 'hidden' %>
-          <%= f.text_field :order_id, :value => @order.id.to_s, :type => 'hidden' %>
+          <%= f.text_field :order_id, :value => @order.shopify_id, :type => 'hidden' %>
 
           <% if current_user.is_admin? %>
             <%= f.text_field :read, :value => true, :type => 'hidden' %>
@@ -77,7 +77,7 @@
             <%= f.text_field :user_read, :value => true, :type => 'hidden' %>
           <% end %>
 
-          <p><%= f.text_area :text, size: "60x10", :placeholder => 'Enter order number and message' %></p>
+          <p><%= f.text_area :text, size: "60x10", :placeholder => 'Type message here...' %></p>
           <button id="submit-order-message"><%= f.submit "Add Message" %></button>
       <% end %>
     </div>

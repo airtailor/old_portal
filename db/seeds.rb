@@ -32,4 +32,4 @@ Order.create(name: "Bob Marley",
   shopify_id: 525625,
   unique_id: 257452725,
   total: "20.00",
-  alterations: ["Dress #1 Add Belt Buttons", "Dress #2 Add Belt Buttons, Shirt #1 Add Collar Buttons", "Shirt #1 Add Snaps Under Collar", "Pants #1 Add Button", "Pants #1 Add Clasp"])
+  alterations: ["Dress #1 Add Belt Buttons", "Dress #2 Add Belt Buttons", "Shirt #1 Add Collar Buttons", "Shirt #1 Add Snaps Under Collar", "Pants #1 Add Button", "Pants #1 Add Clasp"])

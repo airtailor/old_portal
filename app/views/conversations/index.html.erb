@@ -29,7 +29,7 @@
     <%= form_for @conversation do |f| %>
         <%= f.text_field :recipient_id, :value => current_user.id, :type => 'hidden' %>
         <%= f.text_field :sender_id, :value => 2, :type => 'hidden' %>
-        <%= f.submit "Click Here", :class => "btn btn-default" %>
+        <%= f.submit "Click Here" %>
     <% end %>
   </div>
 </div>

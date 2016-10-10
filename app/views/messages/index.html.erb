@@ -16,13 +16,13 @@
           <%= f.text_field :user_read, :value => true, :type => 'hidden' %>
         <% end %>
 
-        <p><%= f.text_area :text, size: "80x15" %></p>
-        <%= f.submit "Add Message", :class => "btn btn-default" %>
+        <p><%= f.text_area :text, size: "65x10", :placeholder => 'Type message here...', :autofocus => :autofocus %></p>
+        <%= f.submit "Add Message", :id => "submit-order-message" %>
     <% end %>
   </div>
 
 
-<div id="all-conversations">
+<div id="all-messages">
   <% @messages.sort_by{|t| - t.created_at.to_i}.first(10).each do |message| %>
     <div id="message-body">
       <% if message.user_id == @admin.id %>
@@ -33,7 +33,9 @@
         <b><%= @business.business_name %> // </b>
       <% end %>
         <% if message.order_id %>
-          Order #: <%= message.order_id %> //
+          <b>Order #: <%= message.order_id %> //</b>
+        <% else %>
+          general message //
         <% end %>
         <%= message.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y at %I:%M %p") %><br>
         <hr>
