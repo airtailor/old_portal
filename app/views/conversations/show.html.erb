@@ -2,6 +2,8 @@
   <h2>Messages / <%= @business.business_name %></h2>
 </div>
 
+<div class="container">
+
 <div id="all-messages">
   <% @messages.each do |message| %>
     <% if message.user_id == current_user.id %>
@@ -14,6 +16,6 @@
   <% end %>
 </div>
 
-
+</div>
 
 

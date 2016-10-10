@@ -15,6 +15,7 @@
       <ul>
         <% if current_user.email == "brian@airtailor.com" %>
           <li><a href="/admin">Home</a></li>
+          <li><a href="/users">Tailors</a></li>
           <li><a href="/conversations">Messages</a></li>
           <li><a href="/users/<%= current_user.id %>/edit">Account</a></li>
           <li><a href="#">Help</a></li>
@@ -45,6 +46,7 @@
 <%= yield %>
 
   </main>
+
 
 </body>
 </html>

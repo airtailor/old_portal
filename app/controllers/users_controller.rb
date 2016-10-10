@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def index
     if current_user.is_admin?
-      @users = User.all
+      @users = User.where.not(id: current_user.id)
     else
       redirect_to "/"
     end

@@ -2,6 +2,8 @@
   <h2>Admin Order Assignment Page // #<%= @order.shopify_id %></h2>
 </div>
 
+<div class="container">
+
 <div id="order-assignment">
   <p><b class="caps">Order:</b></p>
   <p>Customer: <%= @order.name %></p>
@@ -40,4 +42,5 @@
   <button id="next-order"><a href="/admin/order/<%= @next %>">Next Order</a>&rarr;</button>
 <% end %>
 
+</div>
 </div>

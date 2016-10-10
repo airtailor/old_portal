@@ -1,28 +1,14 @@
 
 
 <div class="section-header">
-  <h2>Admin Home</h2>
+  <h2>Tailors / All</h2>
 </div>
 
-<div class="tailor-welcome">
-  <h2>Greetings Master</h2>
-  <p>Here's the latest on your minions:</p>
-</div>
+<div class="container">
 
-<div id="user-index">
-  <b class="caps">Current Tailors</b>
+<div id="all-tailors">
+  <h3 class="caps">Current Tailors</h3>
   <% @users.each do |user| %>
-      <p><%= link_to user.business_name, user %></p>
+      <a href="/users/<%= user.id %>"><p><%= user.business_name %></p></a>
   <% end %>
 </div>
-
-<!-- <div id="user-index">
-  <% @users.each do |user| %>
-      <p><span><%= link_to user.business_name, user %></span><br>
-      <%= user.user_name %><br>
-      <%= user.phone %><br>
-      <%= user.street %> #<%= user.unit %><br>
-      <%= user.city %>, <%= user.state %> <%= user.zip %><br>
-      <%= user.country %></p><br>
-  <% end %>
-</div> -->
