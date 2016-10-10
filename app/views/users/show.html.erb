@@ -1,4 +1,7 @@
 <!-- Tailor Show Page -->
+<div class="section-header">
+    <h2>Home</h2>
+</div>
 
 <div class="container">
   <div class="tailor-main">
@@ -10,6 +13,7 @@
     <div id="orders-quick-glance">
       <div id="orders-quick-glance-text">
         <p><span id="new-messages"><%= @orders.count %></span> <span class="caps">Orders at your shop</span></p>
+        <p><span id="new-messages"><%= @counter %></span><span class="caps">Late orders</span></p>
       </div>
 
       <a id="view-orders" href="/users/<%= @user.id %>/orders" class="caps">View Orders</a>
