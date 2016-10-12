@@ -474,11 +474,7 @@ input#submit-order-message:hover {
   font-weight: bold;
 }
 
-button#fulfill-order:hover {
-  cursor: pointer;
-}
-
-#check-garment input {
+#check-garment input, #fulfill-order input {
   font-weight: bold;
   width: 100%;
   height: 100%;
@@ -486,13 +482,15 @@ button#fulfill-order:hover {
   border: none;
 }
 
-button#check-garment:hover {
+button#check-garment:hover, button#fulfill-order:hover {
   cursor: pointer;
 }
 
-#check-garment input:hover {
+#check-garment input:hover, #fulfill-order input:hover {
   cursor: pointer;
 }
+
+
 
 
 

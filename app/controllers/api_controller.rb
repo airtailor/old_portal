@@ -18,16 +18,15 @@ class ApiController < ApplicationController
     end
 
     order = {
-      customer_id: data['customer']['id'],
       name: data['customer']['first_name'],
-      shopify_id: data['number'],
+      shopify_id: data['name'],
       unique_id: data['id'],
       total: data['total_price'],
       alterations: alterations
     }
 
     customer = {
-      unique_id: data['customer']['id'],
+      order_id: data['name'],
       first_name: data['customer']['first_name'],
       last_name: data['customer']['last_name'],
       email: data['customer']['email'],
@@ -40,17 +39,10 @@ class ApiController < ApplicationController
       phone: data['customer']["default_address"]["phone"],
     }
 
-    @customer_exists = Customer.where(unique_id: customer[:unique_id])
-    if @customer_exists.length > 0
-        # puts "customer exists already"
-        render nothing: true, status: 200, content_type: "text/html"
-    else
-        @customer = Customer.new(customer).save
-        render nothing: true, status: 200, content_type: "text/html"
-    end
-
+    @customer = Customer.new(customer).save
 
     @exists = Order.where(unique_id: order[:unique_id])
+
     if @exists.length > 0
         # puts "order exists already"
         render nothing: true, status: 200, content_type: "text/html"
@@ -58,6 +50,8 @@ class ApiController < ApplicationController
         @order = Order.new(order).save
         render nothing: true, status: 200, content_type: "text/html"
     end
+
+    doShippo(@order,@customer)
 
   end
 end

@@ -31,6 +31,12 @@ class OrdersController < ApplicationController
 
   end
 
+  def destroy
+    @order = Order.find_by(id: params[:id])
+    @order.destroy
+    redirect_to '/admin'
+  end
+
   private
 
   def order_params

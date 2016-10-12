@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   post '/api/order' =>'api#recieve'
 
+  post '/shipment/create' => 'shipments#makeshipment'
+
+  resources :shipments
   resources :customers
 
   resources :measurements

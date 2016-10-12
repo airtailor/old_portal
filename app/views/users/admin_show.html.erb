@@ -39,8 +39,13 @@
 
 <button><a href="/admin">Home</a></button>
 
-<% if @next <= Order.all.length %>
-  <button id="next-order"><a href="/admin/order/<%= @next %>">Next Order</a>&rarr;</button>
+
+<!--   <button id="next-order"><a href="/admin/order/<%= @next %>">Next Order</a>&rarr;</button> -->
+
+
+<br><br>
+<% if @owner %>
+   <%= button_to "delete", user_order_path(@owner, @order), :method => :delete %>
 <% end %>
 
 </div>

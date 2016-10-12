@@ -6,7 +6,9 @@ class ItemsController < ApplicationController
     @count = 0
     @order = Order.find_by(id: params[:order_id])
     @user = User.find_by(id: params[:user_id])
-
+    if Shipment.exists?(shopify_id: @order.shopify_id)
+      @shipment = Shipment.where(shopify_id: @order.shopify_id)
+    end
 
     # @order.update_attribute(:arrived, true)
 

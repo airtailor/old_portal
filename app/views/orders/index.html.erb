@@ -16,6 +16,7 @@
 </div>
 
       <% @orders.order("due_date").each_with_index do |order, index| %>
+      <% if order.complete == false || order.complete == nil %>
 
 
         <div class="order-row">
@@ -48,9 +49,10 @@
           </div>
           </a>
         </div>
-
+      <% end %>
       <% end %>
 
 
 
 </div>
+<br><br><br><br>

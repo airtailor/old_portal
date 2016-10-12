@@ -88,9 +88,17 @@
   <% end %>
   </div>
 <!-- end message section -->
+
   <div id="order-completed">
+
     <% if @order.arrived %>
-      <button id="fulfill-order" class="caps">Fulfill This Order</button>
+      <form method='post' action='/shipment/create'>
+        <%= csrf_meta_tag %>
+        <input name='id' value='<%= @order['shopify_id'] %>'>
+        <button id="fulfill-order" class="caps">
+          Fulfill This Order
+        </button>
+      </form>
     <% else %>
       <%= form_for [@user, @order], {action: 'update'} do |f| %>
         <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
@@ -101,6 +109,7 @@
     <% end %>
   </div>
 </div>
+
 <!-- end item info section -->
 
 
