@@ -3,7 +3,7 @@ class ShipmentsController < ApplicationController
 
     @shipment = Shipment.find_by(shopify_id: params[:id])
     binding.pry
-    Shippo.api_key = ENV["SHIPPO_KEY"]
+    Shippo.api_pass = ENV["SHIPPO_KEY"]
     shipdata = eval(@shipment['shipment'])
     transaction = Shippo::Transaction.create(
         :shipment => shipdata,
