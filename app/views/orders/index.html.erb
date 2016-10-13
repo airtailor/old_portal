@@ -16,13 +16,13 @@
 </div>
 
       <% @orders.order("due_date").each_with_index do |order, index| %>
-      <% if order.complete == false || order.complete == nil %>
+
 
 
         <div class="order-row">
         <a class="order-row-link" href="/users/<%= order.user_id %>/orders/<%= order.id %>/items">
           <div id="order-id" class="order-column">
-            #<%= order.shopify_id %>
+            <%= order.shopify_id %>
           </div>
 
           <div id="order-status" class="order-column">
@@ -50,7 +50,7 @@
           </a>
         </div>
       <% end %>
-      <% end %>
+
 
 
 

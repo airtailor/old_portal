@@ -22,6 +22,7 @@ class ApiController < ApplicationController
       shopify_id: data['name'],
       unique_id: data['id'],
       total: data['total_price'],
+      weight: data['total_weight'],
       alterations: alterations
     }
 
@@ -51,7 +52,7 @@ class ApiController < ApplicationController
         render nothing: true, status: 200, content_type: "text/html"
     end
 
-    doShippo(@order,@customer)
+    saveShippingInfo(order, customer)
 
   end
 end

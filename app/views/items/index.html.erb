@@ -92,9 +92,10 @@
   <div id="order-completed">
 
     <% if @order.arrived %>
+      <%# SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor order (3291) has been received! We're going to get to work. In the meantime, stay well :)", to: '1-(616)-780-4457') %>
       <form method='post' action='/shipment/create'>
         <%= csrf_meta_tag %>
-        <input name='id' value='<%= @order['shopify_id'] %>'>
+        <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
         <button id="fulfill-order" class="caps">
           Fulfill This Order
         </button>
@@ -109,6 +110,10 @@
     <% end %>
   </div>
 </div>
+
+<% if @order.complete %>
+  <% SendSonar.message_customer(text: 'Good news — your Air Tailor order is finished and on its way to you!', to: '6167804457' ) %>
+<% end %>
 
 <!-- end item info section -->
 

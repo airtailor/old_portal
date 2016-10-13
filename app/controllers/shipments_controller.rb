@@ -2,13 +2,14 @@ class ShipmentsController < ApplicationController
   def makeshipment
 
     @shipment = Shipment.find_by(shopify_id: params[:id])
-    # byebug
+    binding.pry
+    Shippo.api_key = ENV["SHIPPO_KEY"]
+    shipdata = eval(@shipment['shipment'])
     transaction = Shippo::Transaction.create(
-        :shipment => @shipment['shipment'],
+        :shipment => shipdata,
         :carrier_account => "b741b99f95e841639b54272834bc478c",
         :servicelevel_token => "usps_priority"
     )
-
   end
 
 end

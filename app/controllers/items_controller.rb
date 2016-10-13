@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
       @shipment = Shipment.where(shopify_id: @order.shopify_id)
     end
 
+
     # @order.update_attribute(:arrived, true)
 
     # begin customer measurement section
