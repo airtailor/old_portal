@@ -35,7 +35,7 @@ class ApiController < ApplicationController
       address2: data['customer']["default_address"]["address2"],
       city: data['customer']["default_address"]["city"],
       state: data['customer']["default_address"]["province"],
-      country: data['customer']["default_address"]["country"],
+      country: "US",
       zip: data['customer']["default_address"]["zip"],
       phone: data['customer']["default_address"]["phone"],
     }

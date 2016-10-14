@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
         :city => customer[:city],
         :state => customer[:state],
         :zip => customer[:zip],
-        :country => customer[:country],
+        :country => 'US',
         :phone => customer[:phone],
         :email => customer[:email]
     }
@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
         :width => 5,
         :height => 3,
         :distance_unit => :in,
-        :weight => order[:weight],
+        :weight => 1,
         :mass_unit => :g
     }
 
