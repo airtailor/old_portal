@@ -1,4 +1,4 @@
-User.create(email: "brian@airtailor.com", password: "12345", business_name: "Air Tailor", user_name: "Brian", phone: "616-780-4457", street: "510 West 21st Street", unit: "65DM8A", city: "New York", state: "NY", zip: "10011", country: "US", timezone: "eastern")
+User.create(email: "orders@airtailor.com", password: "12345", business_name: "Air Tailor", user_name: "Brian", phone: "616-780-4457", street: "510 West 21st Street", unit: "65DM8A", city: "New York", state: "NY", zip: "10011", country: "US", timezone: "eastern")
 
 
 # Order.create(name: "customer 1",
