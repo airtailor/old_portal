@@ -39,5 +39,10 @@
     <%= f.submit "Update" %>
 
   <% end %>
+  <br><br>
+  <% if current_user.is_admin? %>
+    <%= link_to "delete", @user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+    <% end %>
 </div>
 </div>

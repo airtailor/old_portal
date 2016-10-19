@@ -116,9 +116,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find_by(id: params[:id])
-    session.clear
     @user.destroy
-    redirect_to '/users/index'
+    redirect_to '/admin'
   end
 
   private
