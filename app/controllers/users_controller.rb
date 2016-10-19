@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def admin
     if current_user.is_admin?
-      @users = User.where.not(id: 2)
+      @users = User.all
       @orders = Order.where(user_id: nil)
     else
       redirect_to current_user
@@ -14,7 +14,10 @@ class UsersController < ApplicationController
   def admin_show
     if current_user.is_admin?
       @users = User.all
+      @orders = Order.where(user_id: nil)
       @order = Order.find_by(id: params[:id])
+      @order.update_attribute(:counter, 0)
+      @customer = Customer.where(order_id: @order.shopify_id).first
       # @next = @order.id + 1
       @owner = User.find_by(id: @order.user_id)
       @alterations = JSON.parse(@order.alterations)
@@ -34,7 +37,7 @@ class UsersController < ApplicationController
 
   def index
     if current_user.is_admin?
-      @users = User.where.not(id: current_user.id)
+      @users = User.all
     else
       redirect_to "/"
     end
@@ -44,6 +47,7 @@ class UsersController < ApplicationController
     if current_user.is_admin?
       @user = User.find_by(id: params[:id])
       @orders = Order.where(user_id: @user.id)
+      @orders = @orders.where(complete: nil)
       @counter = 0
       @orders.each do |order|
         if order.due_date

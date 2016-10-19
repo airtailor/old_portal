@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
     if current_user.is_admin?
       @user = User.find_by(id: params[:user_id])
       @orders = Order.where(user_id: @user.id)
+      @orders = @orders.where(complete: nil)
       @alts = []
       @orders.each do |order|
         @alts.push(JSON.parse(order.alterations))
@@ -12,6 +13,25 @@ class OrdersController < ApplicationController
     else
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
+      @alts = []
+      @orders.each do |order|
+        @alts.push(JSON.parse(order.alterations))
+      end
+    end
+  end
+
+  def new_orders
+    if current_user.is_admin?
+      @orders = Order.where(user_id: nil)
+    else
+      redirect_to "/"
+    end
+  end
+
+  def archive
+    if current_user.is_admin?
+      @users = User.all
+      @orders = Order.where(complete: true)
       @alts = []
       @orders.each do |order|
         @alts.push(JSON.parse(order.alterations))

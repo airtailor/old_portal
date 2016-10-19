@@ -1,14 +1,20 @@
 class ShipmentsController < ApplicationController
   def makeshipment
 
+
     @shipment = Shipment.find_by(shopify_id: params[:id])
+    @order = Order.where(shopify_id: @shipment.shopify_id).first
+    @order.update_attribute(:complete, true)
     Shippo.api_token = ENV["SHIPPO_KEY"]
     shipdata = eval(@shipment['shipment'])
     # debugger
     # address_from = shipdata[:address_from]
     address_to = shipdata[:address_to]
     address_to[:country] = "US"
-    # parcel = shipdata[:parcel]
+    parcel = shipdata[:parcel]
+    if parcel[:weight] == 0
+      parcel[:weight] = 1
+    end
 
 
 
@@ -26,14 +32,14 @@ class ShipmentsController < ApplicationController
       :email=>"orders@airtailor.com"
     }
 
-    parcel = {
-      :length=>7,
-      :width=>5,
-      :height=>3,
-      :distance_unit=>:in,
-      :weight=>1,
-      :mass_unit=>:g
-    }
+    # parcel = {
+    #   :length=>7,
+    #   :width=>5,
+    #   :height=>3,
+    #   :distance_unit=>:in,
+    #   :weight=>1,
+    #   :mass_unit=>:g
+    # }
 
     shipment = {
       :object_purpose => 'PURCHASE',
@@ -49,6 +55,8 @@ class ShipmentsController < ApplicationController
         :carrier_account => "d11e35a8792942fdb9b17d39246e3621",
         :servicelevel_token => "usps_priority"
     )
+
+    @order.update_attribute(:shipping_label, transaction.label_url)
     redirect_to :back
   end
 

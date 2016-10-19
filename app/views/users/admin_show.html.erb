@@ -1,16 +1,16 @@
 <div class="section-header">
-  <h2>Admin Order Assignment Page // #<%= @order.shopify_id %></h2>
+  <h2>Admin Order Assignment Page / <%= @order.shopify_id %></h2>
 </div>
 
 <div class="container">
 
 <div id="order-assignment">
   <p><b class="caps">Order:</b></p>
-  <p>Customer ID: <%= @order.customer_id %></p>
-  <p>Customer: <%= @order.name %></p>
-  <p>Total Charges: $<%= @order.total %></p>
-  <p>Shopify Order ID: <%= @order.shopify_id %></p>
-  <p>Order Date: <%= @order.created_at %></p>
+
+  <p><b>Shopify Order ID:</b> <%= @order.shopify_id %></p>
+  <p><b>Order Date:</b> <%= @order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d %Y at %I:%M %p") %></p>
+  <p><b>Customer:</b> <%= @customer.first_name %> <%= @customer.last_name %></p>
+  <p><b>Total Charges:</b> $<%= @order.total %></p>
   <br>
   Alterations:<br>
   <% @alterations.each do |alteration| %>
@@ -19,6 +19,7 @@
 
   <br>
 
+<% if @order.user_id == nil %>
   <form method="POST" action="/admin/order">
     <input type="hidden" name="_method" value="PUT">
     <input type="hidden" name="order_id" value="<%= @order.id %>">
@@ -33,20 +34,51 @@
         <option value="<%= user.id %>"><%= user.business_name %></option>
         <% end %>
       </select>
-      <button type="submit">Submit</button><br><br><br>
+      <button type="submit">Submit</button><br>
   </form>
+<% else %>
+  <form method="POST" action="/admin/order">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="order_id" value="<%= @order.id %>">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
+        <select name="new_owner">
+        <option>
+          <% if @owner %><%= @owner.business_name %><% end %>
+           - <%= @order.user_id %>
+         </option>
+        <% @users.each do |user| %>
+        <option value="<%= user.id %>"><%= user.business_name %></option>
+        <% end %>
+      </select>
+      <button type="submit">Change Tailor</button><br>
+  </form><br>
+  <%= link_to "Home", "/admin" %><br>
 
-<button><a href="/admin">Home</a></button>
+  <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items">Go to Order</a>
 
-
-<!--   <button id="next-order"><a href="/admin/order/<%= @next %>">Next Order</a>&rarr;</button> -->
-
-
-<br><br>
-<% if @owner %>
-   <%= button_to "delete", user_order_path(@owner, @order), :method => :delete %>
 <% end %>
+
+
+
+<br>
+<% if @order.user_id %>
+<% @user = User.where(id: @order.user_id).first %>
+  <% if @alterations.any? { |s| s.include?('Welcome') }%>
+
+    <%= form_for [@user, @order], {action: 'update'} do |f| %>
+      <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
+      <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
+      <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
+      <button class="caps"><%= f.submit "Welcome Kit — Mark as Completed" %></button>
+    <% end %>
+
+  <% end %>
+<% end %>
+<br>
+
+
+
 
 </div>
 </div>

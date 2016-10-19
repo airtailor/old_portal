@@ -90,8 +90,7 @@ main {
   background-color: #D8EDFC;
   height: 60px;
   line-height: 60px;
-  width: 86%;
-  overflow: auto;
+  width: 85.9%;
   position: absolute;
   z-index: 1;
 }
@@ -100,7 +99,7 @@ main {
   float: left;
   padding-left: 30px;
   margin-top: 0;
-  width: 25%;
+  width: 80%;
 }
 
 .section-header a:hover {
@@ -383,11 +382,6 @@ nav li:last-of-type {
 }
 
 /* orders show page */
-
-.order-show h2, .order-show p {
-  width: 300px;
-  float: left;
-}
 
 .order-show p {
   margin-top: 25px;

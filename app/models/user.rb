@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
     # @TODO Make this better.
     self.email == "brian@airtailor.com"
   end
+
+
 end

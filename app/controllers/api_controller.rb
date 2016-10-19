@@ -42,15 +42,15 @@ class ApiController < ApplicationController
 
     @customer = Customer.new(customer).save
 
-    @exists = Order.where(unique_id: order[:unique_id])
+    # @exists = Order.where(unique_id: order[:unique_id])
 
-    if @exists.length > 0
-        # puts "order exists already"
-        render nothing: true, status: 200, content_type: "text/html"
-    else
+    # if @exists.length > 0
+    #     # puts "order exists already"
+    #     render nothing: true, status: 200, content_type: "text/html"
+    # else
         @order = Order.new(order).save
         render nothing: true, status: 200, content_type: "text/html"
-    end
+    # end
 
     saveShippingInfo(order, customer)
 

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   post '/shipment/create' => 'shipments#makeshipment'
 
+  get '/archive' => 'orders#archive'
   resources :shipments
   resources :customers
 

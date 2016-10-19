@@ -4,6 +4,7 @@
   <h2>Orders / <a href="/users/<%= @user.id%>/orders"><%= @user.business_name %></a> / <%= @order.shopify_id %></h2>
 </div>
 
+
 <div class="container">
 
 <!-- begin item info section -->
@@ -14,12 +15,12 @@
     <% if @items.any? { |s| s.include?('Pants') } %>
       <div class="alteration-list">
         <div class="alterations-image">
-          <img id="pants" src="/assets/pants.jpg" alt="">
+          <img id="pants" src="/assets/pants.png" alt="">
         </div>
         <div class="alterations-text">
           <h3 class="caps">Pants</h3>
           <% @items.each do |item| %>
-            <% if item.include? "Pants #1" %>
+            <% if item.include? "Pants" %>
               <li><%= item %></li>
             <% end %>
           <% end %><br>
@@ -46,7 +47,7 @@
     <% if @items.any? { |s| s.include?('Dress') } %>
       <div class="alteration-list">
         <div class="alterations-image">
-          <img id="dress" src="/assets/dress.jpg" alt="">
+          <img id="dress" src="/assets/dress.png" alt="">
         </div>
         <div class="alterations-text">
           <h3 class="caps">Dresses</h3>
@@ -58,8 +59,72 @@
         </div>
       </div>
     <% end %>
-  </div>
 
+    <% if @items.any? { |s| s.include?('Coat') } %>
+      <div class="alteration-list">
+        <div class="alterations-image">
+          <img id="coat" src="/assets/winter-coat.png" alt="">
+        </div>
+        <div class="alterations-text">
+          <h3 class="caps">Coats</h3>
+          <% @items.each do |item| %>
+            <% if item.include? "Coat" %>
+              <li><%= item %></li>
+            <% end %>
+          <% end %><br>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @items.any? { |s| s.include?('Skirt') } %>
+      <div class="alteration-list">
+        <div class="alterations-image">
+          <img id="skirt" src="/assets/skirt.png" alt="">
+        </div>
+        <div class="alterations-text">
+          <h3 class="caps">Skirts</h3>
+          <% @items.each do |item| %>
+            <% if item.include? "Skirt" %>
+              <li><%= item %></li>
+            <% end %>
+          <% end %><br>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @items.any? { |s| s.include?('Tie') || s.include?('Necktie') } %>
+      <div class="alteration-list">
+        <div class="alterations-image">
+          <img id="tie" src="/assets/tie.png" alt="">
+        </div>
+        <div class="alterations-text">
+          <h3 class="caps">Ties</h3>
+          <% @items.each do |item| %>
+            <% if item.include? "Tie" %>
+              <li><%= item %></li>
+            <% elsif item.include? "Necktie" %>
+              <li><%= item %></li>
+            <% end %>
+          <% end %><br>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @items.any? { |s| s.include?('Welcome') } %>
+      <div class="alteration-list">
+        <div class="alterations-image">
+        </div>
+        <div class="alterations-text">
+          <h3 class="caps">Welcome Kit</h3>
+          <% @items.each do |item| %>
+            <% if item.include? "Welcome" %>
+              <li><%= item %></li>
+            <% end %>
+          <% end %><br>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <!-- end lists of item alterations -->
 
   <!-- begin message section -->
@@ -91,16 +156,7 @@
 
   <div id="order-completed">
 
-    <% if @order.arrived %>
-      <%# SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor order (3291) has been received! We're going to get to work. In the meantime, stay well :)", to: '1-(616)-780-4457') %>
-      <form method='post' action='/shipment/create'>
-        <%= csrf_meta_tag %>
-        <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
-        <button id="fulfill-order" class="caps">
-          Fulfill This Order
-        </button>
-      </form>
-    <% else %>
+    <% if @order.arrived == nil %>
       <%= form_for [@user, @order], {action: 'update'} do |f| %>
         <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
         <%= f.text_field :arrival_date, :value => Time.current, :type => 'hidden' %>
@@ -108,13 +164,23 @@
         <button id="check-garment" class="caps"><%= f.submit "Check Order In" %></button>
       <% end %>
     <% end %>
+
+    <% if @order.arrived == true && @order.complete == nil %>
+      <form method='post' action='/shipment/create'>
+        <%= csrf_meta_tag %>
+        <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
+        <button id="fulfill-order" class="caps">
+          Fulfill This Order
+        </button>
+      </form>
+    <% end %>
+
+    <% if @order.complete == true %>
+      <a href="<%= @order.shipping_label %>" target="_blank"><button id="fulfill-order">Click Here for Shipping Label</button></a>
+    <% end %>
+
   </div>
 </div>
-
-<% if @order.complete %>
-  <% SendSonar.message_customer(text: 'Good news — your Air Tailor order is finished and on its way to you!', to: '6167804457' ) %>
-<% end %>
-
 <!-- end item info section -->
 
 
