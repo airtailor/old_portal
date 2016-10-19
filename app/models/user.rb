@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   def is_admin?
     # @TODO Make this better.
-    self.email == "brian@airtailor.com"
+    self.email == "orders@airtailor.com"
   end
 
 

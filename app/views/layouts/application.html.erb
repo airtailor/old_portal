@@ -13,7 +13,7 @@
     <a href="/admin"><img src="/assets/logo" alt="air tailor logo" id="logo"></a><br><br>
     <nav>
       <ul>
-        <% if current_user.email == "brian@airtailor.com" %>
+        <% if current_user.is_admin? %>
           <li><a href="/admin">Home</a></li>
           <li><a href="/users">Tailors</a></li>
           <li><a href="/conversations">Messages</a></li>
@@ -24,11 +24,7 @@
         <% else %>
           <li><a href="/users/<%= current_user.id %>">Home</a></li>
           <li><a href="/users/<%= current_user.id %>/orders">Orders</a></li>
-           <li><a href="/conversations">Messages</a></li>
-
-
-
-
+          <li><a href="/conversations">Messages</a></li>
           <li><a href="/users/<%= current_user.id %>/edit">Account</a></li>
           <li><a href="https://airtailor.zendesk.com/hc/en-us" target="blank">Help</a></li>
           <li><%= link_to "Logout", '/logout' %></li>
