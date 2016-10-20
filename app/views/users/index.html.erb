@@ -1,16 +1,42 @@
 
 
 <div class="section-header">
-  <h2>Tailors / All</h2>
+  <h2>Manage Tailors</h2>
 </div>
 
 <div class="container">
 
-<div id="all-tailors">
-  <h3 class="caps">Current Tailors</h3>
+<div class="order-row-header">
+    <h3 class="order-column">Tailor</h3>
+    <h3 class="order-column">Current Orders</h3>
+    <h3 class="order-column">Late Orders</h3>
+    <h3 class="order-column">Account / Edit</h3>
+  </div>
+
   <% @users.each do |user| %>
-      <a href="/users/<%= user.id %>"><p><%= user.business_name %></p></a>
+    <div class="order-row">
+    <a href="/users/<%= user.id %>/orders">
+      <div class="order-column">
+        <%= user.business_name %>
+      </div>
+      <div class="order-column">
+        <%= user.orders.where(complete: nil).count %>
+      </div>
+      <div class="order-column red">
+        <%= @counter %>
+      </div>
+      <div class="order-column">
+        <a id="edit-tailor" href="/users/<%= user.id %>/edit">edit</a>
+      </div>
+    </a>
+    </div>
   <% end %>
+
+    <div class="order-row">
+      <div class="order-column">
+        <%= link_to "Add Tailor", "users/new", :id => "edit-tailor" %>
+      </div>
+    </div>
+
+
 </div>
-
-

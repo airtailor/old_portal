@@ -6,32 +6,30 @@
 
 <div class="admin-welcome">
   <h2>Greetings Master</h2>
-  <p>Here's the latest:</p>
+  <p>Whatchu Wanna Do?</p>
 </div>
 
 
 
 <div id="admin-manage-area">
 
-  <div id="minions">
-    <p><b class="caps">Manage Tailors</b></p>
+<div id="admin-orders">
+  <a href="/orders/new_orders"><button class="caps">Manage<br> New Orders</button></a>
+</div>
 
-    <% @users.each do |user| %>
-        <p><%= link_to user.business_name, user %> <small>&mdash; (<a href="/users/<%= user.id %>/edit">edit</a>)</small></p>
-    <% end %><br>
-    <button><%= link_to "Add New Tailor", "users/new" %></button>
-  </div>
+<div id="admin-messages">
+  <a href="/conversations"><button class="caps">Manage<br> Messages</button></a>
+</div>
 
-  <div id="admin-orders">
-    <p><b class="caps">Manage New Orders</b></p>
-    <% if @orders.length == 0 %>
-      No New Orders
-    <% else %>
-      <% @orders.each do |order| %>
-        <a href="/admin/order/<%=order.id%>"><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></a><br><br>
-      <% end %>
-    <% end %>
-  </div>
+<div id="minions">
+  <a href="/users"><button class="caps">Manage<br> Tailors</button></a>
+</div>
+
+
+
+
+
+
 
 
 </div>

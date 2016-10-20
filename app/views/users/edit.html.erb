@@ -36,13 +36,13 @@
         <p>Country:</p> <%= f.text_field :country %>
         <p>Time Zone:</p> <%= f.text_field :timezone %>
         <br><br>
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", data: { confirm: "You sure?" } %>
 
   <% end %>
   <br><br>
   <% if current_user.is_admin? %>
-    <%= link_to "delete", @user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
+    <button id="delete-user"><%= link_to "Delete User", @user, method: :delete,
+                                  data: { confirm: "You sure?" } %></button>
     <% end %>
 </div>
 </div>

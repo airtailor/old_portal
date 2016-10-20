@@ -1,84 +1,109 @@
 <div class="section-header">
-  <h2>Admin Order Assignment Page / <%= @order.shopify_id %></h2>
+  <h2>New Orders / <%= @order.shopify_id %></h2>
 </div>
 
 <div class="container">
 
-<div id="order-assignment">
-  <p><b class="caps">Order:</b></p>
+<!-- begin list of new orders -->
+  <div id="manage-orders">
+    <h3>Manage New Orders</h3>
+    <% if @orders.length == 0 %>
+      No New Orders
+    <% else %>
+      <% @orders.order("id").each do |order| %>
+        <% if order.id == @order.id %>
+          <a href="/admin/order/<%=order.id%>"><p class="selected"><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></p></a>
+        <% else %>
+          <a href="/admin/order/<%=order.id%>"><p><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></p></a>
+        <% end %>
 
-  <p><b>Shopify Order ID:</b> <%= @order.shopify_id %></p>
-  <p><b>Order Date:</b> <%= @order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d %Y at %I:%M %p") %></p>
-  <p><b>Customer:</b> <%= @customer.first_name %> <%= @customer.last_name %></p>
-  <p><b>Total Charges:</b> $<%= @order.total %></p>
-  <br>
-  Alterations:<br>
-  <% @alterations.each do |alteration| %>
-    <li><%= alteration %><br></li>
+      <% end %>
+    <% end %>
+  </div>
+<!-- end list of new orders -->
+
+
+<!-- begin order assignment area -->
+<% if @order %>
+  <div id="order-assignment">
+    <h3>Order Details:</h3>
+    <p><b class="red">Shopify Order ID:</b> <%= @order.shopify_id %></p>
+    <p><b class="red">Order Date:</b> <%= @order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d %Y at %I:%M %p") %></p>
+    <p><b class="red">Customer:</b> <%= @customer.first_name %> <%= @customer.last_name %></p>
+    <p><b class="red">Total Charges:</b> $<%= @order.total %></p>
+    <p><b class="red">Alterations:</b></p>
+    <% @alterations.each do |alteration| %>
+      <li><%= alteration %><br></li>
+    <% end %>
+
+    <br>
+<p class="caps"><b>Select Tailor:</b></p>
+  <% if @order.user_id == nil %>
+    <form method="POST" action="/admin/order">
+      <input type="hidden" name="_method" value="PUT">
+      <input type="hidden" name="order_id" value="<%= @order.id %>">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+          <select name="new_owner">
+          <option>
+            <% if @owner %>
+              <%= @owner.business_name %>
+            <% end %>
+             - <%= @order.user_id %>
+           </option>
+          <% @users.each do |user| %>
+            <option value="<%= user.id %>"><%= user.business_name %></option>
+          <% end %>
+        </select>
+        <button type="submit" id="change-tailor">Submit</button><br>
+    </form>
+  <% else %>
+    <form method="POST" action="/admin/order">
+      <input type="hidden" name="_method" value="PUT">
+      <input type="hidden" name="order_id" value="<%= @order.id %>">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+          <select name="new_owner">
+          <option>
+            <% if @owner %><%= @owner.business_name %><% end %>
+             - <%= @order.user_id %>
+           </option>
+          <% @users.each do |user| %>
+          <option value="<%= user.id %>"><%= user.business_name %></option>
+          <% end %>
+        </select>
+        <button type="submit" id="change-tailor">Change Tailor</button><br>
+    </form><br>
+    <hr>
+    <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a>
+
   <% end %>
-
+<% end %>
   <br>
 
-<% if @order.user_id == nil %>
-  <form method="POST" action="/admin/order">
-    <input type="hidden" name="_method" value="PUT">
-    <input type="hidden" name="order_id" value="<%= @order.id %>">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<!-- begin area to deal with welcome kits -->
+  <div id="welcome-kit-section">
+<% if @order.complete == nil %>
+  <% if @order.user_id %>
+    <p>This order contains a welcome kit. Mark as completed?</p>
+    <% @user = User.where(id: @order.user_id).first %>
+    <% if @alterations.any? { |s| s.include?('Welcome') }%>
 
-        <select name="new_owner">
-        <option>
-          <% if @owner %><%= @owner.business_name %><% end %>
-           - <%= @order.user_id %>
-         </option>
-        <% @users.each do |user| %>
-        <option value="<%= user.id %>"><%= user.business_name %></option>
-        <% end %>
-      </select>
-      <button type="submit">Submit</button><br>
-  </form>
-<% else %>
-  <form method="POST" action="/admin/order">
-    <input type="hidden" name="_method" value="PUT">
-    <input type="hidden" name="order_id" value="<%= @order.id %>">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= form_for [@user, @order], {action: 'update'} do |f| %>
+        <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
+        <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
+        <%= f.number_field :counter, :value => 2, :type => 'hidden' %>
+        <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
+        <button id="welcome-kit-done" class="caps"><%= f.submit "Done" %></button>
+      <% end %>
 
-        <select name="new_owner">
-        <option>
-          <% if @owner %><%= @owner.business_name %><% end %>
-           - <%= @order.user_id %>
-         </option>
-        <% @users.each do |user| %>
-        <option value="<%= user.id %>"><%= user.business_name %></option>
-        <% end %>
-      </select>
-      <button type="submit">Change Tailor</button><br>
-  </form><br>
-  <%= link_to "Home", "/admin" %><br>
-
-  <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items">Go to Order</a>
-
-<% end %>
-
-
-
-<br>
-<% if @order.user_id %>
-<% @user = User.where(id: @order.user_id).first %>
-  <% if @alterations.any? { |s| s.include?('Welcome') }%>
-
-    <%= form_for [@user, @order], {action: 'update'} do |f| %>
-      <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
-      <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
-      <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
-      <button class="caps"><%= f.submit "Welcome Kit — Mark as Completed" %></button>
     <% end %>
 
   <% end %>
 <% end %>
-<br>
-
-
-
-
+  </div>
+<!-- end area to deal with welcome kits -->
+  </div>
+<!-- end order assignment area -->
 </div>
-</div>
+<!-- end container div -->

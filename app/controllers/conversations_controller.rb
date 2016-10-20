@@ -6,7 +6,7 @@ class ConversationsController < ApplicationController
     if current_user.is_admin?
       @conversations = Conversation.all
       @messages = Message.all
-      @users = User.all
+      @users = User.where.not(business_name: "Air Tailor")
 
     elsif Conversation.exists?(recipient_id: current_user.id)
       @conversation = Conversation.where(recipient_id: current_user.id).first

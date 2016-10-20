@@ -113,6 +113,7 @@
     <% if @items.any? { |s| s.include?('Welcome') } %>
       <div class="alteration-list">
         <div class="alterations-image">
+          <img id="welcome" src="/assets/welcome.jpg" alt="">
         </div>
         <div class="alterations-text">
           <h3 class="caps">Welcome Kit</h3>
@@ -161,7 +162,7 @@
         <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
         <%= f.text_field :arrival_date, :value => Time.current, :type => 'hidden' %>
         <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
-        <button id="check-garment" class="caps"><%= f.submit "Check Order In" %></button>
+        <button id="check-garment" class="caps"><%= f.submit "Check Order In", data: { confirm: "You sure?" }%></button>
       <% end %>
     <% end %>
 
@@ -169,7 +170,7 @@
       <form method='post' action='/shipment/create'>
         <%= csrf_meta_tag %>
         <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
-        <button id="fulfill-order" class="caps">
+        <button id="fulfill-order" class="caps" onclick="return confirm('Order is 100% complete?');">
           Fulfill This Order
         </button>
       </form>

@@ -1,0 +1,21 @@
+<div class="section-header">
+  <h2>New Orders</h2>
+</div>
+
+<div class="container">
+
+  <div id="manage-orders">
+    <h3>Manage New Orders</h3>
+    <% if @orders.length == 0 %>
+      No New Orders
+    <% else %>
+      <% @orders.order("id").each do |order| %>
+        <a href="/admin/order/<%=order.id%>"><p><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></p></a>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="order-assignment">
+    <h3>Order Details</h3>
+    <small>select an order...</small>
+  </div>
+</div>
