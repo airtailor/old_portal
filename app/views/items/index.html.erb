@@ -130,9 +130,8 @@
 
   <!-- begin message section -->
   <div id="order-message-section">
-    <h4>Ask a question about this order</h4>
-
   <% if @conversation %>
+    <h4>Ask a question about this order</h4>
     <div id="order-new-message-form">
       <%= form_for [@conversation, @message] do |f| %>
           <%= f.text_field :conversation_id, :value => @conversation.id, :type => 'hidden' %>
@@ -151,7 +150,11 @@
           <button id="submit-order-message"><%= f.submit "Add Message" %></button>
       <% end %>
     </div>
+  <% else %>
+    <p>Have a question about this order? Click below to message Air Tailor.</p>
+    <a id="edit-tailor" href="/conversations">Get Started</a>
   <% end %>
+
   </div>
 <!-- end message section -->
 

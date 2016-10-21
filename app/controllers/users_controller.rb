@@ -74,6 +74,15 @@ class UsersController < ApplicationController
     else
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
+      @orders = @orders.where(complete: nil)
+      @counter = 0
+      @orders.each do |order|
+        if order.due_date
+          if ((((order.due_date - Time.current).to_f)/86400).round) < 0
+            @counter = @counter + 1
+          end
+        end
+      end
       if Conversation.exists?(recipient_id: @user.id)
         @conversation = Conversation.find_by(recipient_id: current_user.id)
         @messages = Message.where(conversation_id: @conversation.id)

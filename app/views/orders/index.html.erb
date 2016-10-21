@@ -15,6 +15,14 @@
   <h3 class="order-column"># of alterations</h3>
 </div>
 
+  <% if @orders.count < 1 %>
+    <div class="order-row">
+      <div class="order-column">
+        No orders currently assigned
+      </div>
+    </div>
+  <% end %>
+
       <% @orders.order("due_date").each_with_index do |order, index| %>
 
 
@@ -22,7 +30,11 @@
         <div class="order-row">
         <a class="order-row-link" href="/users/<%= order.user_id %>/orders/<%= order.id %>/items">
           <div id="order-id" class="order-column">
-            <%= order.shopify_id %>
+            <% if @orders.count < 1 %>
+              No orders currently assigned
+            <% else %>
+              <%= order.shopify_id %>
+            <% end %>
           </div>
 
           <div id="order-status" class="order-column">

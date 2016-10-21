@@ -36,7 +36,7 @@
       <% end %>
         <% if message.order_id %>
         <% @order = Order.where(shopify_id: message.order_id).first %>
-          <a href="/users/<%= @business.id %>/orders/<%= @order.id %>/items"><b>Order #: <%= message.order_id %> //</b></a>
+          <a href="/users/<%= @business.id %>/orders/<%= @order.id %>/items"><b>Order: <%= message.order_id %> //</b></a>
         <% else %>
           general message //
         <% end %>

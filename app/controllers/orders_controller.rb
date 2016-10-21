@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
     else
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
+      @orders = @orders.where(complete: nil)
       @alts = []
       @orders.each do |order|
         @alts.push(JSON.parse(order.alterations))
@@ -36,6 +37,9 @@ class OrdersController < ApplicationController
       @orders.each do |order|
         @alts.push(JSON.parse(order.alterations))
       end
+    else
+      @orders = Order.where(user_id: current_user.id)
+      @orders = Order.where(complete: true)
     end
   end
 

@@ -12,7 +12,6 @@ class MessagesController < ApplicationController
 
       @business = User.find_by(id: @conversation.recipient_id)
       @admin = User.find_by(id: @conversation.sender_id)
-      @order = Order.where(shopify_id: @message.order_id).first
     elsif
       @message = Message.new
       @conversation = Conversation.find_by(recipient_id: current_user.id)

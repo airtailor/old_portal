@@ -85,10 +85,10 @@
   <div id="welcome-kit-section">
 <% if @order.complete == nil %>
   <% if @order.user_id %>
-    <p>This order contains a welcome kit. Mark as completed?</p>
     <% @user = User.where(id: @order.user_id).first %>
     <% if @alterations.any? { |s| s.include?('Welcome') }%>
 
+      <p>This order contains a welcome kit. Mark as completed?</p>
       <%= form_for [@user, @order], {action: 'update'} do |f| %>
         <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
         <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
