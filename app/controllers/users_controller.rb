@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def admin_show
     if current_user.is_admin?
       @users = User.all
-      @orders = Order.where(user_id: nil)
+      @orders = Order.where(user_id: nil).first
       @order = Order.find_by(id: params[:id])
       @order.update_attribute(:counter, 0)
       @customer = Customer.where(order_id: @order.shopify_id).first
