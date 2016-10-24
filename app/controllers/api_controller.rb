@@ -23,6 +23,7 @@ class ApiController < ApplicationController
       unique_id: data['id'],
       total: data['total_price'],
       weight: data['total_weight'],
+      # add order notes
       alterations: alterations
     }
 

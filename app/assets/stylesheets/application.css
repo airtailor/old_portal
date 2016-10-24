@@ -156,6 +156,10 @@ nav li:last-of-type {
   border-bottom: 1px solid #000033;
 }
 
+.current-user {
+  margin-left: 5px;
+}
+
 /* admin home page */
 
 .admin-welcome {
