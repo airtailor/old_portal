@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "users#show"
+  root "users#index"
 
   get '/admin' => 'users#admin'
   put '/admin/order' => 'users#update_order'
