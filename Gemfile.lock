@@ -36,6 +36,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    airbrake (5.6.1)
+      airbrake-ruby (~> 1.6)
+    airbrake-ruby (1.6.0)
     arel (6.0.3)
     awesome_print (1.7.0)
     bcrypt (3.1.11)
@@ -195,6 +198,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   bcrypt (~> 3.1.7)
   byebug
   coffee-rails (~> 4.1.0)
