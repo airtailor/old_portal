@@ -27,7 +27,11 @@
 
           <div id="order-customer" class="order-column">
             <% @user = @users.where(id: order.user_id).first %>
-            <%= @user.business_name %>
+            <% if @user %>
+              <%= @user.business_name %>
+            <% else %>
+              n/a
+            <% end %>
           </div>
 
           <div id="order-quantity" class="order-column">
