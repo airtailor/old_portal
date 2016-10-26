@@ -32,10 +32,10 @@
     <p><b class="red">Customer:</b> <%= @customer.first_name %> <%= @customer.last_name %></p>
     <p><b class="red">Total Charges:</b> $<%= @order.total %></p>
     <p><b class="red">Notes:</b>
-      <% if @order.note == nil %>
-        n/a
-      <% else %>
+      <% if @order.note %>
         <%= @order.note %>
+      <% else %>
+        n/a
       <% end %>
     </p>
     <p><b class="red">Alterations:</b></p>
