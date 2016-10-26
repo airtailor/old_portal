@@ -131,10 +131,10 @@
     <% end %>
 
     <h3 id="notes-header">Order Notes:</h3>
-    <% if @order.note? %>
-      <%= @order.note %>
-    <% else %>
+    <% if @order.note == nil %>
       n/a
+    <% else %>
+      <%= @order.note %>
     <% end %>
 
 
