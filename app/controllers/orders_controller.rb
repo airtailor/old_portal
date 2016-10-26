@@ -56,9 +56,10 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    @user = User.find_by(id: params[:user_id])
     @order = Order.find_by(id: params[:id])
     @order.destroy
-    redirect_to '/admin'
+    redirect_to "/users/" + @user.id.to_s + "/orders"
   end
 
   private
