@@ -56,5 +56,12 @@ console.log(x)
 
 
 
+$(document).on("click", "#packing-slip-btn", function() {
+  $('#packing-slip-info').printThis({
+    removeInline: true
+  });
+});
+
+
 
 

@@ -129,6 +129,16 @@
         </div>
       </div>
     <% end %>
+
+    <h3 id="notes-header">Order Notes:</h3>
+    <% if @order.note? %>
+      <%= @order.note %>
+    <% else %>
+      n/a
+    <% end %>
+
+
+    <br><br>
   </div>
   <!-- end lists of item alterations -->
 
@@ -169,7 +179,7 @@
         <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
         <%= f.text_field :arrival_date, :value => Time.current, :type => 'hidden' %>
         <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
-        <button id="check-garment" class="caps"><%= f.submit "Check Order In", data: { confirm: "You sure?" }%></button>
+        <button id="check-garment" class="caps" onclick="return confirm('Order has arrived?');"><%= f.submit "Check Order In"%></button>
       <% end %>
     <% end %>
 
@@ -186,10 +196,25 @@
     <% if @order.complete == true %>
       <a href="<%= @order.shipping_label %>" target="_blank"><button id="fulfill-order">Click Here for Shipping Label</button></a>
     <% end %>
+    <br><br>
+    <button id="packing-slip-btn">Print Packing Slip</button>
+
 
   </div>
+  <div id="packing-slip-info" style="display:none">
+  <h3>Thank you for your Air Tailor order, <%= @customer.first_name %></h3>
+  <p>We hope everything arrived exactly as you expected and that you are please with our work. If you have any questions or would like to alter/repair more clothes using Air Tailor, please text us or email hello@airtailor.com. We look forward to serving you again soon, <%= @customer.first_name %>!</p>
+  <p id="packing-slip-info-shopify"><b>Order: <%= @order.shopify_id %></b></p>
+  <% @alterations.each do |alteration| %>
+      <li id="packing-slip-info-alt"><%= alteration %></li>
+    <% end %>
+  <img id="packing-slip-info-img" src="/assets/logo" alt="air tailor logo" id="logo">
+</div>
+<!-- end packing slip -->
 </div>
 <!-- end item info section -->
+<!-- packing slip -->
+
 
 
 <!-- begin customer measurments section -->

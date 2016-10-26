@@ -505,7 +505,14 @@ select:hover {
   margin-left: 50px;
 }
 
+#notes-header {
+  float: left;
+  margin-top: -1.5px;
+  margin-right: 10px;
+}
+
 #order-message-section {
+  clear: both;
   margin-top: 0;
 }
 
@@ -567,8 +574,31 @@ button#check-garment:hover, button#fulfill-order:hover {
   cursor: pointer;
 }
 
+#packing-slip-info {
+  width: 518px;
+  padding: 75px;
+  font-family: raleway;
+}
 
+#packing-slip-info h3 {
+  font-family: alegreya;
+}
 
+#packing-slip-info-shopify {
+  text-align: center;
+}
+
+#packing-slip-info-alt {
+  text-align: center;
+}
+
+#packing-slip-info-img {
+  display: block;
+  text-align: center;
+  width: 100px;
+  margin: auto;
+  margin-top: 20px;
+}
 
 
 

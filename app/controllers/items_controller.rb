@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
     @order = Order.find_by(id: params[:order_id])
     @customer = Customer.where(order_id: @order.shopify_id).first
     @user = User.find_by(id: params[:user_id])
+    @alterations = JSON.parse(@order.alterations)
     if Shipment.exists?(shopify_id: @order.shopify_id)
       @shipment = Shipment.where(shopify_id: @order.shopify_id)
     end
