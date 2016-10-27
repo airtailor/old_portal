@@ -10,33 +10,40 @@
 <body>
 <% if current_user %>
   <aside>
-
-    <a href="/admin"><img src="/assets/logo" alt="air tailor logo" id="logo"></a><br><br>
+    <a href="/admin"><img src="/assets/logo.png" alt="air tailor logo" id="logo"></a>
+    <h5 class="caps">Shop Portal</h5>
+    <hr>
     <nav>
+      <input type="search" placeholder="Search">
       <ul>
         <% if current_user.is_admin? %>
-          <li><a href="/admin">Home</a></li>
-          <li><a href="/orders/new_orders">New Orders</a></li>
-          <li><a href="/users">Tailors</a></li>
-          <li><a href="/conversations">Messages</a></li>
-          <li><a href="/archive">Order Archive</a></li>
-          <li><a href="/users/<%= current_user.id %>/edit">Account</a></li>
-          <li><a href="https://airtailor.zendesk.com/hc/en-us" target="blank">Help</a></li>
-          <li><%= link_to "Logout", '/logout' %></li>
+          <li><a href="/admin"><img src="/assets/home.png">Home</a></li>
+          <li><a href="/orders/new_orders"><img src="/assets/orders.png">Orders</a></li>
+          <li><a href="/users"><img src="/assets/tailors.png">Tailors</a></li>
+          <li><a href="/conversations"><img src="/assets/message.png">Messages</a></li>
+          <li><a href="/archive"><img src="/assets/archive.png">Archive</a></li>
+          <br><br><br><br>
+          <li><a href="https://airtailor.zendesk.com/hc/en-us" target="blank"><img src="/assets/help.png">Help</a></li>
+          <li><a href="/users/<%= current_user.id %>/edit"><img src="/assets/account.png">Account</a></li>
+          <li><a href="/logout"><img src="/assets/logout.png">Logout</a></li>
         <% else %>
-          <li><a href="/users/<%= current_user.id %>">Home</a></li>
-          <li><a href="/users/<%= current_user.id %>/orders">Orders</a></li>
-          <li><a href="/conversations">Messages</a></li>
-          <li><a href="/archive">Order Archive</a></li>
-          <li><a href="/users/<%= current_user.id %>/edit">Account</a></li>
-          <li><a href="https://airtailor.zendesk.com/hc/en-us" target="blank">Help</a></li>
-          <li><%= link_to "Logout", '/logout' %></li>
+          <li><a href="/users/<%= current_user.id %>"><img src="/assets/home.png">Home</a></li>
+          <li><a href="/users/<%= current_user.id %>/orders"><img src="/assets/orders.png">Orders</a></li>
+          <li><a href="/conversations"><img src="/assets/message.png">Messages</a></li>
+          <li><a href="/archive"><img src="/assets/archive.png">Archive</a></li>
+          <br><br><br><br>
+          <li><a href="https://airtailor.zendesk.com/hc/en-us" target="blank"><img src="/assets/help.png">Help</a></li>
+          <li><a href="/users/<%= current_user.id %>/edit"><img src="/assets/account.png">Account</a></li>
+          <li><a href="/logout"><img src="/assets/logout.png">Logout</a></li>
         <% end %>
       </ul>
     </nav>
       <br>
-      <p class="current-user">Shop: <%= current_user.business_name %></p>
-      <p class="current-user">User: <%= current_user.user_name %></p>
+      <div class="current-user">
+        <p>Shop: <%= current_user.business_name %></p>
+        <p>User: <%= current_user.user_name %></p>
+      </div>
+
     <% end %>
 
   </aside>
