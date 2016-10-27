@@ -126,8 +126,54 @@ main {
 
 /* login page */
 
-#login-logo {
-  margin-top: 10%;
+#login-page {
+  width: 30%;
+  min-width: 400px;
+  margin:  10% auto;
+}
+
+#login-page h3 {
+  margin-left: 50px;
+  margin-top: 0;
+  margin-bottom: 60px;
+  font-weight: normal;
+}
+
+#login-page img {
+  width: 200px;
+}
+
+#login-page input {
+  border: none;
+}
+
+#login-page input[type="password"],
+#login-page input[type="text"]{
+  background-color: rgba(216, 237, 252, .5);
+  margin-top: 10px;
+  height: 40px;
+  width:  370px;
+  padding-left: 30px;
+  border-radius: 5px;
+  border: 1px solid #000033;
+}
+
+
+#login-page input[type="submit"]{
+  background-color: #000033;
+  color: white;
+  margin-top: 15px;
+  width: 40%;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+#login-page a {
+  display: inline-block;
+  margin-left: 20px;
+  font-family: montserrat;
+  font-weight: normal;
 }
 
 /* aside */

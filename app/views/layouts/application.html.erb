@@ -8,8 +8,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if current_user %>
   <aside>
-    <% if current_user %>
+
     <a href="/admin"><img src="/assets/logo" alt="air tailor logo" id="logo"></a><br><br>
     <nav>
       <ul>
@@ -40,11 +41,11 @@
 
   </aside>
 
-  <main>
+
 
 <%= yield %>
 
-  </main>
+
 
 
 </body>
