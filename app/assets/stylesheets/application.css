@@ -166,6 +166,7 @@ main {
 aside {
   height: 100vh;
   width: 14%;
+  min-width: 150px;
   float: left;
   margin: 0;
   border-right: #000033 1px solid ;
@@ -188,13 +189,17 @@ aside h5 {
 aside input[type="search"] {
   height: 30px;
   display: block;
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   margin-top: 20px;
-  text-indent: 30px;
+  text-indent: 35px;
   border-radius: 20px;
   border: none;
   background-color: lightgrey;
+  background-image: url('/assets/search.png');
+  background-position: 5px 5px;
+  background-size: 20px;
+  background-repeat: no-repeat;
 }
 
 aside ::-webkit-input-placeholder {
@@ -655,8 +660,8 @@ button#check-garment:hover, button#fulfill-order:hover {
 }
 
 #packing-slip-info {
-  width: 518px;
-  padding: 75px;
+  margin-top: 10%;
+  width: 400px;
   font-family: raleway;
 }
 
