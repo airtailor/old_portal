@@ -21,13 +21,13 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: cardo;
+  font-family: raleway;
   font-size: 14px;
   color: #000033;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: montserrat;
+  font-family: alegreya;
 }
 
 .caps {
@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .blue {
-  color: #000033;;
+  color: #000033;
 }
 
 .orange {
@@ -138,12 +138,25 @@ main {
   background-color: rgba(216, 237, 252, .5);
   margin-top: 10px;
   height: 40px;
-  width:  370px;
-  padding-left: 30px;
+  width:  360px;
+  padding-left: 40px;
   border-radius: 5px;
   border: 1px solid #000033;
 }
 
+#login-page input[type="text"] {
+  background-image: url('/assets/email.png');
+  background-size: 20px;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+}
+
+#login-page input[type="password"] {
+  background-image: url('/assets/password.png');
+  background-size: 20px;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+}
 
 #login-page input[type="submit"]{
   background-color: #000033;
@@ -170,7 +183,7 @@ aside {
   float: left;
   margin: 0;
   border-right: #000033 1px solid ;
-  font-family: montserrat;
+  font-family: raleway;
   font-weight: 200;
 }
 
@@ -184,6 +197,7 @@ aside h5 {
   text-align: center;
   margin-top: 0;
   margin-bottom: 25px;
+  font-family: raleway;
 }
 
 aside input[type="search"] {
