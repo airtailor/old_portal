@@ -549,6 +549,7 @@ select:hover {
   text-align: center;
 }
 
+
 /* orders show page */
 
 .order-show p {
@@ -628,7 +629,7 @@ input#submit-order-message:hover {
 }
 
 #order-completed {
-  text-align: right;
+  text-align: left;
   margin-bottom: 100px;
   margin-top: 50px;
 }
@@ -691,12 +692,12 @@ button#check-garment:hover, button#fulfill-order:hover {
 /* customer measurements */
 
 #customer-measurements {
-  float: right;
+  float: left;
   text-align: center;
   margin-top: 20px;
   margin-right: 10%;
   position: relative;
-  width: 375px;
+  min-width: 375px;
 }
 
 #customer-measurements button {
