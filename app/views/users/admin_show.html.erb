@@ -1,6 +1,7 @@
 <main>
 <div class="section-header">
   <h2>New Orders / <%= @order.shopify_id %></h2>
+  <%= @order.counter %>
 </div>
 
 <div class="container">
@@ -100,7 +101,6 @@
       <%= form_for [@user, @order], {action: 'update'} do |f| %>
         <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
         <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
-        <%= f.number_field :counter, :value => 2, :type => 'hidden' %>
         <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
         <button id="welcome-kit-done" class="caps"><%= f.submit "Done" %></button>
       <% end %>
@@ -110,6 +110,10 @@
   <% end %>
 <% end %>
   </div>
+<% if @order.complete == true && @order.counter == 0 %>
+  <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
+  <% @order.update_attribute(:counter, 2) %>
+<% end %>
 <!-- end area to deal with welcome kits -->
   </div>
 <!-- end order assignment area -->

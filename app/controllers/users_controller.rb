@@ -16,7 +16,6 @@ class UsersController < ApplicationController
       @users = User.all
       @orders = Order.where(user_id: nil)
       @order = Order.find_by(id: params[:id])
-      @order.update_attribute(:counter, 0)
       @customer = Customer.where(order_id: @order.shopify_id).first
       # @next = @order.id + 1
       @owner = User.find_by(id: @order.user_id)
