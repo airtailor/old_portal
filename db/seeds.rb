@@ -5,7 +5,7 @@ User.create(email: "orders@airtailor.com", password: "12345", business_name: "Ai
 #   shopify_id: 1234,
 #   unique_id: 909090,
 #   total: "50.00",
-#   alterations: ["Shirt #1 Add Collar Buttons", "Shirt #1 Add Snaps Under Collar", "Pants #1 Add Button", "Pants #1 Add Clasp"])
+  # alterations: ["Shirt #1 Add Collar Buttons", "Shirt #1 Add Snaps Under Collar", "Pants #1 Add Button", "Pants #1 Add Clasp"])
 
 # Order.create(name: "customer 2",
 #   shopify_id: 4444,
