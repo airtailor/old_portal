@@ -124,7 +124,7 @@ class ApplicationController < ActionController::Base
         :width => 5,
         :height => 3,
         :distance_unit => :in,
-        :weight => order.weight,
+        :weight => 1,
         :mass_unit => :g
     }
 

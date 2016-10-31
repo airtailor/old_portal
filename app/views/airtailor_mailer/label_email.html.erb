@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hey <%= @customer.first_name %>,</p>
+    <p>Click here for your Air Tailor shipping label: <a href="<%= @order.shipping_label %>"><%= @order.shipping_label %></a></p>
+    <p>Thanks again!</p>
+    <p>Air Tailor</p>
+  </body>
+</html>

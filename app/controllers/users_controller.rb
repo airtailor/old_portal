@@ -26,6 +26,7 @@ class UsersController < ApplicationController
       @owner = User.find_by(id: @order.user_id)
       if @owner
         tailorShippingInfo(@owner, @order, @customer)
+        AirtailorMailer.label_email(@customer, @order).deliver
       end
       @alterations = JSON.parse(@order.alterations)
     else
