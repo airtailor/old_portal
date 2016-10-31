@@ -49,6 +49,7 @@
   </div>
 
   <% @orders.order("updated_at").reverse_order.each_with_index do |order, index| %>
+  <% if order.created_at > @user.created_at %>
   <div class="order-row">
         <a class="order-row-link" href="/users/<%= order.user_id %>/orders/<%= order.id %>/items">
           <div id="order-id" class="order-column">
@@ -73,7 +74,7 @@
           </a>
         </div>
       <% end %>
-
+  <% end %>
 <% end %>
 </div>
 <br><br><br><br>

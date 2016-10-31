@@ -38,6 +38,7 @@ class OrdersController < ApplicationController
         @alts.push(JSON.parse(order.alterations))
       end
     else
+      @user = current_user
       @orders = Order.where(user_id: current_user.id)
       @orders = Order.where(complete: true)
     end
