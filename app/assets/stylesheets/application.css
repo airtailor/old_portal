@@ -19,11 +19,13 @@
 /* color palette link:http://paletton.com/#uid=53+0u0khHVI00++4Z+6sgRhER7o */
 
 body {
+  height: 100vh;
   padding: 0;
   margin: 0;
   font-family: raleway;
   font-size: 14px;
   color: #000033;
+  overflow: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -44,6 +46,10 @@ input:focus{
 
 .blue {
   color: #000033;
+}
+
+.blueback {
+  background-color: #D8EDFC;
 }
 
 .orange {
@@ -80,7 +86,6 @@ main {
   height: 100vh;
   width: 85%;
   float: left;
-  overflow: auto;
 }
 
 .section-header {
@@ -91,6 +96,10 @@ main {
   width: 85.9%;
   position: absolute;
   z-index: 1;
+}
+
+.whiteback {
+  background-color: white;
 }
 
 .section-header h2 {
@@ -184,7 +193,7 @@ main {
 aside {
   height: 100vh;
   width: 14%;
-  min-width: 150px;
+  min-width: 125px;
   float: left;
   margin: 0;
   border-right: #000033 1px solid ;
@@ -268,10 +277,12 @@ nav li:last-of-type {
 
 .admin-welcome {
   text-align: center;
+  text-shadow: 0 1px 2px grey;
 }
 
 .admin-welcome h2 {
   font-size: 48px;
+  font-weight: bold;
   margin-bottom: 20px;
   margin-top: 100px;
 }
@@ -390,7 +401,86 @@ select:hover {
 }
 
 
-/* tailor home page */
+/* tailor SHOW page */
+
+#tailor-show-greeting {
+  text-align: center;
+  color: #000033;
+  text-shadow: 0 1px 3px grey;
+}
+
+#tailor-show-greeting h2 {
+  font-size: 48px;
+  font-family: alegreya;
+  font-weight: bold;
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+#tailor-show-greeting p {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 80px;
+  font-weight: bold;
+}
+
+#tailor-show-boxes {
+  width: 756px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+
+.tailor-show-box {
+  float: left;
+  width: 150px;
+  height: 300px;
+  margin: 5px 50px;
+  border: 1px solid black;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0px 2px 5px black;
+  border-radius: 3px;
+}
+
+.tailor-show-box:hover {
+  box-shadow: 1px 3px 5px black;
+}
+
+.tailor-show-number {
+  font-size: 48px;
+  font-family: alegreya;
+  font-weight: 800;
+  margin: 0;
+}
+
+.tailor-show-box img {
+  width: 30%;
+  padding-top: 40px;
+  padding-bottom: 25px;
+}
+
+#tailor-show-late-box {
+  color: red;
+}
+
+#tailor-show-late-exclamation {
+  font-size: 48px;
+  font-family: alegreya;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 40px;
+  padding-top: 40px;
+  padding-bottom: 32px;
+}
+
+.tailor-show-box span {
+  text-decoration: underline;
+}
+
+
+/* old tailor show css */
+
 
 .tailor-welcome {
   text-align: center;
@@ -954,7 +1044,7 @@ input.measurement {
 }
 
 #edit-user-form p {
-  margin-bottom: 0;
+  margin-bottom: 0px;
   font-weight: bold;
 }
 
@@ -963,14 +1053,24 @@ input.measurement {
   height: 20px;
   font-size: 12px;
   border: 1px solid #D8EDFC;
+  text-indent: 5px;
+}
+
+#edit-user-form input:focus {
+  border: 1px solid #000033;
 }
 
 #edit-user-form input[type="submit"] {
-  height: 30px;
+  height: 40px;
+  margin-top: 20px;
   background-color: yellow;
   font-weight: bold;
   border: solid #000033 2px;
   border-radius: 10px;
+}
+
+#edit-user-form input[type="submit"]:hover {
+  cursor: pointer;
 }
 
 #delete-user {

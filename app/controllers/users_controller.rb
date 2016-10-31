@@ -16,12 +16,17 @@ class UsersController < ApplicationController
       @users = User.all
       @orders = Order.where(user_id: nil)
       @order = Order.find_by(id: params[:id])
+
       if @order.counter != 2
         @order.update_attribute(:counter, 0)
       end
       @customer = Customer.where(order_id: @order.shopify_id).first
+
       # @next = @order.id + 1
       @owner = User.find_by(id: @order.user_id)
+      if @owner
+        tailorShippingInfo(@owner, @order, @customer)
+      end
       @alterations = JSON.parse(@order.alterations)
     else
       redirect_to "/"

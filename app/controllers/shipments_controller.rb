@@ -4,6 +4,7 @@ class ShipmentsController < ApplicationController
 
     @shipment = Shipment.find_by(shopify_id: params[:id])
     @order = Order.where(shopify_id: @shipment.shopify_id).first
+    @user = User.where(id: @order.user_id).first
     @order.update_attribute(:complete, true)
     Shippo.api_token = ENV["SHIPPO_KEY"]
     shipdata = eval(@shipment['shipment'])
@@ -20,7 +21,7 @@ class ShipmentsController < ApplicationController
 
     address_from = {
       :object_purpose=>"PURCHASE",
-      :name=>"Air Tailor",
+      :name=> @user.user_name,
       :company=>"Air Tailor",
       :street1=>"510 West 21st Street",
       :street2=>"65DM8A",
@@ -59,7 +60,5 @@ class ShipmentsController < ApplicationController
     @order.update_attribute(:shipping_label, transaction.label_url)
     redirect_to :back
   end
-
-
 
 end

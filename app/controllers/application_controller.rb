@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
         :width => 5,
         :height => 3,
         :distance_unit => :in,
-        :weight => 1,
+        :weight => order[:weight],
         :mass_unit => :g
     }
 
@@ -84,6 +84,66 @@ class ApplicationController < ActionController::Base
     }
     # byebug
     Shipment.new(shipment).save
+  end
+
+  def tailorShippingInfo(user, order, customer)
+    Shippo::api_token = ENV["SHIPPO_KEY"]
+
+    customer_name = customer.first_name + " " + customer.last_name
+
+    address_from = {
+        :object_purpose => 'PURCHASE',
+        :name => customer_name,
+        :company => '',
+        :street1 => customer.address1,
+        :street2 => customer.address2,
+        :city => customer.city,
+        :state => customer.state,
+        :zip => customer.zip,
+        :country => "US",
+        :phone => customer.phone,
+        :email => customer.email
+    }
+
+    address_to = {
+      :object_purpose=>"PURCHASE",
+      :name=>"Air Tailor",
+      :company=>"Air Tailor",
+      :street1=>"510 West 21st Street",
+      :street2=>"65DM8A",
+      :city=>"New York",
+      :state=>"NY",
+      :zip=>"10011",
+      :country=>"US",
+      :phone=>"+1 555 341 9393",
+      :email=>"orders@airtailor.com"
+    }
+
+    parcel = {
+        :length => 7,
+        :width => 5,
+        :height => 3,
+        :distance_unit => :in,
+        :weight => order.weight,
+        :mass_unit => :g
+    }
+
+
+    shipment = {
+        :object_purpose => 'PURCHASE',
+        :address_from => address_from,
+        :address_to => address_to,
+        :parcel => parcel
+    }
+
+    transaction = Shippo::Transaction.create(
+        :shipment => shipment,
+        :carrier_account => "d11e35a8792942fdb9b17d39246e3621",
+        :servicelevel_token => "usps_priority"
+    )
+
+    @order.update_attribute(:shipping_label, transaction.label_url)
+
   end
 
 

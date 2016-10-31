@@ -1,62 +1,55 @@
-<main>
+<main class="">
 <!-- Tailor Show Page -->
 <div class="section-header">
     <h2>Home / <%= @user.business_name %></h2>
 </div>
 
 <div class="container">
-  <div class="tailor-main">
-    <div class="tailor-welcome">
-      <h2>Greetings <%= @user.business_name %></h2>
-      <p>Here's what's happening with your shop right now:</p>
-    </div>
 
-    <div id="orders-quick-glance">
-      <div id="orders-quick-glance-text">
-        <p><span id="new-messages"><%= @orders.count %></span> <span class="caps">Orders at your shop</span></p>
-        <p><span id="new-messages"><%= @counter %></span><span class="caps">Late orders</span></p>
-      </div>
-
-      <a id="view-orders" href="/users/<%= @user.id %>/orders" class="caps">View Orders</a>
-    </div>
-
-
-    <% if @conversation %>
-      <!-- if user has a conversation started, this shows how many unread messages they have and a link to go to those messages -->
-        <div id="messages-quick-glance">
-          <% if current_user.is_admin? %>
-
-            <p class="caps">You have <span id="new-messages">&thinsp;<%= @conversation.messages.where(read: false).count %>&thinsp;</span> messages awaiting your reply.</p>
-
-            <a href="/conversations/<%= @conversation.id %>/messages" id="view-messages" class="caps">View Messages</a>
-
-          <% else %>
-
-            <p class="caps">You have <span id="new-messages">&thinsp;<%= @conversation.messages.where(user_read: false).count %>&thinsp;</span> messages awaiting your reply.</p>
-
-            <a href="/conversations" id="view-messages" class="caps">View Messages</a>
-          <% end %>
-        </div>
-    <% else %>
-      <!-- if user has 0 conversations it shows 0 messages and has a link to start a conversation -->
-
-        <div id="messages-quick-glance">
-          <p class="caps">You haven't sent any messages yet.</p>
-          <% if current_user.is_admin? %>
-            <%= form_for @new_conversation do |f| %>
-              <%= f.text_field :recipient_id, :value => @user.id, :type => 'hidden' %>
-              <%= f.text_field :sender_id, :value => current_user.id, :type => 'hidden' %>
-              <%= f.submit "Click Here", :id => "view-messages-submit", :class => "caps" %>
-            <% end %>
-          <% else %>
-            <a href="/conversations" id="view-messages" class="caps">Get Started</a>
-          <% end %>
-        </div>
-    <% end %>
-
-
+  <div id="tailor-show-greeting">
+    <h2>Greetings, <%= @user.business_name %>.</h2>
+    <p>Here's what's happening with your shop right now.</p>
   </div>
-  <!-- close tailor main div -->
+
+  <div id="tailor-show-boxes">
+  <a href="/conversations">
+    <div id="tailor-show-message-box" class="tailor-show-box">
+      <img src="/assets/message.png" alt="">
+      <% if @conversation %>
+        <p class="tailor-show-number"><%= @conversation.messages.where(read: false).count %></p>
+        <p class="caps">unread<br>messages</p>
+        <p><span class="caps">Read &gt;</span></p>
+      <% else %>
+        <p class="tailor-show-number">0</p><p class="caps">unread<br>messages</p>
+        <p><span class="caps">Get Started &gt;</span></p>
+      <% end %>
+    </div>
+    </a>
+
+    <a href="/users/<%= @user.id %>/orders">
+    <div id="tailor-show-order-box" class="tailor-show-box">
+      <img src="/assets/orders.png" alt="">
+      <p class="tailor-show-number"><%= @orders.count %></p>
+      <p class="caps">Current<br>orders</p>
+      <p><span class="caps">view &gt;</span></p>
+    </div>
+    </a>
+
+    <a href="/users/<%= @user.id %>/orders">
+    <div id="tailor-show-late-box" class="tailor-show-box">
+      <span id="tailor-show-late-exclamation">!</span>
+      <p class="tailor-show-number"><%= @counter %></p>
+      <% if @counter == 1 %>
+        <p class="caps">Late<br>Order</p>
+      <% else %>
+        <p class="caps">Late<br>Orders</p>
+      <% end %>
+      <p><span class="caps">Fulfill &gt;</span></p>
+    </div>
+    </a>
+  </div>
+
+
+
 </div>
-<!-- close container div -->
 </main>
