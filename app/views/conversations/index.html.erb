@@ -54,19 +54,19 @@
   <div class="section-header">
     <h2>Messages</h2>
   </div>
-  <div id="all-conversations">
-    <p>Communication is king! Use this feature to communicate any questions about alteration orders with an Air Tailor Client Service Team member.</p>
-  </div>
 
   <div id="new-conversation-form">
+    <h2>Communication is key.</h2>
+    <p>Use this feature to communicate any questions about orders and alterations with an Air Tailor team member.</p>
+
     <%= form_for @conversation do |f| %>
         <%= f.text_field :recipient_id, :value => current_user.id, :type => 'hidden' %>
         <%= f.text_field :sender_id, :value => 2, :type => 'hidden' %>
-        <%= f.submit "Click Here" %>
+        <%= f.submit "Click Here", :id => "start_convo" %>
     <% end %>
   </div>
-</div>
-<% end %>
 
+<% end %>
 </div>
+
 </main>
