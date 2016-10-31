@@ -19,7 +19,8 @@
 /* color palette link:http://paletton.com/#uid=53+0u0khHVI00++4Z+6sgRhER7o */
 
 body {
-  height: 100vh;
+  height: 100%;
+  min-width: 1200px;
   padding: 0;
   margin: 0;
   font-family: raleway;
@@ -83,7 +84,9 @@ a:visited {
 }
 
 main {
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
+  border-left: #000033 1px solid;
   width: 85%;
   float: left;
 }
@@ -191,12 +194,10 @@ main {
 
 /* aside */
 aside {
-  height: 100vh;
   width: 14%;
   min-width: 125px;
   float: left;
   margin: 0;
-  border-right: #000033 1px solid ;
   font-family: raleway;
   font-weight: 200;
 }
