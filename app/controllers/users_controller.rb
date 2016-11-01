@@ -24,10 +24,18 @@ class UsersController < ApplicationController
 
       # @next = @order.id + 1
       @owner = User.find_by(id: @order.user_id)
-      if @owner && @order.inbound_counter == nil
-        tailorShippingInfo(@owner, @order, @customer)
-        AirtailorMailer.label_email(@customer, @order).deliver
-        @order.update_attribute(:inbound_counter, 1)
+        if @owner?
+          if @order.inbound_counter?
+            if @order.inbound_counter == nil
+              @order.update_attribute(:inbound_counter, 1)
+              tailorShippingInfo(@owner, @order, @customer)
+              AirtailorMailer.label_email(@customer, @order).deliver
+            end
+          else
+          tailorShippingInfo(@owner, @order, @customer)
+          AirtailorMailer.label_email(@customer, @order).deliver
+        end
+
       end
       @alterations = JSON.parse(@order.alterations)
     else
