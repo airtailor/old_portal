@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       # @next = @order.id + 1
       @owner = User.find_by(id: @order.user_id)
 
-      if @owner?
+      if @owner
         tailorShippingInfo(@owner, @order, @customer)
         AirtailorMailer.label_email(@customer, @order).deliver
       end
