@@ -142,7 +142,7 @@ class ApplicationController < ActionController::Base
         :servicelevel_token => "usps_priority"
     )
 
-    @order.update_attribute(:inbound_label, transaction.label_url)
+    @order.update_attribute(:shipping_label, transaction.label_url)
 
   end
 
