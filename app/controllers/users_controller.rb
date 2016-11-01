@@ -25,10 +25,12 @@ class UsersController < ApplicationController
       # @next = @order.id + 1
       @owner = User.find_by(id: @order.user_id)
 
-      if @owner && @order.input_counter == 0
-        tailorShippingInfo(@owner, @order, @customer)
-        AirtailorMailer.label_email(@customer, @order).deliver
-        @order.update_attribute(:input_counter, 1)
+      if @owner
+        if @order.input_counter == 0
+          tailorShippingInfo(@owner, @order, @customer)
+          AirtailorMailer.label_email(@customer, @order).deliver
+          @order.update_attribute(:input_counter, 1)
+        end
       else
         @order.update_attribute(:input_counter, 0)
       end
