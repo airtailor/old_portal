@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       if @owner && @order.inbound_counter == nil
         tailorShippingInfo(@owner, @order, @customer)
         AirtailorMailer.label_email(@customer, @order).deliver
-        @order.update_attribute(:counter, 1)
+        @order.update_attribute(:inbound_counter, 1)
       end
       @alterations = JSON.parse(@order.alterations)
     else
