@@ -20,17 +20,27 @@ class UsersController < ApplicationController
       if @order.counter != 2
         @order.update_attribute(:counter, 0)
       end
+
       @customer = Customer.where(order_id: @order.shopify_id).first
-
-      # @next = @order.id + 1
       @owner = User.find_by(id: @order.user_id)
+      @alterations = JSON.parse(@order.alterations)
 
-      if @owner
+      if @order.complete == nil
+        if @owner
+          if @alterations.any? { |s| s.include?('Welcome') }
+            @order.update_attribute(:welcome, true)
+          else
+            @order.update_attribute(:welcome, false)
+          end
+        end
+      end
+
+      if @owner && @order.welcome == false
         tailorShippingInfo(@owner, @order, @customer)
         AirtailorMailer.label_email(@customer, @order).deliver
       end
 
-      @alterations = JSON.parse(@order.alterations)
+
     else
       redirect_to "/"
     end

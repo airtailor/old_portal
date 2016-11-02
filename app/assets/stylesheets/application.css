@@ -406,6 +406,20 @@ select:hover {
   margin-top: 10px;
 }
 
+.welcome-kit-label {
+  width: 200px;
+  margin-top: 10px;
+  height: 30px;
+  background-color: #D8EDFC;
+  border-radius: 10px;
+}
+
+.welcome-kit-label:hover {
+  cursor: pointer;
+  width: 201px;
+  height: 31px;
+  margin-top: 9px;
+}
 
 /* tailor SHOW page */
 

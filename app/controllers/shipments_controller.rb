@@ -1,23 +1,21 @@
 class ShipmentsController < ApplicationController
+
   def makeshipment
-
-
     @shipment = Shipment.find_by(shopify_id: params[:id])
     @order = Order.where(shopify_id: @shipment.shopify_id).first
     @user = User.where(id: @order.user_id).first
     @order.update_attribute(:complete, true)
+
     Shippo.api_token = ENV["SHIPPO_KEY"]
     shipdata = eval(@shipment['shipment'])
-    # debugger
-    # address_from = shipdata[:address_from]
+
     address_to = shipdata[:address_to]
     address_to[:country] = "US"
     parcel = shipdata[:parcel]
+
     if parcel[:weight] == 0
       parcel[:weight] = 1
     end
-
-
 
     address_from = {
       :object_purpose=>"PURCHASE",
@@ -33,13 +31,18 @@ class ShipmentsController < ApplicationController
       :email=>"orders@airtailor.com"
     }
 
-    # parcel = {
-    #   :length=>7,
-    #   :width=>5,
-    #   :height=>3,
-    #   :distance_unit=>:in,
-    #   :weight=>1,
-    #   :mass_unit=>:g
+    # address_to = {
+    #   :object_purpose=>"PURCHASE",
+    #   :name=>"Air Tailor",
+    #   :company=>"Air Tailor",
+    #   :street1=>"510 West 21st Street",
+    #   :street2=>"65DM8A",
+    #   :city=>"New York",
+    #   :state=>"NY",
+    #   :zip=>"10011",
+    #   :country=>"US",
+    #   :phone=>"+1 555 341 9393",
+    #   :email=>"orders@airtailor.com"
     # }
 
     shipment = {
@@ -49,9 +52,7 @@ class ShipmentsController < ApplicationController
       :parcel => parcel
     }
 
-    # binding.pry
     transaction = Shippo::Transaction.create(
-        # :shipment => shipdata,
         :shipment => shipment,
         :carrier_account => "d11e35a8792942fdb9b17d39246e3621",
         :servicelevel_token => "usps_priority"
@@ -59,6 +60,6 @@ class ShipmentsController < ApplicationController
 
     @order.update_attribute(:shipping_label, transaction.label_url)
     redirect_to :back
-  end
 
+  end
 end

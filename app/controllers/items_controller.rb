@@ -59,6 +59,9 @@ class ItemsController < ApplicationController
     end
   end
 
+
+
+
   def update
     @order = Order.find_by(id: params[:order_id])
     @measurement = Measurement.where(customer_name: @order.name).first
@@ -75,6 +78,7 @@ class ItemsController < ApplicationController
    #   redirect_to edit_user_path
    # end
   end
+
 
   private
 

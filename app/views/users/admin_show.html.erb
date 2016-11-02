@@ -90,28 +90,34 @@
 
 <!-- begin area to deal with welcome kits -->
   <div id="welcome-kit-section">
-<% if @order.complete == nil %>
-  <% if @order.user_id %>
-    <% @user = User.where(id: @order.user_id).first %>
-    <% if @alterations.any? { |s| s.include?('Welcome') }%>
-
-      <p>This order contains a welcome kit. Mark as completed?</p>
-      <%= form_for [@user, @order], {action: 'update'} do |f| %>
-        <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
-        <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
-        <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
-        <button id="welcome-kit-done" class="caps"><%= f.submit "Done" %></button>
+    <% if @order.welcome? %>
+      <% if @order.complete == nil %>
+        <p>This order contains a welcome kit. Mark as completed?</p>
+        <%= form_for [@owner, @order], {action: 'update'} do |f| %>
+          <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
+          <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
+          <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
+          <button id="welcome-kit-done" class="caps"><%= f.submit "Done" %></button>
+        <% end %>
       <% end %>
-
     <% end %>
-
-  <% end %>
-<% end %>
   </div>
-<% if @order.complete == true && @order.counter == 0 %>
-  <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
-  <% @order.update_attribute(:counter, 2) %>
-<% end %>
+
+  <% if @order.complete == true && @order.counter == 0 %>
+    <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
+
+      <form method='post' action='/shipment/create'>
+          <%= csrf_meta_tag %>
+          <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
+          <button class="welcome-kit-label" class="caps">Create Shipping Label?</button>
+      </form>
+
+      <% @order.update_attribute(:counter, 2) %>
+  <% end %>
+
+  <% if @order.shipping_label? %>
+    <a href="<%= @order.shipping_label %>" target="_blank"><button class="welcome-kit-label">Click Here for Shipping Label</button></a>
+  <% end %>
 <!-- end area to deal with welcome kits -->
   </div>
 <!-- end order assignment area -->
