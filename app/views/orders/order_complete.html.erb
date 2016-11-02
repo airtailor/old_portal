@@ -1,0 +1,26 @@
+<main>
+  <div class="section-header">
+    <h2>Orders / Archive </h2>
+  </div>
+
+<br><br><br><br>
+  <div class="container">
+    Congrats <%= @user.business_name %> on fulfilling Order <%= @order.shopify_id %>
+     <button id="packing-slip-btn">Print Packing Slip</button><br><br>
+
+     <br>
+
+
+    <div id="packing-slip-info">
+      <iframe src="<%= @order.shipping_label %>">hello</iframe>
+      <h3>Thank you for your Air Tailor order, <%= @customer.first_name %></h3>
+      <p>We hope everything arrived exactly as you expected and that you are pleased with our work. If you have any questions or would like to alter/repair more clothes using Air Tailor, please text us or email hello@airtailor.com. We look forward to serving you again soon, <%= @customer.first_name %>!</p>
+      <p id="packing-slip-info-shopify"><b>Order: <%= @order.shopify_id %></b></p>
+      <% @alterations.each do |alteration| %>
+          <li id="packing-slip-info-alt"><%= alteration %></li>
+        <% end %>
+      <img id="packing-slip-info-img" src="/assets/logo" alt="air tailor logo" id="logo">
+    </div>
+
+  </div>
+</main>

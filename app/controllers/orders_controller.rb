@@ -29,6 +29,13 @@ class OrdersController < ApplicationController
     end
   end
 
+  def order_complete
+    @user = User.find_by(id: params[:user_id])
+    @order = Order.find_by(id: params[:id])
+    @customer = Customer.where(order_id: @order.shopify_id).first
+    @alterations = JSON.parse(@order.alterations)
+  end
+
   def archive
     if current_user.is_admin?
       @users = User.all

@@ -14,8 +14,10 @@ Rails.application.routes.draw do
   post '/shipment/create' => 'shipments#makeshipment'
 
   get '/orders/new_orders' => 'orders#new_orders'
-
   get '/archive' => 'orders#archive'
+  get '/users/:user_id/orders/:id/order_complete' => 'orders#order_complete'
+
+
   resources :shipments
   resources :customers
 
