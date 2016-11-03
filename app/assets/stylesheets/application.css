@@ -341,18 +341,8 @@ nav li:last-of-type {
 
 
 /* order assignment page */
-#manage-orders {
-  width: 31%;
-  float: left;
-  margin-top: 30px;
-}
-
-#order-assignment {
-  width: 31%;
-  float: left;
-  margin-top: 30px;
-}
-
+#manage-orders,
+#order-assignment,
 #customer-details {
   width: 31%;
   float: left;
