@@ -47,6 +47,9 @@
     </div>
 
 
+
+
+
     <br>
 
 
@@ -71,7 +74,6 @@
           </select>
           <button type="submit" id="change-tailor">Submit</button><br>
         </form>
-      </div>
       <% else %>
         <form method="POST" action="/admin/order">
           <input type="hidden" name="_method" value="PUT">
@@ -89,10 +91,16 @@
           </select>
           <button type="submit" id="change-tailor">Change Tailor</button><br>
         </form><br>
-        <hr>
-    </div>
 
-    <br>
+
+    <hr>
+    <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a>
+  <% end %>
+<% end %>
+  </div>
+
+
+  <br>
 
 <!-- begin area to deal with welcome kits -->
   <div id="welcome-kit-section">
@@ -106,10 +114,8 @@
           <button id="welcome-kit-done" class="caps"><%= f.submit "Done" %></button>
         <% end %>
       <% end %>
-    <% else %>
-      <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a>
     <% end %>
-
+  </div>
 
   <% if @order.complete == true && @order.counter == 0 %>
     <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
@@ -128,27 +134,23 @@
   <% end %>
 <!-- end area to deal with welcome kits -->
   </div>
-  <% end %>
-<% end %>
-</div>
-</div>
 <!-- end order assignment area -->
 
-  <div id="customer-details">
-    <h3>Customer Details:</h3>
-    <% fullname = @customer.first_name + " " + @customer.last_name %>
-    <p><b class="red">Name:</b> <%= fullname %></p>
-    <p><b class="red">Email:</b> <%= @customer.email %></p>
-    <p><b class="red">Phone:</b> <%= @customer.phone %></p>
-    <p><b class="red">Address:</b>
-      <%= @customer.address1 %>, <%= @customer.address2 %><br>
-      <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
-    </p>
+<div id="customer-details">
+      <h3>Customer Details:</h3>
+      <% fullname = @customer.first_name + " " + @customer.last_name %>
+      <p><b class="red">Name:</b> <%= fullname %></p>
+      <p><b class="red">Email:</b> <%= @customer.email %></p>
+      <p><b class="red">Phone:</b> <%= @customer.phone %></p>
+      <p><b class="red">Address:</b>
+        <%= @customer.address1 %>, <%= @customer.address2 %><br>
+        <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
+      </p>
 
-    <button id="edit-customer"><a href="/customers/<%= @customer.id %>/edit">Edit Customer</a></button>
-  </div>
+      <button id="edit-customer"><a href="/customers/<%= @customer.id %>/edit">Edit Customer</a></button>
+    </div>
+</div>
 
-  </div>
-  <!-- end container div -->
-  <br><br><br><br>
+<!-- end container div -->
+<br><br><br><br>
 </main>
