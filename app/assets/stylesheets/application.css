@@ -342,25 +342,21 @@ nav li:last-of-type {
 
 /* order assignment page */
 #manage-orders {
-  width: 32%;
+  width: 31%;
   float: left;
   margin-top: 30px;
 }
 
 #order-assignment {
-  width: 64%;
+  width: 31%;
   float: left;
   margin-top: 30px;
 }
 
-#order-assignment {
-  overflow: auto;
-}
-
-#select-tailor {
-  clear: both;
-  margin-top: 20px;
+#customer-details {
+  width: 31%;
   float: left;
+  margin-top: 30px;
 }
 
 #manage-orders {
@@ -373,11 +369,6 @@ nav li:last-of-type {
   margin: 0;
   padding-top: 8px;
   padding-bottom: 8px;
-}
-
-#order-details, #customer-details {
-  width: 50%;
-  float: left;
 }
 
 .selected {
@@ -416,7 +407,7 @@ select:hover {
 }
 
 #order-assignment hr {
-  width: 60%;
+  width: 75%;
   margin-left: 0;
   margin-bottom: 30px;
 }

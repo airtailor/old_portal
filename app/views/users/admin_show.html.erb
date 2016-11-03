@@ -47,16 +47,7 @@
     </div>
 
 
-    <div id="customer-details">
-      <h3>Customer Details:</h3>
-      <% fullname = @customer.first_name + " " + @customer.last_name %>
-      <p><b class="red">Name:</b> <%= fullname %></p>
-      <p><b class="red">Address:</b>
-        <%= @customer.address1 %>, <%= @customer.address2 %><br>
-        <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
-      </p>
-      <button id="edit-customer"><a href="/customers/<%= @customer.id %>/edit">Edit Customer</a></button>
-    </div>
+
 
 
     <br>
@@ -107,7 +98,7 @@
   <% end %>
 <% end %>
   </div>
-</div>
+
 
   <br>
 
@@ -144,7 +135,19 @@
 <!-- end area to deal with welcome kits -->
   </div>
 <!-- end order assignment area -->
+
+<div id="customer-details">
+      <h3>Customer Details:</h3>
+      <% fullname = @customer.first_name + " " + @customer.last_name %>
+      <p><b class="red">Name:</b> <%= fullname %></p>
+      <p><b class="red">Address:</b>
+        <%= @customer.address1 %>, <%= @customer.address2 %><br>
+        <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
+      </p>
+      <button id="edit-customer"><a href="/customers/<%= @customer.id %>/edit">Edit Customer</a></button>
+    </div>
 </div>
+
 <!-- end container div -->
 <br><br><br><br>
 </main>
