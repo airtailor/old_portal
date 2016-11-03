@@ -39,6 +39,8 @@ gem 'send_sonar'
 gem 'shippo', '~> 2.0.4'
 gem 'airbrake'
 gem 'pdfkit'
+gem 'render_anywhere', :require => false
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
