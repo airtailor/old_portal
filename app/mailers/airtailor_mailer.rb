@@ -7,7 +7,7 @@ class AirtailorMailer < ApplicationMailer
 
     @customer = customer
     @order = order
-    kit = PDFKit.new "<img src=" + @order.inbound_label +">"
+    kit = PDFKit.new "<img src=" + @order.inbound_label.to_s + ">"
     kit.to_file("#{Rails.root}/public/kit.pdf")
 
     attachments["kit.pdf"] = File.read(Rails.root.join('public',"kit.pdf"))
