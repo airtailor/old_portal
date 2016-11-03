@@ -96,6 +96,22 @@
       </div>
     <% end %>
 
+    <% if @items.any? { |s| s.include?('Suit') } %>
+      <div class="alteration-list">
+        <div class="alterations-image">
+          <img id="suit" src="/assets/shirt.png" alt="">
+        </div>
+        <div class="alterations-text">
+          <h3 class="caps">Suits</h3>
+          <% @items.each do |item| %>
+            <% if item.include? "Suit" %>
+              <li><%= item %></li>
+            <% end %>
+          <% end %><br>
+        </div>
+      </div>
+    <% end %>
+
     <% if @items.any? { |s| s.include?('Tie') || s.include?('Necktie') } %>
       <div class="alteration-list">
         <div class="alterations-image">
