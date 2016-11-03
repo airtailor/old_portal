@@ -341,11 +341,26 @@ nav li:last-of-type {
 
 
 /* order assignment page */
-
-#order-assignment, #manage-orders {
-  width: 40%;
+#manage-orders {
+  width: 32%;
   float: left;
   margin-top: 30px;
+}
+
+#order-assignment {
+  width: 64%;
+  float: left;
+  margin-top: 30px;
+}
+
+#order-assignment {
+  overflow: auto;
+}
+
+#select-tailor {
+  clear: both;
+  margin-top: 20px;
+  float: left;
 }
 
 #manage-orders {
@@ -354,10 +369,15 @@ nav li:last-of-type {
 }
 
 #manage-orders p, #order-assignment p {
-  width: 60%;
+  width: 80%;
   margin: 0;
   padding-top: 8px;
   padding-bottom: 8px;
+}
+
+#order-details, #customer-details {
+  width: 50%;
+  float: left;
 }
 
 .selected {
@@ -370,11 +390,16 @@ select:hover {
 
 #go-to-order,
 #change-tailor,
-#welcome-kit-done {
+#welcome-kit-done,
+#edit-customer {
   width: 100px;
   height: 30px;
   background-color: #D8EDFC;
   border-radius: 10px;
+}
+
+#edit-customer {
+  margin-top: 20px;
 }
 
 #change-tailor {
@@ -791,9 +816,20 @@ button#check-garment:hover, button#fulfill-order:hover {
 }
 
 #packing-slip-info {
-  margin-top: 10%;
+  position: relative;
   width: 400px;
+}
+
+#packing-slip {
+  top: 800px;
+  position: absolute;
   font-family: raleway;
+}
+
+#packing-slip-label {
+  top: 0;
+  width: 100%;
+  margin-bottom: 300px;
 }
 
 #packing-slip-info h3 {
@@ -1048,7 +1084,7 @@ input.measurement {
   margin-bottom: 20px;
 }
 
-/* edit user page */
+/* edit user / edit customer page */
 
 #edit-user-copy {
   width: 30%;
@@ -1056,6 +1092,10 @@ input.measurement {
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 30px;
+}
+
+.customer-edit {
+  margin-left: 30px;
 }
 
 #edit-user-form {

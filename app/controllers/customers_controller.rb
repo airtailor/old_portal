@@ -20,11 +20,19 @@ before_filter :authorize
   end
 
   def edit
-
+    @customer = Customer.find_by(id: params[:id])
   end
 
   def update
+    @customer = Customer.find_by(id: params[:id])
+    @customer.assign_attributes(customer_params)
 
+   if @customer.valid?
+     @customer.update_attributes(customer_params)
+     redirect_to "/orders/new_orders"
+   else
+     redirect_to edit_customer_path
+    end
   end
 
   def destroy
@@ -34,9 +42,8 @@ before_filter :authorize
   private
 
   def customer_params
-    params.require(:customer).permit()
+    params.require(:customer).permit(:first_name, :last_name, :email, :address1, :address2, :city, :state, :country, :zip, :phone)
   end
-
 
 
 end

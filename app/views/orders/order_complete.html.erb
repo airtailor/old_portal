@@ -12,7 +12,7 @@
 
 
     <div id="packing-slip-info">
-      <iframe src="<%= @order.shipping_label %>">hello</iframe>
+      <img id="packing-slip-label" src="<%= @order.shipping_label %>">
       <h3>Thank you for your Air Tailor order, <%= @customer.first_name %></h3>
       <p>We hope everything arrived exactly as you expected and that you are pleased with our work. If you have any questions or would like to alter/repair more clothes using Air Tailor, please text us or email hello@airtailor.com. We look forward to serving you again soon, <%= @customer.first_name %>!</p>
       <p id="packing-slip-info-shopify"><b>Order: <%= @order.shopify_id %></b></p>
@@ -21,6 +21,8 @@
         <% end %>
       <img id="packing-slip-info-img" src="/assets/logo" alt="air tailor logo" id="logo">
     </div>
+
+
 
   </div>
 </main>

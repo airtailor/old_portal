@@ -2,6 +2,7 @@ require 'shippo'
 require 'shippo/api/category'
 require 'shippo/exceptions/api_error'
 require 'json'
+require 'pdfkit'
 
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
@@ -139,7 +140,8 @@ class ApplicationController < ActionController::Base
     transaction = Shippo::Transaction.create(
         :shipment => shipment,
         :carrier_account => "d11e35a8792942fdb9b17d39246e3621",
-        :servicelevel_token => "usps_priority"
+        :servicelevel_token => "usps_priority",
+        :label_file_type => "PNG"
     )
 
     @order.update_attribute(:inbound_label, transaction.label_url)

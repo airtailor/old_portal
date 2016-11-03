@@ -1,0 +1,28 @@
+<main>
+  <div class="section-header">
+      <h2>Edit Customer</h2>
+  </div>
+
+
+  <div class="container">
+
+    <div id="edit-user-form" class="customer-edit">
+        <%= link_to '< Back', :back, :class => "underline blue" %>
+        <%= form_for @customer, url: {action: 'update'} do |f| %>
+            <p>Email:</p> <%= f.text_field :email %>
+            <p>First Name:</p> <%= f.text_field :first_name %>
+            <p>Last Name:</p> <%= f.text_field :last_name %>
+            <p>Phone:</p> <%= f.text_field :phone %><br><br><br>
+
+            <p>Street:</p> <%= f.text_field :address1 %>
+            <p>Unit:</p> <%= f.text_field :address2 %>
+            <p>City:</p> <%= f.text_field :city %>
+            <p>State:</p> <%= f.text_field :state %>
+            <p>Zip:</p> <%= f.text_field :zip %>
+        <%= f.submit "Update", data: { confirm: "You sure?" } %>
+
+      <% end %>
+
+    </div>
+  </div>
+</main>

@@ -27,65 +27,88 @@
 <!-- begin order assignment area -->
 <% if @order %>
   <div id="order-assignment">
-    <h3>Order Details:</h3>
-    <p><b class="red">Shopify Order ID:</b> <%= @order.shopify_id %></p>
-    <p><b class="red">Order Date:</b> <%= @order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d %Y at %I:%M %p") %></p>
-    <p><b class="red">Customer:</b> <%= @customer.first_name %> <%= @customer.last_name %></p>
-    <p><b class="red">Total Charges:</b> $<%= @order.total %></p>
-    <p><b class="red">Notes:</b>
-      <% if @order.note? %>
-        <%= @order.note %>
-      <% else %>
-        n/a
+
+    <div id="order-details">
+      <h3>Order Details:</h3>
+      <p><b class="red">Shopify Order ID:</b> <%= @order.shopify_id %></p>
+      <p><b class="red">Order Date:</b> <%= @order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d %Y at %I:%M %p") %></p>
+      <p><b class="red">Total Charges:</b> $<%= @order.total %></p>
+      <p><b class="red">Notes:</b>
+        <% if @order.note? %>
+          <%= @order.note %>
+        <% else %>
+          n/a
+        <% end %>
+      </p>
+      <p><b class="red">Alterations:</b></p>
+      <% @alterations.each do |alteration| %>
+        <li><%= alteration %><br></li>
       <% end %>
-    </p>
-    <p><b class="red">Alterations:</b></p>
-    <% @alterations.each do |alteration| %>
-      <li><%= alteration %><br></li>
-    <% end %>
+    </div>
+
+
+    <div id="customer-details">
+      <h3>Customer Details:</h3>
+      <% fullname = @customer.first_name + " " + @customer.last_name %>
+      <p><b class="red">Name:</b> <%= fullname %></p>
+      <p><b class="red">Address:</b>
+        <%= @customer.address1 %>, <%= @customer.address2 %><br>
+        <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
+      </p>
+      <button id="edit-customer"><a href="/customers/<%= @customer.id %>/edit">Edit Customer</a></button>
+    </div>
+
 
     <br>
-<h3>Select Tailor:</h3>
-  <% if @order.user_id == nil %>
-    <form method="POST" action="/admin/order">
-      <input type="hidden" name="_method" value="PUT">
-      <input type="hidden" name="order_id" value="<%= @order.id %>">
+
+
+    <div id="select-tailor">
+      <h3>Select Tailor:</h3>
+      <% if @order.user_id == nil %>
+        <form method="POST" action="/admin/order">
+          <input type="hidden" name="_method" value="PUT">
+          <input type="hidden" name="order_id" value="<%= @order.id %>">
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
           <select name="new_owner">
-          <option>
-            <% if @owner %>
-              <%= @owner.business_name %>
+            <option>
+              <% if @owner %>
+                <%= @owner.business_name %>
+              <% end %>
+               - <%= @order.user_id %>
+             </option>
+            <% @users.each do |user| %>
+              <option value="<%= user.id %>"><%= user.business_name %></option>
             <% end %>
-             - <%= @order.user_id %>
-           </option>
-          <% @users.each do |user| %>
-            <option value="<%= user.id %>"><%= user.business_name %></option>
-          <% end %>
-        </select>
-        <button type="submit" id="change-tailor">Submit</button><br>
-    </form>
-  <% else %>
-    <form method="POST" action="/admin/order">
-      <input type="hidden" name="_method" value="PUT">
-      <input type="hidden" name="order_id" value="<%= @order.id %>">
+          </select>
+          <button type="submit" id="change-tailor">Submit</button><br>
+        </form>
+      <% else %>
+        <form method="POST" action="/admin/order">
+          <input type="hidden" name="_method" value="PUT">
+          <input type="hidden" name="order_id" value="<%= @order.id %>">
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
           <select name="new_owner">
-          <option>
-            <% if @owner %><%= @owner.business_name %><% end %>
-             - <%= @order.user_id %>
-           </option>
-          <% @users.each do |user| %>
-          <option value="<%= user.id %>"><%= user.business_name %></option>
-          <% end %>
-        </select>
-        <button type="submit" id="change-tailor">Change Tailor</button><br>
-    </form><br>
+            <option>
+              <% if @owner %><%= @owner.business_name %><% end %>
+               - <%= @order.user_id %>
+             </option>
+            <% @users.each do |user| %>
+            <option value="<%= user.id %>"><%= user.business_name %></option>
+            <% end %>
+          </select>
+          <button type="submit" id="change-tailor">Change Tailor</button><br>
+        </form><br>
+
+
     <hr>
     <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a>
   <% end %>
 <% end %>
+  </div>
+</div>
+
   <br>
 
 <!-- begin area to deal with welcome kits -->
