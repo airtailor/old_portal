@@ -14,36 +14,22 @@ class ShipmentsController < ApplicationController
     parcel = shipdata[:parcel]
 
     if parcel[:weight] == 0
-      parcel[:weight] = 1
+      parcel[:weight] = 57
     end
 
     address_from = {
       :object_purpose=>"PURCHASE",
-      :name=> @user.user_name,
-      :company=>"Air Tailor",
-      :street1=>"510 West 21st Street",
-      :street2=>"65DM8A",
-      :city=>"New York",
-      :state=>"NY",
-      :zip=>"10011",
-      :country=>"US",
-      :phone=>"+1 555 341 9393",
-      :email=>"orders@airtailor.com"
+      :name=> user.user_name,
+      :company=> user.business_name,
+      :street1=> user.street,
+      :street2=> user.unit,
+      :city=> user.city,
+      :state=> user.state,
+      :zip=> user.zip,
+      :country=> "US",
+      :phone=> user.phone,
+      :email=> user.email
     }
-
-    # address_to = {
-    #   :object_purpose=>"PURCHASE",
-    #   :name=>"Air Tailor",
-    #   :company=>"Air Tailor",
-    #   :street1=>"510 West 21st Street",
-    #   :street2=>"65DM8A",
-    #   :city=>"New York",
-    #   :state=>"NY",
-    #   :zip=>"10011",
-    #   :country=>"US",
-    #   :phone=>"+1 555 341 9393",
-    #   :email=>"orders@airtailor.com"
-    # }
 
     shipment = {
       :object_purpose => 'PURCHASE',

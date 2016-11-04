@@ -108,16 +108,16 @@ class ApplicationController < ActionController::Base
 
     address_to = {
       :object_purpose=>"PURCHASE",
-      :name=>"Air Tailor",
-      :company=>"Air Tailor",
-      :street1=>"510 West 21st Street",
-      :street2=>"65DM8A",
-      :city=>"New York",
-      :state=>"NY",
-      :zip=>"10011",
-      :country=>"US",
-      :phone=>"+1 555 341 9393",
-      :email=>"orders@airtailor.com"
+      :name=> user.user_name,
+      :company=> user.business_name,
+      :street1=> user.street,
+      :street2=> user.unit,
+      :city=> user.city,
+      :state=> user.state,
+      :zip=> user.zip,
+      :country=> "US",
+      :phone=> user.phone,
+      :email=> user.email
     }
 
     parcel = {
@@ -125,7 +125,7 @@ class ApplicationController < ActionController::Base
         :width => 5,
         :height => 3,
         :distance_unit => :in,
-        :weight => 1,
+        :weight => order.weight,
         :mass_unit => :g
     }
 

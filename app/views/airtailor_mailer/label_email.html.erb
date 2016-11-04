@@ -4,9 +4,34 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>Hey <%= @customer.first_name %>,</p>
-    <p>Click here for your Air Tailor shipping label: <a href="<%= @order.inbound_label %>"><%= @order.inbound_label %></a></p>
-    <p>Thanks again!</p>
-    <p>Air Tailor</p>
+    <p>Hi <%= @customer.first_name %>,</p>
+
+    <p>Thanks for your Air Tailor order! Here's instructions on getting your clothes to us:</p>
+    <ol>
+    <li>Print the attached PDF. It contains a packing slip and pre-paid United States Postal Service shipping label</li>
+    <li>Cut it in half and put the packing slip in with your order</li>
+    <li>Tape the label to the package and ship via USPS within 10 days</li>
+    </ol>
+    <p>The delivery can be tracked here: <%= @order.tracker %></p>
+
+    <p>We are so excited to serve you! If you have any questions, please text or call us at (917) 521-5970.</p>
+
+    <p>Thanks <%= @customer.first_name %>!</p>
+
+    <p>Best,</p>
+    <p>Air Tailor<br>
+    http://www.airtailor.com</p>
+    <br>
+    <hr>
+    <br>
+
+    <p>Please note that Air Tailor is not responsible for lost, stolen or damaged shipments. The attached pre-paid USPS label is complimentary and provided for your convenience but does not include insurance. If you would prefer to pay for your own shipping, please include your order number (#3460) and send to the following address:</p>
+
+    <p>Air Tailor (Incoming)<br>
+    510 West 21st St.<br>
+    65DM8A<br>
+    New York, NY 10011<br>
+    Phone: (888) 630-6610</p>
+
   </body>
 </html>
