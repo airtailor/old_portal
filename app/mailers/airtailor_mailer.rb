@@ -12,6 +12,6 @@ class AirtailorMailer < ApplicationMailer
     kit.to_file("#{Rails.root}/public/kit.pdf")
 
     attachments["kit.pdf"] = File.read(Rails.root.join('public',"kit.pdf"))
-    mail(to: "brian@airtailor.com", subject: 'Sample Portal Email')
+    mail(to: @customer.email.to_s, subject: 'Sample Portal Email')
   end
 end
