@@ -19,16 +19,16 @@ class ShipmentsController < ApplicationController
 
     address_from = {
       :object_purpose=>"PURCHASE",
-      :name=> user.user_name,
-      :company=> user.business_name,
-      :street1=> user.street,
-      :street2=> user.unit,
-      :city=> user.city,
-      :state=> user.state,
-      :zip=> user.zip,
+      :name=> @user.user_name,
+      :company=> @user.business_name,
+      :street1=> @user.street,
+      :street2=> @user.unit,
+      :city=> @user.city,
+      :state=> @user.state,
+      :zip=> @user.zip,
       :country=> "US",
-      :phone=> user.phone,
-      :email=> user.email
+      :phone=> @user.phone,
+      :email=> @user.email
     }
 
     shipment = {

@@ -12,6 +12,6 @@ class AirtailorMailer < ApplicationMailer
     label.to_file("#{Rails.root}/public/label.pdf")
 
     attachments["label.pdf"] = File.read(Rails.root.join('public',"label.pdf"))
-    mail(to: "bdflynny@gmail.com", subject: 'Air Tailor Shipping Label')
+    mail(to: "bdflynny@gmail.com", subject: "Ship Your Clothes To Air Tailor! (" + @order.shopify_id + ")")
   end
 end
