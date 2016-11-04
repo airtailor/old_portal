@@ -8,7 +8,7 @@ class AirtailorMailer < ApplicationMailer
     @customer = customer
     @order = order
     # html=render_to_string(:partial=> "attachment")
-    kit = PDFKit.new "<img src=" + @order.inbound_label.to_s + " style='width:40%;padding-bottom:20px;border-bottom:1px dashed black'><h2 style='text-align:center;margin-top:100px;'>" + @order.shopify_id +"</h2>"
+    kit = PDFKit.new "<img src=" + @order.inbound_label.to_s + " style='width:40%;padding-bottom:20px;border-bottom:1px dashed black'><h2 style='text-align:center;padding-top:100px;'>" + @order.shopify_id.to_s + "</h2>"
     kit.to_file("#{Rails.root}/public/kit.pdf")
 
     attachments["kit.pdf"] = File.read(Rails.root.join('public',"kit.pdf"))
