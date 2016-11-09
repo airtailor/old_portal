@@ -120,6 +120,7 @@ class ApplicationController < ActionController::Base
       :email=> user.email
     }
 
+
     parcel = {
         :length => 7,
         :width => 5,
@@ -128,7 +129,6 @@ class ApplicationController < ActionController::Base
         :weight => order.weight,
         :mass_unit => :g
     }
-
 
     shipment = {
         :object_purpose => 'PURCHASE',
@@ -144,7 +144,8 @@ class ApplicationController < ActionController::Base
         :label_file_type => "PNG"
     )
 
-    @order.update_attribute(:inbound_label, transaction.label_url)
+    order.update_attribute(:inbound_label, transaction.label_url)
+    order.update_attribute(:tracker, transaction.tracking_url_provider)
 
   end
 

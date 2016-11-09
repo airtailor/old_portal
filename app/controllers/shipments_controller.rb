@@ -13,9 +13,9 @@ class ShipmentsController < ApplicationController
     address_to[:country] = "US"
     parcel = shipdata[:parcel]
 
-    if parcel[:weight] == 0
-      parcel[:weight] = 57
-    end
+
+      parcel[:weight] = "57"
+
 
     address_from = {
       :object_purpose=>"PURCHASE",

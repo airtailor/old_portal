@@ -1,7 +1,8 @@
 <main>
 <div class="section-header">
   <h2>New Orders / <%= @order.shopify_id %></h2>
-  <%= @order.weight %>
+  <%= @order.welcome %>
+  <%= @order.complete %>
 </div>
 
 <div class="container">
@@ -31,7 +32,9 @@
 
     <div id="order-details">
       <h3>Order Details:</h3>
+      <% pounds = (@order.weight.to_f*0.00220462).round(2) %>
       <p><b class="red">Shopify Order ID:</b> <%= @order.shopify_id %></p>
+      <p><b class="red">Order Weight:</b> <%= pounds %> lbs</p>
       <p><b class="red">Order Date:</b> <%= @order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d %Y at %I:%M %p") %></p>
       <p><b class="red">Total Charges:</b> $<%= @order.total %></p>
       <p><b class="red">Notes:</b>
@@ -46,9 +49,6 @@
         <li><%= alteration %><br></li>
       <% end %>
     </div>
-
-
-
 
 
     <br>
@@ -104,29 +104,53 @@
   <br>
 
 <!-- begin area to deal with welcome kits -->
+
   <div id="welcome-kit-section">
-    <% if @order.welcome? %>
-      <% if @order.complete == nil %>
-        <p>This order contains a welcome kit. Mark as completed?</p>
-        <%= form_for [@owner, @order], {action: 'update'} do |f| %>
-          <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
-          <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
-          <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
-          <button id="welcome-kit-done" class="caps"><%= f.submit "Done" %></button>
+  <% if @owner %>
+    <% if @order.welcome == nil %>
+        <% if @alterations.any? { |s| s.include?('Welcome') } %>
+          <p>This order contains a welcome kit. Is it <i>just</i> a welcome kit or an order with a kit?</p>
+          <%= form_for [@owner, @order], {action: 'update'} do |f| %>
+            <%= f.text_field :welcome, :value => 'true', :type => "hidden" %>
+            <button id="welcome-kit-done" class="caps"><%= f.submit "Just Kit" %></button>
+            <%= @order.welcome %>
+          <% end %>
+          <br>
+          <%= form_for [@owner, @order], {action: 'update'} do |f| %>
+            <%= f.text_field :welcome, :value => 'false', :type => "hidden" %>
+            <button id="welcome-kit-done" class="caps"><%= f.submit "Kit + Order" %></button>
+          <% end %>
+        <% else %>
+          <% @order.update_attribute(:welcome, false) %>
         <% end %>
       <% end %>
     <% end %>
   </div>
 
-  <% if @order.complete == true && @order.counter == 0 %>
-    <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
+  <% if @owner %>
+    <% if @order.welcome == true && @order.complete == nil %>
+      <p>Confirm welcome kit.</p>
+      <%= form_for [@owner, @order], {action: 'update'} do |f| %>
+        <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
+        <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
+        <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
+        <button id="welcome-kit-done" class="caps"><%= f.submit "Confirmed" %></button>
+      <% end %>
+    <% end %>
+  <% end %>
 
+  <% if @owner %>
+    <% if @order.welcome == true && @order.complete == true && @order.shipping_label == nil %>
       <form method='post' action='/shipment/create'>
           <%= csrf_meta_tag %>
           <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
           <button class="welcome-kit-label" class="caps">Create Shipping Label?</button>
       </form>
+    <% end %>
+  <% end %>
 
+  <% if @order.complete == true && @order.counter == 0 %>
+    <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
       <% @order.update_attribute(:counter, 2) %>
   <% end %>
 

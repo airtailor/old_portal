@@ -21,23 +21,33 @@ class UsersController < ApplicationController
         @order.update_attribute(:counter, 0)
       end
 
+      if @order.weight == "0"
+        @order.update_attribute(:weight, "57")
+      end
+
+      if @order.inbound_counter != 1
+        @order.update_attribute(:inbound_counter, 0)
+      end
+
       @customer = Customer.where(order_id: @order.shopify_id).first
       @owner = User.find_by(id: @order.user_id)
       @alterations = JSON.parse(@order.alterations)
 
-      if @order.complete == nil
-        if @owner
-          if @alterations.any? { |s| s.include?('Welcome') }
-            @order.update_attribute(:welcome, true)
-          else
-            @order.update_attribute(:welcome, false)
-          end
-        end
-      end
+
+      # if @order.complete == nil
+      #   if @owner
+      #     if @alterations.any? { |s| s.include?('Welcome') }
+      #       @order.update_attribute(:welcome, true)
+      #     else
+      #       @order.update_attribute(:welcome, false)
+      #     end
+      #   end
+      # end
 
       if @owner && @order.welcome == false
         tailorShippingInfo(@owner, @order, @customer)
         AirtailorMailer.label_email(@customer, @order).deliver
+        @order.update_attribute(:inbound_counter, 1)
       end
 
 
