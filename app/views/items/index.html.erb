@@ -2,6 +2,7 @@
 
 <div class="section-header order-show">
   <h2>Orders / <a href="/users/<%= @user.id%>/orders"><%= @user.business_name %></a> / <%= @order.shopify_id %></h2>
+  <%= @customer.first_name + " " + @customer.last_name %>
   <% if current_user.is_admin? %>
     <%= link_to "delete order", [@user, @order], method: :delete,
                                   data: { confirm: "Are you sure?" } %>
