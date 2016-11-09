@@ -65,7 +65,7 @@ $(document).on("click", "#packing-slip-btn", function() {
 $(document).ready(function(){
   setTimeout(function(){
     $('.alert').remove();
-  }, 5000);
+  }, 3000);
  })
 
 
