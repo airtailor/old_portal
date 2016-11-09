@@ -112,8 +112,10 @@
           <p>This order contains a welcome kit. Is it <i>just</i> a welcome kit or an order with a kit?</p>
           <%= form_for [@owner, @order], {action: 'update'} do |f| %>
             <%= f.text_field :welcome, :value => 'true', :type => "hidden" %>
+            <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
+            <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
+            <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
             <button id="welcome-kit-done" class="caps"><%= f.submit "Just Kit" %></button>
-            <%= @order.welcome %>
           <% end %>
           <br>
           <%= form_for [@owner, @order], {action: 'update'} do |f| %>
@@ -126,18 +128,6 @@
       <% end %>
     <% end %>
   </div>
-
-  <% if @owner %>
-    <% if @order.welcome == true && @order.complete == nil %>
-      <p>Confirm welcome kit.</p>
-      <%= form_for [@owner, @order], {action: 'update'} do |f| %>
-        <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
-        <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
-        <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
-        <button id="welcome-kit-done" class="caps"><%= f.submit "Confirmed" %></button>
-      <% end %>
-    <% end %>
-  <% end %>
 
   <% if @owner %>
     <% if @order.welcome == true && @order.complete == true && @order.shipping_label == nil %>
