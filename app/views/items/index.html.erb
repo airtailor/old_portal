@@ -11,6 +11,10 @@
 
 
 <div class="container">
+  <br>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
 
 <!-- begin item info section -->
 <div id="item-section">
@@ -201,6 +205,7 @@
     <% end %>
 
     <% if @order.arrived == true && @order.complete == nil %>
+
       <form method='post' action='/shipment/create'>
         <%= csrf_meta_tag %>
         <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>

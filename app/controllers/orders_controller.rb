@@ -59,6 +59,7 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find_by(id: params[:id])
     @order.update_attributes(order_params)
+    flash[:success] = "Order Successfully Updated!"
     redirect_to :back
 
   end
