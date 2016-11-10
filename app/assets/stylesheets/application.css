@@ -836,10 +836,8 @@ button#check-garment:hover, button#fulfill-order:hover {
 }
 
 #packing-slip {
-  position: absolute;
-  top: 900px;
   width: 530px;
-  left: 30px;
+  margin: 0 auto;
   font-family: raleway;
 }
 
@@ -861,7 +859,6 @@ button#check-garment:hover, button#fulfill-order:hover {
 #packing-slip-info ul {
   list-style-type: none;
   text-align: center;
-  margin-right: 30px;
 }
 
 #packing-slip-info li {
@@ -870,7 +867,6 @@ button#check-garment:hover, button#fulfill-order:hover {
 
 #packing-slip-info-shopify {
   text-align: center;
-  margin-right: 30px;
 }
 
 #packing-slip-info-alt {
@@ -878,7 +874,6 @@ button#check-garment:hover, button#fulfill-order:hover {
 
 #packing-slip-info-img {
   display: block;
-  text-align: center;
   width: 100px;
   margin: auto;
   margin-top: 20px;
