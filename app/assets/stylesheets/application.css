@@ -389,7 +389,8 @@ select:hover {
   border-radius: 10px;
 }
 
-#welcome-kit-done {
+#welcome-kit-section form {
+  width: 200px;
   display: inline;
   margin-left: 10px;
 }
