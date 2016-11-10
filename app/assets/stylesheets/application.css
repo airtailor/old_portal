@@ -30,6 +30,9 @@ body {
 }
 
 .alert {
+  position: absolute;
+  top: 80px;
+  width: 80%;
   background-color: lightgreen;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -138,7 +141,9 @@ main {
 }
 
 .container {
-  padding-top: 50px;
+  margin-top: 50px;
+  overflow: auto;
+  height: 100%;
 }
 
 /* login page */
@@ -866,9 +871,10 @@ button#check-garment:hover, button#fulfill-order:hover {
   float: left;
   text-align: center;
   margin-top: 20px;
-  margin-right: 10%;
+  margin-right: 20px;
   position: relative;
   min-width: 375px;
+  min-height: 100vh;
 }
 
 #customer-measurements button {
