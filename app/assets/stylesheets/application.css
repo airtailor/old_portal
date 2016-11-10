@@ -446,6 +446,7 @@ select:hover {
 
 }
 
+#welcome-kit-button,
 .welcome-kit-label {
   width: 200px;
   margin-top: 10px;
@@ -454,6 +455,7 @@ select:hover {
   border-radius: 10px;
 }
 
+#welcome-kit-button:hover
 .welcome-kit-label:hover {
   cursor: pointer;
   width: 201px;
@@ -838,6 +840,7 @@ button#check-garment:hover, button#fulfill-order:hover {
 #packing-slip {
   width: 530px;
   margin: 0 auto;
+  margin-top: 50px;
   font-family: raleway;
 }
 
@@ -858,7 +861,6 @@ button#check-garment:hover, button#fulfill-order:hover {
 
 #packing-slip-info ul {
   list-style-type: none;
-  text-align: center;
 }
 
 #packing-slip-info li {
@@ -870,6 +872,7 @@ button#check-garment:hover, button#fulfill-order:hover {
 }
 
 #packing-slip-info-alt {
+  text-align: center;
 }
 
 #packing-slip-info-img {

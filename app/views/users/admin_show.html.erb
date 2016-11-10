@@ -152,11 +152,14 @@
   <% end %>
 
   <% if @order.shipping_label? %>
-    <a href="<%= @order.shipping_label %>" target="_blank"><button class="welcome-kit-label">Click Here for Shipping Label</button></a><br>
+    <img src="<%= @order.shipping_label %>" id="welcome-kit-label" style="display:none">
+    <button id="welcome-kit-button">Click Here for Shipping Label</button><br><br>
   <% end %>
 <!-- end area to deal with welcome kits -->
   </div>
 <!-- end order assignment area -->
+
+
 </div>
 
 <div id="customer-details">
