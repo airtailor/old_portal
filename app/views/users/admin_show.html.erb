@@ -109,7 +109,7 @@
   <% if @owner %>
     <% if @order.welcome == nil %>
         <% if @alterations.any? { |s| s.include?('Welcome') } %>
-          <p>This order contains a welcome kit. Is it <b>just a kit</b> or a <b>kit + order</b>?</p>
+          <p>This order contains a welcome kit. Is it <b>just a kit</b>? Or is it a <b>kit + order</b>?</p>
           <%= form_for [@owner, @order], {action: 'update'} do |f| %>
             <%= f.text_field :welcome, :value => 'true', :type => "hidden" %>
             <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>

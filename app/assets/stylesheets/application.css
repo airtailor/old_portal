@@ -389,6 +389,11 @@ select:hover {
   border-radius: 10px;
 }
 
+#welcome-kit-done {
+  display: inline-block;
+  margin-left: 10px;
+}
+
 #edit-customer {
   margin-top: 20px;
 }
@@ -416,6 +421,7 @@ select:hover {
   width: 100%;
   background-color: #D8EDFC;
   border: none;
+
 }
 
 .welcome-kit-label {
