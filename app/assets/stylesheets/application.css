@@ -837,7 +837,7 @@ button#check-garment:hover, button#fulfill-order:hover {
 
 #packing-slip {
   top: 900px;
-  left: 40px;
+  left: 20px;
   position: absolute;
   font-family: raleway;
 }
