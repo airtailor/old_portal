@@ -832,7 +832,7 @@ button#check-garment:hover, button#fulfill-order:hover {
 
 #packing-slip-info {
   position: relative;
-  width: 500px;
+  width: 600px;
 }
 
 #packing-slip {
@@ -845,7 +845,6 @@ button#check-garment:hover, button#fulfill-order:hover {
 #packing-slip-label {
   top: 0;
   width: 100%;
-  margin-bottom: 300px;
 }
 
 #packing-slip-info h2 {
@@ -855,7 +854,7 @@ button#check-garment:hover, button#fulfill-order:hover {
 }
 
 #packing-slip-info p {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 #packing-slip-info-shopify {
