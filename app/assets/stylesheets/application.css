@@ -832,12 +832,12 @@ button#check-garment:hover, button#fulfill-order:hover {
 
 #packing-slip-info {
   position: relative;
-  width: 600px;
+  width: 590px;
 }
 
 #packing-slip {
   top: 900px;
-  left: 50px;
+  left: 40px;
   position: absolute;
   font-family: raleway;
 }
