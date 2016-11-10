@@ -837,8 +837,8 @@ button#check-garment:hover, button#fulfill-order:hover {
 
 #packing-slip {
   top: 900px;
-  left: 20px;
-  width: 95%;
+  left: 30px;
+  width: 90%;
   position: absolute;
   font-family: raleway;
 }
@@ -855,6 +855,10 @@ button#check-garment:hover, button#fulfill-order:hover {
 }
 
 #packing-slip-info p {
+  font-size: 24px;
+}
+
+#packing-slip-info li {
   font-size: 18px;
 }
 
