@@ -28,6 +28,7 @@
 <div id="all-messages">
   <% @messages.sort_by{|t| - t.created_at.to_i}.first(10).each do |message| %>
     <div id="message-body">
+
       <% if message.user_id == @admin.id %>
         <div id="admin-message">
         <b><%= @admin.business_name %> // </b>
@@ -35,6 +36,7 @@
         <div id="tailor-message">
         <b><%= @business.business_name %> // </b>
       <% end %>
+
         <% if message.order_id %>
         <% @order = Order.where(shopify_id: message.order_id).first %>
           <a href="/users/<%= @business.id %>/orders/<%= @order.id %>/items"><b>Order: <%= message.order_id %> //</b></a>

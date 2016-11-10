@@ -16,35 +16,42 @@
 
   <% @conversations.each do |conversation| %>
     <% @users.each do |user| %>
-    <div class="order-row">
-    <% if conversation.recipient_id == user.id.to_s %>
-    <a href="/conversations/<%= conversation.id %>/messages">
-    <% end %>
-      <div class="order-column">
-        <%= user.business_name %>
-      </div>
-
-      <div class="order-column">
+      <div class="order-row">
         <% if conversation.recipient_id == user.id.to_s %>
-          <%= conversation.messages.where(read: false).count %>
-        <% else %>
-          <%= form_for conversation do |f| %>
-            <%= f.text_field :recipient_id, :value => user.id, :type => 'hidden' %>
-            <%= f.text_field :sender_id, :value => current_user.id, :type => 'hidden' %>
-            <%= f.submit "Start Conversation", :id => "start_convo" %>
+          <a href="/conversations/<%= conversation.id %>/messages">
+        <% end %>
+
+        <div class="order-column">
+          <%= user.business_name %>
+        </div>
+
+        <div class="order-column">
+          <% if conversation.recipient_id == user.id.to_s %>
+            <%= conversation.messages.where(read: false).count %>
+          <% else %>
+            <%= form_for conversation do |f| %>
+              <%= f.text_field :recipient_id, :value => user.id, :type => 'hidden' %>
+              <%= f.text_field :sender_id, :value => current_user.id, :type => 'hidden' %>
+              <%= f.submit "Start Conversation", :id => "start_convo" %>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
 
-      <div class="order-column">
-        <% if conversation.recipient_id == user.id.to_s %>
-          <%= conversation.messages.last.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y at %I:%M %p") %>
-        <% else %>
-        n/a
-        <% end %>
+        <div class="order-column">
+          <% if conversation.recipient_id == user.id.to_s %>
+            <%= conversation.messages.last.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y at %I:%M %p") %>
+          <% else %>
+          n/a
+          <% end %>
+        </div>
+
+        <div class="order-column">
+          <button><%= link_to "Delete Conversation", @conversation, method: :delete,
+                                  data: { confirm: "You sure?" } %></button>
+        </div>
+
+        </a>
       </div>
-      </a>
-    </div>
     <% end %>
   <% end %>
 
@@ -61,7 +68,7 @@
 
     <%= form_for @conversation do |f| %>
         <%= f.text_field :recipient_id, :value => current_user.id, :type => 'hidden' %>
-        <%= f.text_field :sender_id, :value => 2, :type => 'hidden' %>
+        <%= f.text_field :sender_id, :value => 1, :type => 'hidden' %>
         <%= f.submit "Click Here", :id => "start_convo" %>
     <% end %>
   </div>

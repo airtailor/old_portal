@@ -17,9 +17,11 @@ class MessagesController < ApplicationController
       @conversation = Conversation.find_by(recipient_id: current_user.id)
       @messages = Message.where(conversation_id: @conversation.id)
       @unread = @messages.where(user_read: false)
+
       @unread.each do |x|
         x.update_attribute(:user_read, true)
       end
+
       @business = User.find_by(id: current_user.id)
       @admin = User.find_by(id: @conversation.sender_id)
     else
