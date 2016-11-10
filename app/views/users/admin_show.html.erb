@@ -1,13 +1,6 @@
 <main>
 <div class="section-header">
   <h2>New Orders / <%= @order.shopify_id %></h2>
-  <% if @order.welcome == nil %>
-    farts
-  <% else %>
-    <%= @order.welcome %>
-  <% end %>
-
-
 </div>
 
 <div class="container">
@@ -82,7 +75,7 @@
             <% end %>
           </select>
           <button type="submit" id="change-tailor">Submit</button><br>
-        </form>
+        </form><br>
       <% else %>
         <form method="POST" action="/admin/order">
           <input type="hidden" name="_method" value="PUT">
@@ -105,7 +98,7 @@
     <hr>
       <% if @order.welcome == false %>
         <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a>
-      <% end %>
+      <% end %><br><br>
   <% end %>
 <% end %>
   </div>
@@ -154,11 +147,12 @@
 
   <% if @order.complete == true && @order.counter == 0 %>
     <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
+    <% flash[:welcome] = "Customer Message Sent!" %>
       <% @order.update_attribute(:counter, 2) %>
   <% end %>
 
   <% if @order.shipping_label? %>
-    <a href="<%= @order.shipping_label %>" target="_blank"><button class="welcome-kit-label">Click Here for Shipping Label</button></a>
+    <a href="<%= @order.shipping_label %>" target="_blank"><button class="welcome-kit-label">Click Here for Shipping Label</button></a><br>
   <% end %>
 <!-- end area to deal with welcome kits -->
   </div>
@@ -176,14 +170,10 @@
         <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
       </p>
 
-      <button id="edit-customer"><a href="/customers/<%= @customer.id %>/edit">Edit Customer</a></button>
+      <button id="edit-customer"><a href="/customers/<%= @customer.id %>/edit">Edit Customer</a></button><br>
     </div>
 </div>
-<% if @order.inbound_label == nil %>
-    double farts
-  <% else %>
-    <%= @order.inbound_label %>
-  <% end %>
+
 <!-- end container div -->
 <br><br><br><br>
 </main>

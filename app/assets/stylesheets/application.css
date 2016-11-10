@@ -406,6 +406,11 @@ select:hover {
   margin-top: 20px;
 }
 
+#edit-customer:hover {
+  width: 101px;
+  height: 31px;
+}
+
 #change-tailor {
   margin-left: 10px;
 }
@@ -827,7 +832,7 @@ button#check-garment:hover, button#fulfill-order:hover {
 
 #packing-slip-info {
   position: relative;
-  width: 400px;
+  width: 500px;
 }
 
 #packing-slip {
@@ -842,8 +847,14 @@ button#check-garment:hover, button#fulfill-order:hover {
   margin-bottom: 300px;
 }
 
-#packing-slip-info h3 {
+#packing-slip-info h2 {
   font-family: alegreya;
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+#packing-slip-info p {
+  font-size: 12px;
 }
 
 #packing-slip-info-shopify {

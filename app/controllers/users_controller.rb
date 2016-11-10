@@ -33,20 +33,10 @@ class UsersController < ApplicationController
       @owner = User.find_by(id: @order.user_id)
       @alterations = JSON.parse(@order.alterations)
 
-
-      # if @order.complete == nil
-      #   if @owner
-      #     if @alterations.any? { |s| s.include?('Welcome') }
-      #       @order.update_attribute(:welcome, true)
-      #     else
-      #       @order.update_attribute(:welcome, false)
-      #     end
-      #   end
-      # end
-
       if @owner && @order.welcome == false && @order.inbound_counter != 1
         tailorShippingInfo(@owner, @order, @customer)
         AirtailorMailer.label_email(@customer, @order).deliver
+        flash[:inbound] = "Inbound Label Sent!"
         @order.update_attribute(:inbound_counter, 1)
       end
 
