@@ -406,11 +406,17 @@ select:hover {
 }
 
 #change-tailor:hover,
-#go-to-order:hover,
+#go-to-order:hover {
+  cursor: pointer;
+  width: 101px;
+  height: 31px;
+  margin-bottom: -1px;
+}
+
 #kit-only:hover,
 #kit-order:hover {
   cursor: pointer;
-  width: 101px;
+  width: 100px;
   height: 31px;
   margin-bottom: -1px;
 }
