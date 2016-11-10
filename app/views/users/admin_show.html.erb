@@ -145,10 +145,10 @@
     <% end %>
   <% end %>
 
-  <% if @order.complete == true && @order.counter == 0 %>
+  <% if @order.welcome == true && @order.complete == true && @order.counter == 0 %>
     <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
     <% flash[:welcome] = "Customer Message Sent!" %>
-      <% @order.update_attribute(:counter, 2) %>
+    <% @order.update_attribute(:counter, 2) %>
   <% end %>
 
   <% if @order.shipping_label? %>
@@ -157,7 +157,6 @@
   <% end %>
 <!-- end area to deal with welcome kits -->
   </div>
-  <%= @order.shipping_label %>
 <!-- end order assignment area -->
 
 
