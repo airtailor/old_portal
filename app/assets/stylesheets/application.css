@@ -463,6 +463,9 @@ select:hover {
   margin-top: 9px;
 }
 
+#welcome-kit-label {
+  width: 590px;
+}
 /* tailor SHOW page */
 
 #tailor-show-greeting {
