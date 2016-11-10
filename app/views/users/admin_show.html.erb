@@ -115,12 +115,12 @@
             <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
             <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
             <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
-            <button id="welcome-kit-done" class="caps"><%= f.submit "Just Kit" %></button>
+            <button id="kit-only" class="caps"><%= f.submit "Just Kit" %></button>
           <% end %>
 
           <%= form_for [@owner, @order], {action: 'update'} do |f| %>
             <%= f.text_field :welcome, :value => 'false', :type => "hidden" %>
-            <button id="welcome-kit-done" class="caps"><%= f.submit "Kit + Order" %></button>
+            <button id="kit-order" class="caps"><%= f.submit "Kit + Order" %></button>
           <% end %>
         <% else %>
           <% @order.update_attribute(:welcome, false) %>

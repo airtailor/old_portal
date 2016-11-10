@@ -381,8 +381,9 @@ select:hover {
 
 #go-to-order,
 #change-tailor,
-#welcome-kit-done,
-#edit-customer {
+#kit-only,
+#edit-customer,
+#kit-order {
   width: 100px;
   height: 30px;
   background-color: #D8EDFC;
@@ -393,6 +394,7 @@ select:hover {
   width: 200px;
   display: inline;
   margin-left: 10px;
+  margin-top: 7px;
 }
 
 #edit-customer {
@@ -405,7 +407,8 @@ select:hover {
 
 #change-tailor:hover,
 #go-to-order:hover,
-#welcome-kit-done:hover {
+#kit-only:hover,
+#kit-order:hover {
   cursor: pointer;
   width: 101px;
   height: 31px;
@@ -418,7 +421,8 @@ select:hover {
   margin-bottom: 30px;
 }
 
-#welcome-kit-done input {
+#kit-only input,
+#kit-order input {
   width: 100%;
   background-color: #D8EDFC;
   border: none;
