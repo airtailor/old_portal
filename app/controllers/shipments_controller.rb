@@ -38,12 +38,21 @@ class ShipmentsController < ApplicationController
       :parcel => parcel
     }
 
-    transaction = Shippo::Transaction.create(
-        :shipment => shipment,
-        :carrier_account => "d11e35a8792942fdb9b17d39246e3621",
-        :servicelevel_token => "usps_priority",
-        :label_file_type => "PNG"
-    )
+    if @order.welcome? || @order.weight.to_i < 452
+      transaction = Shippo::Transaction.create(
+          :shipment => shipment,
+          :carrier_account => "d11e35a8792942fdb9b17d39246e3621",
+          :servicelevel_token => "usps_first",
+          :label_file_type => "PNG"
+      )
+    else
+      transaction = Shippo::Transaction.create(
+          :shipment => shipment,
+          :carrier_account => "d11e35a8792942fdb9b17d39246e3621",
+          :servicelevel_token => "usps_priority",
+          :label_file_type => "PNG"
+      )
+    end
 
     @order.update_attribute(:shipping_label, transaction.label_url)
     redirect_to :back

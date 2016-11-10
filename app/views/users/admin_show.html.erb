@@ -97,8 +97,8 @@
 
     <hr>
       <% if @order.welcome == false %>
-        <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a>
-      <% end %><br><br>
+        <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a><br><br>
+      <% end %>
   <% end %>
 <% end %>
   </div>
@@ -141,7 +141,7 @@
           <%= csrf_meta_tag %>
           <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
           <button class="welcome-kit-label" class="caps">Create Shipping Label?</button>
-      </form>
+      </form><br>
     <% end %>
   <% end %>
 
