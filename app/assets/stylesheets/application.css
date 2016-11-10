@@ -836,10 +836,10 @@ button#check-garment:hover, button#fulfill-order:hover {
 }
 
 #packing-slip {
-  top: 900px;
-  left: 30px;
-  width: 90%;
   position: absolute;
+  top: 900px;
+  width: 530px;
+  left: 30px;
   font-family: raleway;
 }
 
@@ -860,6 +860,8 @@ button#check-garment:hover, button#fulfill-order:hover {
 
 #packing-slip-info ul {
   list-style-type: none;
+  text-align: center;
+  margin-right: 30px;
 }
 
 #packing-slip-info li {
@@ -872,17 +874,14 @@ button#check-garment:hover, button#fulfill-order:hover {
 }
 
 #packing-slip-info-alt {
-  text-align: center;
-  margin-right: 30px;
 }
 
 #packing-slip-info-img {
   display: block;
   text-align: center;
   width: 100px;
-  position: absolute;
-  bottom: 10px;
-  left: 230px;
+  margin: auto;
+  margin-top: 20px;
 }
 
 

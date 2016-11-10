@@ -14,7 +14,7 @@ class ShipmentsController < ApplicationController
     parcel = shipdata[:parcel]
 
     if parcel[:weight] = "0"
-      parcel[:weight] = "57"
+      parcel[:weight] = "56"
     end
 
     address_from = {

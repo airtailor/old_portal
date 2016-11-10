@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       end
 
       if @order.weight == "0"
-        @order.update_attribute(:weight, "57")
+        @order.update_attribute(:weight, "56")
       end
 
       if @order.inbound_counter != 1
