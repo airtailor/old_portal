@@ -868,18 +868,21 @@ button#check-garment:hover, button#fulfill-order:hover {
 
 #packing-slip-info-shopify {
   text-align: center;
+  margin-right: 30px;
 }
 
 #packing-slip-info-alt {
   text-align: center;
+  margin-right: 30px;
 }
 
 #packing-slip-info-img {
   display: block;
   text-align: center;
   width: 100px;
-  margin: auto;
-  margin-top: 20px;
+  position: fixed;
+  bottom: 10px;
+  left: 230px;
 }
 
 
