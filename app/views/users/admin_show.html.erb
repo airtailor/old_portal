@@ -1,9 +1,19 @@
 <main>
 <div class="section-header">
   <h2>New Orders / <%= @order.shopify_id %></h2>
+  <% if @order.welcome == nil %>
+    farts
+  <% else %>
+    <%= @order.welcome %>
+  <% end %>
+
+
 </div>
 
 <div class="container">
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
 
 <!-- begin list of new orders -->
   <div id="manage-orders">
@@ -106,10 +116,11 @@
 <!-- begin area to deal with welcome kits -->
 
   <div id="welcome-kit-section">
-  <% if @owner %>
+
     <% if @order.welcome == nil %>
         <% if @alterations.any? { |s| s.include?('Welcome') } %>
           <p>This order contains a welcome kit. Is it <b>just a kit</b>? Or is it a <b>kit + order</b>?</p>
+
           <%= form_for [@owner, @order], {action: 'update'} do |f| %>
             <%= f.text_field :welcome, :value => 'true', :type => "hidden" %>
             <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
@@ -122,11 +133,12 @@
             <%= f.text_field :welcome, :value => 'false', :type => "hidden" %>
             <button id="kit-order" class="caps"><%= f.submit "Kit + Order" %></button>
           <% end %>
+
         <% else %>
           <% @order.update_attribute(:welcome, false) %>
         <% end %>
       <% end %>
-    <% end %>
+
 
 
   <% if @owner %>
@@ -166,7 +178,11 @@
       <button id="edit-customer"><a href="/customers/<%= @customer.id %>/edit">Edit Customer</a></button>
     </div>
 </div>
-
+<% if @order.inbound_label == nil %>
+    double farts
+  <% else %>
+    <%= @order.inbound_label %>
+  <% end %>
 <!-- end container div -->
 <br><br><br><br>
 </main>
