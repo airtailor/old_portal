@@ -858,6 +858,10 @@ button#check-garment:hover, button#fulfill-order:hover {
   font-size: 24px;
 }
 
+#packing-slip-info ul {
+  list-style-type: none;
+}
+
 #packing-slip-info li {
   font-size: 18px;
 }
