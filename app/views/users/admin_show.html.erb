@@ -95,7 +95,9 @@
 
 
     <hr>
-    <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a>
+      <% if @order.welcome != nil %>
+        <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a>
+      <% end %>
   <% end %>
 <% end %>
   </div>
