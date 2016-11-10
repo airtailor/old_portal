@@ -390,7 +390,7 @@ select:hover {
 }
 
 #welcome-kit-done {
-  display: inline-block;
+  display: inline;
   margin-left: 10px;
 }
 
