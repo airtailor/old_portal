@@ -13,16 +13,16 @@ class ShipmentsController < ApplicationController
     address_to[:country] = "US"
     parcel = shipdata[:parcel]
 
-
-    parcel[:weight] = "57"
-
+    if parcel[:weight] = "0"
+      parcel[:weight] = "57"
+    end
 
     address_from = {
       :object_purpose=>"PURCHASE",
-      :name=> @user.user_name,
-      :company=> @user.business_name,
-      :street1=> @user.street,
-      :street2=> @user.unit,
+      :name=> "Air Tailor",
+      :company=> "",
+      :street1=> @user.unit,
+      :street2=> @user.street,
       :city=> @user.city,
       :state=> @user.state,
       :zip=> @user.zip,

@@ -32,8 +32,8 @@ class ApplicationController < ActionController::Base
         :object_purpose => 'PURCHASE',
         :name => 'Air Tailor',
         :company => 'Air Tailor',
-        :street1 => '510 West 21st Street',
-        :street2 => '65DM8A',
+        :street1 => '65DM8A',
+        :street2 => '510 West 21st Street',
         :city => 'New York',
         :state => 'NY',
         :zip => '10011',
@@ -52,8 +52,8 @@ class ApplicationController < ActionController::Base
         :object_purpose => 'PURCHASE',
         :name => customer_name,
         :company => '',
-        :street1 => customer[:address1],
-        :street2 => customer[:address2],
+        :street1 => customer[:address2],
+        :street2 => customer[:address1],
         :city => customer[:city],
         :state => customer[:state],
         :zip => customer[:zip],
@@ -96,8 +96,8 @@ class ApplicationController < ActionController::Base
         :object_purpose => 'PURCHASE',
         :name => customer_name,
         :company => '',
-        :street1 => customer.address1,
-        :street2 => customer.address2,
+        :street1 => customer.address2,
+        :street2 => customer.address1,
         :city => customer.city,
         :state => customer.state,
         :zip => customer.zip,
@@ -108,10 +108,10 @@ class ApplicationController < ActionController::Base
 
     address_to = {
       :object_purpose=>"PURCHASE",
-      :name=> user.user_name,
-      :company=> user.business_name,
-      :street1=> user.street,
-      :street2=> user.unit,
+      :name=> "Air Tailor",
+      :company=> "",
+      :street1=> user.unit,
+      :street2=> user.street,
       :city=> user.city,
       :state=> user.state,
       :zip=> user.zip,
@@ -146,6 +146,7 @@ class ApplicationController < ActionController::Base
 
     order.update_attribute(:inbound_label, transaction.label_url)
     order.update_attribute(:tracker, transaction.tracking_url_provider)
+    flash[:label] = "Shipping Label Mailed!"
 
   end
 
