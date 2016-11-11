@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     end
 
     if @order.complete == true && @order.counter == 1
-       SendSonar.message_customer(text: "Good news " + @customer.first_name + " — your Air Tailor order is finished and on its way to you!", to: @customer.phone)
+       SendSonar.message_customer(text: "Good news " + @customer.first_name + " — your Air Tailor order is finished and on its way to you! Here's your USPS tracking number: " + @order.tracking_number, to: @customer.phone)
       flash[:fulfilled] = "Order Successfully Fulfilled!"
       @order.update_attribute(:counter, 2)
     end

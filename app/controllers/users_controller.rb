@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       end
 
       if @order.weight == "0"
-        @order.update_attribute(:weight, "56")
+        @order.update_attribute(:weight, "28")
       end
 
       if @order.inbound_counter != 1
@@ -39,8 +39,6 @@ class UsersController < ApplicationController
           AirtailorMailer.label_email(@customer, @order).deliver
           flash[:inbound] = "Inbound Label Sent!"
           @order.update_attribute(:inbound_counter, 1)
-        else
-          tailorShippingInfo(@owner, @order, @customer)
         end
       end
 

@@ -13,8 +13,19 @@ class ShipmentsController < ApplicationController
     address_to[:country] = "US"
     parcel = shipdata[:parcel]
 
+    if @order.welcome = true
+      parcel = {
+          :length => 6,
+          :width => 4,
+          :height => 1,
+          :distance_unit => :in,
+          :weight => "28",
+          :mass_unit => :g
+      }
+    end
+
     if parcel[:weight] = "0"
-      parcel[:weight] = "56"
+      parcel[:weight] = "28"
     end
 
     address_from = {
@@ -31,6 +42,9 @@ class ShipmentsController < ApplicationController
       :email=> @user.email
     }
 
+
+
+
     shipment = {
       :object_purpose => 'PURCHASE',
       :address_from => address_from,
@@ -38,7 +52,14 @@ class ShipmentsController < ApplicationController
       :parcel => parcel
     }
 
-    if @order.welcome? || @order.weight.to_i < 452
+    if @order.welcome == true
+      transaction = Shippo::Transaction.create(
+          :shipment => shipment,
+          :carrier_account => "d11e35a8792942fdb9b17d39246e3621",
+          :servicelevel_token => "usps_first",
+          :label_file_type => "PNG"
+      )
+    elsif @order.weight.to_i < 452
       transaction = Shippo::Transaction.create(
           :shipment => shipment,
           :carrier_account => "d11e35a8792942fdb9b17d39246e3621",
@@ -55,6 +76,7 @@ class ShipmentsController < ApplicationController
     end
 
     @order.update_attribute(:shipping_label, transaction.label_url)
+    @order.update_attribute(:tracking_number, transaction.tracking_number)
     redirect_to :back
 
   end

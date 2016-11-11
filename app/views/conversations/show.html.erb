@@ -21,3 +21,79 @@
 
 
 </main>
+
+
+
+
+
+
+
+
+
+  <div class="order-row-header">
+    <h3 class="order-column">Tailor</h3>
+    <h3 class="order-column">New Messages</h3>
+    <h3 class="order-column">Last Message Recieved</h3>
+  </div>
+
+  <% @conversations.each do |conversation| %>
+    <% @users.each do |user| %>
+      <div class="order-row">
+        <% if conversation.recipient_id == user.id.to_s %>
+          <a href="/conversations/<%= conversation.id %>/messages">
+        <% end %>
+
+        <div class="order-column">
+          <%= user.business_name %>
+        </div>
+
+        <div class="order-column">
+          <% if conversation.recipient_id == user.id.to_s %>
+            <%= conversation.messages.where(read: false).count %>
+          <% else %>
+            <%= form_for conversation do |f| %>
+              <%= f.text_field :recipient_id, :value => user.id %>
+              <%= f.text_field :sender_id, :value => current_user.id %>
+              <%= f.submit "Start Conversation", :id => "start_convo" %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="order-column">
+          <% if conversation.recipient_id == user.id.to_s %>
+            <%= conversation.messages.last.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y at %I:%M %p") %>
+          <% else %>
+          n/a
+          <% end %>
+        </div>
+
+        <div class="order-column">
+          <button><%= link_to "Delete Conversation", conversation, method: :delete,
+                                  data: { confirm: "You sure?" } %></button>
+        </div>
+
+        </a>
+      </div>
+    <% end %>
+  <% end %>
+
+
+<% else %>
+
+  <div class="section-header">
+    <h2>Messages</h2>
+  </div>
+
+  <div id="new-conversation-form">
+    <h2>Communication is key.</h2>
+    <p>Use this feature to communicate any questions about orders and alterations with an Air Tailor team member.</p>
+
+    <%= form_for @conversation do |f| %>
+        <%= f.number_field :user_id, :value => current_user.id %>
+        <%= f.text_field :recipient_id, :value => current_user.id, :type => 'hidden' %>
+        <%= f.text_field :sender_id, :value => 2, :type => 'hidden' %>
+        <%= f.submit "Click Here", :id => "start_convo" %>
+    <% end %>
+  </div>
+
+<% end %>

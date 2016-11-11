@@ -5,16 +5,21 @@ class ConversationsController < ApplicationController
   def index
     if current_user.is_admin?
       @conversations = Conversation.all
-      @messages = Message.all
-      @users = User.where.not(business_name: "Air Tailor")
-
-    elsif Conversation.exists?(recipient_id: current_user.id)
-      @conversation = Conversation.where(recipient_id: current_user.id).first
-
-      redirect_to "/conversations/" + @conversation.id.to_s + "/messages"
-    else
-      @conversation = Conversation.new
+      @users = User.all
     end
+
+    # if current_user.is_admin?
+    #   @conversations = Conversation.all
+    #   @messages = Message.all
+    #   @users = User.where.not(business_name: "Air Tailor")
+
+    # elsif Conversation.exists?(recipient_id: current_user.id)
+    #   @conversation = Conversation.where(recipient_id: current_user.id).first
+
+    #   redirect_to "/conversations/" + @conversation.id.to_s + "/messages"
+    # else
+    #   @conversation = Conversation.new
+    # end
   end
 
   def show
@@ -50,7 +55,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find_by(id: params[:id])
     session.clear
     @conversation.destroy
-    redirect_to '/conversations/index'
+    redirect_to '/conversations'
   end
 
   private
