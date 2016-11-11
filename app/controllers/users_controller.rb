@@ -37,7 +37,7 @@ class UsersController < ApplicationController
           tailorShippingInfo(@owner, @order, @customer)
       end
 
-      if @order.inbound_label?
+      if @owner && @order.inbound_label?
         AirtailorMailer.label_email(@customer, @order).deliver
         flash[:inbound] = "Inbound Label Sent!"
         @order.update_attribute(:inbound_counter, 1)
