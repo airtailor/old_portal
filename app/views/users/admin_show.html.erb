@@ -96,7 +96,7 @@
 
 
     <hr>
-      <% if @order.welcome == false %>
+      <% if @order.welcome == false && @order.inbound_counter == 1 %>
         <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a><br><br>
       <% end %>
   <% end %>
