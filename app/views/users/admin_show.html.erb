@@ -115,6 +115,7 @@
   <% else %>
     <% if @owner && @order.welcome == false && @order.inbound_counter != 1 %>
     <% tailorShippingInfo(@owner, @order, @customer) %>
+    <% end %>
   <% end %>
 
 
