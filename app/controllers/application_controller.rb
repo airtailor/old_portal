@@ -92,16 +92,16 @@ class ApplicationController < ActionController::Base
 
     address_from = {
         :object_purpose => 'PURCHASE',
-        :name => customer_name,
-        :company => '',
-        :street1 => customer.address2,
-        :street2 => customer.address1,
-        :city => customer.city,
-        :state => customer.state,
-        :zip => customer.zip,
-        :country => "US",
-        :phone => customer.phone,
-        :email => customer.email
+        :name => 'Air Tailor',
+        :company => 'Air Tailor',
+        :street1 => '65DM8A',
+        :street2 => '510 West 21st Street',
+        :city => 'New York',
+        :state => 'NY',
+        :zip => '10011',
+        :country => 'US',
+        :phone => '+1 555 341 9393',
+        :email => 'orders@airtailor.com'
     }
 
     address_to = {
