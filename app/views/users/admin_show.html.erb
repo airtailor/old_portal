@@ -143,13 +143,12 @@
     <% end %>
   <% end %>
 
-  <% if @order.welcome == true && @order.complete == true && @order.counter == 0 %>
-    <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! Here's your USPS tracking number: " + @order.tracking_number + " :)", to: @customer.phone) %>
-    <% flash[:welcome] = "Customer Message Sent!" %>
-    <% @order.update_attribute(:counter, 2) %>
-  <% end %>
-
   <% if @order.shipping_label? %>
+    <% if @order.welcome == true && @order.complete == true && @order.counter == 0 %>
+      <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! Here's your USPS tracking number: " + @order.tracking_number + " :)", to: @customer.phone) %>
+      <% flash[:welcome] = "Customer Message Sent!" %>
+      <% @order.update_attribute(:counter, 2) %>
+    <% end %>
     <img src="<%= @order.shipping_label %>" id="welcome-kit-label" style="display:none">
     <button id="welcome-kit-button">Click Here for Shipping Label</button><br><br>
   <% end %>
