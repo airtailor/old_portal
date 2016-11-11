@@ -103,9 +103,10 @@
 <% end %>
   </div>
 
-  <% if @order.inbound_label %>
+  <% if @order.inbound_label? %>
+    <p>Inbound Shipping Label: <%= @order.inbound_label %></p>
     <%= form_for [@owner, @order], {action: 'update'} do |f| %>
-      <%= f.number_field :inbound_counter, :value => 1 %>
+      <%= f.number_field :inbound_counter, :value => 1, :type => "hidden" %>
       <button id="kit-order" class="caps"><%= f.submit "Email Inbound Label?" %></button>
     <% end %>
     <% if @order.inbound_counter == 1 %>
