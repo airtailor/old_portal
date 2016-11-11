@@ -96,27 +96,14 @@
 
 
     <hr>
-      <% if @order.welcome == false && @order.inbound_counter == 1 %>
+      <% if @order.welcome == false %>
         <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a><br><br>
       <% end %>
   <% end %>
 <% end %>
   </div>
 
-  <% if @order.inbound_label? %>
-    <p>Inbound Shipping Label: <%= @order.inbound_label %></p>
-    <%= form_for [@owner, @order], {action: 'update'} do |f| %>
-      <%= f.number_field :inbound_counter, :value => 1, :type => "hidden" %>
-      <button id="kit-order" class="caps"><%= f.submit "Email Inbound Label?" %></button>
-    <% end %>
-    <% if @order.inbound_counter == 1 %>
-      <% AirtailorMailer.label_email(@customer, @order).deliver %>
-    <% end %>
-  <% else %>
-    <% if @owner && @order.welcome == false && @order.inbound_counter != 1 %>
-    <% tailorShippingInfo(@owner, @order, @customer) %>
-    <% end %>
-  <% end %>
+
 
 
 
