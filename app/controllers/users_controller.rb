@@ -33,9 +33,7 @@ class UsersController < ApplicationController
       @owner = User.find_by(id: @order.user_id)
       @alterations = JSON.parse(@order.alterations)
 
-      if @owner && @order.welcome == false && @order.inbound_counter != 1
-          tailorShippingInfo(@owner, @order, @customer)
-      end
+
 
 
     else

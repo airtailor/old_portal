@@ -112,6 +112,9 @@
     <% if @order.inbound_counter == 1 %>
       <% AirtailorMailer.label_email(@customer, @order).deliver %>
     <% end %>
+  <% else %>
+    <% if @owner && @order.welcome == false && @order.inbound_counter != 1 %>
+    <% tailorShippingInfo(@owner, @order, @customer) %>
   <% end %>
 
 
