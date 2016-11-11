@@ -103,6 +103,16 @@
 <% end %>
   </div>
 
+  <% if @order.inbound_label %>
+    <%= form_for [@owner, @order], {action: 'update'} do |f| %>
+      <%= f.number_field :inbound_counter, :value => 1 %>
+      <button id="kit-order" class="caps"><%= f.submit "Email Inbound Label?" %></button>
+    <% end %>
+    <% if @order.inbound_counter == 1 %>
+      <% AirtailorMailer.label_email(@customer, @order).deliver %>
+    <% end %>
+  <% end %>
+
 
 
 

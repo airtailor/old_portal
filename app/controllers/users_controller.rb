@@ -35,11 +35,6 @@ class UsersController < ApplicationController
 
       if @owner && @order.welcome == false && @order.inbound_counter != 1
           tailorShippingInfo(@owner, @order, @customer)
-        if @order.inbound_label.length > 1
-          AirtailorMailer.label_email(@customer, @order).deliver
-          flash[:inbound] = "Inbound Label Sent!"
-          @order.update_attribute(:inbound_counter, 1)
-        end
       end
 
 
