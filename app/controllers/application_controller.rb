@@ -46,14 +46,12 @@ class ApplicationController < ActionController::Base
     last = customer[:last_name]
     customer_name = first + " " + last
 
-# binding.pry
-
     address_to = {
         :object_purpose => 'PURCHASE',
         :name => customer_name,
         :company => '',
-        :street1 => customer[:address2],
-        :street2 => customer[:address1],
+        :street1 => customer[:address1],
+        :street2 => customer[:address2],
         :city => customer[:city],
         :state => customer[:state],
         :zip => customer[:zip],
