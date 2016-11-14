@@ -5,11 +5,12 @@ class ConversationsController < ApplicationController
   def index
     if current_user.is_admin?
       @conversations = Conversation.all
-      @users = User.all
+      @users = User.where.not(business_name: "Air Tailor")
     else
       @user = current_user
       if @user.conversation == true
         @conversation = Conversation.where(user_id: current_user.id)
+        redirect_to "/conversations/" + @conversation.id.to_s + "/messages"
       else
         @conversation = Conversation.new
       end
