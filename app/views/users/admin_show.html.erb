@@ -115,7 +115,7 @@
 
   <div id="welcome-kit-section">
 
-    <% if @order.welcome == nil %>
+      <% if @order.welcome == nil %>
         <% if @alterations.any? { |s| s.include?('Welcome') } %>
           <% if @order.user_id %>
             <p>This order contains a welcome kit. Is it <b>just a kit</b>? Or is it a <b>kit + order</b>?</p>
@@ -138,26 +138,32 @@
         <% end %>
       <% end %>
 
-  <% if @owner %>
-    <% if @order.welcome == true && @order.complete == true && @order.shipping_label == nil %>
-      <form method='post' action='/shipment/create'>
-          <%= csrf_meta_tag %>
-          <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
-          <button class="welcome-kit-label" class="caps">Create Shipping Label?</button>
-      </form><br><br>
-    <% end %>
-  <% end %>
+    <% if @owner %>
+    <div id="welcome-kit-label" style="display:none">
+      <div id="welcome-return-address">
+        Air Tailor<br>
+        <%= @owner.street %>, <%= @owner.unit %><br>
+        <%= @owner.city %>, <%= @owner.state %> <%= @owner.zip %>
+      </div>
 
-  <% if @order.shipping_label? %>
-    <img src="<%= @order.shipping_label %>" id="welcome-kit-label" style="display:none">
-    <button id="welcome-kit-button">Click Here for Shipping Label</button>
+      <div id="welcome-to-address">
+        <%= @customer.first_name.capitalize %> <%= @customer.last_name.capitalize %><br>
+        <%= @customer.address1 %>, <%= @customer.address2 %><br>
+        <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
+      </div>
+    </div>
+    <% end %>
+
     <% if @order.welcome == true && @order.complete == true && @order.counter == 0 %>
-      <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! Here's your USPS tracking number: " + @order.tracking_number + " :)", to: @customer.phone) %>
+      <% SendSonar.message_customer(text: "Hi " + @order.name.capitalize + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
       <% @order.update_attribute(:counter, 2) %>
-
     <% end %>
-    <br><br><i class="green">Welcome Kit Text Sent</i><br><br>
-  <% end %>
+
+<% if @order.counter == 2 %>
+  <button id="welcome-kit-button">Create Shipping Label</button>
+  <br><br><i class="green">Welcome Kit Text Sent</i><br><br>
+<% end %>
+
 <!-- end area to deal with welcome kits -->
   </div>
 <!-- end order assignment area -->
