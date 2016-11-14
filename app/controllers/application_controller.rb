@@ -21,25 +21,20 @@ class ApplicationController < ActionController::Base
 
   def saveShippingInfo(order, customer)
 
-    #binding.pry
-
-    # require 'shippo/api/category'
-    # require 'shippo/exceptions/api_error'
-
     Shippo::api_token = ENV["SHIPPO_KEY"]
 
     address_from = {
-        :object_purpose => 'PURCHASE',
-        :name => 'Air Tailor',
-        :company => 'Air Tailor',
-        :street1 => '65DM8A',
-        :street2 => '510 West 21st Street',
-        :city => 'New York',
-        :state => 'NY',
-        :zip => '10011',
-        :country => 'US',
-        :phone => '+1 555 341 9393',
-        :email => 'orders@airtailor.com'
+      :object_purpose => 'PURCHASE',
+      :name => 'Air Tailor',
+      :company => 'Air Tailor',
+      :street1 => '65DM8A',
+      :street2 => '510 West 21st Street',
+      :city => 'New York',
+      :state => 'NY',
+      :zip => '10011',
+      :country => 'US',
+      :phone => '+1 555 341 9393',
+      :email => 'orders@airtailor.com'
     }
 
     first = customer[:first_name]
@@ -47,43 +42,43 @@ class ApplicationController < ActionController::Base
     customer_name = first + " " + last
 
     address_to = {
-        :object_purpose => 'PURCHASE',
-        :name => customer_name,
-        :company => '',
-        :street1 => customer[:address1],
-        :street2 => customer[:address2],
-        :city => customer[:city],
-        :state => customer[:state],
-        :zip => customer[:zip],
-        :country => 'US',
-        :phone => customer[:phone],
-        :email => customer[:email]
+      :object_purpose => 'PURCHASE',
+      :name => customer_name,
+      :company => '',
+      :street1 => customer[:address1],
+      :street2 => customer[:address2],
+      :city => customer[:city],
+      :state => customer[:state],
+      :zip => customer[:zip],
+      :country => 'US',
+      :phone => customer[:phone],
+      :email => customer[:email]
     }
 
     parcel = {
-        :length => 7,
-        :width => 5,
-        :height => 3,
-        :distance_unit => :in,
-        :weight => order[:weight],
-        :mass_unit => :g
+      :length => 7,
+      :width => 5,
+      :height => 3,
+      :distance_unit => :in,
+      :weight => order[:weight],
+      :mass_unit => :g
     }
 
-
     shipment = {
-        :object_purpose => 'PURCHASE',
-        :address_from => address_from,
-        :address_to => address_to,
-        :parcel => parcel
+      :object_purpose => 'PURCHASE',
+      :address_from => address_from,
+      :address_to => address_to,
+      :parcel => parcel
     }
 
     shipment = {
       :shopify_id => order[:shopify_id],
       :shipment => shipment
     }
-    # byebug
+
     Shipment.new(shipment).save
   end
+
 
   def tailorShippingInfo(user, order, customer)
     Shippo::api_token = ENV["SHIPPO_KEY"]
@@ -93,7 +88,7 @@ class ApplicationController < ActionController::Base
     address_from = {
       :object_purpose => 'PURCHASE',
       :name => customer_name,
-      :company => '',
+      :company => "",
       :street1 => customer.address2,
       :street2 => customer.address1,
       :city => customer.city,
@@ -105,19 +100,18 @@ class ApplicationController < ActionController::Base
     }
 
     address_to = {
-      :object_purpose=>"PURCHASE",
-      :name=> "Air Tailor",
-      :company=> "",
-      :street1=> user.unit,
-      :street2=> user.street,
-      :city=> user.city,
-      :state=> user.state,
-      :zip=> user.zip,
-      :country=> "US",
-      :phone=> user.phone,
-      :email=> user.email
+      :object_purpose => "PURCHASE",
+      :name => "Air Tailor",
+      :company => "",
+      :street1 => user.unit,
+      :street2 => user.street,
+      :city => user.city,
+      :state => user.state,
+      :zip => user.zip,
+      :country => "US",
+      :phone => user.phone,
+      :email => user.email
     }
-
 
     parcel = {
         :length => 7,
@@ -135,7 +129,7 @@ class ApplicationController < ActionController::Base
         :parcel => parcel
     }
 
-    if @order.weight.to_i < 452
+    if order.weight.to_i < 452
       transaction = Shippo::Transaction.create(
           :shipment => shipment,
           :carrier_account => "d11e35a8792942fdb9b17d39246e3621",
@@ -153,7 +147,8 @@ class ApplicationController < ActionController::Base
 
     order.update_attribute(:inbound_label, transaction.label_url)
     order.update_attribute(:tracker, transaction.tracking_url_provider)
-    flash[:label] = "Shipping Label Mailed!"
+
+
 
   end
 
