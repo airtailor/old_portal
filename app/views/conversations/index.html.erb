@@ -48,6 +48,11 @@
             n/a
           <% end %>
         </div>
+
+        <div class="order-column">
+          <button><%= link_to "Delete Conversation", conversation, method: :delete,
+                                  data: { confirm: "You sure?" } %></button>
+        </div>
       </a>
     </div>
   <% end %>
@@ -67,7 +72,7 @@
     <%= form_for @conversation do |f| %>
         <%= f.number_field :user_id, :value => current_user.id, :type => "hidden" %>
         <%= f.text_field :recipient_id, :value => current_user.id, :type => 'hidden' %>
-        <%= f.text_field :sender_id, :value => 2, :type => 'hidden' %>
+        <%= f.text_field :sender_id, :value => 1, :type => 'hidden' %>
         <%= f.submit "Click Here", :id => "start_convo" %>
     <% end %>
   </div>
