@@ -4,6 +4,8 @@
     <h2>Home / <%= @user.business_name %></h2>
 </div>
 
+<% @user.update_attribute(:conversation, false) %>
+
 <div class="container">
 
   <div id="tailor-show-greeting">

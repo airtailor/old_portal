@@ -14,6 +14,8 @@
     </div>
 
   <% @users.each do |user| %>
+<% user.update_attribute(:conversation, false) %>
+
     <div class="order-row">
       <% if user.conversation == true %>
         <% conversation = Conversation.where(recipient_id: user.id).first %>
@@ -34,6 +36,7 @@
           <% else %>
             <% conversation = Conversation.new %>
             <%= form_for conversation do |f| %>
+              <%= f.number_field :user_id, :value => user.id, :type => "hidden" %>
               <%= f.text_field :recipient_id, :value => user.id, :type => "hidden" %>
               <%= f.text_field :sender_id, :value => current_user.id, :type => "hidden" %>
               <%= f.submit "Start Conversation", :id => "start_convo" %>

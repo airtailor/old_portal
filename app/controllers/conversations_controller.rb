@@ -60,8 +60,7 @@ class ConversationsController < ApplicationController
   end
 
   def destroy
-    @conversation = Conversation.find_by(id: params[:id])
-    session.clear
+    @conversation = Conversation.where(id: params[:id])
     @conversation.destroy
     redirect_to '/conversations'
   end
