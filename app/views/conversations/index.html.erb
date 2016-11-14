@@ -23,11 +23,7 @@
       <% end %>
 
         <div class="order-column">
-          <% if user.conversation == true %>
-            <span class="green"><%= user.business_name %></span>
-          <% else %>
-            <span class="red"><%= user.business_name %></span>
-          <% end %>
+            <%= user.business_name %>
         </div>
 
         <div class="order-column">
