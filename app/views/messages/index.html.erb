@@ -13,7 +13,7 @@
     <%= form_for [@conversation, @message] do |f| %>
         <p>Write New Message:</p>
         <%= f.text_field :conversation_id, :value => @conversation.id, :type => 'hidden' %>
-        <%= f.text_field :user_id, :value => current_user.id %>
+        <%= f.text_field :user_id, :value => current_user.id, :type => 'hidden' %>
 
         <% if current_user.is_admin? %>
           <%= f.text_field :read, :value => true, :type => 'hidden' %>
