@@ -27,8 +27,8 @@ class ApplicationController < ActionController::Base
       :object_purpose => 'PURCHASE',
       :name => 'Air Tailor',
       :company => 'Air Tailor',
-      :street1 => '65DM8A',
-      :street2 => '510 West 21st Street',
+      :street1 => '510 West 21st Street',
+      :street2 => '65DM8A',
       :city => 'New York',
       :state => 'NY',
       :zip => '10011',
@@ -103,13 +103,13 @@ class ApplicationController < ActionController::Base
       :object_purpose => "PURCHASE",
       :name => "Air Tailor",
       :company => "",
-      :street1 => '65DM8A',
-      :street2 => '510 West 21st Street',
+      :street1 => '510 West 21st Street',
+      :street2 => '65DM8A',
       :city => 'New York',
       :state => 'NY',
       :zip => '10011',
       :country => 'US',
-      :phone => user.phone,
+      :phone => '+1 555 341 9393',
       :email => user.email
     }
 
