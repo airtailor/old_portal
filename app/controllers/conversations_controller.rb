@@ -9,7 +9,7 @@ class ConversationsController < ApplicationController
     else
       @user = current_user
       if @user.conversation == true
-        @conversation = Conversation.where(user_id: current_user.id)
+        @conversation = Conversation.where(user_id: current_user.id).first
         redirect_to "/conversations/" + @conversation.id.to_s + "/messages"
       else
         @conversation = Conversation.new
