@@ -103,8 +103,8 @@ class ApplicationController < ActionController::Base
       :object_purpose => "PURCHASE",
       :name => "Air Tailor",
       :company => "",
-      :street1 => user.unit,
-      :street2 => user.street,
+      :street1 => user.street,
+      :street2 => user.unit,
       :city => user.city,
       :state => user.state,
       :zip => user.zip,
@@ -112,6 +112,8 @@ class ApplicationController < ActionController::Base
       :phone => user.phone,
       :email => user.email
     }
+
+    binding.pry
 
     parcel = {
         :length => 7,

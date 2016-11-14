@@ -4,9 +4,6 @@
 </div>
 
 <div class="container">
-<% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
-  <% end %>
 
 <!-- begin list of new orders -->
   <div id="manage-orders">
@@ -147,18 +144,19 @@
           <%= csrf_meta_tag %>
           <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
           <button class="welcome-kit-label" class="caps">Create Shipping Label?</button>
-      </form><br>
+      </form><br><br>
     <% end %>
   <% end %>
 
   <% if @order.shipping_label? %>
+    <img src="<%= @order.shipping_label %>" id="welcome-kit-label" style="display:none">
+    <button id="welcome-kit-button">Click Here for Shipping Label</button>
     <% if @order.welcome == true && @order.complete == true && @order.counter == 0 %>
       <% SendSonar.message_customer(text: "Hi " + @order.name + ", just a heads up that your Air Tailor Welcome Kit is on its way! Here's your USPS tracking number: " + @order.tracking_number + " :)", to: @customer.phone) %>
-      <% flash[:welcome] = "Customer Message Sent!" %>
       <% @order.update_attribute(:counter, 2) %>
+
     <% end %>
-    <img src="<%= @order.shipping_label %>" id="welcome-kit-label" style="display:none">
-    <button id="welcome-kit-button">Click Here for Shipping Label</button><br><br>
+    <br><br>Welcome Kit Text Sent<br><br>
   <% end %>
 <!-- end area to deal with welcome kits -->
   </div>

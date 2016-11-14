@@ -456,7 +456,7 @@ select:hover {
   border-radius: 10px;
 }
 
-#welcome-kit-button:hover
+#welcome-kit-button:hover,
 .welcome-kit-label:hover {
   cursor: pointer;
   width: 201px;
