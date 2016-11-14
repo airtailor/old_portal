@@ -104,7 +104,7 @@
   </div>
 
 <% if @order.inbound_label == "" %>
-  Error with Inbound Label Creation
+  Error with Inbound Label Creation. Send Manually.
 <% elsif @order.inbound_label != nil && @order.inbound_label != "" %>
   Inbound Label Created and Sent!
 <% end %>
