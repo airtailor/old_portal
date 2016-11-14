@@ -7,16 +7,49 @@
 
 <div class="container">
 
-<br><br><br><br>
-
-<% @conversations.each do |conversation| %>
-  <%= conversation.id %><br>
-
-<% end %>
+  <div class="order-row-header">
+    <h3 class="order-column">Tailor</h3>
+    <h3 class="order-column">New Messages</h3>
+    <h3 class="order-column">Last Message Recieved</h3>
+  </div>
 
 <% @users.each do |user| %>
-  <%= user.business_name %><br>
+  <div class="order-row">
+    <% if user.conversation == true %>
+      <% conversation = Conversation.where(recipient_id: user.id).first %>
+      <a href="/conversations/<%= conversation.id %>/messages">
+    <% end %>
 
+      <div class="order-column">
+        <% if user.conversation == true %>
+          <p class="green"><%= user.business_name %></p>
+        <% else %>
+          <p class="red"><%= user.business_name %></p>
+        <% end %>
+      </div>
+
+      <div class="order-column">
+        <% if user.conversation == true %>
+          <%= conversation.messages.where(read: false).count %>
+        <% else %>
+          <% conversation = Conversation.new %>
+          <%= form_for conversation do |f| %>
+            <%= f.text_field :recipient_id, :value => user.id, :type => "hidden" %>
+            <%= f.text_field :sender_id, :value => current_user.id, :type => "hidden" %>
+            <%= f.submit "Start Conversation", :id => "start_convo" %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="order-column">
+        <% if user.conversation == true %>
+           <%= conversation.messages.last.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y at %I:%M %p") %>
+        <% else %>
+          n/a
+        <% end %>
+      </div>
+    </a>
+  </div>
 <% end %>
 
 

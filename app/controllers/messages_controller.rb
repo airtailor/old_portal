@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 
       @business = User.find_by(id: @conversation.recipient_id)
       @admin = User.find_by(id: @conversation.sender_id)
-    elsif
+    else
       @message = Message.new
       @conversation = Conversation.find_by(recipient_id: current_user.id)
       @messages = Message.where(conversation_id: @conversation.id)
@@ -24,8 +24,6 @@ class MessagesController < ApplicationController
 
       @business = User.find_by(id: current_user.id)
       @admin = User.find_by(id: @conversation.sender_id)
-    else
-      redirect_to @user
     end
   end
 

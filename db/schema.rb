@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111203907) do
+ActiveRecord::Schema.define(version: 20161114091549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20161111203907) do
     t.boolean  "welcome"
     t.string   "tracker"
     t.string   "tracking_number"
+    t.boolean  "conversation"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree

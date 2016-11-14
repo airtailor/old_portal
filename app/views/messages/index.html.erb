@@ -3,6 +3,8 @@
   <h2>Messages / <%= @business.business_name %></h2>
 </div>
 
+<% @business.update_attribute(:conversation, true) %>
+
 <div class="container">
 <br>
   <div id="new-message-form">

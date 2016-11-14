@@ -6,6 +6,13 @@ class ConversationsController < ApplicationController
     if current_user.is_admin?
       @conversations = Conversation.all
       @users = User.all
+    else
+      @user = current_user
+      if @user.conversation == true
+        @conversation = Conversation.where(user_id: current_user.id)
+      else
+        @conversation = Conversation.new
+      end
     end
 
     # if current_user.is_admin?
