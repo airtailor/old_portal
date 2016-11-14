@@ -53,6 +53,7 @@
         </div>
 
         <div class="order-column">
+          <%= user.conversation %>
           <button><%= link_to "Delete Conversation", conversation, method: :delete,
                                   data: { confirm: "You sure?" } %></button>
         </div>

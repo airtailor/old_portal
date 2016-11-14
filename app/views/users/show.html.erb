@@ -18,7 +18,7 @@
     <div id="tailor-show-message-box" class="tailor-show-box">
       <img src="/assets/message.png" alt="">
       <% if @conversation %>
-        <p class="tailor-show-number"><%= @conversation.messages.where(read: false).count %></p>
+        <p class="tailor-show-number"><%= @conversation.messages.where(user_read: false).count %></p>
         <p class="caps">unread<br>messages</p>
         <p><span class="caps">Read &gt;</span></p>
       <% else %>
