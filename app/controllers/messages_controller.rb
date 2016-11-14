@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
       end
 
       @business = User.find_by(id: @conversation.recipient_id)
-      @admin = User.find_by(id: @conversation.sender_id)
+      @admin = User.find_by(id: current_user.id)
     else
       @message = Message.new
       @conversation = Conversation.find_by(recipient_id: current_user.id)
