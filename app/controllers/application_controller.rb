@@ -113,7 +113,7 @@ class ApplicationController < ActionController::Base
       :email => user.email
     }
 
-    binding.pry
+    # binding.pry
 
     parcel = {
         :length => 7,
@@ -147,7 +147,7 @@ class ApplicationController < ActionController::Base
       )
     end
 
-    binding.pry
+    # binding.pry
 
     order.update_attribute(:inbound_label, transaction.label_url)
     order.update_attribute(:tracker, transaction.tracking_url_provider)

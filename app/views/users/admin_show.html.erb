@@ -101,9 +101,9 @@
   </div>
 
 <% if @order.inbound_label == "" %>
-  Error with Inbound Label Creation. Send Manually.
+  <i class="red">Error with Inbound Label Creation. Send Manually.</i>
 <% elsif @order.inbound_label != nil && @order.inbound_label != "" %>
-  Inbound Label Created and Sent!
+  <i class="green">Inbound Label Created and Sent!</i>
 <% end %>
 
 
@@ -156,7 +156,7 @@
       <% @order.update_attribute(:counter, 2) %>
 
     <% end %>
-    <br><br>Welcome Kit Text Sent<br><br>
+    <br><br><i class="green">Welcome Kit Text Sent</i><br><br>
   <% end %>
 <!-- end area to deal with welcome kits -->
   </div>
