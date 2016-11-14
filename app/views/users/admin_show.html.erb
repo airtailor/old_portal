@@ -104,11 +104,9 @@
   </div>
 
 <% if @order.inbound_label == "" %>
-  fuck
+  Error with Inbound Label Creation
 <% elsif @order.inbound_label != nil && @order.inbound_label != "" %>
-  <%= @order.inbound_label %>
-<% else %>
-  double farts
+  Inbound Label Created and Sent!
 <% end %>
 
 
