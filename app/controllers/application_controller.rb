@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     Shippo::api_token = ENV["SHIPPO_KEY"]
 
     address_from = {
-      :object_purpose => 'PURCHASE',
+     :object_purpose => 'PURCHASE',
       :name => 'Air Tailor',
       :company => 'Air Tailor',
       :street1 => '510 West 21st Street',
@@ -103,13 +103,13 @@ class ApplicationController < ActionController::Base
       :object_purpose => "PURCHASE",
       :name => "Air Tailor",
       :company => "",
-      :street1 => '510 West 21st Street',
-      :street2 => '65DM8A',
-      :city => 'New York',
-      :state => 'NY',
-      :zip => '10011',
-      :country => 'US',
-      :phone => '+1 555 341 9393',
+      :street1 => user.street,
+      :street2 => user.unit,
+      :city => user.city,
+      :state => user.state,
+      :zip => user.zip,
+      :country => "US",
+      :phone => user.phone,
       :email => user.email
     }
 
@@ -147,7 +147,7 @@ class ApplicationController < ActionController::Base
 
     binding.pry
 
-    order.update_attribute(:inbound_label, transaction.messages.to_s)
+    order.update_attribute(:inbound_label, transaction.label_url)
     order.update_attribute(:tracker, transaction.tracking_url_provider)
 
 
