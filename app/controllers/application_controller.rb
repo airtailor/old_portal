@@ -147,7 +147,7 @@ class ApplicationController < ActionController::Base
 
     binding.pry
 
-    order.update_attribute(:inbound_label, transaction.label_url)
+    order.update_attribute(:inbound_label, transaction.messages.to_s)
     order.update_attribute(:tracker, transaction.tracking_url_provider)
 
 
