@@ -103,12 +103,12 @@ class ApplicationController < ActionController::Base
       :object_purpose => "PURCHASE",
       :name => "Air Tailor",
       :company => "",
-      :street1 => user.unit,
-      :street2 => user.street,
-      :city => user.city,
-      :state => user.state,
-      :zip => user.zip,
-      :country => "US",
+      :street1 => '65DM8A',
+      :street2 => '510 West 21st Street',
+      :city => 'New York',
+      :state => 'NY',
+      :zip => '10011',
+      :country => 'US',
       :phone => user.phone,
       :email => user.email
     }
@@ -144,6 +144,8 @@ class ApplicationController < ActionController::Base
           :label_file_type => "PNG"
       )
     end
+
+    binding.pry
 
     order.update_attribute(:inbound_label, transaction.label_url)
     order.update_attribute(:tracker, transaction.tracking_url_provider)
