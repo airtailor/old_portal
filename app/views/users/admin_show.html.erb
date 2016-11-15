@@ -152,7 +152,7 @@
       <div id="welcome-to-address">
         <%= @customer.first_name.capitalize %> <%= @customer.last_name.capitalize %><br>
         <%= @customer.address1 %><br>
-        <% if @owner.unit != nil || @owner.unit != "" %>
+        <% if @customer.address2 != "" || @customer.address2 != nil %>
           <%= @customer.address2 %><br>
         <% end %>
         <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
