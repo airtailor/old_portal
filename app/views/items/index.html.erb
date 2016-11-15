@@ -227,7 +227,7 @@
       <%= form_for [@user, @order], {action: 'update'} do |f| %>
         <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
         <%= f.text_field :arrival_date, :value => Time.current, :type => 'hidden' %>
-        <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
+        <%= f.text_field :due_date, :value => Time.current + 6.days, :type => 'hidden' %>
         <button id="check-garment" class="caps" onclick="return confirm('Order has arrived?');"><%= f.submit "Check Order In"%></button>
       <% end %>
     <% end %>
