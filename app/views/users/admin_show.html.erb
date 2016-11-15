@@ -142,13 +142,19 @@
     <div id="welcome-kit-label" style="display:none">
       <div id="welcome-return-address">
         Air Tailor<br>
-        <%= @owner.street %>, <%= @owner.unit %><br>
+        <%= @owner.street %><br>
+        <% if @owner.unit != nil || @owner.unit != "" %>
+          <%= @owner.unit %><br>
+        <% end %>
         <%= @owner.city %>, <%= @owner.state %> <%= @owner.zip %>
       </div>
 
       <div id="welcome-to-address">
         <%= @customer.first_name.capitalize %> <%= @customer.last_name.capitalize %><br>
-        <%= @customer.address1 %>, <%= @customer.address2 %><br>
+        <%= @customer.address1 %><br>
+        <% if @owner.unit != nil || @owner.unit != "" %>
+          <%= @customer.address2 %><br>
+        <% end %>
         <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
       </div>
     </div>
