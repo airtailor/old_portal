@@ -141,7 +141,7 @@
     <% if @owner %>
     <div id="welcome-kit-label" style="display:none">
       <div id="welcome-return-address">
-        Air Tailor<br>
+        <img src="/assets/logo.png" alt="Air Tailor" id="welcome-logo"><br>
         <%= @owner.street %><br>
         <% if @owner.unit != nil || @owner.unit != "" %>
           <%= @owner.unit %><br>

@@ -447,6 +447,10 @@ select:hover {
 
 }
 
+#welcome-logo {
+  width: 100px;
+}
+
 #welcome-kit-button,
 .welcome-kit-label {
   width: 200px;
@@ -477,7 +481,7 @@ select:hover {
 #welcome-to-address {
   width: 300px;
   margin: 0 auto;
-  margin-top: 70px;
+  margin-top: 100px;
 }
 
 
