@@ -143,7 +143,7 @@
       <div id="welcome-return-address">
         <img src="/assets/logo.png" alt="Air Tailor" id="welcome-logo"><br>
         <%= @owner.street %><br>
-        <% if @owner.unit != nil || @owner.unit != "" %>
+        <% if @owner.unit != "" %>
           <%= @owner.unit %><br>
         <% end %>
         <%= @owner.city %>, <%= @owner.state %> <%= @owner.zip %>
@@ -152,7 +152,7 @@
       <div id="welcome-to-address">
         <%= @customer.first_name.capitalize %> <%= @customer.last_name.capitalize %><br>
         <%= @customer.address1 %><br>
-        <% if @customer.address2 != "" || @customer.address2 != nil %>
+        <% if @customer.address2 != "" %>
           <%= @customer.address2 %><br>
         <% end %>
         <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
