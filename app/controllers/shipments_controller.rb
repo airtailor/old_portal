@@ -11,6 +11,7 @@ class ShipmentsController < ApplicationController
 
     address_to = shipdata[:address_to]
     address_to[:country] = "US"
+    address_to[:state] = "District of Columbia"
     parcel = shipdata[:parcel]
 
     if @order.welcome = true
