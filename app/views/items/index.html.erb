@@ -245,6 +245,13 @@
 
     <% if @order.complete == true %>
       <button id="packing-slip-btn">Packing Slip &amp; Shipping Label</button>
+      <form method='post' action='/shipment/create'>
+        <%= csrf_meta_tag %>
+        <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
+        <button id="fulfill-order" class="caps" onclick="return confirm('Order is 100% complete?');">
+          Fulfill This Order
+        </button>
+      </form>
     <% end %>
   </div>
 

@@ -14,7 +14,7 @@ class ShipmentsController < ApplicationController
     # address_to[:state] = "District of Columbia"
     parcel = shipdata[:parcel]
 
-    if @order.welcome = true
+    if @order.welcome == true
       parcel = {
           :length => 6,
           :width => 4,
@@ -51,6 +51,8 @@ class ShipmentsController < ApplicationController
       address_to[:state] = "DC"
     end
 
+
+
     shipment = {
       :object_purpose => 'PURCHASE',
       :address_from => address_from,
@@ -80,6 +82,8 @@ class ShipmentsController < ApplicationController
           :label_file_type => "PNG"
       )
     end
+
+    binding.pry
 
     @order.update_attribute(:shipping_label, transaction.label_url)
     @order.update_attribute(:tracking_number, transaction.tracking_number)
