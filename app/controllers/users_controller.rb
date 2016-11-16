@@ -30,6 +30,11 @@ class UsersController < ApplicationController
       end
 
       @customer = Customer.where(order_id: @order.shopify_id).first
+
+      if @customer.state == "Washington DC"
+        @customer.update_attribute(:state, "DC")
+      end
+
       @owner = User.find_by(id: @order.user_id)
       @alterations = JSON.parse(@order.alterations)
 
