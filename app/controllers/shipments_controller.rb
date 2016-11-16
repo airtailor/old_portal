@@ -43,8 +43,13 @@ class ShipmentsController < ApplicationController
       :email=> @user.email
     }
 
+    if address_from[:state] == "Washington DC"
+      address_from[:state] = "DC"
+    end
 
-
+    if address_to[:state] == "Washington DC"
+      address_to[:state] = "DC"
+    end
 
     shipment = {
       :object_purpose => 'PURCHASE',

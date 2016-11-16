@@ -113,7 +113,15 @@ class ApplicationController < ActionController::Base
       :email => user.email
     }
 
-    # binding.pry
+    if address_to[:state] == "Washington DC"
+      address_to[:state] = "DC"
+    end
+
+    if address_from[:state] == "Washington DC"
+      address_from[:state] = "DC"
+    end
+
+    binding.pry
 
     parcel = {
         :length => 7,
