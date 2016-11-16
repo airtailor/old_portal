@@ -30,9 +30,10 @@
 
 
 <div id="all-messages">
-  <% @messages.sort_by{|t| - t.created_at.to_i}.first(10).each do |message| %>
-    <div id="message-body">
 
+  <% @messages.sort_by{|t| - t.created_at.to_i}.first(10).each do |message| %>
+
+    <div id="message-body">
       <% if message.user_id == @admin.id %>
         <div id="admin-message">
         <b><%= @admin.business_name %> // </b>
@@ -50,10 +51,13 @@
         <%= message.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y at %I:%M %p") %><br>
         <hr>
         <%= message.text %><br><br>
+        <%= link_to "delete message", [@conversation, message], method: :delete,
+                                  data: { confirm: "Are you sure?" } %>
 
       </div>
     </div>
   <% end %>
+
 </div>
 
 </div>
