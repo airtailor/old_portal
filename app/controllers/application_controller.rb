@@ -121,8 +121,6 @@ class ApplicationController < ActionController::Base
       address_from[:state] = "DC"
     end
 
-    binding.pry
-
     parcel = {
         :length => 7,
         :width => 5,
