@@ -93,8 +93,8 @@ class UsersController < ApplicationController
           end
         end
       end
-      if Conversation.exists?(recipient_id: @user.id)
-        @conversation = Conversation.find_by(recipient_id: @user.id)
+      if @user.conversation == true
+        @conversation = Conversation.where(recipient_id: @user.id).first
         @messages = Message.where(conversation_id: @conversation.id)
       else
         @new_conversation = Conversation.new
@@ -111,8 +111,8 @@ class UsersController < ApplicationController
           end
         end
       end
-      if Conversation.exists?(recipient_id: @user.id)
-        @conversation = Conversation.find_by(recipient_id: current_user.id)
+      if @user.conversation == true
+        @conversation = Conversation.where(recipient_id: current_user.id).first
         @messages = Message.where(conversation_id: @conversation.id)
       end
     end
