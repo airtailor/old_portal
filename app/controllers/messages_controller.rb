@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
       @admin = User.find_by(id: current_user.id)
     else
       @message = Message.new
-      @conversation = Conversation.find_by(recipient_id: current_user.id)
+      @conversation = Conversation.find_by(id: params[:conversation_id])
       @messages = Message.where(conversation_id: @conversation.id)
       @unread = @messages.where(user_read: false)
 
