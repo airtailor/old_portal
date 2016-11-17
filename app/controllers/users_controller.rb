@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     if current_user.is_admin?
       @users = User.all
       @orders = Order.where(user_id: nil)
+      @messages = Message.where(read: false)
     else
       redirect_to current_user
     end

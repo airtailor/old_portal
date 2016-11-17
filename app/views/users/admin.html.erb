@@ -1,40 +1,33 @@
 <main>
-<div class="section-header">
-  <h2>Admin Home</h2>
-</div>
+  <div class="section-header">
+    <h2>Admin Home</h2>
+  </div>
 
-<div class="container">
+  <div class="container">
 
-<div class="admin-welcome">
-  <h2>Greetings Master</h2>
-  <p>Whatchu Wanna Do?</p>
-</div>
+    <div class="admin-welcome">
+      <h2>Greetings Master</h2>
+      <p>Whatchu Wanna Do?</p>
+    </div>
 
+    <div id="admin-manage-area">
 
+      <div id="admin-orders">
+        <a href="/orders/new_orders"><button class="caps">Manage<br> New Orders</button></a><br><br>
+        <%= @orders.count %> unassigned orders
+      </div>
 
-<div id="admin-manage-area">
+      <div id="admin-messages">
+        <a href="/conversations"><button class="caps">Manage<br> Messages</button></a><br><br>
+        <%= @messages.count %> unread messages
+      </div>
 
-<div id="admin-orders">
-  <a href="/orders/new_orders"><button class="caps">Manage<br> New Orders</button></a>
-</div>
+      <div id="minions">
+        <a href="/users"><button class="caps">Manage<br> Tailors</button></a>
+      </div>
 
-<div id="admin-messages">
-  <a href="/conversations"><button class="caps">Manage<br> Messages</button></a>
-</div>
-
-<div id="minions">
-  <a href="/users"><button class="caps">Manage<br> Tailors</button></a>
-</div>
-
-
-
-
-
-
-
-
-</div>
-</div>
+    </div>
+  </div>
 
 
 </main>
