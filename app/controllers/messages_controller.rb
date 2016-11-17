@@ -40,11 +40,13 @@ class MessagesController < ApplicationController
   end
 
   def create
-     @message = Message.new(message_params).save
+     @message = Message.new(message_params)
      @conversation = Conversation.find_by(id: params[:conversation_id])
       if @message.order_id
+        @message.save
         redirect_to :back
       else
+        @message.save
         redirect_to conversation_messages_path(@conversation)
       end
      # else
