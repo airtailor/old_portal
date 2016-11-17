@@ -4,7 +4,7 @@
 </div>
 
 
-  <% @business.update_attribute(:conversation, true) %>
+<% @business.update_attribute(:conversation, true) %>
 
 
 <div class="container">
@@ -51,9 +51,6 @@
         <%= message.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y at %I:%M %p") %><br>
         <hr>
         <%= message.text %><br><br>
-        <%= link_to "delete message", [@conversation, message], method: :delete,
-                                  data: { confirm: "Are you sure?" } %>
-
       </div>
     </div>
   <% end %>
