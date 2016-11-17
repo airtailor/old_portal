@@ -1,10 +1,7 @@
 <main>
 <div class="section-header">
   <h2>Messages / <%= @business.business_name %></h2>
-  Sender ID<%= @conversation.sender_id %>
 </div>
-
-
 
 
   <% @business.update_attribute(:conversation, true) %>
@@ -15,15 +12,15 @@
   <div id="new-message-form">
     <%= form_for [@conversation, @message] do |f| %>
         <p>Write New Message:</p>
-        <%= f.text_field :conversation_id, :value => @conversation.id %>
-        <%= f.text_field :user_id, :value => current_user.id %>
+        <%= f.text_field :conversation_id, :value => @conversation.id, :type => 'hidden' %>
+        <%= f.text_field :user_id, :value => current_user.id, :type => 'hidden' %>
 
         <% if current_user.is_admin? %>
-          <%= f.text_field :read, :value => true %>
-          <%= f.text_field :user_read, :value => false %>
+          <%= f.text_field :read, :value => true, :type => 'hidden' %>
+          <%= f.text_field :user_read, :value => false, :type => 'hidden' %>
         <% else %>
-          <%= f.text_field :read, :value => false %>
-          <%= f.text_field :user_read, :value => true %>
+          <%= f.text_field :read, :value => false, :type => 'hidden' %>
+          <%= f.text_field :user_read, :value => true, :type => 'hidden' %>
         <% end %>
 
         <p><%= f.text_area :text, size: "65x10", :placeholder => 'Type message here...', :autofocus => :autofocus %></p>

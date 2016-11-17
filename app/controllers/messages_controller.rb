@@ -23,8 +23,8 @@ class MessagesController < ApplicationController
       end
 
       @business = User.find_by(id: current_user.id)
-      if @conversation.sender_id == 2
-        @conversation.update_attribute(:sender_id, 1)
+      if @conversation.sender_id == "2"
+        @conversation.update_attribute(:sender_id, "1")
       end
       @admin = User.find_by(id: @conversation.sender_id)
     end
