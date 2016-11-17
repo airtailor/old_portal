@@ -14,11 +14,11 @@
     </div>
 
   <% @users.each do |user| %>
-
-
+<% user.update_attribute(:conversation, false) %>
     <div class="order-row">
       <% if user.conversation == true %>
         <% conversation = Conversation.where(recipient_id: user.id).first %>
+
         <a href="/conversations/<%= conversation.id %>/messages">
       <% end %>
 
@@ -47,6 +47,7 @@
             n/a
           <% end %>
         </div>
+
       </a>
     </div>
   <% end %>

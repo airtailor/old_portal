@@ -60,9 +60,9 @@ class ConversationsController < ApplicationController
   end
 
   def destroy
-    @conversation = Conversation.where(id: params[:id])
+    @conversation = Conversation.where(id: params[:id]).first
     @conversation.destroy
-    redirect_to '/conversations'
+    redirect_to :back
   end
 
   private
