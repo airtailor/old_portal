@@ -1,7 +1,10 @@
 <main>
 <div class="section-header">
   <h2>Messages / <%= @business.business_name %></h2>
+  Sender ID<%= @conversation.sender.id %>
 </div>
+
+
 
 
   <% @business.update_attribute(:conversation, true) %>
