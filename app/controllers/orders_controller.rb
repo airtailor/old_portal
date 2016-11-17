@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   def archive
     if current_user.is_admin?
       @users = User.all
-      @orders = Order.all
+      @orders = Order.where(complete: true)
       @alts = []
       @orders.each do |order|
         @alts.push(JSON.parse(order.alterations))
