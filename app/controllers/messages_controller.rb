@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     if current_user.is_admin?
       @message = Message.new
       @conversation = Conversation.find_by(id: params[:conversation_id])
-      @messages = Message.where(conversation_id: @conversation.id)
+      @messages = Message.where(conversation_id: @conversation.id).first
       @unread = @messages.where(read: false)
       @unread.each do |x|
         x.update_attribute(:read, true)
@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
       @admin = User.find_by(id: current_user.id)
     else
       @message = Message.new
-      @conversation = Conversation.find_by(id: params[:conversation_id])
+      @conversation = Conversation.where(recipient_id: current_user.id).first
       @messages = Message.where(conversation_id: @conversation.id)
       @unread = @messages.where(user_read: false)
 
