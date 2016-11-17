@@ -237,7 +237,7 @@
       <form method='post' action='/shipment/create'>
         <%= csrf_meta_tag %>
         <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
-        <button id="fulfill-order" class="caps" onclick="return confirm('Order is 100% complete?');">
+        <button id="fulfill-order" onclick="return confirm('Order is 100% complete?');">
           Fulfill This Order
         </button>
       </form>
@@ -250,7 +250,7 @@
         <form method='post' action='/shipment/create'>
           <%= csrf_meta_tag %>
           <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
-          <button id="fulfill-order" class="caps" onclick="return confirm('Order is 100% complete?');">
+          <button id="fulfill-order" onclick="return confirm('Order is 100% complete?');">
             Remake Shipping Label
           </button>
         </form>
