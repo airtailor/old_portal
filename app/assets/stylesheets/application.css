@@ -855,13 +855,12 @@ button#check-garment:hover, button#fulfill-order:hover {
 }
 
 #packing-slip-info {
-  position: relative;
   width: 590px;
 }
 
 #packing-slip {
   width: 560px;
-  padding: 15px;
+  padding: 30px;
   margin: 0 auto;
   margin-top: 100px;
   font-family: raleway;
