@@ -37,8 +37,8 @@ class ItemsController < ApplicationController
       # @alterations = Alteration.where(order_id: @order.id)
 
 
-      if Conversation.exists?(recipient_id: @user.id)
-        @conversation = Conversation.find_by(recipient_id: @user.id)
+      if @user.conversation == true
+        @conversation = Conversation.where(recipient_id: @user.id).first
         @message = Message.new
       else
         @new_conversation = Conversation.new
@@ -52,8 +52,8 @@ class ItemsController < ApplicationController
         redirect_to "/"
       end
 
-      if Conversation.exists?(recipient_id: @user.id)
-        @conversation = Conversation.find_by(recipient_id: current_user.id)
+      if @user.conversation == true
+        @conversation = Conversation.where(recipient_id: current_user.id).first
         @message = Message.new
       end
     end

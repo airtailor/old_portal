@@ -193,7 +193,7 @@
 
   <!-- begin message section -->
   <div id="order-message-section">
-  <% if @conversation %>
+  <% if @user.conversation == true %>
     <h4>Ask a question about this order</h4>
     <div id="order-new-message-form">
       <%= form_for [@conversation, @message] do |f| %>
