@@ -3,8 +3,8 @@ class MessagesController < ApplicationController
   def index
     if current_user.is_admin?
       @message = Message.new
-      @conversation = Conversation.find_by(id: params[:conversation_id])
-      @messages = Message.where(conversation_id: @conversation.id).first
+      @conversation = Conversation.where(id: params[:conversation_id]).first
+      @messages = Message.where(conversation_id: @conversation.id)
       @unread = @messages.where(read: false)
       @unread.each do |x|
         x.update_attribute(:read, true)
