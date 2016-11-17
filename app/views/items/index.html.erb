@@ -263,9 +263,9 @@
 <div id="packing-slip-info" style="display:none">
   <img id="packing-slip-label" src="<%= @order.shipping_label %>">
     <div id="packing-slip">
-      <h2>Thank you for your Air Tailor order, <%= @customer.first_name %></h2>
-      <p>We hope everything arrived exactly as you expected and that you are pleased with our work. If you have any questions or would like to alter/repair more clothing using Air Tailor, please text us or email hello@airtailor.com. We look forward to serving you again soon, <%= @customer.first_name %>!</p>
-      <p id="packing-slip-info-shopify"><b>Order: <%= @order.shopify_id %></b></p>
+      <h2>Thank you for your Air Tailor order, <%= @customer.first_name.capitalize %></h2>
+      <p>We hope everything arrived exactly as you expected and that you are pleased with our work. If you have any questions or would like to alter/repair more clothing using Air Tailor, please text us or email hello@airtailor.com. We look forward to serving you again soon, <%= @customer.first_name.capitalize %>!</p>
+      <p id="packing-slip-info-shopify">Order: <%= @order.shopify_id %></p>
       <ul id="packing-slip-info-alt">
         <% @alterations.each do |alteration| %>
           <li><%= alteration %></li>
