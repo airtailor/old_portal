@@ -10,6 +10,10 @@ class MessagesController < ApplicationController
         x.update_attribute(:read, true)
       end
 
+      if @conversation.sender_id == "2"
+        @conversation.update_attribute(:sender_id, "1")
+      end
+
       @business = User.find_by(id: @conversation.recipient_id)
       @admin = User.find_by(id: current_user.id)
     else
