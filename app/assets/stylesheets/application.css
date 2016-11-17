@@ -872,7 +872,7 @@ button#check-garment:hover, button#fulfill-order:hover {
   font-family: alegreya;
   font-size: 42px;
   margin-bottom: 20px;
-  margin-top: 50px;
+  padding-top: 50px;
 }
 
 #packing-slip-info p {
