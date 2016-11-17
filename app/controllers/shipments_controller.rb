@@ -25,7 +25,7 @@ class ShipmentsController < ApplicationController
       }
     end
 
-    if parcel[:weight] = "0"
+    if parcel[:weight] == "0"
       parcel[:weight] = "28"
     end
 
@@ -50,8 +50,6 @@ class ShipmentsController < ApplicationController
     if address_to[:state] == "Washington DC"
       address_to[:state] = "DC"
     end
-
-
 
     shipment = {
       :object_purpose => 'PURCHASE',
