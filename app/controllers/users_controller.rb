@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
       @customer = Customer.find_by(order_id: @order.shopify_id)
       # binding.pry
-      fullname = @customer.first_name + " " + @customer.last_name
+      fullname = @customer.first_name.capitalize + " " + @customer.last_name.capitalize
       @order.update_attribute(:name, fullname)
 
       if @customer.state == "Washington DC"

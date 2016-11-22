@@ -161,7 +161,7 @@
     <% end %>
 
     <% if @order.welcome == true && @order.complete == true && @order.counter == 0 %>
-      <% SendSonar.message_customer(text: "Hi " + @order.name.capitalize + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
+      <% SendSonar.message_customer(text: "Hi " + @customer.first_name.capitalize + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
       <% @order.update_attribute(:counter, 2) %>
     <% end %>
 
@@ -179,7 +179,6 @@
 
 <div id="customer-details">
       <h3>Customer Details:</h3>
-      <% fullname = @customer.first_name + " " + @customer.last_name %>
       <p><b class="red">Name:</b> <%= fullname %></p>
       <p><b class="red">Email:</b> <%= @customer.email %></p>
       <p><b class="red">Phone:</b> <%= @customer.phone %></p>
