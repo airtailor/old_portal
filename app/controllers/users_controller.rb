@@ -71,14 +71,14 @@ class UsersController < ApplicationController
     if current_user.is_admin?
       @users = User.all
       @orders = Order.where(complete: nil)
-      @counter = 0
-      @orders.each do |order|
-        if order.due_date
-          if ((((order.due_date - Time.current).to_f)/86400).round) < 0
-            @counter = @counter + 1
-          end
-        end
-      end
+      # @counter = 0
+      # @orders.each do |order|
+      #   if order.due_date
+      #     if ((((order.due_date - Time.current).to_f)/86400).round) < 0
+      #       @counter = @counter + 1
+      #     end
+      #   end
+      # end
     else
       redirect_to "/"
     end

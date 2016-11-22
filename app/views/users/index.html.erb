@@ -7,25 +7,42 @@
 <div class="container">
 
 <div class="order-row-header">
-    <h3 class="order-column">Tailor</h3>
-    <h3 class="order-column">Current Orders</h3>
-    <h3 class="order-column">Late Orders</h3>
-    <h3 class="order-column">Account / Edit</h3>
+    <h3 class="tailor-order-column">Tailor</h3>
+    <center><h3 class="tailor-order-column">Assigned Orders</h3></center>
+    <center><h3 class="tailor-order-column">In Stock Orders</h3></center>
+    <center><h3 class="tailor-order-column">Late Orders</h3></center>
+    <h3 class="tailor-order-column">Account / Edit</h3>
   </div>
 
   <% @users.each do |user| %>
     <div class="order-row">
     <a href="/users/<%= user.id %>">
-      <div class="order-column">
+
+      <div class="tailor-order-column">
         <%= user.business_name %>
       </div>
-      <div class="order-column">
-        <%= user.orders.where(complete: nil).count %>
+
+      <div class="tailor-order-column">
+        <center><%= user.orders.where(complete: nil).count %></center>
       </div>
-      <div class="order-column red">
-        <%= @counter %>
+
+      <div class="tailor-order-column">
+        <center><%= user.orders.where(complete: nil, arrived: true).count %></center>
       </div>
-      <div class="order-column">
+
+      <div class="tailor-order-column red">
+        <% @counter = 0 %>
+        <% user.orders.where(complete: nil).each do |order| %>
+          <% if order.due_date %>
+            <% if ((((order.due_date - Time.current).to_f)/86400).round) < 0 %>
+              <% @counter = @counter + 1 %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <center><%= @counter %></center>
+      </div>
+
+      <div class="tailor-order-column">
         <a id="edit-tailor" href="/users/<%= user.id %>/edit">edit</a>
       </div>
     </a>
@@ -33,7 +50,7 @@
   <% end %>
 
     <div class="order-row">
-      <div class="order-column">
+      <div class="tailor-order-column">
         <%= link_to "Add Tailor", "users/new", :id => "edit-tailor" %>
       </div>
     </div>

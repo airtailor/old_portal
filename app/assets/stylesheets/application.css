@@ -725,6 +725,11 @@ select:hover {
   float: left;
 }
 
+.tailor-order-column {
+  width: 20%;
+  float: left;
+}
+
 .order-row {
   padding-left: 40px;
   padding-top: 10px;
