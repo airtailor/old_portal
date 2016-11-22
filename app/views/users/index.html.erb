@@ -11,7 +11,7 @@
     <center><h3 class="tailor-order-column">Assigned Orders</h3></center>
     <center><h3 class="tailor-order-column">In Stock Orders</h3></center>
     <center><h3 class="tailor-order-column">Late Orders</h3></center>
-    <h3 class="tailor-order-column">Account / Edit</h3>
+    <center><h3 class="tailor-order-column">Account / Edit</h3></center>
   </div>
 
   <% @users.each do |user| %>
@@ -42,9 +42,9 @@
         <center><%= @counter %></center>
       </div>
 
-      <div class="tailor-order-column">
+      <center><div class="tailor-order-column">
         <a id="edit-tailor" href="/users/<%= user.id %>/edit">edit</a>
-      </div>
+      </div></center>
     </a>
     </div>
   <% end %>
