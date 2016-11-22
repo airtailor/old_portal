@@ -40,6 +40,7 @@ class OrdersController < ApplicationController
     if current_user.is_admin?
       @users = User.all
       @orders = Order.where(complete: true)
+      @orders = @orders.where.not(shipping_label: nil)
       @alts = []
       @orders.each do |order|
         @alts.push(JSON.parse(order.alterations))
