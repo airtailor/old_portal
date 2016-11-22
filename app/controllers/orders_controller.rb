@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
     else
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
-      @orders = Order.where(complete: true)
+      @orders = @orders.where(complete: true)
     end
   end
 
