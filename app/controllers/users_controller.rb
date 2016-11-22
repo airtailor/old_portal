@@ -30,7 +30,10 @@ class UsersController < ApplicationController
         @order.update_attribute(:inbound_counter, 0)
       end
 
-      @customer = Customer.where(order_id: @order.shopify_id).first
+      @customer = Customer.find_by(order_id: @order.shopify_id)
+      # binding.pry
+      fullname = @customer.first_name + " " + @customer.last_name
+      @order.update_attribute(:name, fullname)
 
       if @customer.state == "Washington DC"
         @customer.update_attribute(:state, "DC")
@@ -85,7 +88,7 @@ class UsersController < ApplicationController
     if current_user.is_admin?
       @user = User.find_by(id: params[:id])
       @orders = Order.where(user_id: @user.id)
-      @orders = @orders.where(complete: nil)
+      @orders = @orders.where(arrived: true, complete: nil)
       @counter = 0
       @orders.each do |order|
         if order.due_date
@@ -103,7 +106,7 @@ class UsersController < ApplicationController
     else
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
-      @orders = @orders.where(complete: nil)
+      @orders = @orders.where(arrived: true, complete: nil)
       @counter = 0
       @orders.each do |order|
         if order.due_date
@@ -158,6 +161,7 @@ class UsersController < ApplicationController
      redirect_to @user
    else
      redirect_to edit_user_path
+     flash[:user_edit_error] = "Error — Missing Field(s)"
    end
   end
 

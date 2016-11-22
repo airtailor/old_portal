@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114091549) do
+ActiveRecord::Schema.define(version: 20161121090025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20161114091549) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "order_id"
+    t.string   "shopify_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -63,25 +64,26 @@ ActiveRecord::Schema.define(version: 20161114091549) do
   add_index "items", ["order_id"], name: "index_items_on_order_id", using: :btree
 
   create_table "measurements", force: :cascade do |t|
-    t.integer  "sleeve_length"
-    t.integer  "shoulder_to_waist"
-    t.integer  "chest_bust"
-    t.integer  "upper_torso"
-    t.integer  "waist"
-    t.integer  "pant_length"
-    t.integer  "hips"
-    t.integer  "thigh"
-    t.integer  "knee"
-    t.integer  "calf"
-    t.integer  "ankle"
-    t.integer  "back_width"
-    t.integer  "bicep"
-    t.integer  "elbow"
-    t.integer  "forearm"
-    t.integer  "inseam"
+    t.float    "sleeve_length"
+    t.float    "shoulder_to_waist"
+    t.float    "chest_bust"
+    t.float    "upper_torso"
+    t.float    "waist"
+    t.float    "pant_length"
+    t.float    "hips"
+    t.float    "thigh"
+    t.float    "knee"
+    t.float    "calf"
+    t.float    "ankle"
+    t.float    "back_width"
+    t.float    "bicep"
+    t.float    "elbow"
+    t.float    "forearm"
+    t.float    "inseam"
     t.string   "customer_name"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "customer_id"
   end
 
   create_table "messages", force: :cascade do |t|

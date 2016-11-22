@@ -43,6 +43,11 @@ body {
   z-index: 1;
 }
 
+.alert-user_edit_error {
+  border-color: red;
+  background-color: pink;
+}
+
 iframe {
   width: 900px;
   height: 1000px;

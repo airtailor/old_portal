@@ -11,6 +11,9 @@
 
 
 <div class="container">
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
 
 <!-- begin item info section -->
 <div id="item-section">
@@ -330,22 +333,22 @@
 <!-- form to update customer's measurements -->
   <%= form_for @measurement, {action: 'update'} do |f| %>
         <%= f.text_field :customer_name, :type => 'hidden' %>
-        <%= f.number_field :sleeve_length, :class => 'clothes-front measurement sleeve-length' %>
-        <%= f.number_field :shoulder_to_waist, :class => 'clothes-front measurement shoulder-to-waist' %>
-        <%= f.number_field :chest_bust, :class => 'clothes-front measurement chest-bust' %>
-        <%= f.number_field :upper_torso, :class => 'clothes-front measurement upper-torso' %>
-        <%= f.number_field :waist, :class => 'clothes-front measurement waist' %>
-        <%= f.number_field :pant_length, :class => 'clothes-front measurement pant-length' %>
-        <%= f.number_field :hips, :class => 'clothes-front measurement hips' %>
-        <%= f.number_field :thigh, :class => 'clothes-front measurement thigh' %>
-        <%= f.number_field :knee, :class => 'clothes-front measurement knee' %>
-        <%= f.number_field :calf, :class => 'clothes-front measurement calf' %>
-        <%= f.number_field :ankle, :class => 'clothes-front measurement ankle' %>
-        <%= f.number_field :back_width, :class => 'clothes-back measurement back-width' %>
-        <%= f.number_field :bicep, :class => 'clothes-back measurement bicep' %>
-        <%= f.number_field :elbow, :class => 'clothes-back measurement elbow' %>
-        <%= f.number_field :forearm, :class => 'clothes-back measurement forearm' %>
-        <%= f.number_field :inseam, :class => 'clothes-back measurement inseam' %>
+        <%= f.number_field :sleeve_length, :class => 'clothes-front measurement sleeve-length', step: :any %>
+        <%= f.number_field :shoulder_to_waist, :class => 'clothes-front measurement shoulder-to-waist', step: :any %>
+        <%= f.number_field :chest_bust, :class => 'clothes-front measurement chest-bust', step: :any %>
+        <%= f.number_field :upper_torso, :class => 'clothes-front measurement upper-torso', step: :any %>
+        <%= f.number_field :waist, :class => 'clothes-front measurement waist', step: :any %>
+        <%= f.number_field :pant_length, :class => 'clothes-front measurement pant-length', step: :any %>
+        <%= f.number_field :hips, :class => 'clothes-front measurement hips', step: :any %>
+        <%= f.number_field :thigh, :class => 'clothes-front measurement thigh', step: :any %>
+        <%= f.number_field :knee, :class => 'clothes-front measurement knee', step: :any %>
+        <%= f.number_field :calf, :class => 'clothes-front measurement calf', step: :any %>
+        <%= f.number_field :ankle, :class => 'clothes-front measurement ankle', step: :any %>
+        <%= f.number_field :back_width, :class => 'clothes-back measurement back-width', step: :any %>
+        <%= f.number_field :bicep, :class => 'clothes-back measurement bicep', step: :any %>
+        <%= f.number_field :elbow, :class => 'clothes-back measurement elbow', step: :any %>
+        <%= f.number_field :forearm, :class => 'clothes-back measurement forearm', step: :any %>
+        <%= f.number_field :inseam, :class => 'clothes-back measurement inseam', step: :any %>
     <button id="measurements-save"><%= f.submit "Save" %></button>
   <% end %>
 <!-- end of measurements form -->

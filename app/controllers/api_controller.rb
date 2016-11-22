@@ -18,6 +18,7 @@ class ApiController < ApplicationController
     end
 
     order = {
+      customer_id: data['customer']['id'],
       name: data['customer']['first_name'],
       shopify_id: data['name'],
       unique_id: data['id'],
@@ -28,6 +29,7 @@ class ApiController < ApplicationController
     }
 
     customer = {
+      shopify_id: data['customer']['id'],
       order_id: data['name'],
       first_name: data['customer']['first_name'],
       last_name: data['customer']['last_name'],
@@ -40,6 +42,7 @@ class ApiController < ApplicationController
       zip: data['customer']["default_address"]["zip"],
       phone: data['customer']["default_address"]["phone"],
     }
+
 
     @customer = Customer.new(customer).save
 

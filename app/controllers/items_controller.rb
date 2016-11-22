@@ -13,22 +13,25 @@ class ItemsController < ApplicationController
 
     # sonar shit
     if @order.arrived == true && @order.counter == 0
-       SendSonar.message_customer(text: "Hi " + @order.name.capitalize + ", just a heads up that your Air Tailor order (" + @order.shopify_id + ") has been received! We're going to get to work. In the meantime, stay well :)", to: @customer.phone)
+      SendSonar.message_customer(text: "Hi " + @order.name.capitalize + ", just a heads up that your Air Tailor order (" + @order.shopify_id + ") has been received! We're going to get to work. In the meantime, stay well :)", to: @customer.phone)
       @order.update_attribute(:counter, 1)
     end
 
     if @order.complete == true && @order.counter == 1
-       SendSonar.message_customer(text: "Good news " + @customer.first_name.capitalize + " — your Air Tailor order is finished and on its way to you! Here's your USPS tracking number: " + @order.tracking_number, to: @customer.phone)
+      SendSonar.message_customer(text: "Good news " + @customer.first_name.capitalize + " — your Air Tailor order is finished and on its way to you! Here's your USPS tracking number: " + @order.tracking_number, to: @customer.phone)
       @order.update_attribute(:counter, 2)
     end
     # end sonar shit
 
     # begin customer measurement section
-    if Measurement.exists?(customer_name: @order.name)
+    if Measurement.exists?(customer_id: @customer.shopify_id)
+      @measurement = Measurement.where(customer_id: @customer.shopify_id).first
+    elsif Measurement.exists?(customer_name: @order.name)
       @measurement = Measurement.where(customer_name: @order.name).first
     else
-      @measurement = Measurement.create(customer_name: @order.name, sleeve_length: 0, shoulder_to_waist: 0, chest_bust: 0, upper_torso: 0, waist: 0, pant_length: 0, hips: 0, thigh: 0, knee: 0, calf: 0, ankle: 0, back_width: 0, bicep: 0, elbow: 0, forearm: 0, inseam: 0)
+      @measurement = Measurement.create(customer_id: @customer.shopify_id, customer_name: @order.name, sleeve_length: 0, shoulder_to_waist: 0, chest_bust: 0, upper_torso: 0, waist: 0, pant_length: 0, hips: 0, thigh: 0, knee: 0, calf: 0, ankle: 0, back_width: 0, bicep: 0, elbow: 0, forearm: 0, inseam: 0)
     end
+    binding.pry
     # end customer measurement section
 
     if current_user.is_admin?

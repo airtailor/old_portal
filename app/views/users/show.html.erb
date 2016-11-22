@@ -14,7 +14,29 @@
   </div>
 
   <div id="tailor-show-boxes">
-  <a href="/conversations">
+    <a href="/users/<%= @user.id %>/orders">
+    <div id="tailor-show-late-box" class="tailor-show-box">
+      <span id="tailor-show-late-exclamation">!</span>
+      <p class="tailor-show-number"><%= @counter %></p>
+      <% if @counter == 1 %>
+        <p class="caps">Late<br>Order</p>
+      <% else %>
+        <p class="caps">Late<br>Orders</p>
+      <% end %>
+      <p><span class="caps">Fulfill &gt;</span></p>
+    </div>
+    </a>
+
+    <a href="/users/<%= @user.id %>/orders">
+    <div id="tailor-show-order-box" class="tailor-show-box">
+      <img src="/assets/orders.png" alt="">
+      <p class="tailor-show-number"><%= @orders.count %></p>
+      <p class="caps">Current<br>orders</p>
+      <p><span class="caps">view &gt;</span></p>
+    </div>
+    </a>
+
+    <a href="/conversations">
     <div id="tailor-show-message-box" class="tailor-show-box">
       <img src="/assets/message.png" alt="">
       <% if @conversation %>
@@ -28,27 +50,7 @@
     </div>
     </a>
 
-    <a href="/users/<%= @user.id %>/orders">
-    <div id="tailor-show-order-box" class="tailor-show-box">
-      <img src="/assets/orders.png" alt="">
-      <p class="tailor-show-number"><%= @orders.count %></p>
-      <p class="caps">Current<br>orders</p>
-      <p><span class="caps">view &gt;</span></p>
-    </div>
-    </a>
 
-    <a href="/users/<%= @user.id %>/orders">
-    <div id="tailor-show-late-box" class="tailor-show-box">
-      <span id="tailor-show-late-exclamation">!</span>
-      <p class="tailor-show-number"><%= @counter %></p>
-      <% if @counter == 1 %>
-        <p class="caps">Late<br>Order</p>
-      <% else %>
-        <p class="caps">Late<br>Orders</p>
-      <% end %>
-      <p><span class="caps">Fulfill &gt;</span></p>
-    </div>
-    </a>
   </div>
 
 

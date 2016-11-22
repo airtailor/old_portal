@@ -44,6 +44,7 @@ class MessagesController < ApplicationController
      @conversation = Conversation.find_by(id: params[:conversation_id])
       if @message.order_id
         @message.save
+        flash[:success] = "Message Sent"
         redirect_to :back
       else
         @message.save

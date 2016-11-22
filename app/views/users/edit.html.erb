@@ -5,6 +5,10 @@
 
 <div class="container">
 
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
 <div id="edit-user-copy">
     <h3>Login Info</h3>
     <p>Use this information to login into your account.</p><br><br><br><br><br>

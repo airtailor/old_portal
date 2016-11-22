@@ -53,6 +53,8 @@
         <%= message.text %><br><br>
       </div>
     </div>
+            <%= link_to "delete message", [@conversation, message], method: :delete,
+                                  data: { confirm: "Are you sure?" } %>
   <% end %>
 
 </div>
