@@ -29,6 +29,10 @@ class ShipmentsController < ApplicationController
       parcel[:weight] = "28"
     end
 
+    if parcel[:weight] == 0
+      parcel[:weight] = 28
+    end
+
     address_from = {
       :object_purpose=>"PURCHASE",
       :name=> "Air Tailor",
@@ -58,7 +62,7 @@ class ShipmentsController < ApplicationController
       :parcel => parcel
     }
 
-    binding.pry
+    # binding.pry
 
     if @order.welcome == true
       transaction = Shippo::Transaction.create(
@@ -83,7 +87,7 @@ class ShipmentsController < ApplicationController
       )
     end
 
-    binding.pry
+    # binding.pry
 
     @order.update_attribute(:shipping_label, transaction.label_url)
     @order.update_attribute(:tracking_number, transaction.tracking_number)

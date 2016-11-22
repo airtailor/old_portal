@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
     else
       @measurement = Measurement.create(customer_id: @customer.shopify_id, customer_name: @order.name, sleeve_length: 0, shoulder_to_waist: 0, chest_bust: 0, upper_torso: 0, waist: 0, pant_length: 0, hips: 0, thigh: 0, knee: 0, calf: 0, ankle: 0, back_width: 0, bicep: 0, elbow: 0, forearm: 0, inseam: 0)
     end
-    binding.pry
+    # binding.pry
     # end customer measurement section
 
     if current_user.is_admin?
