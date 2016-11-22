@@ -58,6 +58,8 @@ class ShipmentsController < ApplicationController
       :parcel => parcel
     }
 
+    binding.pry
+
     if @order.welcome == true
       transaction = Shippo::Transaction.create(
           :shipment => shipment,
@@ -81,7 +83,7 @@ class ShipmentsController < ApplicationController
       )
     end
 
-    # binding.pry
+    binding.pry
 
     @order.update_attribute(:shipping_label, transaction.label_url)
     @order.update_attribute(:tracking_number, transaction.tracking_number)
