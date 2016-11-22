@@ -48,6 +48,7 @@ class OrdersController < ApplicationController
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
       @orders = @orders.where(complete: true)
+      @orders = @orders.where.not(shipping_label: nil)
     end
   end
 
