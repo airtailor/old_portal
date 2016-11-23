@@ -133,7 +133,7 @@ main {
   float: left;
   padding-left: 30px;
   margin-top: 0;
-  width: 80%;
+  width: 60%;
 }
 
 .section-header a:hover {
@@ -148,8 +148,9 @@ main {
 
 .container {
   margin-top: 50px;
-  overflow: auto;
+  min-height: 100vh;
   height: 100%;
+  overflow: auto;
 }
 
 /* login page */
@@ -922,7 +923,7 @@ button#check-garment:hover, button#fulfill-order:hover {
 #customer-measurements {
   float: left;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-right: 20px;
   position: relative;
   min-width: 375px;

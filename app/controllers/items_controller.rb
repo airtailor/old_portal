@@ -26,8 +26,8 @@ class ItemsController < ApplicationController
     # begin customer measurement section
     if Measurement.exists?(customer_name: @order.name)
       @measurement = Measurement.where(customer_name: @order.name).first
-    elsif Measurement.exists?(customer_id: @customer.shopify_id)
-      @measurement = Measurement.where(customer_id: @customer.shopify_id).first
+    # elsif Measurement.exists?(customer_id: @customer.shopify_id)
+    #   @measurement = Measurement.where(customer_id: @customer.shopify_id).first
     else
       @measurement = Measurement.create(customer_id: @customer.shopify_id, customer_name: @order.name, sleeve_length: 0, shoulder_to_waist: 0, chest_bust: 0, upper_torso: 0, waist: 0, pant_length: 0, hips: 0, thigh: 0, knee: 0, calf: 0, ankle: 0, back_width: 0, bicep: 0, elbow: 0, forearm: 0, inseam: 0)
     end

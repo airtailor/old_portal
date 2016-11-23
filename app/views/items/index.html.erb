@@ -4,16 +4,17 @@
   <h2>Orders / <a href="/users/<%= @user.id%>/orders"><%= @user.business_name %></a> / <%= @order.shopify_id %></h2>
   customer: <%= @customer.first_name + " " + @customer.last_name %>
   <% if current_user.is_admin? %>
-    <%= link_to "delete order", [@user, @order], method: :delete,
+    <%= link_to " / delete order", [@user, @order], method: :delete,
                                   data: { confirm: "Are you sure?" } %>
   <% end %>
 </div>
 
 
 <div class="container">
-<% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
-<% end %>
+
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
 
 <!-- begin item info section -->
 <div id="item-section">
@@ -354,6 +355,8 @@
 <!-- end of measurements form -->
 </div>
 <!-- end of customer measurements section -->
+
+</div>
 
 </div>
 
