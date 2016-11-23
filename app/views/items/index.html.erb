@@ -195,6 +195,10 @@
   </div>
   <!-- end lists of item alterations -->
 
+<% if current_user.is_admin? %>
+  <button id="edit-customer"><a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/edit">Edit Order</a></button><br>
+<% end %>
+
   <!-- begin message section -->
   <div id="order-message-section">
   <% if @user.conversation == true %>

@@ -60,9 +60,22 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find_by(id: params[:id])
-    @order.update_attributes(order_params)
-    redirect_to :back
+    @order.assign_attributes(order_params)
 
+    if @order.valid?
+      @order.update_attributes(order_params)
+      redirect_to "/users/" + @order.user_id.to_s + "/orders/" + @order.id.to_s + "/items"
+    else
+      redirect_to edit_order_path
+    end
+  end
+
+  def edit
+    if current_user.is_admin?
+      @order = Order.find_by(id: params[:id])
+    else
+      redirect_to :back
+    end
   end
 
   def destroy

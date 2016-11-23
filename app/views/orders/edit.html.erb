@@ -1,0 +1,24 @@
+<main>
+  <div class="section-header">
+      <h2>Edit Order</h2>
+  </div>
+
+
+  <div class="container">
+
+
+    <div id="edit-user-form" class="customer-edit">
+        <%= link_to '< Back', :back, :class => "underline blue" %>
+        <%= form_for [@user, @order], url: {action: 'update'} do |f| %>
+            <p>Name:</p> <%= f.text_field :name %>
+            <p>Alterations:</p> <%= f.text_field :alterations %>
+            <p>Note:</p> <%= f.text_field :note %>
+        <%= f.submit "Update", data: { confirm: "You sure?" } %>
+
+      <% end %>
+
+    </div>
+  </div>
+</main>
+
+
