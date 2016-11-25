@@ -60,6 +60,12 @@ $(document).on("click", "#packing-slip-btn", function() {
   });
 });
 
+$(document).on("click", "#print-instructions", function() {
+  $('#item-alteration-lists').printThis({
+    removeInline: true
+  })
+});
+
 $(document).ready(function(){
   setTimeout(function(){
     $('.alert').remove();

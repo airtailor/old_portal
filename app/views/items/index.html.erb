@@ -20,6 +20,7 @@
 <div id="item-section">
   <!-- begin lists of item alterations -->
   <div id="item-alteration-lists">
+    <h2 style="display:none">Alterations for Order <%= @order.shopify_id %>:</h2>
 
     <% if @items.any? { |s| s.include?('Pants') } %>
       <div class="alteration-list">
@@ -194,9 +195,10 @@
     <br><br>
   </div>
   <!-- end lists of item alterations -->
+<button id="print-instructions" class="order-button">Print Instructions</button>
 
 <% if current_user.is_admin? %>
-  <button id="edit-customer"><a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/edit">Edit Order</a></button><br>
+  <button class="order-button"><a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/edit">Edit Order</a></button><br>
 <% end %>
 
   <!-- begin message section -->

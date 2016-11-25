@@ -796,10 +796,30 @@ select:hover {
   margin-left: 50px;
 }
 
+#item-alteration-lists h2 {
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+
 #notes-header {
   float: left;
   margin-top: -4px;
   margin-right: 10px;
+  margin-bottom: 0;
+}
+
+.order-button {
+  height: 30px;
+  background-color: #D8EDFC;
+  border-radius: 10px;
+  padding-right: 8px;
+  padding-left: 8px;
+  margin-right: 5px;
+}
+
+.order-button:hover,
+.order-button a:hover {
+  cursor: pointer;
 }
 
 #order-message-section {
