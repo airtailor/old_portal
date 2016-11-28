@@ -18,6 +18,8 @@ console.log(x)
     $("div.clothes-front").css('opacity', '0');
     $("#clothes-back-image").css('opacity', '1')
     $("div.clothes-back").css('opacity', '1');
+    $("#measurements-save").hide()
+    $("#measurements-edit").show()
   });
 
   $(document).on("click", "#measurements-front", function(){
@@ -29,6 +31,8 @@ console.log(x)
     $("div.clothes-front").css('opacity', '1');
     $("#clothes-back-image").css('opacity', '0');
     $("div.clothes-back").css('opacity', '0');
+    $("#measurements-save").hide()
+    $("#measurements-edit").show()
   });
 
 
@@ -39,18 +43,22 @@ console.log(x)
       $("input.clothes-back").css('opacity', '0');
       $("div.clothes-front").css('opacity', '0');
       $("input.clothes-front").css('opacity', '1');
-      $("#measurements-save").css('opacity', '1');
+      $("#measurements-edit").hide();
+      $("#measurements-save").show();
     } else if (x===2) {
       $("div.clothes-front").css('opacity', '0');
       $("input.clothes-front").css('opacity', '0');
       $("div.clothes-back").css('opacity', '0');
       $("input.clothes-back").css('opacity', '1');
       $("#measurements-save").css('opacity', '1');
+      $("#measurements-edit").hide();
+      $("#measurements-save").show();
     }
   });
 
   $(document).on("click", "#measurements-save", function(){
-      $("#measurements-save").css('opacity', '0');
+      $("#measurements-save").hide()
+      $("#measurements-edit").show()
   });
 
 

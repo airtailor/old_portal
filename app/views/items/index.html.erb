@@ -20,7 +20,7 @@
 <div id="item-section">
   <!-- begin lists of item alterations -->
   <div id="item-alteration-lists">
-    <h2 style="display:none">Alterations for Order <%= @order.shopify_id %>:</h2>
+    <h2 id="instructions-header" style="display:none">Alterations for Order <span><%= @order.shopify_id %></span>:</h2>
 
     <% if @items.any? { |s| s.include?('Pants') } %>
       <div class="alteration-list">
@@ -183,6 +183,7 @@
         </div>
       </div>
     <% end %>
+
 
     <h3 id="notes-header">Order Notes:</h3>
     <% if @order.note? %>
