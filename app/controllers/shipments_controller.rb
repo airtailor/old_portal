@@ -3,6 +3,7 @@ class ShipmentsController < ApplicationController
   def makeshipment
     @shipment = Shipment.find_by(shopify_id: params[:id])
     @order = Order.where(shopify_id: @shipment.shopify_id).first
+    @customer = Customer.where(order_id: @order.shopify_id).first
     @user = User.where(id: @order.user_id).first
     @order.update_attribute(:complete, true)
 
@@ -47,18 +48,22 @@ class ShipmentsController < ApplicationController
       :email=> @user.email
     }
 
+      first = @customer.first_name
+      last = @customer.last_name
+      customer_name = first + " " + last
+
      address_to = {
       :object_purpose => 'PURCHASE',
       :name => customer_name,
       :company => '',
-      :street1 => customer[:address1],
-      :street2 => customer[:address2],
-      :city => customer[:city],
-      :state => customer[:state],
-      :zip => customer[:zip],
+      :street1 => @customer.address1,
+      :street2 => @customer.address2,
+      :city => @customer.city,
+      :state => @customer.state,
+      :zip => @customer.zip,
       :country => 'US',
-      :phone => customer[:phone],
-      :email => customer[:email]
+      :phone => @customer.phone,
+      :email => @customer.email
     }
 
     if address_from[:state] == "Washington DC"
