@@ -47,6 +47,20 @@ class ShipmentsController < ApplicationController
       :email=> @user.email
     }
 
+     address_to = {
+      :object_purpose => 'PURCHASE',
+      :name => customer_name,
+      :company => '',
+      :street1 => customer[:address1],
+      :street2 => customer[:address2],
+      :city => customer[:city],
+      :state => customer[:state],
+      :zip => customer[:zip],
+      :country => 'US',
+      :phone => customer[:phone],
+      :email => customer[:email]
+    }
+
     if address_from[:state] == "Washington DC"
       address_from[:state] = "DC"
     end
