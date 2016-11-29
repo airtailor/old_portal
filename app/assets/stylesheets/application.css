@@ -768,12 +768,25 @@ select:hover {
   width: 50%;
 }
 
+#item-alteration-lists {
+  max-width: 600px;
+}
+
 #instructions-header {
-  font-size: 36px;
+  font-size: 32px;
+  margin-top: 0px;
+  margin-bottom: 30px;
 }
 
 #instructions-header span {
   font-size: 40px;
+}
+
+#instructions-logo {
+  width: 35%;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .item {
@@ -802,11 +815,6 @@ select:hover {
 .alterations-text {
   float: left;
   margin-left: 50px;
-}
-
-#item-alteration-lists h2 {
-  margin-top: 0px;
-  margin-bottom: 30px;
 }
 
 #notes-header {
@@ -1041,8 +1049,8 @@ input.measurement {
 }
 
 .sleeve-length {
-  top: 110px;
-  left: 55px;
+  top: 170px;
+  left: 25px;
 }
 
 .shoulder-to-waist {

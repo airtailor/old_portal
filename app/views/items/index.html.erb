@@ -20,6 +20,7 @@
 <div id="item-section">
   <!-- begin lists of item alterations -->
   <div id="item-alteration-lists">
+    <img id="instructions-logo" src="/assets/logo.png" alt="Air Tailor" style="display:none">
     <h2 id="instructions-header" style="display:none">Alterations for Order <span><%= @order.shopify_id %></span>:</h2>
 
     <% if @items.any? { |s| s.include?('Pants') } %>
