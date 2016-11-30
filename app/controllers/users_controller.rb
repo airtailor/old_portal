@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
       if @owner && @order.inbound_counter != 1
         if @order.inbound_label != nil && @order.inbound_label != ""
-          AirtailorMailer.label_email(@customer, @order).deliver
+          AirtailorMailer.label_email(@owner, @customer, @order).deliver
           @order.update_attribute(:inbound_counter, 1)
         end
       end

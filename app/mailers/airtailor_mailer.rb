@@ -3,8 +3,8 @@ class AirtailorMailer < ApplicationMailer
 
   default from: "orders@airtailor.com"
 
-  def label_email(customer, order)
-
+  def label_email(owner, customer, order)
+    @owner = owner
     @customer = customer
     @order = order
     # html=render_to_string(:partial=> "attachment")

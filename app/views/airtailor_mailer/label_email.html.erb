@@ -28,10 +28,12 @@
     <p>Please note that Air Tailor is not responsible for lost, stolen or damaged shipments. The attached pre-paid USPS label is complimentary and provided for your convenience but does not include insurance. If you would prefer to pay for your own shipping, please include your order number (<%= @order.shopify_id %>) and send to the following address:</p>
 
     <p>Air Tailor (Incoming)<br>
-    510 West 21st St.<br>
-    65DM8A<br>
-    New York, NY 10011<br>
-    Phone: (888) 630-6610</p>
+    <%= @owner.street %><br>
+    <% if @owner.unit != "" %>
+        <%= @owner.unit %><br>
+    <% end %>
+    <%= @owner.city %>, <%= @owner.state %> <%= @owner.zip %><br>
+    Phone: <%= @owner.phone %></p>
 
   </body>
 </html>
