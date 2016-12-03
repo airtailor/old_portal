@@ -64,10 +64,10 @@ class OrdersController < ApplicationController
 
     if @order.valid?
       @order.update_attributes(order_params)
-      if @order.welcome == false
-        redirect_to "/users/" + @order.user_id.to_s + "/orders/" + @order.id.to_s + "/items"
-      elsif @order.welcome != nil
+      if @order.welcome != nil
         redirect_to :back
+      else
+        redirect_to "/users/" + @order.user_id.to_s + "/orders/" + @order.id.to_s + "/items"
       end
     else
       redirect_to edit_order_path
