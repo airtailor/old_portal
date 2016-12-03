@@ -8,7 +8,7 @@
 
 
     <div id="edit-user-form" class="customer-edit">
-        <%= link_to '< Back', :back, :class => "underline blue" %>
+        <a class="underline blue" href="/users/<%= @order.user_id.to_s %>/orders/<%= @order.id.to_s %>/items">&lt; Back</a>
         <%= form_for [@user, @order], url: {action: 'update'} do |f| %>
             <p>Name:</p> <%= f.text_field :name %>
             <p>Alterations:</p> <%= f.text_field :alterations %>
