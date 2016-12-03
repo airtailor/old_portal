@@ -74,10 +74,20 @@ $(document).on("click", "#print-instructions", function() {
   })
 });
 
+$(document).on("click", "#add-notes", function() {
+  $('#tailor-notes-form').show();
+});
+
+$(document).on("click", "#save-notes", function() {
+  $('#tailor-notes-form').hide();
+});
+
 $(document).ready(function(){
   setTimeout(function(){
     $('.alert').remove();
   }, 3000);
  })
+
+
 
 

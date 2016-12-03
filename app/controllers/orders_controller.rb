@@ -64,10 +64,10 @@ class OrdersController < ApplicationController
 
     if @order.valid?
       @order.update_attributes(order_params)
-      if @order.welcome != nil
-        redirect_to :back
-      else
+      if @order.welcome == false
         redirect_to "/users/" + @order.user_id.to_s + "/orders/" + @order.id.to_s + "/items"
+      elsif @order.welcome != nil
+        redirect_to :back
       end
     else
       redirect_to edit_order_path
@@ -92,7 +92,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:name, :shopify_id, :unique_id, :total, :alterations, :user_id, :arrival_date, :due_date, :complete, :arrived, :customer_id, :counter, :shipping_label, :note, :inbound_label, :inbound_counter, :welcome, :weight, :tracker)
+    params.require(:order).permit(:name, :shopify_id, :unique_id, :total, :alterations, :user_id, :arrival_date, :due_date, :complete, :arrived, :customer_id, :counter, :shipping_label, :note, :inbound_label, :inbound_counter, :welcome, :weight, :tracker, :tailor_notes)
   end
 
 end

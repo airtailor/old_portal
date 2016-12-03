@@ -769,7 +769,7 @@ select:hover {
 }
 
 #item-alteration-lists {
-  max-width: 600px;
+  max-width: 590px;
 }
 
 #instructions-header {
@@ -817,11 +817,19 @@ select:hover {
   margin-left: 50px;
 }
 
-#notes-header {
+.notes-header {
   float: left;
   margin-top: -4px;
   margin-right: 10px;
   margin-bottom: 0;
+}
+
+.order-notes {
+  padding-right: 50px;
+}
+
+#tailor-notes-form {
+  display: none;
 }
 
 .order-button {
@@ -847,21 +855,31 @@ select:hover {
   text-align: left;
 }
 
-textarea#message_text {
+textarea {
   padding: 10px;
   border: 1px solid #000033;
 }
 
-#submit-order-message {
+#submit-order-message,
+#save-notes,
+#add-notes {
   background-color: white;
 }
 
-#submit-order-message input {
+#submit-order-message,
+#add-notes {
+  padding: 5px 10px;
+}
+
+#submit-order-message input,
+#save-notes input {
   border: none;
   background-color: white;
 }
 
-#submit-order-message input:hover {
+#submit-order-message input:hover,
+#save-notes input:hover,
+#add-notes:hover {
   cursor: pointer;
 }
 
@@ -961,7 +979,7 @@ button#check-garment:hover, button#fulfill-order:hover {
   text-align: center;
   float: left;
   margin-top: 30px;
-  margin-right: 20px;
+  margin-left: 50px;
   position: relative;
   min-width: 375px;
   min-height: 100vh;

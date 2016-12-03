@@ -189,23 +189,43 @@
       </div>
     <% end %>
 
-
-    <h3 id="notes-header">Order Notes:</h3>
+    <h3 class="notes-header">Order Notes:</h3>
     <% if @order.note? %>
-      <%= @order.note %>
+      <p class="order-notes"><%= @order.note %></p>
     <% else %>
-      n/a
+      <p class="order-notes">n/a</p>
     <% end %>
+    <br>
 
-
-    <br><br>
+    <h3 class="notes-header">Tailor Notes:</h3>
+    <% if @order.tailor_notes.blank? %>
+      n/a <br><br>
+    <% else %>
+      <%= @order.tailor_notes %> <br><br>
+    <% end %>
   </div>
+
+    <button id="add-notes">Add Notes?</button>
+<br><br>
+    <div id="tailor-notes-form">
+      <%= form_for [@user, @order], {action: 'update'} do |f| %>
+        <%= f.text_area :tailor_notes, size: "60x10", :placeholder => 'Type notes here...' %><br>
+        <button id="save-notes"><%= f.submit "Save" %></button>
+      <% end %><br>
+    </div>
+
+
+    <br>
+
   <!-- end lists of item alterations -->
 <button id="print-instructions" class="order-button">Print Instructions</button>
 
 <% if current_user.is_admin? %>
   <button class="order-button"><a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/edit">Edit Order</a></button><br>
 <% end %>
+
+<br>
+<hr>
 
   <!-- begin message section -->
   <div id="order-message-section">
