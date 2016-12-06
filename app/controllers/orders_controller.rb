@@ -7,17 +7,11 @@ class OrdersController < ApplicationController
       @orders = Order.where(user_id: @user.id)
       @orders = @orders.where(complete: nil)
       @alts = []
-      @orders.each do |order|
-        @alts.push(JSON.parse(order.alterations))
-      end
     else
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
       @orders = @orders.where(complete: nil)
       @alts = []
-      @orders.each do |order|
-        @alts.push(JSON.parse(order.alterations))
-      end
     end
   end
 
