@@ -751,7 +751,9 @@ select:hover {
 }
 
 #order-quantity {
-  text-align: center;
+  text-align: left;
+  width: 19%;
+  padding-left: 5%;
 }
 
 
