@@ -2,7 +2,7 @@
 
 SendSonar.configure do |config|
   if Rails.env.production?
-    config.env = :live
+    config.env = :sandbox
     config.token = ENV['SONAR_SANDBOX_TOKEN']
     # || 'YOUR_PRODUCTION_TOKEN'
     # 'SONAR_PRODUCTION_TOKEN'
