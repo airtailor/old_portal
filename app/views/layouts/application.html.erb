@@ -21,7 +21,13 @@
     <h5 class="caps">Shop Portal</h5>
     <hr>
     <nav>
-      <input type="search" placeholder="Search">
+      <% if @user %>
+        <%= form_tag(user_orders_path([@user, @orders]), :method => "get") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Orders" %>
+          <%= submit_tag "Search", :name => nil, :type => "hidden" %>
+        <% end %>
+      <% end %>
+
       <ul>
 
         <% if current_user.is_admin? %>

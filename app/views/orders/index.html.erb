@@ -33,7 +33,9 @@
           </div>
 
           <div id="order-status" class="order-column">
-            <% if order.due_date %>
+            <% if order.complete %>
+              <span class="green">Complete!</span>
+            <% elsif order.due_date %>
               <% status = (((order.due_date-Time.current).to_f)/86400).round %>
               <% if status == 0 %>
                 <span class="red">Due today</span>

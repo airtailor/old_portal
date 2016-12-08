@@ -242,7 +242,7 @@ aside h5 {
   font-family: raleway;
 }
 
-aside input[type="search"] {
+input#search {
   height: 30px;
   display: block;
   width: 95%;

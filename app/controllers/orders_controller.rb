@@ -7,11 +7,18 @@ class OrdersController < ApplicationController
       @orders = Order.where(user_id: @user.id)
       @orders = @orders.where(complete: nil)
       @alts = []
+      if params[:search]
+        @orders = Order.search(params[:search]).order("created_at DESC")
+      end
     else
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
       @orders = @orders.where(complete: nil)
       @alts = []
+      if params[:search]
+        @orders = @orders = Order.where(user_id: current_user.id)
+        @orders = @orders.search(params[:search]).order("created_at DESC")
+      end
     end
   end
 
