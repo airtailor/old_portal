@@ -772,6 +772,8 @@ select:hover {
 
 #item-alteration-lists {
   max-width: 590px;
+  padding-right: 30px;
+  font-size: 28px;
 }
 
 #instructions-header {
