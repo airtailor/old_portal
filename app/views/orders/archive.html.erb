@@ -16,8 +16,8 @@
 
       <% @orders.order("updated_at").reverse_order.each_with_index do |order, index| %>
       <% @user = @users.where(id: order.user_id).first %>
-            <% if @user %>
-
+      <% if @user %>
+      <% order.update_attribute(:counter, 2) %>
         <div class="order-row">
         <a class="order-row-link" href="/users/<%= order.user_id %>/orders/<%= order.id %>/items">
           <div id="order-id" class="order-column">
