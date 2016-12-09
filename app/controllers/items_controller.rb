@@ -15,6 +15,8 @@ class ItemsController < ApplicationController
 
     @order.update_attribute(:name, fullname)
 
+
+
     # sonar shit
     if @order.arrived == true && @order.counter == 0
       SendSonar.message_customer(text: "Hi " + @customer.first_name.capitalize + ", just a heads up that your Air Tailor order (" + @order.shopify_id + ") has been received! We're going to get to work. In the meantime, stay well :)", to: @customer.phone)

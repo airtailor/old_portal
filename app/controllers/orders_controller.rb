@@ -52,6 +52,7 @@ class OrdersController < ApplicationController
       @orders = @orders.where(complete: true)
       @orders = @orders.where.not(shipping_label: nil)
     end
+    @order.update_attribute(:counter, 2)
   end
 
   {"Shirt #1"=>"Add Collar Buttons, Add Snaps Under Collar", "Pants #1"=>"Add Button, Add Clasp"}
