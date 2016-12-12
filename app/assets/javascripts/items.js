@@ -74,6 +74,12 @@ $(document).on("click", "#print-instructions", function() {
   })
 });
 
+// $(document).on("click", "#print-instructions", function() {
+//   $('#item-alteration-lists').printThis({
+//     removeInline: true
+//   })
+// });
+
 $(document).on("click", "#add-notes", function() {
   $('#tailor-notes-form').show();
 });

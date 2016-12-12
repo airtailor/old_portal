@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
     address_to = {
       :object_purpose => 'PURCHASE',
       :name => customer_name,
-      :company => '',
+      :company => customer[:company],
       :street1 => customer[:address1],
       :street2 => customer[:address2],
       :city => customer[:city],
@@ -88,7 +88,7 @@ class ApplicationController < ActionController::Base
     address_from = {
       :object_purpose => 'PURCHASE',
       :name => customer_name,
-      :company => "",
+      :company => customer.company,
       :street1 => customer.address1,
       :street2 => customer.address2,
       :city => customer.city,

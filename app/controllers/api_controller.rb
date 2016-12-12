@@ -34,6 +34,7 @@ class ApiController < ApplicationController
       first_name: data['customer']['first_name'],
       last_name: data['customer']['last_name'],
       email: data['customer']['email'],
+      company: data['customer']["default_address"]["company"],
       address1: data['customer']["default_address"]["address1"],
       address2: data['customer']["default_address"]["address2"],
       city: data['customer']["default_address"]["city"],

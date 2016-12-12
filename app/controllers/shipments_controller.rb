@@ -55,7 +55,7 @@ class ShipmentsController < ApplicationController
      address_to = {
       :object_purpose => 'PURCHASE',
       :name => customer_name,
-      :company => '',
+      :company => @customer.shipping_label,
       :street1 => @customer.address1,
       :street2 => @customer.address2,
       :city => @customer.city,

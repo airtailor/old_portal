@@ -8,7 +8,8 @@ class OrdersController < ApplicationController
       @orders = @orders.where(complete: nil)
       @alts = []
       if params[:search]
-        @orders = Order.search(params[:search]).order("created_at DESC")
+        @orders = Order.where.not(user_id: nil)
+        @orders = @orders.search(params[:search]).order("created_at DESC")
       end
     else
       @user = current_user
