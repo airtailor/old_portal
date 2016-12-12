@@ -112,6 +112,7 @@ main {
   min-height: 100vh;
   border-left: #000033 1px solid;
   width: 85%;
+  min-width: 1000px;
   float: left;
 }
 
@@ -988,7 +989,7 @@ button#check-garment:hover, button#fulfill-order:hover {
   text-align: center;
   float: left;
   margin-top: 30px;
-  margin-left: 50px;
+  margin-left: 25px;
   position: relative;
   min-width: 375px;
   min-height: 100vh;
