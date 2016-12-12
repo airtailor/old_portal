@@ -771,9 +771,13 @@ select:hover {
 }
 
 #item-alteration-lists {
+  width: 590px;
+  font-size: 24px;
+}
+
+#instructions {
   width: 500px;
   margin: 0 auto;
-  font-size: 24px;
 }
 
 #instructions-header {
@@ -791,6 +795,7 @@ select:hover {
   display: block;
   margin: 0 auto;
   margin-bottom: 20px;
+  padding-top: 50px;
 }
 
 .item {

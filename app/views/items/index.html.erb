@@ -24,6 +24,7 @@
 <div id="item-section">
   <!-- begin lists of item alterations -->
   <div id="item-alteration-lists" style="font-size:14px;">
+  <div id="instructions">
     <img id="instructions-logo" src="/assets/logo.png" alt="Air Tailor" style="display:none;">
     <h2 id="instructions-header" style="display:none">Alterations for Order <span><%= @order.shopify_id %></span>:</h2>
 
@@ -236,6 +237,7 @@
       <%= @order.tailor_notes %> <br><br>
     <% end %>
   </div>
+  </div>
 
     <button id="add-notes">Add Notes?</button>
 <br><br>
@@ -328,7 +330,7 @@
   </div>
 
 
-<div id="packing-slip-info" style="display:none">
+<div id="packing-slip-info" style="display:none;">
   <img id="packing-slip-label" src="<%= @order.shipping_label %>">
     <div id="packing-slip">
       <h2>Thank you for your Air Tailor order, <%= @customer.first_name.capitalize %></h2>
