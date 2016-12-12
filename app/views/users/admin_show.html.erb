@@ -145,6 +145,9 @@
       </div>
 
       <div id="welcome-to-address">
+        <% if @customer.company != "" %>
+          <%= @customer.company %>
+        <% end %>
         <%= @customer.first_name.capitalize %> <%= @customer.last_name.capitalize %><br>
         <%= @customer.address1 %><br>
         <% if @customer.address2 != "" %>

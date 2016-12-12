@@ -42,7 +42,7 @@ before_filter :authorize
   private
 
   def customer_params
-    params.require(:customer).permit(:shopify_id, :first_name, :last_name, :email, :address1, :address2, :city, :state, :country, :zip, :phone)
+    params.require(:customer).permit(:shopify_id, :first_name, :last_name, :email, :address1, :address2, :city, :state, :country, :zip, :phone, :company)
   end
 
 
