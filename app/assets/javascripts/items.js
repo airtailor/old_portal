@@ -69,7 +69,7 @@ $(document).on("click", "#packing-slip-btn", function() {
 });
 
 $(document).on("click", "#print-instructions", function() {
-  $('#item-alteration-lists').printThis({
+  $('#instructions').printThis({
     removeInline: true
   })
 });

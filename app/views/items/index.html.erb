@@ -23,8 +23,8 @@
 <!-- begin item info section -->
 <div id="item-section">
   <!-- begin lists of item alterations -->
-  <div id="item-alteration-lists" style="font-size:14px;">
-  <div id="instructions">
+  <div id="item-alteration-lists">
+  <div id="instructions" style="font-size:14px; margin-left:0px;">
     <img id="instructions-logo" src="/assets/logo.png" alt="Air Tailor" style="display:none;">
     <h2 id="instructions-header" style="display:none">Alterations for Order <span><%= @order.shopify_id %></span>:</h2>
 
@@ -248,8 +248,7 @@
       <% end %><br>
     </div>
 
-
-    <br>
+<br>
 
   <!-- end lists of item alterations -->
 <button id="print-instructions" class="order-button">Print Instructions</button>
@@ -259,7 +258,7 @@
 <% end %>
 
 <br>
-<hr>
+<hr id="instruction-break">
 
   <!-- begin message section -->
   <div id="order-message-section">
