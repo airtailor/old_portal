@@ -25,7 +25,11 @@
           </div>
 
           <div id="order-status" class="order-column">
-            <%= order.due_date.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y") %>
+            <% if order.fulfill_date %>
+              <%= order.fulfill_date.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y") %>
+            <% else %>
+              <%= order.due_date.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y") %>
+            <% end %>
           </div>
 
           <div id="order-customer" class="order-column">
@@ -48,7 +52,7 @@
     <h3 class="order-column">Shipping Label</h3>
   </div>
 
-  <% @orders.order("updated_at").reverse_order.each_with_index do |order, index| %>
+  <% @orders.order("due_date").reverse_order.each_with_index do |order, index| %>
   <% if order.created_at > @user.created_at %>
   <div class="order-row">
         <a class="order-row-link" href="/users/<%= order.user_id %>/orders/<%= order.id %>/items">
@@ -57,7 +61,11 @@
           </div>
 
           <div class="order-column">
-            <%= order.updated_at.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y") %>
+            <% if order.fulfill_date %>
+              <%= order.fulfill_date.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y") %>
+            <% else %>
+              <%= order.due_date.in_time_zone("Eastern Time (US & Canada)").strftime("%d %b. %Y") %>
+            <% end %>
           </div>
 
           <div class="order-column">
