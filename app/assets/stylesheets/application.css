@@ -918,6 +918,10 @@ input#submit-order-message:hover {
   border-radius: 3px;
 }
 
+#order-completed button:hover {
+  cursor: pointer;
+}
+
 #check-garment input, #fulfill-order input {
   font-weight: bold;
   width: 100%;
