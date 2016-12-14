@@ -1013,6 +1013,10 @@ button#check-garment:hover, button#fulfill-order:hover {
   border-radius: 3px;
 }
 
+#customer-measurements button:hover {
+  cursor: pointer;
+}
+
 .edit_measurement {
   display: inline;
 }
