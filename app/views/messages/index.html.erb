@@ -31,7 +31,7 @@
 
 <div id="all-messages">
 
-  <% @messages.sort_by{|t| - t.created_at.to_i}.first(10).each do |message| %>
+  <% @messages.sort_by{|t| - t.created_at.to_i}.first(20).each do |message| %>
 
     <div id="message-body">
       <% if message.user_id == @admin.id %>
