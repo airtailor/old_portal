@@ -440,7 +440,7 @@ select:hover {
   margin-top: -1px;
 }
 
-#order-assignment hr {
+hr#instruction-break {
   width: 75%;
   margin-left: 0;
   margin-bottom: 30px;
