@@ -7,7 +7,7 @@ class ShipmentsController < ApplicationController
     @user = User.where(id: @order.user_id).first
     @order.update_attribute(:complete, true)
     @order.update_attribute(:fulfill_date, Time.current)
-    binding.pry
+
 
     Shippo.api_token = ENV["SHIPPO_KEY"]
     shipdata = eval(@shipment['shipment'])
@@ -113,6 +113,10 @@ class ShipmentsController < ApplicationController
     @order.update_attribute(:shipping_label, transaction.label_url)
     @order.update_attribute(:tracking_number, transaction.tracking_number)
     redirect_to :back
+
+    require 'delighted'
+
+    Delighted::Person.create(:email => @customer.email, :delay => 518400, :properties => { :tailor_name => @user.business_name })
 
   end
 end
