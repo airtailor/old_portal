@@ -40,19 +40,31 @@ class MessagesController < ApplicationController
   end
 
   def create
-     @message = Message.new(message_params)
-     @conversation = Conversation.find_by(id: params[:conversation_id])
-      if @message.order_id
-        @message.save
-        flash[:success] = "Message Sent"
-        redirect_to :back
-      else
-        @message.save
-        redirect_to conversation_messages_path(@conversation)
-      end
-     # else
-       # redirect_to "/users/new"
-     # end
+    @message = Message.new(message_params)
+    @conversation = Conversation.find_by(id: params[:conversation_id])
+    sender = User.where(id: @conversation.user_id)
+    text = @message.text
+
+    if current_user.is_admin?
+      recipient = User.where(id: @conversation.recipient_id)
+    else
+      recipient = User.where(id: @conversation.sender_id)
+    end
+
+
+
+    if @message.order_id
+      @message.save
+      flash[:success] = "Message Sent"
+      redirect_to :back
+    else
+      @message.save
+      redirect_to conversation_messages_path(@conversation)
+      AirtailorMailer.message_email(sender, recipient, text).deliver
+    end
+   # else
+     # redirect_to "/users/new"
+   # end
   end
 
   def destroy

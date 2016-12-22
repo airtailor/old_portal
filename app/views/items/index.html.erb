@@ -29,6 +29,7 @@
   <div id="instructions" style="font-size:14px; margin-left:0px;">
     <img id="instructions-logo" src="/assets/logo.png" alt="Air Tailor" style="display:none;">
     <h2 id="instructions-header" style="display:none">Alterations for Order <span><%= @order.shopify_id %></span>:</h2>
+    <h3 id="instructions-customer" style="display:none">Customer Name: <%= @order.name %></h3>
 
     <% if @items.any? { |s| s.include?('Pants') } %>
       <div class="alteration-list">

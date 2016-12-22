@@ -781,10 +781,15 @@ hr#instruction-break {
   margin-left: 45px;
 }
 
+#instructions-customer {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
 #instructions-header {
   font-size: 32px;
   margin-top: 0px;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 #instructions-header span {
