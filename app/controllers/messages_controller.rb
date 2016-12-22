@@ -50,23 +50,15 @@ class MessagesController < ApplicationController
       @recipient = User.where(id: @conversation.sender_id).first
     end
 
-
-
     if @message.order_id
       @message.save
       flash[:success] = "Message Sent"
       redirect_to :back
     else
-
-
       @message.save
       AirtailorMailer.message_email(@sender, @recipient, @message).deliver
       redirect_to conversation_messages_path(@conversation)
-
     end
-   # else
-     # redirect_to "/users/new"
-   # end
   end
 
   def destroy
