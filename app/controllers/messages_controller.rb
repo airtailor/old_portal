@@ -42,13 +42,12 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @conversation = Conversation.find_by(id: params[:conversation_id])
-    sender = User.where(id: @conversation.user_id)
-    text = @message.text
+    @sender = User.where(id: @conversation.user_id).first
 
     if current_user.is_admin?
-      recipient = User.where(id: @conversation.recipient_id)
+      @recipient = User.where(id: @conversation.recipient_id).first
     else
-      recipient = User.where(id: @conversation.sender_id)
+      @recipient = User.where(id: @conversation.sender_id).first
     end
 
 
@@ -58,9 +57,12 @@ class MessagesController < ApplicationController
       flash[:success] = "Message Sent"
       redirect_to :back
     else
+
+
       @message.save
+      AirtailorMailer.message_email(@sender, @recipient, @message).deliver
       redirect_to conversation_messages_path(@conversation)
-      AirtailorMailer.message_email(sender, recipient, text).deliver
+
     end
    # else
      # redirect_to "/users/new"

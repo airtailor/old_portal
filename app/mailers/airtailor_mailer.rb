@@ -18,6 +18,11 @@ class AirtailorMailer < ApplicationMailer
 
   def message_email(sender, recipient, message)
 
+    @sender = sender
+    @recipient = recipient
+    @message = message
+
+    mail(to: @recipient.email, subject: "New Air Tailor Messages")
 
   end
 
