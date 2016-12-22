@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @conversation = Conversation.find_by(id: params[:conversation_id])
-    @sender = User.where(id: @conversation.user_id).first
+    @sender = User.where(id: @message.user_id).first
 
     if current_user.is_admin?
       @recipient = User.where(id: @conversation.recipient_id).first
