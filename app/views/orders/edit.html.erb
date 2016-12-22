@@ -13,7 +13,16 @@
             <p>Name:</p> <%= f.text_field :name %>
             <p>Alterations:</p> <%= f.text_field :alterations %>
             <p>Note:</p> <%= f.text_field :note %>
-            <p>Tailor Shop: <%= f.text_field :user_id %></p>
+            <p>Tailor Shop:</p>
+
+            <%= f.select(:user_id) do %>
+              <option value="<%= @user.id %>"><%= @user.business_name %></option>
+              <% @users.each do |user| %>
+                <option value="<%= user.id %>"><%= user.business_name %></option>
+              <% end %>
+              <option value="">Return to Routing Page</option>
+            <% end %>
+
             <p>Arrived?:</p> <%= f.text_field :arrived %>
             <p>Completed?:</p> <%= f.text_field :complete %>
             <p>Counter:</p> <%= f.text_field :counter %>

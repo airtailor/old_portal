@@ -66,7 +66,14 @@ class OrdersController < ApplicationController
 
     if @order.valid?
       @order.update_attributes(order_params)
-      if @order.inbound_counter == 2
+      if @order.user_id.blank?
+        @order.update_attribute(:arrived, nil)
+        @order.update_attribute(:complete, nil)
+        @order.update_attribute(:counter, 0)
+        @order.update_attribute(:inbound_counter, 0)
+        @order.update_attribute(:inbound_label, nil)
+        redirect_to "/orders/new_orders"
+      elsif @order.inbound_counter == 2
         redirect_to "/users/" + @order.user_id.to_s + "/orders/" + @order.id.to_s + "/items"
       else
         redirect_to :back
@@ -79,6 +86,8 @@ class OrdersController < ApplicationController
   def edit
     if current_user.is_admin?
       @order = Order.find_by(id: params[:id])
+      @users = User.where.not(id: @order.user_id)
+      @user = User.where(id: @order.user_id).first
       @order.update_attribute(:inbound_counter, 2)
     else
       redirect_to :back

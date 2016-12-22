@@ -993,6 +993,15 @@ button#check-garment:hover, button#fulfill-order:hover {
   margin-top: 20px;
 }
 
+/* order edit page */
+
+#edit-user-form select {
+  width: 100%;
+  height: 30px;
+  margin-top: 5px;
+  background-color: white;
+  border: 1px solid #D8EDFC;
+}
 
 
 
