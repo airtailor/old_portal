@@ -74,6 +74,12 @@ $(document).on("click", "#print-instructions", function() {
   })
 });
 
+$(document).on("click", "#print-measurements", function() {
+  $('#customer-measurements').printThis({
+    removeInline: true
+  })
+});
+
 // $(document).on("click", "#print-instructions", function() {
 //   $('#item-alteration-lists').printThis({
 //     removeInline: true

@@ -1014,7 +1014,7 @@ button#check-garment:hover, button#fulfill-order:hover {
   margin-left: 25px;
   position: relative;
   min-width: 375px;
-  min-height: 100vh;
+  height: 780px;
 }
 
 #customer-measurements h3 {
@@ -1049,6 +1049,14 @@ button#check-garment:hover, button#fulfill-order:hover {
   background-color: pink;
   border: none;
   margin-top: -1px;
+}
+
+button#print-measurements.order-button {
+  height: 30px;
+  width: 200px;
+  background-color: #D8EDFC;
+  border-radius: 10px;
+  margin-left: 112px;
 }
 
 #clothes-front-image, #clothes-back-image {
