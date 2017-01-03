@@ -264,36 +264,6 @@
 <br>
 <hr id="instruction-break">
 
-  <!-- begin message section -->
-  <div id="order-message-section">
-  <% if @user.conversation == true %>
-    <h4>Ask a question about this order</h4>
-    <div id="order-new-message-form">
-      <%= form_for [@conversation, @message] do |f| %>
-          <%= f.text_field :conversation_id, :value => @conversation.id, :type => 'hidden' %>
-          <%= f.text_field :user_id, :value => current_user.id, :type => 'hidden' %>
-          <%= f.text_field :order_id, :value => @order.shopify_id, :type => 'hidden' %>
-
-          <% if current_user.is_admin? %>
-            <%= f.text_field :read, :value => true, :type => 'hidden' %>
-            <%= f.text_field :user_read, :value => false, :type => 'hidden' %>
-          <% else %>
-            <%= f.text_field :read, :value => false, :type => 'hidden' %>
-            <%= f.text_field :user_read, :value => true, :type => 'hidden' %>
-          <% end %>
-
-          <p><%= f.text_area :text, size: "60x10", :placeholder => 'Type message here...' %></p>
-          <button id="submit-order-message"><%= f.submit "Send Message" %></button>
-      <% end %>
-    </div>
-  <% else %>
-    <p>Have a question about this order? Click below to message Air Tailor.</p>
-    <a id="edit-tailor" href="/conversations">Get Started</a>
-  <% end %>
-
-  </div>
-<!-- end message section -->
-
   <div id="order-completed">
 
     <% if @order.arrived == nil %>
@@ -331,6 +301,40 @@
 
     <% end %>
   </div>
+
+  <hr id="instruction-break">
+
+  <!-- begin message section -->
+  <div id="order-message-section">
+  <% if @user.conversation == true %>
+    <h4>Ask a question about this order</h4>
+    <div id="order-new-message-form">
+      <%= form_for [@conversation, @message] do |f| %>
+          <%= f.text_field :conversation_id, :value => @conversation.id, :type => 'hidden' %>
+          <%= f.text_field :user_id, :value => current_user.id, :type => 'hidden' %>
+          <%= f.text_field :order_id, :value => @order.shopify_id, :type => 'hidden' %>
+
+          <% if current_user.is_admin? %>
+            <%= f.text_field :read, :value => true, :type => 'hidden' %>
+            <%= f.text_field :user_read, :value => false, :type => 'hidden' %>
+          <% else %>
+            <%= f.text_field :read, :value => false, :type => 'hidden' %>
+            <%= f.text_field :user_read, :value => true, :type => 'hidden' %>
+          <% end %>
+
+          <p><%= f.text_area :text, size: "60x10", :placeholder => 'Type message here...' %></p>
+          <button id="submit-order-message"><%= f.submit "Send Message" %></button>
+      <% end %>
+    </div>
+  <% else %>
+    <p>Have a question about this order? Click below to message Air Tailor.</p>
+    <a id="edit-tailor" href="/conversations">Get Started</a>
+  <% end %>
+
+  </div>
+<!-- end message section -->
+
+
 
 
 <div id="packing-slip-info" style="display:none;">
@@ -426,7 +430,8 @@
 
 </div>
 <!-- end of customer measurements section -->
-<button id="print-measurements" class="order-button">Print Measurements</button><br><br>
+
+<!-- <button id="print-measurements" class="order-button">Print Measurements</button><br><br> -->
 
 
 </div>

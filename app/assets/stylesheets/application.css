@@ -868,6 +868,7 @@ hr#instruction-break {
 #order-message-section {
   clear: both;
   margin-top: 0;
+  margin-bottom: 100px;
 }
 
 #order-new-message-form {
@@ -908,8 +909,8 @@ input#submit-order-message:hover {
 
 #order-completed {
   text-align: left;
-  margin-bottom: 100px;
-  margin-top: 50px;
+  margin-bottom: 25px;
+  margin-top: 25px;
 }
 
 #order-completed button{
