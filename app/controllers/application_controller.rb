@@ -154,6 +154,9 @@ class ApplicationController < ActionController::Base
     end
 
     # binding.pry
+    if transaction.object_state == "INVALID"
+      order.update_attribute(:error_message, transaction.messages[0].text)
+    end
 
     order.update_attribute(:inbound_label, transaction.label_url)
     order.update_attribute(:tracker, transaction.tracking_url_provider)

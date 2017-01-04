@@ -92,16 +92,18 @@
         </form><br>
 
     <hr>
-      <% if @order.welcome == false %>
-        <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a><br><br>
-      <% end %>
+
   <% end %>
 <% end %>
   </div>
 
-<% if @order.inbound_label == "" %>
-  <i class="red">Error with Inbound Label Creation. Send Manually.</i>
+<% if @order.inbound_label == "" && @order.user_id != nil %>
+  <% @order.update_attribute(:user_id, nil) %>
+  <i class="red">Error with Inbound Label Creation: <%= @order.error_message %></i>
 <% elsif @order.inbound_label != nil && @order.inbound_label != "" %>
+      <% if @order.welcome == false %>
+        <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a><br><br>
+      <% end %>
   <i class="green">Inbound Label Created and Sent!</i>
 <% end %>
 
