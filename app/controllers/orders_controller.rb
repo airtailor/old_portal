@@ -46,12 +46,20 @@ class OrdersController < ApplicationController
       @alts = []
       @orders.each do |order|
         @alts.push(JSON.parse(order.alterations))
+        if order.fulfill_date.blank?
+          order.update_attribute(:fulfill_date, order.due_date)
+        end
       end
     else
       @user = current_user
       @orders = Order.where(user_id: current_user.id)
       @orders = @orders.where(complete: true)
       @orders = @orders.where.not(shipping_label: nil)
+      @orders.each do |order|
+        if order.fulfill_date.blank?
+          order.update_attribute(:fulfill_date, order.due_date)
+        end
+      end
     end
   end
 

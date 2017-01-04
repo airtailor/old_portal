@@ -14,7 +14,7 @@
   <h3 class="order-column"># of alterations</h3>
 </div>
 
-      <% @orders.order("due_date").reverse_order.each_with_index do |order, index| %>
+      <% @orders.order("fulfill_date").reverse_order.each_with_index do |order, index| %>
       <% @user = @users.where(id: order.user_id).first %>
       <% if @user %>
       <% order.update_attribute(:counter, 2) %>
@@ -52,7 +52,7 @@
     <h3 class="order-column">Shipping Label</h3>
   </div>
 
-  <% @orders.order("due_date").reverse_order.each_with_index do |order, index| %>
+  <% @orders.order("fulfill_date").reverse_order.each_with_index do |order, index| %>
   <% if order.created_at > @user.created_at %>
   <div class="order-row">
         <a class="order-row-link" href="/users/<%= order.user_id %>/orders/<%= order.id %>/items">
