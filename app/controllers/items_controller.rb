@@ -11,10 +11,6 @@ class ItemsController < ApplicationController
       @shipment = Shipment.where(shopify_id: @order.shopify_id)
     end
 
-    if @order.shopify_id == "#3695"
-      @order.update_attribute(:counter, 2)
-    end
-
     fullname = @customer.first_name.capitalize + " " + @customer.last_name.capitalize
 
     @order.update_attribute(:name, fullname)
