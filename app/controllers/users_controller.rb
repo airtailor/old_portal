@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       end
 
       @customer = Customer.find_by(order_id: @order.shopify_id)
-      # binding.pry
+
       @fullname = @customer.first_name.capitalize + " " + @customer.last_name.capitalize
       @order.update_attribute(:name, @fullname)
 

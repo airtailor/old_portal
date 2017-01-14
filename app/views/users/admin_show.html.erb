@@ -17,7 +17,6 @@
         <% else %>
           <a href="/admin/order/<%=order.id%>"><p><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></p></a>
         <% end %>
-
       <% end %>
     <% end %>
   </div>
@@ -135,40 +134,27 @@
         <% end %>
       <% end %>
 
-    <% if @owner %>
-    <div id="welcome-kit-label" style="display:none">
-      <div id="welcome-return-address">
-        <img src="/assets/logo.png" alt="Air Tailor" id="welcome-logo"><br>
-        <%= @owner.street %><br>
-        <% if @owner.unit != "" %>
-          <%= @owner.unit %><br>
-        <% end %>
-        <%= @owner.city %>, <%= @owner.state %> <%= @owner.zip %>
-      </div>
-
-      <div id="welcome-to-address">
-        <% if @customer.company != "" %>
-          <%= @customer.company %>
-        <% end %>
-        <%= @customer.first_name.capitalize %> <%= @customer.last_name.capitalize %><br>
-        <%= @customer.address1 %><br>
-        <% if @customer.address2 != "" %>
-          <%= @customer.address2 %><br>
-        <% end %>
-        <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
-      </div>
-    </div>
-    <% end %>
 
     <% if @order.welcome == true && @order.complete == true && @order.counter == 0 %>
+
       <%# SendSonar.message_customer(text: "Hi " + @customer.first_name.capitalize + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
       <% @order.update_attribute(:counter, 2) %>
     <% end %>
 
 <% if @order.counter == 2 %>
-  <button id="welcome-kit-button">Create Shipping Label</button>
-  <br><br><i class="green">Welcome Kit Text Sent</i><br><br>
+  <img id="welcome-kit-label" style="display:none;" src="<%= @order.shipping_label %>">
+  <form method='post' action='/shipment/create'>
+    <%= csrf_meta_tag %>
+    <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
+    <button id="welcome-kit-button" onclick="return confirm('Order is 100% complete?');">
+      Create Shipping Label
+    </button>
+    <p><a href="https://tools.usps.com/go/TrackConfirmAction?tLabels=<%= @order.tracking_number %>" target="_blank" style="text-decoration:underline;">Track This Welcome Kit</a></p>
+  </form>
 <% end %>
+
+
+
 
 <!-- end area to deal with welcome kits -->
   </div>
