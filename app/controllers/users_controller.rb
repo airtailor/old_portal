@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if current_user.is_admin?
       @users = User.all
       @orders = Order.where(user_id: nil)
-      @total_orders = Order.all
+      @total_orders = Order.where.not(welcome: true)
       @messages = Message.where(read: false)
 
       # code to figure out # of orders each month
