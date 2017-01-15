@@ -361,6 +361,9 @@ nav li:last-of-type {
   height: 61px;
 }
 
+#dashboard {
+  margin-left: 30px;
+}
 
 
 /* order assignment page */
