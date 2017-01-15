@@ -365,6 +365,18 @@ nav li:last-of-type {
   width: 90%;
   margin: 0 auto;
   overflow: auto;
+  text-align: center;
+}
+
+#dashboard span {
+  margin-left: 10px;
+  margin-right: 10px;
+  text-decoration: underline;
+  color: blue;
+}
+
+#dashboard span:hover {
+  cursor: pointer;
 }
 
 #dashboard hr {
@@ -383,6 +395,7 @@ nav li:last-of-type {
 }
 
 .dashboard-row {
+  display: none;
   overflow: auto;
   margin-bottom: 30px;
 }
@@ -390,7 +403,10 @@ nav li:last-of-type {
 .dashboard-column {
   width: 33%;
   float: left;
-  text-align: center;
+}
+
+#this-month {
+
 }
 
 

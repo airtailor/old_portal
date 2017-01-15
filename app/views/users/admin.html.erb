@@ -34,8 +34,12 @@
 
     <div id="dashboard">
     <hr>
+    <h1>Dashboard</h1>
+    <span id="all-button">All</span>
+    <span id="this-month-button">This Month</span>
+    <span id="last-month-button">Last Month</span>
 
-      <div class="dashboard-row">
+      <div id="this-month" class="dashboard-row">
         <div class="dashboard-column">
           <h3>Orders placed this month:</h3><br>
           <p><%= @this_month.count %></p>
@@ -53,7 +57,7 @@
       </div>
       <!-- end of row 1 -->
 
-      <div class="dashboard-row">
+      <div id="last-month" class="dashboard-row">
         <div class="dashboard-column">
           <h3>Orders placed last month:</h3><br>
           <p><%= @last_month.count %></p>
