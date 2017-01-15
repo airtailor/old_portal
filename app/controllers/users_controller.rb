@@ -10,11 +10,17 @@ class UsersController < ApplicationController
       @messages = Message.where(read: false)
 
       # code to figure out # of orders each month
+      @previous_month = Date.today.prev_month.strftime("%Y%m")
       @current_month = Date.today.strftime("%Y%m")
+
+      @last_month = []
       @this_month = []
       @total_orders.each do |order|
         if order.created_at.strftime("%Y%m") == @current_month
           @this_month.push(order)
+        end
+        if order.created_at.strftime("%Y%m") == @previous_month
+          @last_month.push(order)
         end
       end
 
