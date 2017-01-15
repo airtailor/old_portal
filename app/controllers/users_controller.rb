@@ -14,13 +14,19 @@ class UsersController < ApplicationController
       @current_month = Date.today.strftime("%Y%m")
 
       @last_month = []
+      @last_month_rev = 0
+
       @this_month = []
+      @this_month_rev = 0
+
       @total_orders.each do |order|
         if order.created_at.strftime("%Y%m") == @current_month
           @this_month.push(order)
+          @this_month_rev += order.total.to_f
         end
         if order.created_at.strftime("%Y%m") == @previous_month
           @last_month.push(order)
+          @last_month_rev += order.total.to_f
         end
       end
 

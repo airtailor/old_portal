@@ -32,8 +32,12 @@
     <hr>
     <br>
 
-    <h3>Orders Placed this month: <%= @this_month.count %></h3>
-    <h3>Orders Placed last month: <%= @last_month.count %></h3>
+    Orders Placed this month: <%= @this_month.count %><br>
+    Revenue this month: $<%= "%.2f" % @this_month_rev %><br>
+    <br>
+
+    Orders Placed last month: <%= @last_month.count %><br>
+    Revenue last month: $<%= "%.2f" % @last_month_rev %><br>
 
 
 
