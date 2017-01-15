@@ -34,10 +34,11 @@
 
     Orders Placed this month: <%= @this_month.count %><br>
     Revenue this month: $<%= "%.2f" % @this_month_rev %><br>
+    Estimated profit: $<%= "%.2f" % @current_estimated_profit %><br>
     <br>
 
     Orders Placed last month: <%= @last_month.count %><br>
-    Revenue last month: $<%= "%.2f" % @last_month_rev %><br>
+    Revenue last month: $<%= "%.2f" % @last_month_rev %><br>Estimated profit: $<%= "%.2f" % @previous_estimated_profit %><br>
 
 
 

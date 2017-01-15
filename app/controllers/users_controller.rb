@@ -23,6 +23,7 @@ class UsersController < ApplicationController
         if order.created_at.strftime("%Y%m") == @current_month
           @this_month.push(order)
           @this_month_rev += order.total.to_f
+
         end
         if order.created_at.strftime("%Y%m") == @previous_month
           @last_month.push(order)
@@ -30,6 +31,8 @@ class UsersController < ApplicationController
         end
       end
 
+      @current_estimated_profit = @this_month_rev * 0.35 - (@this_month.count * 5)
+      @previous_estimated_profit = @last_month_rev * 0.35 - (@last_month.count * 5)
 
 
 
