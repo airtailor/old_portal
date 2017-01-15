@@ -6,7 +6,21 @@ class UsersController < ApplicationController
     if current_user.is_admin?
       @users = User.all
       @orders = Order.where(user_id: nil)
+      @total_orders = Order.all
       @messages = Message.where(read: false)
+
+      # code to figure out # of orders each month
+      @current_month = Date.today.strftime("%Y%m")
+      @this_month = []
+      @total_orders.each do |order|
+        if order.created_at.strftime("%Y%m") == @current_month
+          @this_month.push(order)
+        end
+      end
+
+
+
+
     else
       redirect_to current_user
     end
