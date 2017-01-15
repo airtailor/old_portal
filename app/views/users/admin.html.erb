@@ -29,20 +29,50 @@
     </div>
 
     <br>
+
     <br>
 
     <div id="dashboard">
+    <hr>
 
-      <b>Orders placed this month:</b> <%= @this_month.count %><br>
-      <b>Revenue this month:</b> $<%= "%.2f" % @this_month_rev %><br>
-      <b>Estimated profit:</b> $<%= "%.2f" % @current_estimated_profit %><br>
-      <br>
+      <div class="dashboard-row">
+        <div class="dashboard-column">
+          <h3>Orders placed this month:</h3><br>
+          <p><%= @this_month.count %></p>
+        </div>
 
-      <b>Orders placed last month:</b> <%= @last_month.count %><br>
-      <b>Revenue last month:</b> $<%= "%.2f" % @last_month_rev %><br>
-      <b>Estimated profit:</b> $<%= "%.2f" % @previous_estimated_profit %><br>
+        <div class="dashboard-column">
+          <h3>Revenue this month:</h3><br>
+          <p>$<%= "%.2f" % @this_month_rev %></p>
+        </div>
+
+        <div class="dashboard-column">
+          <h3>Estimated profit:</h3><br>
+          <p>$<%= "%.2f" % @current_estimated_profit %></p>
+        </div>
+      </div>
+      <!-- end of row 1 -->
+
+      <div class="dashboard-row">
+        <div class="dashboard-column">
+          <h3>Orders placed last month:</h3><br>
+          <p><%= @last_month.count %></p>
+        </div>
+
+        <div class="dashboard-column">
+          <h3>Revenue last month:</h3><br>
+          <p>$<%= "%.2f" % @last_month_rev %></p>
+        </div>
+
+        <div class="dashboard-column">
+          <h3>Estimated profit:</h3><br>
+          <p>$<%= "%.2f" % @previous_estimated_profit %></p>
+        </div>
+      </div>
+      <!-- end of row 2 -->
 
     </div>
+    <!-- end of dashboard -->
 
 
 
