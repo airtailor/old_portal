@@ -21,8 +21,14 @@ class UsersController < ApplicationController
       @week_begin = Date.today.beginning_of_week
       @week_end = Date.today.end_of_week
 
+      @last_week_begin = @week_begin - 7.days
+      @last_week_end = @week_end - 7.days
+
       @this_week = []
       @this_week_rev = 0
+
+      @last_week = []
+      @last_week_rev = 0
 
       @last_month = []
       @last_month_rev = 0
@@ -31,12 +37,16 @@ class UsersController < ApplicationController
       @this_month_rev = 0
 
       @this_week_kits = []
+      @last_week_kits = []
       @this_month_kits = []
       @last_month_kits = []
 
       @welcome_kits.each do |kit|
         if kit.created_at >= @week_begin && order.created_at <= @week_end
           @this_week_kits.push(kit)
+        end
+        if kit.created_at >= @last_week_begin && order.created_at <= @last_week_end
+          @last_week_kits.push(kit)
         end
         if kit.created_at.strftime("%Y%m") == @current_month
           @this_month_kits.push(kit)
@@ -48,6 +58,10 @@ class UsersController < ApplicationController
 
       @paid_orders.each do |order|
         if order.created_at >= @week_begin && order.created_at <= @week_end
+          @last_week.push(order)
+          @last_week_rev += order.total.to_f
+        end
+        if order.created_at >= @last_week_begin && order.created_at <= @last_week_end
           @this_week.push(order)
           @this_week_rev += order.total.to_f
         end
@@ -61,10 +75,10 @@ class UsersController < ApplicationController
         end
       end
 
+      @previous_week_profit = @last_week_rev * 0.35 - (@last_week.count * 5)
       @current_week_profit = @this_week_rev * 0.35 - (@this_week.count * 5)
       @current_estimated_profit = @this_month_rev * 0.35 - (@this_month.count * 5)
       @previous_estimated_profit = @last_month_rev * 0.35 - (@last_month.count * 5)
-
 
 
     else

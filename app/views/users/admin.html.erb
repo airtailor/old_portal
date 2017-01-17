@@ -37,6 +37,7 @@
     <h1>Dashboard</h1>
     <span id="all-button">All Stats</span>
     <span id="this-week-button">This Week</span>
+    <span id="last-week-button">Last Week</span>
     <span id="this-month-button">This Month</span>
     <span id="last-month-button">Last Month</span>
 
@@ -64,6 +65,31 @@
       </div>
       <!-- end of row 1 -->
 
+      <div id="last-week" class="dashboard-row">
+
+        <div class="dashboard-column">
+          <h3>Welcome Kits sent last week:</h3><br>
+          <p><%= @last_week_kits.count %></p>
+        </div>
+
+        <div class="dashboard-column">
+          <h3>Orders placed last week:</h3><br>
+          <p><%= @last_week.count %></p>
+        </div>
+
+        <div class="dashboard-column">
+          <h3>Revenue last week:</h3><br>
+          <p>$<%= "%.2f" % @last_week_rev %></p>
+        </div>
+
+        <div class="dashboard-column">
+          <h3>Estimated profit:</h3><br>
+          <p>$<%= "%.2f" % @previous_week_profit %></p>
+        </div>
+      </div>
+
+      <!-- end of row 2 -->
+
       <div id="this-month" class="dashboard-row">
 
         <div class="dashboard-column">
@@ -86,7 +112,7 @@
           <p>$<%= "%.2f" % @current_estimated_profit %></p>
         </div>
       </div>
-      <!-- end of row 2 -->
+      <!-- end of row 3 -->
 
       <div id="last-month" class="dashboard-row">
 
@@ -110,7 +136,7 @@
           <p>$<%= "%.2f" % @previous_estimated_profit %></p>
         </div>
       </div>
-      <!-- end of row 2 -->
+      <!-- end of row 4 -->
 
     </div>
     <!-- end of dashboard -->
