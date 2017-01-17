@@ -44,7 +44,7 @@
 
         <div class="dashboard-column">
           <h3>Welcome Kits sent this week:</h3><br>
-          <p></p>
+          <p><%= @this_week_kits.count %></p>
         </div>
 
         <div class="dashboard-column">
@@ -54,12 +54,12 @@
 
         <div class="dashboard-column">
           <h3>Revenue this week:</h3><br>
-          <p>$</p>
+          <p>$<%= "%.2f" % @this_week_rev %></p>
         </div>
 
         <div class="dashboard-column">
           <h3>Estimated profit:</h3><br>
-          <p>$</p>
+          <p>$<%= "%.2f" % @current_week_profit %></p>
         </div>
       </div>
       <!-- end of row 1 -->
