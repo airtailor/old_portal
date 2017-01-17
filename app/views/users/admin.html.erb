@@ -40,6 +40,12 @@
     <span id="last-month-button">Last Month</span>
 
       <div id="this-month" class="dashboard-row">
+
+        <div class="dashboard-column">
+          <h3>Welcome Kits sent this month:</h3><br>
+          <p><%= @this_month_kits.count %></p>
+        </div>
+
         <div class="dashboard-column">
           <h3>Orders placed this month:</h3><br>
           <p><%= @this_month.count %></p>
@@ -58,6 +64,12 @@
       <!-- end of row 1 -->
 
       <div id="last-month" class="dashboard-row">
+
+        <div class="dashboard-column">
+          <h3>Welcome Kits sent last month:</h3><br>
+          <p><%= @last_month_kits.count %></p>
+        </div>
+
         <div class="dashboard-column">
           <h3>Orders placed last month:</h3><br>
           <p><%= @last_month.count %></p>

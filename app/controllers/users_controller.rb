@@ -6,9 +6,10 @@ class UsersController < ApplicationController
     if current_user.is_admin?
       @users = User.all
       @orders = Order.where(user_id: nil)
-      @total_orders = Order.where.not(welcome: true)
       @messages = Message.where(read: false)
 
+      @paid_orders = Order.where.not(welcome: true)
+      @welcome_kits = Order.where(welcome: true)
       # code to figure out # of orders each month
       @previous_month = Date.today.prev_month.strftime("%Y%m")
       @current_month = Date.today.strftime("%Y%m")
@@ -19,11 +20,23 @@ class UsersController < ApplicationController
       @this_month = []
       @this_month_rev = 0
 
-      @total_orders.each do |order|
+      @this_month_kits = []
+      @last_month_kits = []
+
+      @welcome_kits.each do |kit|
+        if kit.created_at.strftime("%Y%m") == @current_month
+          @this_month_kits.push(kit)
+        end
+        if kit.created_at.strftime("%Y%m") == @previous_month
+          @last_month_kits.push(kit)
+        end
+      end
+
+
+      @paid_orders.each do |order|
         if order.created_at.strftime("%Y%m") == @current_month
           @this_month.push(order)
           @this_month_rev += order.total.to_f
-
         end
         if order.created_at.strftime("%Y%m") == @previous_month
           @last_month.push(order)
