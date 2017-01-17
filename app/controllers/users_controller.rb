@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       @current_month = Date.today.strftime("%Y%m")
 
       # save current week
-      Date.beginning_of_week=(:sunday)
+      Date.beginning_of_week=(:monday)
       @week_begin = Date.today.beginning_of_week
       @week_end = Date.today.end_of_week
 
