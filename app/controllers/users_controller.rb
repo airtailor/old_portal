@@ -10,9 +10,18 @@ class UsersController < ApplicationController
 
       @paid_orders = Order.where.not(welcome: true)
       @welcome_kits = Order.where(welcome: true)
-      # code to figure out # of orders each month
+
+      # code for dashboard info:
+      # save previous month and current month
       @previous_month = Date.today.prev_month.strftime("%Y%m")
       @current_month = Date.today.strftime("%Y%m")
+
+      # save current week
+      Date.beginning_of_week=(:sunday)
+      @week_begin = Date.today.beginning_of_week
+      @week_end = Date.today.end_of_week
+
+      @this_week = []
 
       @last_month = []
       @last_month_rev = 0
@@ -32,8 +41,10 @@ class UsersController < ApplicationController
         end
       end
 
-
       @paid_orders.each do |order|
+        if order.created_at > @week_begin && order.created_at < @week_end
+          @this_week.push(order)
+        end
         if order.created_at.strftime("%Y%m") == @current_month
           @this_month.push(order)
           @this_month_rev += order.total.to_f
