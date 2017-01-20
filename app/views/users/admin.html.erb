@@ -35,6 +35,8 @@
     <div id="dashboard">
     <hr>
     <h1>Dashboard</h1>
+    <%= @last_week_begin %>
+    <%= @last_week_end %>
     <span id="all-button">All Stats</span>
     <span id="this-week-button">This Week</span>
     <span id="last-week-button">Last Week</span>
@@ -82,7 +84,7 @@
           <h3>Revenue last week:</h3><br>
           <p>$<%= "%.2f" % @last_week_rev %></p>
           <% @last_week.each do |order| %>
-          <%= order.total %> <br>
+          <%= order.shopify_id %> - <%= order.total %> <br>
           <% end %>
         </div>
 
