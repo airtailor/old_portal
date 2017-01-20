@@ -81,6 +81,9 @@
         <div class="dashboard-column">
           <h3>Revenue last week:</h3><br>
           <p>$<%= "%.2f" % @last_week_rev %></p>
+          <% @last_week.each do |order| %>
+          <%= order.total %> <br>
+          <% end %>
         </div>
 
         <div class="dashboard-column">
