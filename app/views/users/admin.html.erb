@@ -85,6 +85,7 @@
           <p>$<%= "%.2f" % @last_week_rev %></p>
           <% @last_week.each do |order| %>
           <%= order.shopify_id %> - <%= order.total %> <br>
+          <%= order.created_at %> <br><br>
           <% end %>
         </div>
 
