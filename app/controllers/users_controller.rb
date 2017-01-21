@@ -75,10 +75,10 @@ class UsersController < ApplicationController
         end
       end
 
-      @previous_week_profit = @last_week_rev * 0.35 - (@last_week.count * 5)
-      @current_week_profit = @this_week_rev * 0.35 - (@this_week.count * 5)
-      @current_estimated_profit = @this_month_rev * 0.35 - (@this_month.count * 5)
-      @previous_estimated_profit = @last_month_rev * 0.35 - (@last_month.count * 5)
+      @previous_week_profit = @last_week_rev * 0.35 - (@last_week.count * 11)
+      @current_week_profit = @this_week_rev * 0.35 - (@this_week.count * 11)
+      @current_estimated_profit = @this_month_rev * 0.35 - (@this_month.count * 11)
+      @previous_estimated_profit = @last_month_rev * 0.35 - (@last_month.count * 11)
 
 
     else
