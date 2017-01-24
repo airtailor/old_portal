@@ -35,17 +35,17 @@
     <div id="dashboard">
     <hr>
     <h1>Dashboard</h1>
-    <span id="all-button">All Stats</span>
-    <span id="this-week-button">This Week</span>
-    <span id="last-week-button">Last Week</span>
-    <span id="this-month-button">This Month</span>
-    <span id="last-month-button">Last Month</span>
+    <span id="all-button" class="dashboard-button">All Stats</span>
+    <span id="this-week-button" class="dashboard-button">This Week</span>
+    <span id="last-week-button" class="dashboard-button">Last Week</span>
+    <span id="this-month-button" class="dashboard-button">This Month</span>
+    <span id="last-month-button" class="dashboard-button">Last Month</span>
     <br><br>
 
       <div id="this-week" class="dashboard-row">
 
         <div class="dashboard-column">
-          <h3>Welcome Kits sent this week:</h3><br>
+          <h3>Kits sent this week:</h3><br>
           <p><%= @this_week_kits.count %></p>
         </div>
 
@@ -74,7 +74,7 @@
       <div id="last-week" class="dashboard-row">
 
         <div class="dashboard-column">
-          <h3>Welcome Kits sent last week:</h3><br>
+          <h3>Kits sent last week:</h3><br>
           <p><%= @last_week_kits.count %></p>
         </div>
 
@@ -104,7 +104,7 @@
       <div id="this-month" class="dashboard-row">
 
         <div class="dashboard-column">
-          <h3>Welcome Kits sent this month:</h3><br>
+          <h3>Kits sent this month:</h3><br>
           <p><%= @this_month_kits.count %></p>
         </div>
 
@@ -133,7 +133,7 @@
       <div id="last-month" class="dashboard-row">
 
         <div class="dashboard-column">
-          <h3>Welcome Kits sent last month:</h3><br>
+          <h3>Kits sent last month:</h3><br>
           <p><%= @last_month_kits.count %></p>
         </div>
 
