@@ -147,7 +147,7 @@ class UsersController < ApplicationController
         tailorShippingInfo(@owner, @order, @customer)
       end
 
-      if @owner && @order.inbound_counter != 1 && @order.id != 3
+      if @owner && @order.inbound_counter != 1 && @owner.id != 6
         if @order.inbound_label != nil && @order.inbound_label != ""
           AirtailorMailer.label_email(@owner, @customer, @order).deliver
           @order.update_attribute(:inbound_counter, 1)
