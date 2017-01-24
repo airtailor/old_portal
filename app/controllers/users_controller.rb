@@ -42,10 +42,10 @@ class UsersController < ApplicationController
       @last_month_kits = []
 
       @welcome_kits.each do |kit|
-        if kit.created_at >= @week_begin && kit.created_at <= @week_end
+        if kit.created_at >= @week_begin && kit.created_at < @week_end
           @this_week_kits.push(kit)
         end
-        if kit.created_at >= @last_week_begin && kit.created_at <= @last_week_end
+        if kit.created_at >= @last_week_begin && kit.created_at < @last_week_end
           @last_week_kits.push(kit)
         end
         if kit.created_at.strftime("%Y%m") == @current_month
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
       end
 
       @paid_orders.each do |order|
-        if order.created_at >= @last_week_begin && order.created_at <= @last_week_end
+        if order.created_at >= @last_week_begin && order.created_at < @last_week_end
           @last_week.push(order)
           @last_week_rev += order.total.to_f
         end
