@@ -77,7 +77,7 @@ class UsersController < ApplicationController
 
       @last_week_rev_per_order = @last_week_rev / @last_week.count
       @this_week_rev_per_order = @this_week_rev / @this_week.count
-      @last_month_rev_per_order = @this_month_rev / @this_month.count
+      @last_month_rev_per_order = @last_month_rev / @last_month.count
       @this_month_rev_per_order = @this_month_rev / @this_month.count
 
       @previous_week_profit = @last_week_rev * 0.35 - (@last_week.count * 11)
