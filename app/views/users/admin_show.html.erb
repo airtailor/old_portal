@@ -104,7 +104,7 @@
         <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a><br><br>
       <% end %>
   <% if @order.user_id == 6 %>
-    <i class="green">Messenger Order. Handle Manually.</i>
+    <i class="red">Messenger Order. Handle Manually.</i>
   <% else %>
     <i class="green">Inbound Label Created and Sent!</i>
   <% end %>
