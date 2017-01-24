@@ -57,7 +57,7 @@ class UsersController < ApplicationController
       end
 
       @paid_orders.each do |order|
-        if order.created_at >= @last_week_begin && order.created_at < @last_week_end
+        if order.created_at.in_time_zone('Eastern Time (US & Canada)') >= @last_week_begin && order.created_at.in_time_zone('Eastern Time (US & Canada)') < @last_week_end
           @last_week.push(order)
           @last_week_rev += order.total.to_f
         end
