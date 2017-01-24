@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         if kit.created_at >= @week_begin && kit.created_at <= @week_end
           @this_week_kits.push(kit)
         end
-        if kit.created_at > @last_week_begin && kit.created_at <= @last_week_end
+        if kit.created_at >= @last_week_begin && kit.created_at < @last_week_end
           @last_week_kits.push(kit)
         end
         if kit.created_at.strftime("%Y%m") == @current_month
