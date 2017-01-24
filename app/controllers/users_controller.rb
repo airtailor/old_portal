@@ -104,12 +104,14 @@ class UsersController < ApplicationController
       @current_estimated_profit = @this_month_rev * 0.35 - (@this_month.count * 11)
       @previous_estimated_profit = @last_month_rev * 0.35 - (@last_month.count * 11)
 
-
-
     else
       redirect_to current_user
     end
   end
+
+  #
+  # end of admin page
+  #
 
   def admin_show
     if current_user.is_admin?
@@ -145,7 +147,7 @@ class UsersController < ApplicationController
         tailorShippingInfo(@owner, @order, @customer)
       end
 
-      if @owner && @order.inbound_counter != 1
+      if @owner && @order.inbound_counter != 1 && @order.id != 3
         if @order.inbound_label != nil && @order.inbound_label != ""
           AirtailorMailer.label_email(@owner, @customer, @order).deliver
           @order.update_attribute(:inbound_counter, 1)
