@@ -406,6 +406,10 @@ nav li:last-of-type {
   float: left;
 }
 
+.active-dashboard {
+  color: red;
+}
+
 #this-month {
 
 }

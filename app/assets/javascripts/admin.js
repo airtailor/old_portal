@@ -3,6 +3,7 @@ $(document).on("click", "#this-week-button", function(){
       $("#last-week").hide()
       $("#this-month").hide()
       $("#last-month").hide()
+      $("#this-week-button").toggleClass('.active-dashboard');
   });
 
 $(document).on("click", "#last-week-button", function(){

@@ -61,7 +61,11 @@
 
         <div class="dashboard-column">
           <h3>Rev / order this week:</h3><br>
-          <p>$<%= "%.2f" % @this_week_rev_per_order %></p>
+          <% if @this_week_rev_per_order = nil %>
+            <p><%= 0 %></p>
+          <% else %>
+            <p>$<%= "%.2f" % @this_week_rev_per_order %></p>
+          <% end %>
         </div>
 
         <div class="dashboard-column">
@@ -90,7 +94,11 @@
 
         <div class="dashboard-column">
           <h3>Rev / order last week:</h3><br>
-          <p>$<%= "%.2f" % @last_week_rev_per_order %></p>
+          <% if @last_week_rev_per_order = nil %>
+            <p><%= 0 %></p>
+          <% else %>
+            <p>$<%= "%.2f" % @last_week_rev_per_order %></p>
+          <% end %>
         </div>
 
         <div class="dashboard-column">
@@ -120,7 +128,11 @@
 
         <div class="dashboard-column">
           <h3>Rev / order this month:</h3><br>
-          <p>$<%= "%.2f" % @this_month_rev_per_order %></p>
+          <% if @this_month_rev_per_order = nil %>
+            <p><%= 0 %></p>
+          <% else %>
+            <p>$<%= "%.2f" % @this_month_rev_per_order %></p>
+          <% end %>
         </div>
 
         <div class="dashboard-column">
@@ -149,7 +161,11 @@
 
         <div class="dashboard-column">
           <h3>Rev / order last month:</h3><br>
-          <p>$<%= "%.2f" % @last_month_rev_per_order %></p>
+          <% if @last_month_rev_per_order = nil %>
+            <p><%= 0 %></p>
+          <% else %>
+            <p>$<%= "%.2f" % @last_month_rev_per_order %></p>
+          <% end %>
         </div>
 
         <div class="dashboard-column">
