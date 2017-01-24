@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       @week_end = Date.today.end_of_week.in_time_zone('Eastern Time (US & Canada)')
 
       @last_week_begin = @week_begin - 7.days
-      @last_week_end = @week_end - 7.days
+      @last_week_end = @week_end - 6.days
 
       @this_week = []
       @this_week_rev = 0
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
           @last_week.push(order)
           @last_week_rev += order.total.to_f
         end
-        if order.created_at.in_time_zone('Eastern Time (US & Canada)') >= @week_begin && order.created_at.in_time_zone('Eastern Time (US & Canada)') <= @week_end
+        if order.created_at.in_time_zone('Eastern Time (US & Canada)') >= @week_begin && order.created_at.in_time_zone('Eastern Time (US & Canada)') < @week_end
           @this_week.push(order)
           @this_week_rev += order.total.to_f
         end
