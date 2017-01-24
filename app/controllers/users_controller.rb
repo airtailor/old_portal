@@ -75,10 +75,29 @@ class UsersController < ApplicationController
         end
       end
 
-      @last_week_rev_per_order = @last_week_rev / @last_week.count
-      @this_week_rev_per_order = @this_week_rev / @this_week.count
-      @last_month_rev_per_order = @last_month_rev / @last_month.count
-      @this_month_rev_per_order = @this_month_rev / @this_month.count
+      if @last_week.count < 1
+        @last_week_rev_per_order = @last_week_rev / 1
+      else
+        @last_week_rev_per_order = @last_week_rev / @last_week.count
+      end
+
+      if @this_week.count < 1
+        @this_week_rev_per_order = @this_week_rev / 1
+      else
+        @this_week_rev_per_order = @this_week_rev / @this_week.count
+      end
+
+      if @last_month.count < 1
+        @last_month_rev_per_order = @last_month_rev / 1
+      else
+        @last_month_rev_per_order = @last_month_rev / @last_month.count
+      end
+
+      if @this_month.count < 1
+        @this_month_rev_per_order = @this_month_rev / 1
+      else
+        @this_month_rev_per_order = @this_month_rev / @this_month.count
+      end
 
       @previous_week_profit = @last_week_rev * 0.35 - (@last_week.count * 11)
       @current_week_profit = @this_week_rev * 0.35 - (@this_week.count * 11)
