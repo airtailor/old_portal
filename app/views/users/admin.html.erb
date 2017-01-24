@@ -60,6 +60,11 @@
         </div>
 
         <div class="dashboard-column">
+          <h3>Rev / order this week:</h3><br>
+          <p>$<%= "%.2f" % @this_week_rev_per_order %></p>
+        </div>
+
+        <div class="dashboard-column">
           <h3>Estimated profit:</h3><br>
           <p>$<%= "%.2f" % @current_week_profit %></p>
         </div>
@@ -81,6 +86,11 @@
         <div class="dashboard-column">
           <h3>Revenue last week:</h3><br>
           <p>$<%= "%.2f" % @last_week_rev %></p>
+        </div>
+
+        <div class="dashboard-column">
+          <h3>Rev / order last week:</h3><br>
+          <p>$<%= "%.2f" % @last_week_rev_per_order %></p>
         </div>
 
         <div class="dashboard-column">
@@ -109,6 +119,11 @@
         </div>
 
         <div class="dashboard-column">
+          <h3>Rev / order this month:</h3><br>
+          <p>$<%= "%.2f" % @this_month_rev_per_order %></p>
+        </div>
+
+        <div class="dashboard-column">
           <h3>Estimated profit:</h3><br>
           <p>$<%= "%.2f" % @current_estimated_profit %></p>
         </div>
@@ -130,6 +145,11 @@
         <div class="dashboard-column">
           <h3>Revenue last month:</h3><br>
           <p>$<%= "%.2f" % @last_month_rev %></p>
+        </div>
+
+        <div class="dashboard-column">
+          <h3>Rev / order last month:</h3><br>
+          <p>$<%= "%.2f" % @last_month_rev_per_order %></p>
         </div>
 
         <div class="dashboard-column">
