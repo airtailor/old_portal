@@ -139,22 +139,26 @@
       <% end %>
 
 
-    <% if @order.welcome == true && @order.complete == true && @order.counter == 0 %>
+    <% if @order.welcome == true && @order.complete == true && @order.counter == 0 && @order.shipping_label == nil %>
+      <form method='post' action='/shipment/create'>
+        <%= csrf_meta_tag %>
+        <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
+        <button class="welcome-kit-label">
+          Create Shipping Label
+        </button>
+      </form>
 
       <%# SendSonar.message_customer(text: "Hi " + @customer.first_name.capitalize + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
-      <% @order.update_attribute(:counter, 2) %>
+
     <% end %>
 
-<% if @order.counter == 2 %>
+<% if @order.shipping_label %>
+<% @order.update_attribute(:counter, 2) %>
   <img id="welcome-kit-label" style="display:none;" src="<%= @order.shipping_label %>">
-  <form method='post' action='/shipment/create'>
-    <%= csrf_meta_tag %>
-    <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
-    <button id="welcome-kit-button" onclick="return confirm('Order is 100% complete?');">
-      Create Shipping Label
-    </button>
-    <p><a href="https://tools.usps.com/go/TrackConfirmAction?tLabels=<%= @order.tracking_number %>" target="_blank" style="text-decoration:underline;">Track This Welcome Kit</a></p>
-  </form>
+
+        <button id="welcome-kit-button">
+          Print Shipping Label
+        </button>
 <% end %>
 
 

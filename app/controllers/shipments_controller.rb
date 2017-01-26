@@ -9,6 +9,7 @@ class ShipmentsController < ApplicationController
     @order.update_attribute(:fulfill_date, Time.current)
 
 
+
     Shippo.api_token = ENV["SHIPPO_KEY"]
     shipdata = eval(@shipment['shipment'])
 
@@ -83,10 +84,10 @@ class ShipmentsController < ApplicationController
       :parcel => parcel
     }
 
-    # binding.pry
 
     if @order.welcome == true
       transaction = Shippo::Transaction.create(
+
           :shipment => shipment,
           :carrier_account => "d11e35a8792942fdb9b17d39246e3621",
           :servicelevel_token => "usps_first",
