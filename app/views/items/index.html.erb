@@ -63,6 +63,22 @@
       </div>
     <% end %>
 
+    <% if @items.any? { |s| s.include?('Million') } %>
+      <div class="alteration-list">
+        <div class="alterations-image">
+          <img id="shirt" src="/assets/shirt.png" alt="">
+        </div>
+        <div class="alterations-text">
+          <h3 class="caps">Shirts</h3>
+          <% @items.each do |item| %>
+            <% if item.include? "Million" %>
+              <li><%= item %></li>
+            <% end %>
+          <% end %><br>
+        </div>
+      </div>
+    <% end %>
+
     <% if @items.any? { |s| s.include?('Dress') } %>
       <div class="alteration-list">
         <div class="alterations-image">
