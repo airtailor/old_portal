@@ -5,7 +5,6 @@ class ShipmentsController < ApplicationController
     @order = Order.where(shopify_id: @shipment.shopify_id).first
     @customer = Customer.where(order_id: @order.shopify_id).first
     @user = User.where(id: @order.user_id).first
-    @order.update_attribute(:complete, true)
     @order.update_attribute(:fulfill_date, Time.current)
 
 
@@ -117,7 +116,11 @@ class ShipmentsController < ApplicationController
 
     require 'delighted'
 
-    Delighted::Person.create(:email => @customer.email, :delay => 518400, :properties => { :tailor_name => @user.business_name })
+    if @order.welcome != true && @order.complete != true
+      Delighted::Person.create(:email => @customer.email, :delay => 518400, :properties => { :tailor_name => @user.business_name })
+    end
+
+    @order.update_attribute(:complete, true)
 
   end
 end
