@@ -113,7 +113,7 @@
           <h3 class="caps">Coats</h3>
           <% @items.each do |item| %>
             <% if item.include? "Coat" %>
-              <% if item =~ /Coat #. Coat/ %>
+              <% if item =~ /Jacket #. Coat/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
