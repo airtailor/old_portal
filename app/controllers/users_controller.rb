@@ -16,6 +16,8 @@ class UsersController < ApplicationController
       @previous_month = Date.today.prev_month.strftime("%Y%m")
       @current_month = Date.today.strftime("%Y%m")
 
+
+
       # save current week
       Date.beginning_of_week=(:monday)
       @week_begin = Date.today.beginning_of_week.in_time_zone('Eastern Time (US & Canada)')
