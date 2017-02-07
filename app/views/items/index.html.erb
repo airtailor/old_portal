@@ -40,7 +40,7 @@
           <h3 class="caps">Pants</h3>
           <% @items.each do |item| %>
             <% if item.include? "Pants" %>
-              <% if item =~ /Pants #. Pants/ %>
+              <% if item =~ /Pants #. Pants$/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
@@ -59,7 +59,7 @@
           <h3 class="caps">Shirts</h3>
           <% @items.each do |item| %>
             <% if item.include? "Shirt" %>
-              <% if item =~ /Shirt #. Shirt/ %>
+              <% if item =~ /Shirt #. Shirt$/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
@@ -94,7 +94,7 @@
           <h3 class="caps">Dresses</h3>
           <% @items.each do |item| %>
             <% if item.include? "Dress" %>
-              <% if item =~ /Dress #. Dress/ %>
+              <% if item =~ /Dress #. Dress$/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
@@ -113,7 +113,7 @@
           <h3 class="caps">Coats</h3>
           <% @items.each do |item| %>
             <% if item.include? "Coat" %>
-              <% if item =~ /Jacket #. Coat/ %>
+              <% if item =~ /Coat\/Jacket #. Coat\/Jacket$/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
@@ -132,7 +132,7 @@
           <h3 class="caps">Cardigans</h3>
           <% @items.each do |item| %>
             <% if item.include? "Cardigan" %>
-              <% if item =~ /Cardigan #. Cardigan/ %>
+              <% if item =~ /Cardigan #. Cardigan$/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
@@ -151,7 +151,7 @@
           <h3 class="caps">Skirts</h3>
           <% @items.each do |item| %>
             <% if item.include? "Skirt" %>
-              <% if item =~ /Skirt #. Skirt/ %>
+              <% if item =~ /Skirt #. Skirt$/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
@@ -170,7 +170,7 @@
           <h3 class="caps">Vests</h3>
           <% @items.each do |item| %>
             <% if item.include? "Vest" %>
-              <% if item =~ /Vest #. Vest/ %>
+              <% if item =~ /Vest #. Vest$/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
@@ -189,7 +189,7 @@
           <h3 class="caps">Suit Jackets</h3>
           <% @items.each do |item| %>
             <% if item.include? "Suit" %>
-              <% if item =~ /Suit Jacket #. Suit Jacket/ %>
+              <% if item =~ /Suit Jacket #. Suit Jacket$/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
@@ -208,7 +208,7 @@
           <h3 class="caps">Sweaters</h3>
           <% @items.each do |item| %>
             <% if item.include? "Sweater" %>
-              <% if item =~ /Sweater #. Sweater/ %>
+              <% if item =~ /Sweater #. Sweater$/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
@@ -227,12 +227,12 @@
           <h3 class="caps">Ties</h3>
           <% @items.each do |item| %>
             <% if item.include? "Tie" %>
-              <% if item =~ /Tie #. Tie/ %>
+              <% if item =~ /Tie #. Tie$/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
             <% elsif item.include? "Necktie" %>
-              <% if item =~ /Necktie #. Necktie/ %>
+              <% if item =~ /Necktie #. Necktie$/ %>
               <% else %>
                 <li><%= item %></li>
               <% end %>
