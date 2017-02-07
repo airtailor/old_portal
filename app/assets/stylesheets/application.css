@@ -884,7 +884,8 @@ hr#instruction-break {
 
 .alterations-text {
   float: left;
-  margin-left: 40px;
+  margin-left: 50px;
+  width: 375px;
 }
 
 .notes-header {
