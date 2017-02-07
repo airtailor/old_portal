@@ -889,13 +889,20 @@ hr#instruction-break {
 
 .notes-header {
   float: left;
+  width: 100px;
   margin-top: -4px;
   margin-right: 10px;
   margin-bottom: 0;
 }
 
 .order-notes {
-  padding-right: 50px;
+  float: left;
+  width: 350px;
+  margin-top: 0;
+}
+
+#tailor-notes-area {
+  clear: both;
 }
 
 #tailor-notes-form {
@@ -935,6 +942,11 @@ textarea {
 #save-notes,
 #add-notes {
   background-color: white;
+}
+
+#add-notes {
+  display: block;
+  clear: both;
 }
 
 #submit-order-message,

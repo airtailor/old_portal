@@ -258,20 +258,25 @@
       </div>
     <% end %>
 
-    <h3 class="notes-header">Order Notes:</h3>
-    <% if @order.note? %>
-      <p class="order-notes"><%= @order.note %></p>
-    <% else %>
-      <p class="order-notes">n/a</p>
-    <% end %>
+    <div id="order-notes-area">
+      <h3 class="notes-header">Order Notes:</h3>
+      <% if @order.note? %>
+        <p class="order-notes"><%= @order.note %></p>
+      <% else %>
+        <p class="order-notes">n/a</p>
+      <% end %>
+    </div>
     <br>
 
-    <h3 class="notes-header">Tailor Notes:</h3>
-    <% if @order.tailor_notes.blank? %>
-      n/a <br><br>
-    <% else %>
-      <%= @order.tailor_notes %> <br><br>
-    <% end %>
+    <div id="tailor-notes-area">
+      <h3 class="notes-header">Tailor Notes:</h3>
+      <% if @order.tailor_notes? %>
+        <p class="order-notes"><%= @order.tailor_notes %></p>
+      <% else %>
+        <p class="order-notes">n/a</p>
+      <% end %>
+    </div>
+
   </div>
   </div>
 
