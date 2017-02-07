@@ -159,13 +159,13 @@
       </div>
     <% end %>
 
-    <% if @items.any? { |s| s.include?('Suit') } %>
+    <% if @items.any? { |s| s.include?('Suit Jacket') } %>
       <div class="alteration-list">
         <div class="alterations-image">
-          <img id="suit" src="/assets/shirt.png" alt="">
+          <img id="suit" src="/assets/suit-jacket.png" alt="">
         </div>
         <div class="alterations-text">
-          <h3 class="caps">Suits</h3>
+          <h3 class="caps">Suit Jackets</h3>
           <% @items.each do |item| %>
             <% if item.include? "Suit" %>
               <li><%= item %></li>
