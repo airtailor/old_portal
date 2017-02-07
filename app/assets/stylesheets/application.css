@@ -819,7 +819,7 @@ hr#instruction-break {
   float: left;
   margin-top: 50px;
   padding-left: 30px;
-  width: 600px;
+  width: 590px;
 }
 
 #item-alteration-lists {
@@ -884,7 +884,7 @@ hr#instruction-break {
 
 .alterations-text {
   float: left;
-  margin-left: 50px;
+  margin-left: 40px;
 }
 
 .notes-header {
