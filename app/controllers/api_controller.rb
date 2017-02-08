@@ -28,7 +28,6 @@ class ApiController < ApplicationController
       alterations: alterations
     }
 
-    binding.pry
 
     if data['line_items'][0]['title'] == "Tie Slimming Service"
       order[:tie_amount] = data['line_items'][0]['quantity']
@@ -36,7 +35,6 @@ class ApiController < ApplicationController
       order[:tie_amount] = nil
     end
 
-    binding.pry
 
     customer = {
       shopify_id: data['customer']['id'],

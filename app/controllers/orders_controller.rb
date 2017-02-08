@@ -43,6 +43,7 @@ class OrdersController < ApplicationController
       @users = User.all
       @orders = Order.where(complete: true)
       @orders = @orders.where.not(shipping_label: nil)
+      @orders = @orders.where.not(welcome: true)
       @alts = []
       @orders.each do |order|
         @alts.push(JSON.parse(order.alterations))

@@ -229,7 +229,7 @@
             <% if item.include? "Tie Slimming Service" %>
                 <li><%= item %></li>
                 <% if @order.tie_amount %>
-                  <li>No. of Ties: <%= @order.tie_amount %></li>
+                  <li>Amount of Ties: <%= @order.tie_amount %></li>
                 <% end %>
             <% elsif item.include? "Necktie" %>
               <% if item =~ /Necktie #. Necktie$/ %>
