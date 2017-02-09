@@ -16,6 +16,11 @@ class UsersController < ApplicationController
       @previous_month = Date.today.prev_month.strftime("%Y%m")
       @current_month = Date.today.strftime("%Y%m")
 
+      # @jan = Date.today.beginning_of_year
+      # @feb = @jan + 1.month
+      # @mar = @feb + 1.month
+
+      # @jan = @jan.strftime("%Y%m")
 
 
       # save current week
@@ -223,6 +228,10 @@ class UsersController < ApplicationController
         @messages = Message.where(conversation_id: @conversation.id)
       end
     end
+  end
+
+  def supplies
+    @user = User.find_by(id: params[:id])
   end
 
   def new

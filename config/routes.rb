@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/admin' => 'users#admin'
   put '/admin/order' => 'users#update_order'
   get '/admin/order/:id' => 'users#admin_show'
+  get '/supplies' => 'users#supplies'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
