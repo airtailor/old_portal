@@ -33,7 +33,7 @@
     <br>
 
     <div id="dashboard">
-<%# line_chart Order.group_by_day(:created_at).count %>
+
     <hr>
     <h1>Dashboard</h1>
     <span id="all-button" class="dashboard-button">All Stats</span>
@@ -42,6 +42,7 @@
     <span id="this-month-button" class="dashboard-button">This Month</span>
     <span id="last-month-button" class="dashboard-button">Last Month</span>
     <br><br>
+
 
       <div id="this-week" class="dashboard-row">
 
@@ -159,7 +160,8 @@
         </div>
       </div>
       <!-- end of row 4 -->
-
+<center>Paid Orders (since creation of portal)</center>
+    <%= line_chart @paid_orders.group_by_week(:created_at).count %>
     </div>
     <!-- end of dashboard -->
 
