@@ -33,7 +33,7 @@
     <br>
 
     <div id="dashboard">
-
+<%# line_chart Order.group_by_day(:created_at).count %>
     <hr>
     <h1>Dashboard</h1>
     <span id="all-button" class="dashboard-button">All Stats</span>
@@ -53,9 +53,6 @@
         <div class="dashboard-column">
           <h3>Orders placed this week:</h3><br>
           <p><%= @this_week.count %></p>
-          <% if @this_week.count > 0 %>
-            <%= line_chart Order.group_by_day(:created_at).count %>
-          <% end %>
         </div>
 
         <div class="dashboard-column">
