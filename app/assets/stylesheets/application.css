@@ -48,11 +48,6 @@ body {
   background-color: pink;
 }
 
-iframe {
-  width: 900px;
-  height: 1000px;
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: alegreya;
 }
