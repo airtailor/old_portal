@@ -11,15 +11,6 @@ class UsersController < ApplicationController
       @paid_orders = Order.where.not(welcome: true)
       @welcome_kits = Order.where(welcome: true)
 
-      @tower_fulfilled = Order.where(user_id: 2, complete: true).where.not(fulfill_date: nil)
-      @tower_total = 0
-
-      @tower_fulfilled.each do |order|
-       if order.fulfill_date > @last_week_begin && order.fulfill_date < @last_week_end
-           @tower_total += ((order.total-6)*0.65)
-       end
-     end
-
 
       # code for dashboard info:
       # save previous month and current month
@@ -40,6 +31,15 @@ class UsersController < ApplicationController
 
       @last_week_begin = @week_begin - 7.days
       @last_week_end = @week_end - 6.days
+
+      @tower_fulfilled = Order.where(user_id: 2, complete: true).where.not(fulfill_date: nil)
+      @tower_total = 0
+
+      @tower_fulfilled.each do |order|
+       if order.fulfill_date > @last_week_begin && order.fulfill_date < @last_week_end
+           @tower_total += ((order.total-6)*0.65)
+       end
+     end
 
       @this_week = []
       @this_week_rev = 0
