@@ -35,11 +35,7 @@ class UsersController < ApplicationController
       @tower_fulfilled = Order.where(user_id: 2, complete: true).where.not(fulfill_date: nil)
       @tower_total = 0
 
-      @tower_fulfilled.each do |order|
-       if order.fulfill_date > @last_week_begin && order.fulfill_date < @last_week_end
-           @tower_total += ((order.total.to_f-6)*0.65)
-       end
-     end
+
 
       @this_week = []
       @this_week_rev = 0
