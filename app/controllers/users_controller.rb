@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
       @tower_fulfilled.each do |order|
        if order.fulfill_date > @last_week_begin && order.fulfill_date < @last_week_end
-           @tower_total += ((order.total-6)*0.65)
+           @tower_total += ((order.total.to_f-6)*0.65)
        end
      end
 
