@@ -40,7 +40,7 @@
 <!-- amount owed to ketan for last week -->
     <% @tower_fulfilled.each do |order| %>
     <% if order.fulfill_date > @last_week_begin && order.fulfill_date < @last_week_end %>
-      <%= order.shopify_id %> <%= (order.total.to_f-6) * 0.65 %><br>
+      <%= order.shopify_id %> $<%= ".2f" % ((order.total.to_f-6) * 0.65) %><br>
     <% end %>
     <% end %><br>
 
