@@ -11,6 +11,9 @@ class UsersController < ApplicationController
       @paid_orders = Order.where.not(welcome: true)
       @welcome_kits = Order.where(welcome: true)
 
+      @tower_fulfilled = Order.where(user_id: 2, complete: true).where.not(fulfill_date: nil)
+
+
       # code for dashboard info:
       # save previous month and current month
       @previous_month = Date.today.prev_month.strftime("%Y%m")

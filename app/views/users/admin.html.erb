@@ -36,6 +36,14 @@
 
     <hr>
     <h1>Dashboard</h1>
+
+<!-- amount owed to ketan for last week -->
+    <% @tower_fulfilled.each do |order| %>
+    <% if order.fulfill_date > @last_week_begin && order.fulfill_date < @last_week_end %>
+      <%= order.shopify_id %> <%= (order.total.to_f-6) * 0.65 %><br>
+    <% end %>
+    <% end %><br>
+
     <span id="all-button" class="dashboard-button">All Stats</span>
     <span id="this-week-button" class="dashboard-button">This Week</span>
     <span id="last-week-button" class="dashboard-button">Last Week</span>
