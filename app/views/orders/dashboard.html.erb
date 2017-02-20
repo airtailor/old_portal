@@ -103,10 +103,10 @@
         </p>
       </div>
       <div class="burb-dashboard-column">
-        <p class="november-stuff stuff">$<%= @nov_total %></p>
-        <p class="december-stuff stuff">$<%= @dec_total %></p>
-        <p class="january-stuff stuff">$<%= @jan_total %></p>
-        <p class="february-stuff stuff">$<%= @feb_total %></p>
+        <p class="november-stuff stuff">$<%= "%.2f" % @nov_total %></p>
+        <p class="december-stuff stuff">$<%= "%.2f" % @dec_total %></p>
+        <p class="january-stuff stuff">$<%= "%.2f" % @jan_total %></p>
+        <p class="february-stuff stuff">$<%= "%.2f" % @feb_total %></p>
       </div>
     </div>
 
