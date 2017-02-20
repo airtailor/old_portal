@@ -14,13 +14,13 @@
 
 <div class="burb-dashboard-row">
   <div class="burb-dashboard-column">
-    <b>Tailor</b>
+    <p><b>Tailor</b></p>
   </div>
   <div class="burb-dashboard-column">
-    <b>Order Qty.</b>
+    <p><b>Order Qty.</b></p>
   </div>
   <div class="burb-dashboard-column">
-    <b>Total</b>
+    <p><b>Total</b></p>
   </div>
 </div>
 
@@ -93,20 +93,20 @@
         <p> </p>
       </div>
       <div class="burb-dashboard-column">
-        <p class="november-stuff stuff"><%= @nov16_orders.count %> Orders
-        </p>
-        <p class="december-stuff stuff"><%= @dec16_orders.count %> Orders
-        </p>
-        <p class="january-stuff stuff"><%= @jan17_orders.count %> Orders
-        </p>
-        <p class="february-stuff stuff"><%= @feb17_orders.count %> Orders
-        </p>
+        <p class="november-stuff stuff"><b><%= @nov16_orders.count %> Orders
+        </b></p>
+        <p class="december-stuff stuff"><b><%= @dec16_orders.count %> Orders
+        </b></p>
+        <p class="january-stuff stuff"><b><%= @jan17_orders.count %> Orders
+        </b></p>
+        <p class="february-stuff stuff"><b><%= @feb17_orders.count %> Orders
+        </b></p>
       </div>
       <div class="burb-dashboard-column">
-        <p class="november-stuff stuff">$<%= "%.2f" % @nov_total %></p>
-        <p class="december-stuff stuff">$<%= "%.2f" % @dec_total %></p>
-        <p class="january-stuff stuff">$<%= "%.2f" % @jan_total %></p>
-        <p class="february-stuff stuff">$<%= "%.2f" % @feb_total %></p>
+        <p class="november-stuff stuff"><b>$<%= "%.2f" % @nov_total %></b></p>
+        <p class="december-stuff stuff"><b>$<%= "%.2f" % @dec_total %></b></p>
+        <p class="january-stuff stuff"><b>$<%= "%.2f" % @jan_total %></b></p>
+        <p class="february-stuff stuff"><b>$<%= "%.2f" % @feb_total %></b></p>
       </div>
     </div>
 
