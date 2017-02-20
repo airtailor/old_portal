@@ -28,7 +28,9 @@
 <% @tailors.each do |tailor| %>
     <div class="burb-dashboard-row">
       <div class="burb-dashboard-column">
-          <span id="invoice-<%= tailor.id %>"><%= tailor.business_name %><br></span>
+          <span id="invoice-<%= tailor.id %>" class="invoice-name"><%= tailor.business_name %>
+          </span>
+          <br>
       </div>
 
       <div class="burb-dashboard-column">
@@ -43,7 +45,7 @@
       </div>
 
       <div class="burb-dashboard-column">
-      <!-- november 16 -->
+  <!-- november 16 -->
         <span class="november-stuff stuff">
         <% @total = 0 %>
         <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
@@ -53,7 +55,7 @@
         $<%= "%.2f" % @total %>
         <br>
         </span>
-      <!-- december 16 -->
+  <!-- december 16 -->
         <span class="december-stuff stuff">
         <% @total = 0 %>
         <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
@@ -63,7 +65,7 @@
         $<%= "%.2f" % @total %>
         <br>
         </span>
-      <!-- january 17 -->
+  <!-- january 17 -->
         <span class="january-stuff stuff">
         <% @total = 0 %>
         <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
@@ -73,7 +75,7 @@
         $<%= "%.2f" % @total %>
         <br>
         </span>
-      <!-- february 17 -->
+  <!-- february 17 -->
         <span class="february-stuff stuff">
         <% @total = 0 %>
         <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
@@ -84,8 +86,128 @@
         <br>
         </span>
       </div>
-
     </div>
+<!-- end of dashboard level 1 -->
+
+<!-- DASHBOARD LEVEL 2!! -->
+    <div id="invoice-<%= tailor.id %>-details" class="invoice-details">
+      <div class="burb-dashboard-row">
+        <div class="burb-2-dashboard-column">
+          <p><b>Order #</b></p>
+        </div>
+        <div class="burb-2-dashboard-column">
+          <p><b>Date</b></p>
+        </div>
+        <div class="burb-2-dashboard-column">
+          <p><b># of Services</b></p>
+        </div>
+        <div class="burb-2-dashboard-column">
+          <p><b>Total</b></p>
+        </div>
+      </div>
+
+      <div class="burb-dashboard-row">
+        <div class="burb-2-dashboard-column">
+          <span class="november-stuff stuff">
+            <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
+              <%= order.shopify_id %><br>
+            <% end %>
+          </span>
+          <span class="december-stuff stuff">
+            <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
+              <%= order.shopify_id %><br>
+            <% end %>
+          </span>
+          <span class="january-stuff stuff">
+            <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
+              <%= order.shopify_id %><br>
+            <% end %>
+          </span>
+          <span class="february-stuff stuff">
+            <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
+              <%= order.shopify_id %><br>
+            <% end %>
+          </span>
+        </div>
+
+        <div class="burb-2-dashboard-column">
+          <span class="november-stuff stuff">
+            <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
+              <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %><br>
+            <% end %>
+          </span>
+          <span class="december-stuff stuff">
+            <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
+              <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %><br>
+            <% end %>
+          </span>
+          <span class="january-stuff stuff">
+            <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
+              <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %><br>
+            <% end %>
+          </span>
+          <span class="february-stuff stuff">
+            <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
+              <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %><br>
+            <% end %>
+          </span>
+        </div>
+
+        <div class="burb-2-dashboard-column">
+          <span class="november-stuff stuff">
+            <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
+              <% @alts = JSON.parse(order.alterations) %>
+              <%= @alts.length %><br>
+            <% end %>
+          </span>
+          <span class="december-stuff stuff">
+            <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
+              <% @alts = JSON.parse(order.alterations) %>
+              <%= @alts.length %><br>
+            <% end %>
+          </span>
+          <span class="january-stuff stuff">
+            <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
+              <% @alts = JSON.parse(order.alterations) %>
+              <%= @alts.length %><br>
+            <% end %>
+          </span>
+          <span class="february-stuff stuff">
+            <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
+              <% @alts = JSON.parse(order.alterations) %>
+              <%= @alts.length %><br>
+            <% end %>
+          </span>
+        </div>
+
+        <div class="burb-2-dashboard-column">
+          <span class="november-stuff stuff">
+            <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
+              $<%= order.total %><br>
+            <% end %>
+          </span>
+          <span class="december-stuff stuff">
+            <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
+              $<%= order.total %><br>
+            <% end %>
+          </span>
+          <span class="january-stuff stuff">
+            <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
+              $<%= order.total %><br>
+            <% end %>
+          </span>
+          <span class="february-stuff stuff">
+            <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
+              $<%= order.total %><br>
+            <% end %>
+          </span>
+        </div>
+
+      </div>
+
+
+    </div><br>
+    <!-- end of Dashboard Level 2 -->
 <% end %>
 
     <div class="burb-dashboard-row">

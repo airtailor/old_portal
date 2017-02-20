@@ -84,6 +84,10 @@ input:focus{
   text-decoration: underline;
 }
 
+.display {
+  display: block;
+}
+
 a {
   text-decoration: none;
   color: #000033;
@@ -1403,6 +1407,14 @@ input.measurement {
   display: none;
 }
 
+.invoice-name {
+  color: blue;
+}
+
+.invoice-name:hover {
+  cursor: pointer;
+}
+
 .burb-dashboard-row {
   width: 90%;
   margin: 0 auto;
@@ -1411,7 +1423,21 @@ input.measurement {
 .burb-dashboard-column {
   width: 33%;
   float: left;
+  overflow: auto;
 }
 
+/* DASHBOARD LEVEL 2 */
 
+.invoice-details {
+  margin-left: 10%;
+  width: 90%;
+  display: none;
+  overflow: auto;
+}
+
+.burb-2-dashboard-column {
+  width: 25%;
+  float: left;
+  overflow: auto;
+}
 
