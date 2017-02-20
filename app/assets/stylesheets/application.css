@@ -1375,3 +1375,43 @@ input.measurement {
 }
 
 
+
+/* DASHBOARD */
+
+.burb-dashboard-button {
+  text-decoration: underline;
+  color: blue;
+}
+
+.burb-dashboard-button:hover {
+  cursor: pointer;
+}
+
+#november-button {
+  color: red;
+}
+
+.december-stuff {
+  display: none;
+}
+
+.january-stuff {
+  display: none;
+}
+
+.february-stuff {
+  display: none;
+}
+
+.burb-dashboard-row {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.burb-dashboard-column {
+  width: 33%;
+  float: left;
+}
+
+
+

@@ -1,0 +1,119 @@
+<main>
+  <div class="section-header">
+    <h2>Dashboard </h2>
+    <span id="november-button" class="burb-dashboard-button">November</span>
+    <span id="december-button" class="burb-dashboard-button">December</span>
+    <span id="january-button" class="burb-dashboard-button">January</span>
+    <span id="february-button" class="burb-dashboard-button">February</span>
+  </div>
+
+  <div class="container">
+    <br><br>
+
+
+
+<div class="burb-dashboard-row">
+  <div class="burb-dashboard-column">
+    <p>Tailor</p>
+  </div>
+  <div class="burb-dashboard-column">
+    <p>Order Qty.</p>
+  </div>
+  <div class="burb-dashboard-column">
+    <p>Total</p>
+  </div>
+</div>
+
+
+<% @tailors.each do |tailor| %>
+    <div class="burb-dashboard-row">
+      <div class="burb-dashboard-column">
+          <span id="invoice-<%= tailor.id %>"><%= tailor.business_name %><br></span>
+      </div>
+
+      <div class="burb-dashboard-column">
+        <span class="november-stuff stuff"><%= @nov16_orders.where(user_id: tailor.id).count %><br>
+        </span>
+        <span class="december-stuff stuff"><%= @dec16_orders.where(user_id: tailor.id).count %><br>
+        </span>
+        <span class="january-stuff stuff"><%= @jan17_orders.where(user_id: tailor.id).count %><br>
+        </span>
+        <span class="february-stuff stuff"><%= @feb17_orders.where(user_id: tailor.id).count %><br>
+        </span>
+      </div>
+
+      <div class="burb-dashboard-column">
+      <!-- november 16 -->
+        <span class="november-stuff stuff">
+        <% @total = 0 %>
+        <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
+          <% @total += order.total.to_f %>
+          <% @nov_total += order.total.to_f %>
+        <% end %>
+        $<%= "%.2f" % @total %>
+        <br>
+        </span>
+      <!-- december 16 -->
+        <span class="december-stuff stuff">
+        <% @total = 0 %>
+        <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
+          <% @total += order.total.to_f %>
+          <% @dec_total += order.total.to_f %>
+        <% end %>
+        $<%= "%.2f" % @total %>
+        <br>
+        </span>
+      <!-- january 17 -->
+        <span class="january-stuff stuff">
+        <% @total = 0 %>
+        <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
+          <% @total += order.total.to_f %>
+          <% @jan_total += order.total.to_f %>
+        <% end %>
+        $<%= "%.2f" % @total %>
+        <br>
+        </span>
+      <!-- february 17 -->
+        <span class="february-stuff stuff">
+        <% @total = 0 %>
+        <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
+          <% @total += order.total.to_f %>
+          <% @feb_total += order.total.to_f %>
+        <% end %>
+        $<%= "%.2f" % @total %>
+        <br>
+        </span>
+      </div>
+
+    </div>
+<% end %>
+
+    <div class="burb-dashboard-row">
+      <div class="burb-dashboard-column">
+        <p> </p>
+      </div>
+      <div class="burb-dashboard-column">
+        <p class="november-stuff stuff"><%= @nov16_orders.count %> Orders
+        </p>
+        <p class="december-stuff stuff"><%= @dec16_orders.count %> Orders
+        </p>
+        <p class="january-stuff stuff"><%= @jan17_orders.count %> Orders
+        </p>
+        <p class="february-stuff stuff"><%= @feb17_orders.count %> Orders
+        </p>
+      </div>
+      <div class="burb-dashboard-column">
+        <p class="november-stuff stuff">$<%= @nov_total %></p>
+        <p class="december-stuff stuff">$<%= @dec_total %></p>
+        <p class="january-stuff stuff">$<%= @jan_total %></p>
+        <p class="february-stuff stuff">$<%= @feb_total %></p>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</main>
+
+

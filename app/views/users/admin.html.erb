@@ -37,8 +37,6 @@
     <hr>
     <h1>Dashboard</h1>
 
-
-
     <span id="all-button" class="dashboard-button">All Stats</span>
     <span id="this-week-button" class="dashboard-button">This Week</span>
     <span id="last-week-button" class="dashboard-button">Last Week</span>
@@ -163,7 +161,7 @@
         </div>
       </div>
       <!-- end of row 4 -->
-<center>Paid Orders (since creation of portal)</center>
+<center>Weekly Paid Orders (since creation of portal)</center>
     <%= line_chart @paid_orders.group_by_week(:created_at).count %>
     </div>
     <!-- end of dashboard -->

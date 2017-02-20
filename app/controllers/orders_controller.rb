@@ -38,6 +38,28 @@ class OrdersController < ApplicationController
     @alterations = JSON.parse(@order.alterations)
   end
 
+
+  def dashboard
+
+    @tailors = User.all
+    @total = 0
+    @nov_total = 0
+    @dec_total = 0
+    @jan_total = 0
+    @feb_total = 0
+
+    # 2016
+    @nov16_orders = Order.where('extract(month from created_at) = ? and extract(year from created_at) = ?', 11, 2016).where.not(welcome: true)
+    @dec16_orders = Order.where('extract(month from created_at) = ? and extract(year from created_at) = ?', 12, 2016).where.not(welcome: true)
+
+    # 2017
+    @jan17_orders = Order.where('extract(month from created_at) = ? and extract(year from created_at) = ?', 1, 2017).where.not(welcome: true)
+    @feb17_orders = Order.where('extract(month from created_at) = ? and extract(year from created_at) = ?', 2, 2017).where.not(welcome: true)
+
+  end
+
+
+
   def archive
     if current_user.is_admin?
       @users = User.all
