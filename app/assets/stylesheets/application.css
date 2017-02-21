@@ -1441,3 +1441,47 @@ input.measurement {
   overflow: auto;
 }
 
+/* INVOICE ORDER DETAILS */
+
+#invoice-order-details {
+  width: 45%;
+  margin-left: 2%;
+  float: left;
+  overflow: auto;
+  height: 644px;
+  border: 1px solid black;
+}
+
+#invoice-customer-details,
+#invoice-tailor-details,
+#invoice-questions {
+  width: 45%;
+  margin-left: 2%;
+  margin-bottom: 20px;
+  float: left;
+  overflow: auto;
+  height: 200px;
+  border: 1px solid black;
+}
+
+#invoice-date-details,
+#invoice-notes,
+#invoice-order-details h2,
+#invoice-customer-details h2,
+#invoice-customer-details span,
+#invoice-tailor-details h2,
+#invoice-questions h2 {
+  margin-left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

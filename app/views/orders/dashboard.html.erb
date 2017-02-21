@@ -110,22 +110,22 @@
         <div class="burb-2-dashboard-column">
           <span class="november-stuff stuff">
             <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
-              <%= order.shopify_id %><br>
+              <a href="invoice/<%=order.id %>"><%= order.shopify_id %></a><br>
             <% end %>
           </span>
           <span class="december-stuff stuff">
             <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
-              <%= order.shopify_id %><br>
+              <a href="invoice/<%=order.id %>"><%= order.shopify_id %></a><br>
             <% end %>
           </span>
           <span class="january-stuff stuff">
             <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
-              <%= order.shopify_id %><br>
+              <a href="invoice/<%=order.id %>"><%= order.shopify_id %></a><br>
             <% end %>
           </span>
           <span class="february-stuff stuff">
             <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
-              <%= order.shopify_id %><br>
+              <a href="invoice/<%=order.id %>"><%= order.shopify_id %></a><br>
             <% end %>
           </span>
         </div>

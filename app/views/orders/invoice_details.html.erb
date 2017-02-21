@@ -1,0 +1,284 @@
+<main>
+  <div class="section-header">
+    <h2>Invoice Order Details / <%= @order.shopify_id %></h2>
+  </div>
+
+  <div class="container">
+    <br><br>
+    <div id="invoice-order-details">
+      <h2 class="caps">Order Details</h2>
+
+      <div id="invoice-date-details">
+        <p>Created: <%= @order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %></p>
+        <% if @order.arrival_date.blank? %>
+          <p>Arrived: <i>N/A</i></p>
+        <% else %>
+          <p>Arrived: <%= @order.arrival_date.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %></p>
+        <% end %>
+        <% if @order.fulfill_date.blank? %>
+          <p>Fulfilled: <i>N/A</i></p>
+        <% else %>
+          <p>Fulfilled: <%= @order.fulfill_date.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %></p>
+        <% end %>
+        <br>
+      </div>
+
+      <!-- Items / Alterations -->
+
+      <% if @items.any? { |s| s.include?('Pants') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Pants</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Pants" %>
+                <% if item =~ /Pants #. Pants$/ %>
+                <% else %>
+                  <li><%= item %></li>
+                <% end %>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @items.any? { |s| s.include?('Shirt') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Shirts</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Shirt" %>
+                <% if item =~ /Shirt #. Shirt$/ %>
+                <% else %>
+                  <li><%= item %></li>
+                <% end %>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @items.any? { |s| s.include?('Million') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Shirts</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Million" %>
+                <li><%= item %></li>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @items.any? { |s| s.include?('Dress') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Dresses</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Dress" %>
+                <% if item =~ /Dress #. Dress$/ %>
+                <% else %>
+                  <li><%= item %></li>
+                <% end %>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @items.any? { |s| s.include?('Coat') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Coats</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Coat" %>
+                <% if item =~ /Coat \/ Jacket #. Coat \/ Jacket$/ %>
+                <% else %>
+                  <li><%= item %></li>
+                <% end %>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @items.any? { |s| s.include?('Cardigan') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Cardigans</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Cardigan" %>
+                <% if item =~ /Cardigan #. Cardigan$/ %>
+                <% else %>
+                  <li><%= item %></li>
+                <% end %>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @items.any? { |s| s.include?('Skirt') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Skirts</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Skirt" %>
+                <% if item =~ /Skirt #. Skirt$/ %>
+                <% else %>
+                  <li><%= item %></li>
+                <% end %>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @items.any? { |s| s.include?('Vest') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Vests</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Vest" %>
+                <% if item =~ /Vest #. Vest$/ %>
+                <% else %>
+                  <li><%= item %></li>
+                <% end %>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @items.any? { |s| s.include?('Suit Jacket') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Suit Jackets</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Suit" %>
+                <% if item =~ /Suit Jacket #. Suit Jacket$/ %>
+                <% else %>
+                  <li><%= item %></li>
+                <% end %>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @items.any? { |s| s.include?('Sweater') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Sweaters</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Sweater" %>
+                <% if item =~ /Sweater #. Sweater$/ %>
+                <% else %>
+                  <li><%= item %></li>
+                <% end %>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @items.any? { |s| s.include?('Tie') || s.include?('Necktie') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Ties</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Tie Slimming Service" %>
+                  <li><%= item %></li>
+                  <% if @order.tie_amount %>
+                    <li>Amount of Ties: <%= @order.tie_amount %></li>
+                  <% end %>
+              <% elsif item.include? "Necktie" %>
+                <% if item =~ /Necktie #. Necktie$/ %>
+                <% else %>
+                  <li><%= item %></li>
+                <% end %>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @items.any? { |s| s.include?('Welcome') } %>
+        <div class="alteration-list">
+          <div class="alterations-text">
+            <h3 class="caps">Welcome Kit</h3>
+            <% @items.each do |item| %>
+              <% if item.include? "Welcome" %>
+                <li><%= item %></li>
+              <% end %>
+            <% end %><br>
+          </div>
+        </div>
+      <% end %>
+
+      <div id="invoice-notes">
+        <div id="order-notes-area">
+        <h3 class="notes-header">Order Notes:</h3>
+          <% if @order.note? %>
+            <p class="order-notes"><%= @order.note %></p>
+          <% else %>
+            <p class="order-notes">n/a</p>
+          <% end %>
+        </div>
+        <br>
+
+        <div id="tailor-notes-area">
+          <h3 class="notes-header">Tailor Notes:</h3>
+          <% if @order.tailor_notes? %>
+            <p class="order-notes"><%= @order.tailor_notes %></p>
+          <% else %>
+            <p class="order-notes">n/a</p>
+          <% end %>
+        </div>
+
+        <p class="caps"><b>Order Total</b> $<%= @order.total %></p>
+      </div>
+
+    </div>
+
+    <div id="invoice-customer-details">
+      <h2 class="caps">Customer Details</h2>
+      <span><%= @order.name %></span><br>
+
+      <% if @customer.address2.blank? %>
+        <span><%= @customer.address1 %></span><br>
+      <% else %>
+        <span><%= @customer.address1 %>, <%= @customer.address2 %></span><br>
+      <% end %>
+
+      <span><%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %></span><br>
+      <span><%= @customer.phone %></span>
+    </div>
+
+    <div id="invoice-tailor-details">
+      <h2 class="caps">Store</h2>
+    </div>
+
+    <div id="invoice-questions">
+      <h2 class="caps">Questions</h2>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+</main>

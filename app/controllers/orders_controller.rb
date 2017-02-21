@@ -59,6 +59,13 @@ class OrdersController < ApplicationController
   end
 
 
+  def invoice_details
+    @order = Order.find_by(id: params[:id])
+    @items = JSON.parse(@order.alterations)
+    @customer = Customer.where(order_id: @order.shopify_id).first
+  end
+
+
 
   def archive
     if current_user.is_admin?

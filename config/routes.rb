@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/admin/order/:id' => 'users#admin_show'
   get '/supplies' => 'users#supplies'
   get '/dashboard' => 'orders#dashboard'
+  get '/invoice/:id' => 'orders#invoice_details'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
