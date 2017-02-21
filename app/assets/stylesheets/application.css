@@ -1407,11 +1407,8 @@ input.measurement {
   display: none;
 }
 
-.invoice-name {
-  color: blue;
-}
-
 .invoice-name:hover {
+  color: blue;
   cursor: pointer;
 }
 
@@ -1433,6 +1430,10 @@ input.measurement {
   width: 90%;
   display: none;
   overflow: auto;
+}
+
+.invoice-details a:hover {
+  color: blue;
 }
 
 .burb-2-dashboard-column {
@@ -1464,13 +1465,7 @@ input.measurement {
   border: 1px solid black;
 }
 
-#invoice-date-details,
-#invoice-notes,
-#invoice-order-details h2,
-#invoice-customer-details h2,
-#invoice-customer-details span,
-#invoice-tailor-details h2,
-#invoice-questions h2 {
+.indented {
   margin-left: 20px;
 }
 

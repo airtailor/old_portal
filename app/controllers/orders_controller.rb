@@ -63,6 +63,7 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id: params[:id])
     @items = JSON.parse(@order.alterations)
     @customer = Customer.where(order_id: @order.shopify_id).first
+    @user = User.where(id: @order.user_id).first
   end
 
 

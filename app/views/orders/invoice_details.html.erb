@@ -6,9 +6,8 @@
   <div class="container">
     <br><br>
     <div id="invoice-order-details">
-      <h2 class="caps">Order Details</h2>
-
-      <div id="invoice-date-details">
+      <div class="indented">
+        <h2 class="caps">Order Details</h2>
         <p>Created: <%= @order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %></p>
         <% if @order.arrival_date.blank? %>
           <p>Arrived: <i>N/A</i></p>
@@ -216,7 +215,7 @@
         </div>
       <% end %>
 
-      <div id="invoice-notes">
+      <div class="indented">
         <div id="order-notes-area">
         <h3 class="notes-header">Order Notes:</h3>
           <% if @order.note? %>
@@ -242,25 +241,39 @@
     </div>
 
     <div id="invoice-customer-details">
-      <h2 class="caps">Customer Details</h2>
-      <span><%= @order.name %></span><br>
+      <div class="indented">
+        <h2 class="caps">Customer Details</h2>
+        <%= @order.name %><br>
 
-      <% if @customer.address2.blank? %>
-        <span><%= @customer.address1 %></span><br>
-      <% else %>
-        <span><%= @customer.address1 %>, <%= @customer.address2 %></span><br>
-      <% end %>
+        <% if @customer.address2.blank? %>
+          <%= @customer.address1 %><br>
+        <% else %>
+          <%= @customer.address1 %>, <%= @customer.address2 %><br>
+        <% end %>
 
-      <span><%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %></span><br>
-      <span><%= @customer.phone %></span>
+        <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %><br>
+        <%= @customer.phone %>
+        <br><br>
+        <a href="../customers/<%= @customer.id %>">Customer Details</a>
+      </div>
     </div>
 
     <div id="invoice-tailor-details">
-      <h2 class="caps">Store</h2>
+      <div class="indented">
+        <h2 class="caps">Tailor</h2>
+        <%= @user.business_name %><br>
+        <%= @user.street %><br>
+        <%= @user.city %>, <%= @user.state %> <%= @user.zip %><br>
+        <%= @user.phone %>
+        <br><br>
+        Shop Supervisor: <%= @user.user_name %>
+      </div>
     </div>
 
     <div id="invoice-questions">
-      <h2 class="caps">Questions</h2>
+      <div class="indented">
+        <h2 class="caps">Questions</h2>
+      </div>
     </div>
 
 

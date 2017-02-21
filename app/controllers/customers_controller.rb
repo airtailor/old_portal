@@ -8,7 +8,7 @@ before_filter :authorize
 
   def show
     @customer = Customer.find_by(id: params[:id])
-    @orders = Order.where(customer_id: @customer.unique_id)
+    @orders = Order.where(customer_id: @customer.shopify_id)
   end
 
   def new

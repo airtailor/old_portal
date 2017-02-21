@@ -1,7 +1,14 @@
 <main>
-<%= @customer.first_name %>
+  <div class="section-header">
+    <h2>Customer / <%= @customer.first_name %> <%= @customer.last_name %> </h2>
+  </div>
+  <div class="container">
+  <br><br>
+    <%= @customer.first_name %><br>
+    <%= @customer.shopify_id %><br><br>
 
-<% @orders.each do |order| %>
-  <%= order.shopify_id %><br>
-<% end %>
+    <% @orders.each do |order| %>
+      <%= order.alterations %><br><br>
+    <% end %>
+  </div>
 </main>
