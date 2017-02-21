@@ -39,7 +39,7 @@ $(document).on("click", "#invoice-3", function(){
 });
 
 $(document).on("click", "#invoice-5", function(){
-  $("#invoice-6-details").slideToggle()
+  $("#invoice-5-details").slideToggle()
 });
 
 $(document).on("click", "#invoice-6", function(){
@@ -47,5 +47,5 @@ $(document).on("click", "#invoice-6", function(){
 });
 
 $(document).on("click", "#invoice-7", function(){
-  $("#invoice-6-details").slideToggle()
+  $("#invoice-7-details").slideToggle()
 });
