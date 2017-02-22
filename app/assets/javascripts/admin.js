@@ -1,5 +1,5 @@
 $(document).on("click", "#this-week-button", function(){
-      $(".dashboard-button").css('color', 'blue');
+      $(".dashboard-button").css('color', '#000033');
       $("#this-week").show()
       $("#last-week").hide()
       $("#this-month").hide()
@@ -8,7 +8,7 @@ $(document).on("click", "#this-week-button", function(){
   });
 
 $(document).on("click", "#last-week-button", function(){
-      $(".dashboard-button").css('color', 'blue');
+      $(".dashboard-button").css('color', '#000033');
       $("#last-week").show()
       $("#this-week").hide()
       $("#this-month").hide()
@@ -17,7 +17,7 @@ $(document).on("click", "#last-week-button", function(){
   });
 
 $(document).on("click", "#this-month-button", function(){
-      $(".dashboard-button").css('color', 'blue');
+      $(".dashboard-button").css('color', '#000033');
       $("#this-month").show()
       $("#last-month").hide()
       $("#this-week").hide()
@@ -26,7 +26,7 @@ $(document).on("click", "#this-month-button", function(){
   });
 
 $(document).on("click", "#last-month-button", function(){
-      $(".dashboard-button").css('color', 'blue');
+      $(".dashboard-button").css('color', '#000033');
       $("#last-month").show()
       $("#this-month").hide()
       $("#this-week").hide()
@@ -35,7 +35,7 @@ $(document).on("click", "#last-month-button", function(){
   });
 
 $(document).on("click", "#all-button", function(){
-      $(".dashboard-button").css('color', 'blue');
+      $(".dashboard-button").css('color', '#000033');
       $(".dashboard-row").show()
       $("#all-button").css('color', 'red');
   });

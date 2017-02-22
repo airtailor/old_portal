@@ -16,6 +16,8 @@
 
 /* general styles and layout */
 
+/* dark blue #000033 */
+
 /* color palette link:http://paletton.com/#uid=53+0u0khHVI00++4Z+6sgRhER7o */
 
 body {
@@ -23,7 +25,7 @@ body {
   min-width: 1200px;
   padding: 0;
   margin: 0;
-  font-family: raleway;
+  font-family: arial;
   font-size: 14px;
   color: #000033;
   overflow: auto;
@@ -69,7 +71,7 @@ input:focus{
 }
 
 .blueback {
-  background-color: #D8EDFC;
+  background-color: #000033;
 }
 
 .orange {
@@ -103,7 +105,7 @@ a:visited {
 
 #user-index span {
   font-size: 18px;
-  font-family: raleway;
+  font-family: arial;
 }
 
 main {
@@ -117,7 +119,7 @@ main {
 
 .section-header {
   border-bottom: 1px #000033 solid;
-  background-color: #D8EDFC;
+  background-color: #000033;
   height: 60px;
   line-height: 60px;
   width: 85.9%;
@@ -125,11 +127,16 @@ main {
   z-index: 1;
 }
 
+.section-header a {
+  color: white;
+}
+
 .whiteback {
   background-color: white;
 }
 
 .section-header h2 {
+  color: white;
   float: left;
   padding-left: 30px;
   margin-top: 0;
@@ -166,7 +173,7 @@ main {
   margin-top: 0;
   margin-bottom: 50px;
   font-weight: normal;
-  font-family: raleway;
+  font-family: arial;
 }
 
 #login-page img {
@@ -215,7 +222,7 @@ main {
 #login-page a {
   display: inline-block;
   margin-left: 20px;
-  font-family: raleway;
+  font-family: arial;
   font-weight: normal;
 }
 
@@ -225,7 +232,7 @@ aside {
   min-width: 125px;
   float: left;
   margin: 0;
-  font-family: raleway;
+  font-family: arial;
   font-weight: 200;
 }
 
@@ -239,7 +246,7 @@ aside h5 {
   text-align: center;
   margin-top: 0;
   margin-bottom: 25px;
-  font-family: raleway;
+  font-family: arial;
 }
 
 input#search {
@@ -277,18 +284,21 @@ nav img {
   display: inline-block;
   vertical-align: -4px;
   width: 20px;
-  padding-right: 10px;
+  padding-right: 15px;
 }
 
 nav li a {
-  padding-left: 5%;
+  padding-left: 7%;
   display: inline-block;
-  width:  95%;
+  width:  93%;
   line-height: 40px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 11px;
 }
 
 nav li a:hover {
-  background-color: #D8EDFC;
+  background-color: rgba(0, 0, 51, .1);
 }
 
 nav li:last-of-type {
@@ -301,11 +311,17 @@ nav li:last-of-type {
   bottom: 10px;
 }
 
+.aside-help {
+  position: fixed;
+  bottom: 10px;
+  width: 14%;
+  min-width: 170px;
+}
+
 /* admin home page */
 
 .admin-welcome {
   text-align: center;
-  text-shadow: 0 1px 2px grey;
 }
 
 .admin-welcome h2 {
@@ -328,7 +344,7 @@ nav li:last-of-type {
 
 .admin-column span {
   font-size: 18px;
-  font-family: raleway;
+  font-family: arial;
 }
 
 #admin-manage-area {
@@ -348,16 +364,16 @@ nav li:last-of-type {
 #admin-manage-area button {
   width: 160px;
   height: 60px;
-  background-color: #D8EDFC;
-  color: #000033;
+  background-color: #000033;
+  color: white;
   border-radius: 10px;
   font-weight: bold;
+  border: none;
 }
 
 #admin-manage-area button:hover {
   cursor: pointer;
-  width: 161px;
-  height: 61px;
+  background-color: rgba(0,0,51,.8)
 }
 
 #dashboard {
@@ -372,7 +388,7 @@ nav li:last-of-type {
   margin-left: 10px;
   margin-right: 10px;
   text-decoration: underline;
-  color: blue;
+  color: #000033;
 }
 
 #dashboard span:hover {
@@ -450,7 +466,8 @@ select:hover {
 #kit-order {
   width: 100px;
   height: 30px;
-  background-color: #D8EDFC;
+  background-color: #000033;
+  color: white;
   border-radius: 10px;
 }
 
@@ -468,6 +485,10 @@ select:hover {
 #edit-customer:hover {
   width: 101px;
   height: 31px;
+}
+
+#edit-customer a {
+  color: white;
 }
 
 #change-tailor {
@@ -500,9 +521,9 @@ hr#instruction-break {
 #kit-only input,
 #kit-order input {
   width: 100%;
-  background-color: #D8EDFC;
+  background-color: #000033;
   border: none;
-
+  color: white;
 }
 
 #welcome-logo {
@@ -514,8 +535,9 @@ hr#instruction-break {
   width: 200px;
   margin-top: 10px;
   height: 30px;
-  background-color: #D8EDFC;
+  background-color: #000033;
   border-radius: 10px;
+  color: white;
 }
 
 #welcome-kit-button:hover,
@@ -547,7 +569,6 @@ hr#instruction-break {
 #tailor-show-greeting {
   text-align: center;
   color: #000033;
-  text-shadow: 0 1px 3px grey;
 }
 
 #tailor-show-greeting h2 {
@@ -675,7 +696,8 @@ hr#instruction-break {
   margin-top: 25px;
   float: right;
   font-size: 12px;
-  background-color: #D8EDFC;
+  background-color: #000033;
+  color: white;
 }
 
 #view-orders:hover {
@@ -709,8 +731,9 @@ hr#instruction-break {
   margin-top: 25px;
   float: right;
   font-size: 12px;
-  background-color: #D8EDFC;
+  background-color: #000033;
   border-radius: 10px;
+  color: white;
 }
 
 #view-messages:hover {
@@ -727,7 +750,8 @@ hr#instruction-break {
   margin-top: 25px;
   float: right;
   font-size: 12px;
-  background-color: #D8EDFC;
+  background-color: #000033;
+  color: white;
   border-radius: 10px;
 }
 
@@ -749,16 +773,17 @@ hr#instruction-break {
   line-height: 30px;
   width: 100px;
   height: 30px;
-  background-color: #D8EDFC;
+  background-color: #000033;
   border-radius: 10px;
   border-width: 2px;
   border-style: outset;
   border-color: buttonface;
   border-image: initial;
+  color: white;
 }
 
 #edit-tailor:hover {
-  background-color: white;
+  background-color: rgba(0, 0, 51, .5);
 }
 
 /* orders index page */
@@ -792,7 +817,7 @@ hr#instruction-break {
 }
 
 .order-row:hover {
-  background-color: rgba(216, 237, 252, .3)
+  background-color: rgba(0, 0, 51, .1)
 }
 
 .order-row-header {
@@ -911,11 +936,16 @@ hr#instruction-break {
 
 .order-button {
   height: 30px;
-  background-color: #D8EDFC;
+  background-color: #000033;
   border-radius: 10px;
   padding-right: 8px;
   padding-left: 8px;
   margin-right: 5px;
+  color: white;
+}
+
+.order-button a {
+  color: white;
 }
 
 .order-button:hover,
@@ -1014,7 +1044,7 @@ button#check-garment:hover, button#fulfill-order:hover {
 #packing-slip {
   width: 500px;
   margin: 0 auto;
-  font-family: raleway;
+  font-family: arial;
 }
 
 #packing-slip-label {
@@ -1064,7 +1094,7 @@ button#check-garment:hover, button#fulfill-order:hover {
   height: 30px;
   margin-top: 5px;
   background-color: white;
-  border: 1px solid #D8EDFC;
+  border: 1px solid #000033;
 }
 
 
@@ -1118,9 +1148,10 @@ button#check-garment:hover, button#fulfill-order:hover {
 button#print-measurements.order-button {
   height: 30px;
   width: 200px;
-  background-color: #D8EDFC;
+  background-color: #000033;
   border-radius: 10px;
   margin-left: 112px;
+  color: white;
 }
 
 #clothes-front-image, #clothes-back-image {
@@ -1279,7 +1310,8 @@ input.measurement {
 #start_convo {
   height: 30px;
   border-radius: 10px;
-  background-color: #D8EDFC;
+  background-color: #000033;
+  color: white;
 }
 
 #start_convo:hover {
@@ -1348,8 +1380,9 @@ input.measurement {
   width: 100%;
   height: 20px;
   font-size: 12px;
-  border: 1px solid #D8EDFC;
+  border: 1px solid #000033;
   text-indent: 5px;
+  color: white;
 }
 
 #edit-user-form input:focus {
@@ -1359,10 +1392,11 @@ input.measurement {
 #edit-user-form input[type="submit"] {
   height: 40px;
   margin-top: 20px;
-  background-color: yellow;
+  background-color: #000033;
   font-weight: bold;
   border: solid #000033 2px;
   border-radius: 10px;
+  color: white;
 }
 
 #edit-user-form input[type="submit"]:hover {
@@ -1370,12 +1404,22 @@ input.measurement {
 }
 
 #delete-user {
-  background-color: #FFAAAA;
+  background-color: red;
   border: 2px solid black;
   border-radius: 10px;
-  padding: 5px;
   font-weight: bold;
+  font-size: 12px;
+  width: 100%;
+  height: 40px;
+}
 
+#delete-user a {
+  display: block;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  height: 40px;
+  line-height: 32px;
 }
 
 
@@ -1384,7 +1428,7 @@ input.measurement {
 
 .burb-dashboard-button {
   text-decoration: underline;
-  color: blue;
+  color: white;
 }
 
 .burb-dashboard-button:hover {

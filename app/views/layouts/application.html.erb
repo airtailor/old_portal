@@ -21,13 +21,14 @@
     <h5 class="caps">Shop Portal</h5>
     <hr>
     <nav>
+    <!-- SEARCH BAR BEGIN -->
       <% if @user %>
         <%= form_tag(user_orders_path([@user, @orders]), :method => "get") do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search Orders" %>
           <%= submit_tag "Search", :name => nil, :type => "hidden" %>
         <% end %>
       <% end %>
-
+      <!-- SEARCH BAR END -->
       <ul>
 
         <% if current_user.is_admin? %>
@@ -35,14 +36,15 @@
           <li><a href="/admin"><img src="/assets/home.png">Home</a></li>
           <li><a href="/orders/new_orders"><img src="/assets/orders.png">Orders</a></li>
           <li><a href="/users"><img src="/assets/tailors.png">Tailors</a></li>
-          <li><a href="/conversations"><img src="/assets/message.png">Messages</a></li>
-          <li><a href="/dashboard"><img src="/assets/archive.png">Dashboard</a></li>
           <li><a href="/archive"><img src="/assets/archive.png">Archive</a></li>
+          <li><a href="/conversations"><img src="/assets/message.png">Messages</a></li>
           <li><a href="/supplies"><img src="/assets/supplies.png">Supplies</a></li>
-          <br><br><br><br>
-          <li><a href="mailto:brian@airtailor.com?&subject=Web%20Portal%20Question"><img src="/assets/help.png">Help</a></li>
-          <li><a href="/users/<%= current_user.id %>/edit"><img src="/assets/account.png">Account</a></li>
-          <li><a href="/logout"><img src="/assets/logout.png">Logout</a></li>
+          <li><a href="/dashboard"><img src="/assets/invoice.png">Invoicing</a></li>
+          <div class="aside-help">
+            <li><a href="mailto:brian@airtailor.com?&subject=Web%20Portal%20Question"><img src="/assets/help.png">Help</a></li>
+            <li><a href="/users/<%= current_user.id %>/edit"><img src="/assets/account.png">Account</a></li>
+            <li><a href="/logout"><img src="/assets/logout.png">Logout</a></li>
+          </div>
 
         <% else %>
 

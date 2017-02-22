@@ -70,6 +70,7 @@ class OrdersController < ApplicationController
 
   def archive
     if current_user.is_admin?
+      @user = User.all
       @users = User.all
       @orders = Order.where(complete: true)
       @orders = @orders.where.not(shipping_label: nil)
