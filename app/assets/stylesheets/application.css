@@ -452,7 +452,7 @@ nav li:last-of-type {
 }
 
 .selected {
-  background-color: rgba(216, 237, 252, .5);
+  background-color: rgba(0, 0, 51, .1);
 }
 
 select:hover {
