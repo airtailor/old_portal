@@ -1409,7 +1409,7 @@ input.measurement {
   font-size: 12px;
   border: 1px solid #000033;
   text-indent: 5px;
-  color: white;
+  color: #000033;
 }
 
 #edit-user-form input:focus {
