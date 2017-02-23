@@ -29,6 +29,12 @@ body {
   font-size: 14px;
   color: #000033;
   overflow: auto;
+  letter-spacing: .5px;
+}
+
+hr {
+  margin-top: -1px;
+  margin-bottom: -2px;
 }
 
 .alert {
@@ -52,6 +58,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: alegreya;
+  letter-spacing: .5px;
 }
 
 input:focus{
@@ -71,7 +78,7 @@ input:focus{
 }
 
 .blueback {
-  background-color: #000033;
+  background-color: rgba(0, 0, 51, .1);
 }
 
 .orange {
@@ -111,19 +118,16 @@ a:visited {
 main {
   height: 100%;
   min-height: 100vh;
-  border-left: #000033 1px solid;
-  width: 85%;
   min-width: 1000px;
-  float: left;
+  padding-left: 175px;
 }
 
 .section-header {
   border-bottom: 1px #000033 solid;
   background-color: #000033;
-  height: 60px;
-  line-height: 60px;
-  width: 85.9%;
-  position: absolute;
+  height: 93px;
+  line-height: 93px;
+  width: 100%;
   z-index: 1;
 }
 
@@ -138,7 +142,7 @@ main {
 .section-header h2 {
   color: white;
   float: left;
-  padding-left: 30px;
+  padding-left: 50px;
   margin-top: 0;
   width: 60%;
 }
@@ -154,7 +158,7 @@ main {
 }
 
 .container {
-  margin-top: 50px;
+  width: 100%;
   min-height: 100vh;
   height: 100%;
   overflow: auto;
@@ -228,33 +232,36 @@ main {
 
 /* aside */
 aside {
-  width: 14%;
-  min-width: 125px;
-  float: left;
+  width: 175px;
   margin: 0;
   font-family: arial;
   font-weight: 200;
+  position: fixed;
+  top: 0;
+  border-right: #000033 1px solid;
+  min-height: 100vh;
 }
 
 aside #logo {
-  width: 80%;
-  margin-left: 10%;
+  width: 125px;
+  margin-left: 25px;
   margin-top: 20px;
 }
 
 aside h5 {
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 25px;
+  margin-left: 36px;
+  margin-top: 5px;
+  margin-bottom: 21px;
   font-family: arial;
+  letter-spacing: 2px;
 }
 
 input#search {
   height: 30px;
   display: block;
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 25px;
   text-indent: 35px;
   border-radius: 20px;
   border: none;
@@ -267,7 +274,7 @@ input#search {
 
 aside ::-webkit-input-placeholder {
   color: grey;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 nav ul {
@@ -277,24 +284,24 @@ nav ul {
 
 nav li {
   list-style: none;
-  height: 40px;
+  height: 45px;
 }
 
 nav img {
   display: inline-block;
-  vertical-align: -4px;
-  width: 20px;
-  padding-right: 15px;
+  vertical-align: -9px;
+  width: 25px;
+  padding-right: 20px;
 }
 
 nav li a {
-  padding-left: 7%;
+  padding-left: 9%;
   display: inline-block;
-  width:  93%;
+  width:  91%;
   line-height: 40px;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 nav li a:hover {
@@ -313,9 +320,9 @@ nav li:last-of-type {
 
 .aside-help {
   position: fixed;
-  bottom: 10px;
-  width: 14%;
-  min-width: 170px;
+  top: 530px;
+  width: 175px;
+
 }
 
 /* admin home page */
@@ -328,7 +335,7 @@ nav li:last-of-type {
   font-size: 48px;
   font-weight: bold;
   margin-bottom: 20px;
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 .admin-welcome p {
@@ -436,7 +443,6 @@ nav li:last-of-type {
 #customer-details {
   width: 31%;
   float: left;
-  margin-top: 30px;
 }
 
 #manage-orders {
@@ -575,7 +581,7 @@ hr#instruction-break {
   font-size: 48px;
   font-family: alegreya;
   font-weight: bold;
-  margin-top: 100px;
+  margin-top: 70px;
   margin-bottom: 0;
 }
 
@@ -807,29 +813,53 @@ hr#instruction-break {
   float: left;
 }
 
+.tailor-order-column:first-of-type {
+
+  min-width: 195px;
+}
+
 .order-row {
   padding-left: 40px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  overflow: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
   height: 40px;
   line-height: 40px;
 }
 
-.order-row:hover {
-  background-color: rgba(0, 0, 51, .1)
+.order-row:not(.no-hover):hover {
+  background-color: rgba(0, 0, 51, .1);
+  cursor: pointer;
 }
 
 .order-row-header {
-  overflow: auto;
   margin-left: 40px;
-  margin-top: 30px;
+  text-transform: uppercase;
+  overflow: auto;
+}
+
+.order-row-header h3 {
+  font-family: arial;
+}
+
+#row-header-hr {
+  width: 90%;
+  margin-left: 30px;
 }
 
 #order-quantity {
   text-align: left;
   width: 19%;
   padding-left: 5%;
+}
+
+.order-row-hr {
+  width: 87%;
+  margin-left: 40px;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 51, .1);
+  padding: 0;
 }
 
 
@@ -841,7 +871,7 @@ hr#instruction-break {
 
 #item-section {
   float: left;
-  margin-top: 50px;
+  margin-top: 20px;
   padding-left: 30px;
   width: 590px;
 }
@@ -1104,7 +1134,6 @@ button#check-garment:hover, button#fulfill-order:hover {
 #customer-measurements {
   text-align: center;
   float: left;
-  margin-top: 30px;
   margin-left: 25px;
   position: relative;
   min-width: 375px;
@@ -1357,7 +1386,6 @@ input.measurement {
   float: left;
   padding-left: 5%;
   padding-right: 5%;
-  padding-top: 30px;
 }
 
 .customer-edit {
@@ -1368,7 +1396,6 @@ input.measurement {
   width: 40%;
   float: left;
   margin-bottom: 200px;
-  padding-top: 30px;
 }
 
 #edit-user-form p {
@@ -1451,10 +1478,7 @@ input.measurement {
   display: none;
 }
 
-.invoice-name:hover {
-  color: blue;
-  cursor: pointer;
-}
+
 
 .burb-dashboard-row {
   width: 90%;
@@ -1464,7 +1488,6 @@ input.measurement {
 .burb-dashboard-column {
   width: 33%;
   float: left;
-  overflow: auto;
 }
 
 /* DASHBOARD LEVEL 2 */
@@ -1476,14 +1499,9 @@ input.measurement {
   overflow: auto;
 }
 
-.invoice-details a:hover {
-  color: blue;
-}
-
 .burb-2-dashboard-column {
-  width: 25%;
+  width: 24%;
   float: left;
-  overflow: auto;
 }
 
 /* INVOICE ORDER DETAILS */

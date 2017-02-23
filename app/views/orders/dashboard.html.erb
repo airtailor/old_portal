@@ -1,6 +1,6 @@
 <main>
   <div class="section-header">
-    <h2>Dashboard </h2>
+    <h2>Dashboard</h2>
     <span id="november-button" class="burb-dashboard-button">November</span>
     <span id="december-button" class="burb-dashboard-button">December</span>
     <span id="january-button" class="burb-dashboard-button">January</span>
@@ -8,27 +8,28 @@
   </div>
 
   <div class="container">
-    <br><br>
 
 
 
-<div class="burb-dashboard-row">
+
+<div class="order-row-header">
   <div class="burb-dashboard-column">
-    <p><b>Tailor</b></p>
+    <h3><b>Tailor</b></h3>
   </div>
   <div class="burb-dashboard-column">
-    <p><b>Order Qty.</b></p>
+    <h3><b>Order Qty.</b></h3>
   </div>
   <div class="burb-dashboard-column">
-    <p><b>Total</b></p>
+    <h3><b>Total</b></h3>
   </div>
 </div>
 
+<hr id="row-header-hr">
 
 <% @tailors.each do |tailor| %>
-    <div class="burb-dashboard-row">
+    <div id="invoice-<%= tailor.id %>" class="order-row">
       <div class="burb-dashboard-column">
-          <span id="invoice-<%= tailor.id %>" class="invoice-name"><%= tailor.business_name %>
+          <span class="invoice-name"><%= tailor.business_name %>
           </span>
           <br>
       </div>
@@ -87,153 +88,136 @@
         </span>
       </div>
     </div>
+    <hr class="order-row-hr">
 <!-- end of dashboard level 1 -->
 
 <!-- DASHBOARD LEVEL 2!! -->
     <div id="invoice-<%= tailor.id %>-details" class="invoice-details">
-      <div class="burb-dashboard-row">
+    <br><br>
+      <div class="order-row-header">
         <div class="burb-2-dashboard-column">
-          <p><b>Order #</b></p>
+          <p><b>Order</b></p>
         </div>
         <div class="burb-2-dashboard-column">
           <p><b>Date</b></p>
         </div>
         <div class="burb-2-dashboard-column">
-          <p><b># of Services</b></p>
+          <p><b>Quantity</b></p>
         </div>
         <div class="burb-2-dashboard-column">
           <p><b>Total</b></p>
         </div>
       </div>
+      <hr id="row-header-hr">
 
-      <div class="burb-dashboard-row">
-        <div class="burb-2-dashboard-column">
-          <span class="november-stuff stuff">
-            <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
-              <a href="invoice/<%=order.id %>"><%= order.shopify_id %></a><br>
-            <% end %>
-          </span>
-          <span class="december-stuff stuff">
-            <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
-              <a href="invoice/<%=order.id %>"><%= order.shopify_id %></a><br>
-            <% end %>
-          </span>
-          <span class="january-stuff stuff">
-            <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
-              <a href="invoice/<%=order.id %>"><%= order.shopify_id %></a><br>
-            <% end %>
-          </span>
-          <span class="february-stuff stuff">
-            <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
-              <a href="invoice/<%=order.id %>"><%= order.shopify_id %></a><br>
-            <% end %>
-          </span>
+      <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
+        <a href="invoice/<%=order.id %>">
+        <div class="november-stuff stuff order-row ">
+          <div class="burb-2-dashboard-column">
+            <%= order.shopify_id %>
+          </div>
+          <div class="burb-2-dashboard-column">
+            <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %>
+          </div>
+          <div class="burb-2-dashboard-column">
+            <% @alts = JSON.parse(order.alterations) %>
+            <%= @alts.length %>
+          </div>
+          <div class="burb-2-dashboard-column">
+            $<%= order.total %>
+          </div>
         </div>
+        </a>
+        <hr class="order-row-hr">
+      <% end %>
 
-        <div class="burb-2-dashboard-column">
-          <span class="november-stuff stuff">
-            <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
-              <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %><br>
-            <% end %>
-          </span>
-          <span class="december-stuff stuff">
-            <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
-              <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %><br>
-            <% end %>
-          </span>
-          <span class="january-stuff stuff">
-            <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
-              <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %><br>
-            <% end %>
-          </span>
-          <span class="february-stuff stuff">
-            <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
-              <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %><br>
-            <% end %>
-          </span>
+      <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
+        <div class="order-row december-stuff stuff">
+          <div class="burb-2-dashboard-column">
+            <a href="invoice/<%=order.id %>"><%= order.shopify_id %></a>
+          </div>
+          <div class="burb-2-dashboard-column">
+            <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %>
+          </div>
+          <div class="burb-2-dashboard-column">
+            <% @alts = JSON.parse(order.alterations) %>
+            <%= @alts.length %>
+          </div>
+          <div class="burb-2-dashboard-column">
+            $<%= order.total %>
+          </div>
         </div>
+      <% end %>
 
-        <div class="burb-2-dashboard-column">
-          <span class="november-stuff stuff">
-            <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
-              <% @alts = JSON.parse(order.alterations) %>
-              <%= @alts.length %><br>
-            <% end %>
-          </span>
-          <span class="december-stuff stuff">
-            <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
-              <% @alts = JSON.parse(order.alterations) %>
-              <%= @alts.length %><br>
-            <% end %>
-          </span>
-          <span class="january-stuff stuff">
-            <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
-              <% @alts = JSON.parse(order.alterations) %>
-              <%= @alts.length %><br>
-            <% end %>
-          </span>
-          <span class="february-stuff stuff">
-            <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
-              <% @alts = JSON.parse(order.alterations) %>
-              <%= @alts.length %><br>
-            <% end %>
-          </span>
+      <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
+        <div class="january-stuff stuff order-row">
+          <div class="burb-2-dashboard-column">
+            <a href="invoice/<%=order.id %>"><%= order.shopify_id %></a>
+          </div>
+          <div class="burb-2-dashboard-column">
+            <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %>
+          </div>
+          <div class="burb-2-dashboard-column">
+            <% @alts = JSON.parse(order.alterations) %>
+            <%= @alts.length %>
+          </div>
+          <div class="burb-2-dashboard-column">
+            $<%= order.total %>
+          </div>
         </div>
+      <% end %>
 
-        <div class="burb-2-dashboard-column">
-          <span class="november-stuff stuff">
-            <% @nov16_orders.where(user_id: tailor.id).each do |order| %>
-              $<%= order.total %><br>
-            <% end %>
-          </span>
-          <span class="december-stuff stuff">
-            <% @dec16_orders.where(user_id: tailor.id).each do |order| %>
-              $<%= order.total %><br>
-            <% end %>
-          </span>
-          <span class="january-stuff stuff">
-            <% @jan17_orders.where(user_id: tailor.id).each do |order| %>
-              $<%= order.total %><br>
-            <% end %>
-          </span>
-          <span class="february-stuff stuff">
-            <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
-              $<%= order.total %><br>
-            <% end %>
-          </span>
+      <% @feb17_orders.where(user_id: tailor.id).each do |order| %>
+        <div class="february-stuff stuff order-row">
+          <div class="burb-2-dashboard-column">
+            <a href="invoice/<%=order.id %>"><%= order.shopify_id %></a>
+          </div>
+          <div class="burb-2-dashboard-column">
+            <%= order.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b. %d, %Y") %>
+          </div>
+          <div class="burb-2-dashboard-column">
+              <% @alts = JSON.parse(order.alterations) %>
+              <%= @alts.length %>
+          </div>
+          <div class="burb-2-dashboard-column">
+              $<%= order.total %>
+          </div>
         </div>
+      <% end %>
 
-      </div>
+<hr id="row-header-hr"><br><br>
+    </div>
 
-
-    </div><br>
     <!-- end of Dashboard Level 2 -->
 <% end %>
 
-    <div class="burb-dashboard-row">
-      <div class="burb-dashboard-column">
-        <p> </p>
+    <div>
+
+      <div class="order-row-header no-hover">
+        <div class="burb-dashboard-column">
+          <p> </p>
+        </div>
+        <div class="burb-dashboard-column">
+          <h3 class="november-stuff stuff"><b><%= @nov16_orders.count %> Orders
+          </b></h3>
+          <h3 class="december-stuff stuff"><b><%= @dec16_orders.count %> Orders
+          </b></h3>
+          <h3 class="january-stuff stuff"><b><%= @jan17_orders.count %> Orders
+          </b></h3>
+          <h3 class="february-stuff stuff"><b><%= @feb17_orders.count %> Orders
+          </b></h3>
+        </div>
+        <div class="burb-dashboard-column">
+          <h3 class="november-stuff stuff"><b>$<%= "%.2f" % @nov_total %></b></h3>
+          <h3 class="december-stuff stuff"><b>$<%= "%.2f" % @dec_total %></b></h3>
+          <h3 class="january-stuff stuff"><b>$<%= "%.2f" % @jan_total %></b></h3>
+          <h3 class="february-stuff stuff"><b>$<%= "%.2f" % @feb_total %></b></h3>
+        </div>
       </div>
-      <div class="burb-dashboard-column">
-        <p class="november-stuff stuff"><b><%= @nov16_orders.count %> Orders
-        </b></p>
-        <p class="december-stuff stuff"><b><%= @dec16_orders.count %> Orders
-        </b></p>
-        <p class="january-stuff stuff"><b><%= @jan17_orders.count %> Orders
-        </b></p>
-        <p class="february-stuff stuff"><b><%= @feb17_orders.count %> Orders
-        </b></p>
-      </div>
-      <div class="burb-dashboard-column">
-        <p class="november-stuff stuff"><b>$<%= "%.2f" % @nov_total %></b></p>
-        <p class="december-stuff stuff"><b>$<%= "%.2f" % @dec_total %></b></p>
-        <p class="january-stuff stuff"><b>$<%= "%.2f" % @jan_total %></b></p>
-        <p class="february-stuff stuff"><b>$<%= "%.2f" % @feb_total %></b></p>
-      </div>
+
     </div>
-
-
   </div>
+  <br><br>
 
 
 </main>

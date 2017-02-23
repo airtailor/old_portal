@@ -6,11 +6,14 @@
 <div class="container">
 
 <div class="order-row-header">
-  <h3 class="order-column">ID #</h3>
-  <h3 class="order-column">Status</h3>
-  <h3 class="order-column">Customer</h3>
-  <h3 class="order-column"># of alterations</h3>
+  <h3 class="order-column caps">Order</h3>
+  <h3 class="order-column caps">Status</h3>
+  <h3 class="order-column caps">Customer</h3>
+  <h3 class="order-column caps">Quantity</h3>
+
 </div>
+<hr id="row-header-hr">
+
 
   <% if @orders.count < 1 %>
     <div class="order-row">
@@ -34,18 +37,18 @@
 
           <div id="order-status" class="order-column">
             <% if order.complete %>
-              <span class="green">Complete!</span>
+              <span class="green caps">Complete!</span>
             <% elsif order.due_date %>
               <% status = (((order.due_date-Time.current).to_f)/86400).round %>
               <% if status == 0 %>
-                <span class="red">Due today</span>
+                <span class="red caps">Due today</span>
               <% elsif status < 0 %>
-                <span class="red"><%= status.abs %> days late</span>
+                <span class="red caps"><%= status.abs %> days late</span>
               <% else %>
-                <span class="orange"><%= status %> days to go</span>
+                <span class="orange caps"><%= status %> days to go</span>
               <% end %>
             <% else %>
-              <span class="green">On the way</span>
+              <span class="green caps">In transit</span>
             <% end %>
           </div>
 
@@ -55,10 +58,12 @@
 
           <div id="order-quantity" class="order-column">
             <% @alts = JSON.parse(order.alterations) %>
-            <%= @alts.length %>
+            <%= @alts.length.to_s %>
           </div>
           </a>
+
         </div>
+        <hr class="order-row-hr">
       <% end %>
 
 

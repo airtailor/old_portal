@@ -8,11 +8,13 @@
 <% if current_user.is_admin? %>
 
 <div class="order-row-header">
-  <h3 class="order-column">ID #</h3>
-  <h3 class="order-column">Date Fulfilled</h3>
+  <h3 class="order-column">Order</h3>
+  <h3 class="order-column">Fulfill Date</h3>
   <h3 class="order-column">Tailor</h3>
-  <h3 class="order-column"># of alterations</h3>
+  <h3 class="order-column">Quantity</h3>
 </div>
+
+<hr id="row-header-hr">
 
       <% @orders.order("fulfill_date").reverse_order.each_with_index do |order, index| %>
       <% @user = @users.where(id: order.user_id).first %>
@@ -41,7 +43,10 @@
           </div>
           </a>
         </div>
+
+        <hr class="order-row-hr">
         <% end %>
+
       <% end %>
 <% else %>
 
@@ -81,7 +86,9 @@
           </div>
           </a>
         </div>
+<hr class="order-row-hr">
       <% end %>
+
   <% end %>
 <% end %>
 </div>
