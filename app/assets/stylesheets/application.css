@@ -145,6 +145,7 @@ main {
   padding-left: 50px;
   margin-top: 0;
   width: 60%;
+  font-weight: normal;
 }
 
 .section-header a:hover {
@@ -819,7 +820,7 @@ hr#instruction-break {
 }
 
 .order-row {
-  padding-left: 40px;
+  padding-left: 50px;
   padding-top: 15px;
   padding-bottom: 15px;
   height: 40px;
@@ -832,18 +833,19 @@ hr#instruction-break {
 }
 
 .order-row-header {
-  margin-left: 40px;
+  margin-left: 50px;
   text-transform: uppercase;
   overflow: auto;
 }
 
 .order-row-header h3 {
   font-family: arial;
+  font-size: 14px;
 }
 
 #row-header-hr {
   width: 90%;
-  margin-left: 30px;
+  margin-left: 35px;
 }
 
 #order-quantity {
