@@ -1,7 +1,11 @@
 <main class="">
 <!-- Tailor Show Page -->
 <div class="section-header">
+  <% if current_user.is_burberry? %>
+    <h2>Home</h2>
+  <% else %>
     <h2>Home / <%= @user.business_name %></h2>
+  <% end %>
 </div>
 
 

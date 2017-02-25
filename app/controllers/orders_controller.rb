@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
 
   def dashboard
 
-    @tailors = User.all
+    @tailors = User.where.not(email: "test@burberry.com")
     @total = 0
     @nov_total = 0
     @dec_total = 0
@@ -70,6 +70,7 @@ class OrdersController < ApplicationController
 
   def archive
     if current_user.is_admin?
+      @user = current_user
       @users = User.all
       @orders = Order.where(complete: true)
       @orders = @orders.where.not(shipping_label: nil)

@@ -1,10 +1,43 @@
 <main>
   <div class="section-header">
     <h2>Reports</h2>
-    <span id="november-button" class="burb-dashboard-button">November</span>
+    <div id="invoice-icon-section">
+      <div id="download-invoice"><img src="/assets/download.png" alt="download" class="invoice-icon">Download</div>
+      <img src="/assets/choose-date.png" alt="choose date" id="invoice-choose-date">
+      <div id="choose-date-content">
+        <div id="choose-date-year">
+          <span>2016</span><span>2017</span>
+        </div>
+        <div id="choose-date-month">
+          <span>Jan</span>
+          <span>Feb</span>
+          <span>Mar</span>
+          <span>Apr</span>
+          <span>May</span>
+          <span>Jun</span>
+          <span>Jul</span>
+          <span>Aug</span>
+          <span>Sep</span>
+          <span>Oct</span>
+          <span id="november-button">Nov</span>
+          <span id="december-button">Dec</span>
+        </div>
+        <div id="choose-quarter">
+          <span>Q1</span>
+          <span>Q2</span>
+          <span>Q3</span>
+          <span>Q4</span>
+        </div>
+        <p>Custom Range</p>
+      </div>
+      <div id="invoice-calendar"><img src="/assets/calendar.png" alt="calendar" class="invoice-icon">Month</div>
+    </div>
+
+
+    <!-- <span id="november-button" class="burb-dashboard-button">November</span>
     <span id="december-button" class="burb-dashboard-button">December</span>
     <span id="january-button" class="burb-dashboard-button">January</span>
-    <span id="february-button" class="burb-dashboard-button">February</span>
+    <span id="february-button" class="burb-dashboard-button">February</span> -->
   </div>
 
   <div class="container">
@@ -53,7 +86,7 @@
           <% @total += order.total.to_f %>
           <% @nov_total += order.total.to_f %>
         <% end %>
-        $<%= "%.2f" % @total %>
+        $<%= number_with_precision(@total, :precision => 2, :delimiter => ',') %>
         <br>
         </span>
   <!-- december 16 -->
@@ -63,7 +96,7 @@
           <% @total += order.total.to_f %>
           <% @dec_total += order.total.to_f %>
         <% end %>
-        $<%= "%.2f" % @total %>
+        $<%= number_with_precision(@total, :precision => 2, :delimiter => ',') %>
         <br>
         </span>
   <!-- january 17 -->
@@ -73,7 +106,7 @@
           <% @total += order.total.to_f %>
           <% @jan_total += order.total.to_f %>
         <% end %>
-        $<%= "%.2f" % @total %>
+        $<%= number_with_precision(@total, :precision => 2, :delimiter => ',') %>
         <br>
         </span>
   <!-- february 17 -->
@@ -83,7 +116,7 @@
           <% @total += order.total.to_f %>
           <% @feb_total += order.total.to_f %>
         <% end %>
-        $<%= "%.2f" % @total %>
+        $<%= number_with_precision(@total, :precision => 2, :delimiter => ',') %>
         <br>
         </span>
       </div>
@@ -208,10 +241,10 @@
           </b></h3>
         </div>
         <div class="burb-dashboard-column">
-          <h3 class="november-stuff stuff"><b>$<%= "%.2f" % @nov_total %></b></h3>
-          <h3 class="december-stuff stuff"><b>$<%= "%.2f" % @dec_total %></b></h3>
-          <h3 class="january-stuff stuff"><b>$<%= "%.2f" % @jan_total %></b></h3>
-          <h3 class="february-stuff stuff"><b>$<%= "%.2f" % @feb_total %></b></h3>
+          <h3 class="november-stuff stuff"><b>$<%= number_with_precision(@nov_total, :precision => 2, :delimiter => ',') %></b></h3>
+          <h3 class="december-stuff stuff"><b>$<%= number_with_precision(@dec_total, :precision => 2, :delimiter => ',') %></b></h3>
+          <h3 class="january-stuff stuff"><b>$<%= number_with_precision(@jan_total, :precision => 2, :delimiter => ',') %></b></h3>
+          <h3 class="february-stuff stuff"><b>$<%= number_with_precision(@feb_total, :precision => 2, :delimiter => ',') %></b></h3>
         </div>
       </div>
 

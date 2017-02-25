@@ -66,10 +66,12 @@
     <h2>Communication is key.</h2>
     <p>Use this feature to communicate any questions about orders and alterations with an Air Tailor team member.</p>
 
+    <% @admin_id = User.where(email: "orders@airtailor.com").first %>
+
     <%= form_for @conversation do |f| %>
         <%= f.number_field :user_id, :value => current_user.id, :type => "hidden" %>
         <%= f.text_field :recipient_id, :value => current_user.id, :type => 'hidden' %>
-        <%= f.text_field :sender_id, :value => 1, :type => 'hidden' %>
+        <%= f.text_field :sender_id, :value => @admin_id.id, :type => "hidden" %>
         <%= f.submit "Click Here", :id => "start_convo" %>
     <% end %>
   </div>

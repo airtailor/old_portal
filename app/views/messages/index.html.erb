@@ -1,6 +1,10 @@
 <main>
 <div class="section-header">
-  <h2>Messages / <%= @business.business_name %></h2>
+  <% if current_user.is_burberry? %>
+    <h2>Messages</h2>
+  <% else %>
+    <h2>Messages / <%= @user.business_name %></h2>
+  <% end %>
 </div>
 
 

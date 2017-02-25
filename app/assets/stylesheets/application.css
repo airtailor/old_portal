@@ -241,6 +241,7 @@ aside {
   top: 0;
   border-right: #000033 1px solid;
   min-height: 100vh;
+  background-color: white;
 }
 
 aside #logo {
@@ -249,12 +250,26 @@ aside #logo {
   margin-top: 20px;
 }
 
+aside #burberry-logo {
+  width: 160px;
+  margin-top: 16px;
+  margin-left: 8px;
+}
+
 aside h5 {
   margin-left: 36px;
   margin-top: 5px;
   margin-bottom: 21px;
   font-family: arial;
   letter-spacing: 2px;
+}
+
+#burb-subtitle {
+  margin-top: -8px;
+  margin-left: 0;
+  font-size: 8px;
+  margin-left: 25px;
+  margin-bottom: 30px;
 }
 
 input#search {
@@ -447,8 +462,12 @@ nav li:last-of-type {
 }
 
 #manage-orders {
-  margin-left: 30px;
+  margin-left: 50px;
   margin-bottom: 100px;
+}
+
+#order-assignment {
+  min-width: 335px;
 }
 
 #manage-orders p, #order-assignment p {
@@ -582,7 +601,7 @@ hr#instruction-break {
   font-size: 48px;
   font-family: alegreya;
   font-weight: bold;
-  margin-top: 70px;
+  margin-top: 60px;
   margin-bottom: 0;
 }
 
@@ -1354,7 +1373,7 @@ input.measurement {
 
 #new-message-form {
   text-align: left;
-  margin-left: 30px;
+  margin-left: 50px;
   margin-bottom: 50px;
 }
 
@@ -1454,6 +1473,92 @@ input.measurement {
 
 
 /* DASHBOARD */
+
+#invoice-icon-section {
+  float: left;
+  width: 30%;
+}
+
+#download-invoice,
+#invoice-calendar {
+  display: inline-block;
+  color: white;
+  font-family: alegreya;
+}
+
+#download-invoice:hover,
+#invoice-calendar:hover {
+  cursor: pointer;
+}
+
+.invoice-icon {
+  width: 25px;
+  margin-right: 5px;
+}
+
+#invoice-calendar {
+  margin-left: 30px;
+  position: relative;
+}
+
+#invoice-choose-date {
+  width: 275px;
+  position: absolute;
+  top: 28px;
+  right: 260px;
+  display: none;
+}
+
+#choose-date-content {
+  width: 247px;
+  position: absolute;
+  top: 33px;
+  right: 277px;
+  height: 277px;
+  display: none;
+}
+
+#choose-date-year {
+  width: 100%;
+  height: 51px;
+  line-height: 51px;
+  text-align: center;
+}
+
+#choose-date-year span:first-of-type {
+  margin-right: 20px;
+}
+
+#choose-date-month {
+  width: 99%;
+  line-height: 45px;
+  padding-left: 1%;
+}
+
+#choose-date-month span {
+  display: inline-block;
+  width: 18%;
+  text-align: center;
+}
+
+#choose-date-content p {
+  line-height: 47px;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+#choose-quarter {
+  line-height: 47px;
+  text-align: center;
+}
+
+#choose-quarter span {
+  display: inline-block;
+  width: 22%;
+  text-align: center;
+}
+
 
 .burb-dashboard-button {
   text-decoration: underline;

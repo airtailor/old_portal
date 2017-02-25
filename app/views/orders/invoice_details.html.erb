@@ -260,7 +260,11 @@
 
     <div id="invoice-tailor-details">
       <div class="indented">
-        <h2 class="caps">Tailor</h2>
+        <% if current_user.is_burberry? %>
+          <h2 class="caps">Store</h2>
+        <% else %>
+          <h2 class="caps">Tailor</h2>
+        <% end %>
         <%= @user.business_name %><br>
         <%= @user.street %><br>
         <%= @user.city %>, <%= @user.state %> <%= @user.zip %><br>

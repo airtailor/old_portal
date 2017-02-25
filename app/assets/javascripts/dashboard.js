@@ -55,3 +55,13 @@ $(document).on("click", "#invoice-7", function(){
   $("#invoice-7").toggleClass('blueback');
   $("#invoice-7-details").slideToggle()
 });
+
+$(document).on("click", "#invoice-calendar", function(){
+  $("#invoice-choose-date").slideToggle()
+  $("#choose-date-content").slideToggle()
+})
+
+$(document).on("mouseleave", "#choose-date-content", function() {
+  $("#invoice-choose-date").slideToggle()
+  $("#choose-date-content").slideToggle()
+});

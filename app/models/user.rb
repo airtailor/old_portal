@@ -13,5 +13,9 @@ class User < ActiveRecord::Base
     self.email == "orders@airtailor.com"
   end
 
+  def is_burberry?
+    self.email == "test@burberry.com"
+  end
+
 
 end
