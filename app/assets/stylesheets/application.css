@@ -77,6 +77,12 @@ input:focus{
   color: #000033;
 }
 
+.burberry-black {
+  color: #272727;
+}
+
+
+
 .blueback {
   background-color: rgba(0, 0, 51, .1);
 }
@@ -133,6 +139,10 @@ main {
 
 .section-header a {
   color: white;
+}
+
+.burberry-black-background {
+  background-color: #272727;
 }
 
 .whiteback {
@@ -255,6 +265,7 @@ aside #burberry-logo {
   width: 160px;
   margin-top: 16px;
   margin-left: 8px;
+  margin-bottom: -10px;
 }
 
 aside h5 {

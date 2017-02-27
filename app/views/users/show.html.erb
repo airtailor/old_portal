@@ -1,6 +1,10 @@
-<main class="">
+<main>
 <!-- Tailor Show Page -->
+<% if current_user.is_burberry? %>
+<div class="section-header burberry-black-background">
+<% else %>
 <div class="section-header">
+<% end %>
 
 <!-- BURBERRY HOME PAGE SECTION HEADER -->
   <% if current_user.is_burberry? %>
@@ -52,7 +56,7 @@
 <!-- BURBERRY SHOW PAGE -->
 <% if current_user.is_burberry? %>
 
-    <div id="burberry-show-greeting">
+    <div id="burberry-show-greeting" class="burberry-black">
       <% if Time.now.in_time_zone('Eastern Time (US & Canada)').strftime("%p") == "AM" %>
         <h2>Good morning, <%= @user.business_name %>.</h2>
       <% else %>
@@ -61,7 +65,7 @@
       <p>Take a quick glance at your alteration data.</p>
     </div>
 
-    <div id="burb-data-section">
+    <div id="burb-data-section" class="burberry-black">
       <div class="burberry-show-data">
         <div><h2>$243,472</h2><span class="caps">Spent<br> Total</span></div>
         <div><h2>3,119</h2><span class="caps">Orders<br> Total</span></div>

@@ -1,9 +1,18 @@
 <main>
-<div class="section-header">
+<% if current_user.is_burberry? %>
+  <div class="section-header burberry-black-background">
+    <h2>Edit</h2>
+<% else %>
+  <div class="section-header">
     <h2>Edit <%= @user.business_name %></h2>
+  <% end %>
 </div>
 
+<% if current_user.is_burberry? %>
+<div class="container burberry-black">
+<% else %>
 <div class="container">
+<% end %>
 
 <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>"><%= value %></div>

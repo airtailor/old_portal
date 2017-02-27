@@ -69,3 +69,9 @@ $(document).on("mouseleave", "#choose-date-content", function() {
   $("#invoice-choose-date").slideToggle()
   $("#choose-date-content").slideToggle()
 });
+
+$(document).on("click", "#download-invoice", function() {
+  $('#invoice-print-area').printThis({
+    removeInline: true
+  })
+});

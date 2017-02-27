@@ -1,8 +1,9 @@
 <main>
-<div class="section-header">
-  <% if current_user.is_burberry? %>
+<% if current_user.is_burberry? %>
+  <div class="section-header burberry-black-background">
     <h2>Messages</h2>
-  <% else %>
+<% else %>
+  <div class="section-header">
     <h2>Messages / <%= @user.business_name %></h2>
   <% end %>
 </div>
@@ -10,8 +11,11 @@
 
 <% @business.update_attribute(:conversation, true) %>
 
-
+<% if current_user.is_burberry? %>
+<div class="container burberry-black">
+<% else %>
 <div class="container">
+<% end %>
 <br>
   <div id="new-message-form">
     <%= form_for [@conversation, @message] do |f| %>
