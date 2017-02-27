@@ -53,7 +53,7 @@
 <% if current_user.is_burberry? %>
 
     <div id="burberry-show-greeting">
-      <% if Time.now.strftime("%p") == "AM" %>
+      <% if Time.now.in_time_zone('Eastern Time (US & Canada)').strftime("%p") == "AM" %>
         <h2>Good morning, <%= @user.business_name %>.</h2>
       <% else %>
         <h2>Good afternoon, <%= @user.business_name %>.</h2>
