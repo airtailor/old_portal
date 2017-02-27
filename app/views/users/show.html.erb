@@ -1,16 +1,98 @@
 <main class="">
 <!-- Tailor Show Page -->
 <div class="section-header">
+
+<!-- BURBERRY HOME PAGE SECTION HEADER -->
   <% if current_user.is_burberry? %>
     <h2>Home</h2>
-  <% else %>
+  <div id="invoice-icon-section">
+      <div id="download-invoice"><img src="/assets/download.png" alt="download" class="invoice-icon">Download</div>
+
+      <div id="invoice-calendar"><img src="/assets/calendar.png" alt="calendar" class="invoice-icon">
+        <img src="/assets/choose-date.png" alt="choose date" id="invoice-choose-date">
+        <div id="choose-date-content">
+          <div id="choose-date-year">
+            <span id="dash-2016">2016</span><span id="dash-2017">2017</span>
+          </div>
+          <div id="choose-date-month">
+            <span id="january-button" class="burb-dashboard-button">Jan</span>
+            <span id="february-button" class="burb-dashboard-button">Feb</span>
+            <span>Mar</span>
+            <span>Apr</span>
+            <span>May</span>
+            <span>Jun</span>
+            <span>Jul</span>
+            <span>Aug</span>
+            <span>Sep</span>
+            <span>Oct</span>
+            <span id="november-button" class="burb-dashboard-button">Nov</span>
+            <span id="december-button" class="burb-dashboard-button">Dec</span>
+          </div>
+          <div id="choose-quarter">
+            <span>Q1</span>
+            <span>Q2</span>
+            <span>Q3</span>
+            <span>Q4</span>
+          </div>
+          <p>Custom Range</p>
+        </div>
+        <span id="dash-month-name">Nov. 2016</span>
+      </div>
+    </div>
+    <% else %>
+<!-- REGULAR SECTION HEADER -->
     <h2>Home / <%= @user.business_name %></h2>
   <% end %>
 </div>
 
+<!-- END OF SECTION HEADER -->
 
 
 <div class="container">
+<!-- BURBERRY SHOW PAGE -->
+<% if current_user.is_burberry? %>
+
+    <div id="burberry-show-greeting">
+      <% if Time.now.strftime("%p") == "AM" %>
+        <h2>Good Morning, <%= @user.business_name %>.</h2>
+      <% else %>
+        <h2>Good Afternoon, <%= @user.business_name %>.</h2>
+      <% end %>
+      <p>Take a quick glance at your alteration data.</p>
+    </div>
+
+    <div id="burb-data-section">
+      <div class="burberry-show-data">
+        <div><h2>$243,472</h2><span class="caps">Spent<br> Total</span></div>
+        <div><h2>3,119</h2><span class="caps">Orders<br> Total</span></div>
+        <div><h2>$78.06</h2><span class="caps">Order<br> Average</span></div>
+      </div>
+      <div class="burberry-show-data">
+        <div><h2>9/10</h2><span class="caps">Satisfaction<br> Average</span></div>
+        <div><h2>4</h2><span class="caps">Days Turnaround<br> Average</span></div>
+        <div><h2>2</h2><span class="caps">Service Per<br> Order Average</span></div>
+      </div>
+    </div>
+
+    <div id="burb-graph-section">
+      <div id="burb-graph-one">
+        <img src="/assets/burb-graph-one.png" alt="">
+      </div>
+      <div id="burb-graph-two">
+        <img src="/assets/burb-graph-two.png" alt="">
+      </div>
+      <div id="burb-graph-three">
+        <img src="/assets/burb-graph-three.png" alt="">
+      </div>
+    </div>
+
+
+
+
+
+<% else %>
+<!-- REGULAR SHOW PAGES -->
+
 
   <div id="tailor-show-greeting">
     <h2>Greetings, <%= @user.business_name %>.</h2>
@@ -58,6 +140,6 @@
   </div>
 
 
-
+<% end %>
 </div>
 </main>

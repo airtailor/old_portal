@@ -1,29 +1,33 @@
 $(document).on("click", "#november-button", function(){
-  $(".burb-dashboard-button").css('color', 'white');
+  $(".burb-dashboard-button").css('color', 'black');
   $(".stuff").hide();
   $(".november-stuff").show();
   $("#november-button").css('color', 'red');
+  $("#dash-month-name").html("Nov. 2016");
 });
 
 $(document).on("click", "#december-button", function(){
-  $(".burb-dashboard-button").css('color', 'white');
+  $(".burb-dashboard-button").css('color', 'black');
   $(".stuff").hide();
   $(".december-stuff").show();
   $("#december-button").css('color', 'red');
+  $("#dash-month-name").html("Dec. 2016");
 });
 
 $(document).on("click", "#january-button", function(){
-  $(".burb-dashboard-button").css('color', 'white');
+  $(".burb-dashboard-button").css('color', 'black');
   $(".stuff").hide();
   $(".january-stuff").show();
   $("#january-button").css('color', 'red');
+  $("#dash-month-name").html("Jan. 2017");
 });
 
 $(document).on("click", "#february-button", function(){
-  $(".burb-dashboard-button").css('color', 'white');
+  $(".burb-dashboard-button").css('color', 'black');
   $(".stuff").hide();
   $(".february-stuff").show();
   $("#february-button").css('color', 'red');
+  $("#dash-month-name").html("Feb. 2017");
 });
 
 $(document).on("click", "#invoice-1", function(){

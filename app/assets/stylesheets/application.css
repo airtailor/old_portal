@@ -240,7 +240,8 @@ aside {
   position: fixed;
   top: 0;
   border-right: #000033 1px solid;
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 560px;
   background-color: white;
 }
 
@@ -335,8 +336,8 @@ nav li:last-of-type {
 }
 
 .aside-help {
-  position: fixed;
-  top: 565px;
+  position: absolute;
+  bottom: 5px;
   width: 175px;
 
 }
@@ -667,6 +668,95 @@ hr#instruction-break {
   text-decoration: underline;
 }
 
+/* BURBERRY SHOW PAGE */
+#burberry-show-greeting {
+  text-align: center;
+  color: #000033;
+}
+
+#burberry-show-greeting h2 {
+  font-size: 48px;
+  font-family: alegreya;
+  font-weight: bold;
+  margin-top: 60px;
+  margin-bottom: 0;
+}
+
+#burberry-show-greeting p {
+  font-size: 18px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #000033;
+  width: 50%;
+  margin: 10px auto 0px auto;
+}
+
+#burb-data-section {
+  width: 70%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.burberry-show-data {
+  width: 50%;
+  float: left;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.burberry-show-data:first-of-type {
+  border-right: 1px solid #000033;
+  box-sizing: border-box;
+}
+
+.burberry-show-data div {
+  height: 100px;
+}
+
+.burberry-show-data h2 {
+  margin: 0;
+  line-height: 100px;
+  text-align: right;
+  padding-right: 2.5%;
+  box-sizing: border-box;
+  font-size: 50px;
+  font-weight: normal;
+}
+
+.burberry-show-data h2,
+.burberry-show-data span {
+  width: 50%;
+  float: left;
+}
+
+.burberry-show-data span {
+  line-height: 20px;
+  margin-top: 35px;
+  padding-left: 2.5%;
+  box-sizing: border-box;
+}
+
+#burb-graph-section {
+  width: 80%;
+  border: 1px solid #000033;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+#burb-graph-section img {
+  width: 100%;
+  text-align: center;
+}
+
+#burb-graph-two {
+  margin-top: -50px;
+}
+
+
+
+
+/* BURB SHOW END */
+
 
 /* old tailor show css */
 
@@ -834,7 +924,6 @@ hr#instruction-break {
 }
 
 .tailor-order-column:first-of-type {
-
   min-width: 195px;
 }
 
@@ -1501,22 +1590,25 @@ input.measurement {
   position: relative;
 }
 
+/* these next two must stick together */
 #invoice-choose-date {
   width: 275px;
   position: absolute;
-  top: 28px;
-  right: 260px;
+  top: 20px;
+  right: 60px;
   display: none;
 }
 
 #choose-date-content {
+  color: black;
   width: 247px;
   position: absolute;
-  top: 33px;
-  right: 277px;
+  top: 25px;
+  right: 77px;
   height: 277px;
   display: none;
 }
+/* end */
 
 #choose-date-year {
   width: 100%;
@@ -1559,11 +1651,6 @@ input.measurement {
   text-align: center;
 }
 
-
-.burb-dashboard-button {
-  text-decoration: underline;
-  color: white;
-}
 
 .burb-dashboard-button:hover {
   cursor: pointer;
