@@ -79,6 +79,9 @@ input:focus{
 
 .burberry-black {
   color: #272727;
+}
+
+.georgia {
   font-family: georgia;
 }
 
@@ -277,7 +280,6 @@ aside h5 {
 
 #burb-subtitle {
   margin-top: -8px;
-  margin-left: 0;
   font-size: 8px;
   margin-left: 25px;
   margin-bottom: 30px;

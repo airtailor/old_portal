@@ -59,7 +59,7 @@
 <!-- BURBERRY SHOW PAGE -->
 <% if current_user.is_burberry? %>
 
-    <div id="burberry-show-greeting" class="burberry-black">
+    <div id="burberry-show-greeting" class="burberry-black georgia">
       <% if Time.now.in_time_zone('Eastern Time (US & Canada)').strftime("%p") == "AM" %>
         <h2>Good morning, <%= @user.business_name %>.</h2>
       <% else %>
@@ -74,7 +74,7 @@
         <div><h2>3,119</h2><span class="caps">Orders<br> Total</span></div>
         <div><h2>$78.06</h2><span class="caps">Order<br> Average</span></div>
       </div>
-      <div class="burberry-show-data">
+      <div class="burberry-show-data ">
         <div><h2>9/10</h2><span class="caps">Satisfaction<br> Average</span></div>
         <div><h2>4</h2><span class="caps">Days Turnaround<br> Average</span></div>
         <div><h2>2</h2><span class="caps">Service Per<br> Order Average</span></div>
