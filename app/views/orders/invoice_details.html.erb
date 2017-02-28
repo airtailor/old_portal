@@ -243,7 +243,7 @@
             <p class="order-notes">n/a</p>
           <% end %>
         </div>
-
+        <br><br><br><br>
         <p class="caps"><b>Order Total</b> $<%= @order.total %></p>
       </div>
 
@@ -263,7 +263,7 @@
         <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %><br>
         <%= @customer.phone %>
         <br><br>
-        <a href="../customers/<%= @customer.id %>">Customer Details</a>
+        <a style="text-decoration:underline;" href="../customers/<%= @customer.id %>">Customer Details ></a>
       </div>
     </div>
 
@@ -286,6 +286,7 @@
     <div id="invoice-questions">
       <div class="indented">
         <h2 class="caps">Questions</h2>
+        <textarea rows="4" cols="50"></textarea>
       </div>
     </div>
 

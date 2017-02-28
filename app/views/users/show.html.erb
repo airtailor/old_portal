@@ -5,14 +5,17 @@
 <% else %>
 <div class="section-header">
 <% end %>
-
 <!-- BURBERRY HOME PAGE SECTION HEADER -->
   <% if current_user.is_burberry? %>
     <h2>Home</h2>
-  <div id="invoice-icon-section">
-      <div id="download-invoice"><img src="/assets/download.png" alt="download" class="invoice-icon">Download</div>
+    <div id="invoice-icon-section">
+      <div id="download-invoice">
+        <img src="/assets/download.png" alt="download" class="invoice-icon">
+        <span>Download</span>
+      </div>
 
-      <div id="invoice-calendar"><img src="/assets/calendar.png" alt="calendar" class="invoice-icon">
+      <div id="invoice-calendar">
+        <img src="/assets/calendar.png" alt="calendar" class="invoice-icon">
         <img src="/assets/choose-date.png" alt="choose date" id="invoice-choose-date">
         <div id="choose-date-content">
           <div id="choose-date-year">
@@ -40,7 +43,7 @@
           </div>
           <p>Custom Range</p>
         </div>
-        <span id="dash-month-name">Nov. 2016</span>
+        <span id="dash-month-name">Q2</span>
       </div>
     </div>
     <% else %>

@@ -1,5 +1,5 @@
 $(document).on("click", "#november-button", function(){
-  $(".burb-dashboard-button").css('color', 'black');
+  $(".burb-dashboard-button").css('color', 'slategray');
   $(".stuff").hide();
   $(".november-stuff").show();
   $("#november-button").css('color', 'red');
@@ -7,7 +7,7 @@ $(document).on("click", "#november-button", function(){
 });
 
 $(document).on("click", "#december-button", function(){
-  $(".burb-dashboard-button").css('color', 'black');
+  $(".burb-dashboard-button").css('color', 'slategray');
   $(".stuff").hide();
   $(".december-stuff").show();
   $("#december-button").css('color', 'red');
@@ -15,7 +15,7 @@ $(document).on("click", "#december-button", function(){
 });
 
 $(document).on("click", "#january-button", function(){
-  $(".burb-dashboard-button").css('color', 'black');
+  $(".burb-dashboard-button").css('color', 'slategray');
   $(".stuff").hide();
   $(".january-stuff").show();
   $("#january-button").css('color', 'red');
@@ -23,7 +23,7 @@ $(document).on("click", "#january-button", function(){
 });
 
 $(document).on("click", "#february-button", function(){
-  $(".burb-dashboard-button").css('color', 'black');
+  $(".burb-dashboard-button").css('color', 'slategray');
   $(".stuff").hide();
   $(".february-stuff").show();
   $("#february-button").css('color', 'red');
@@ -61,13 +61,14 @@ $(document).on("click", "#invoice-7", function(){
 });
 
 $(document).on("click", "#invoice-calendar", function(){
-  $("#invoice-choose-date").slideToggle()
-  $("#choose-date-content").slideToggle()
+  $("#invoice-choose-date").fadeToggle()
+  $("#choose-date-content").fadeToggle()
 })
 
 $(document).on("mouseleave", "#choose-date-content", function() {
-  $("#invoice-choose-date").slideToggle()
-  $("#choose-date-content").slideToggle()
+  $("#choose-date-content").fadeToggle()
+  $("#invoice-choose-date").fadeToggle()
+
 });
 
 $(document).on("click", "#download-invoice", function() {

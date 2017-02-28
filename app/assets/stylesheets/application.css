@@ -1579,11 +1579,16 @@ input.measurement {
   width: 30%;
 }
 
+#download-invoice {
+}
+
 #download-invoice,
 #invoice-calendar {
   display: inline-block;
   color: white;
-  font-family: alegreya;
+  font-family: georgia;
+  position: relative;
+  width: 85px;
 }
 
 #download-invoice:hover,
@@ -1593,7 +1598,9 @@ input.measurement {
 
 .invoice-icon {
   width: 25px;
-  margin-right: 5px;
+  position: absolute;
+  top: 35px;
+  right: 88px;
 }
 
 #invoice-calendar {
@@ -1605,17 +1612,17 @@ input.measurement {
 #invoice-choose-date {
   width: 275px;
   position: absolute;
-  top: 20px;
-  right: 60px;
+  top: 27px;
+  right: 100px;
   display: none;
 }
 
 #choose-date-content {
-  color: black;
+  color: slategray;
   width: 247px;
   position: absolute;
-  top: 25px;
-  right: 77px;
+  top: 32px;
+  right: 117px;
   height: 277px;
   display: none;
 }
@@ -1665,10 +1672,6 @@ input.measurement {
 
 .burb-dashboard-button:hover {
   cursor: pointer;
-}
-
-#november-button {
-  color: red;
 }
 
 .december-stuff {
