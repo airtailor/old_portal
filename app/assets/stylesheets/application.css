@@ -79,9 +79,8 @@ input:focus{
 
 .burberry-black {
   color: #272727;
+  font-family: georgia;
 }
-
-
 
 .blueback {
   background-color: rgba(0, 0, 51, .1);
@@ -745,6 +744,7 @@ hr#instruction-break {
   margin-top: 35px;
   padding-left: 2.5%;
   box-sizing: border-box;
+  font-size: 12px;
 }
 
 #burb-graph-section {
