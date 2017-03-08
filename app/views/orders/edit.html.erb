@@ -12,7 +12,7 @@
         <%= form_for [@user, @order], url: {action: 'update'} do |f| %>
             <p>Name:</p> <%= f.text_field :name %>
             <p>Alterations:</p> <%= f.text_field :alterations %>
-            <p>Total: $<%= @order.total %></p>
+            <p>Total: $<%= f.text_field :total %></p>
             <p>Note:</p> <%= f.text_field :note %>
             <p>Tailor Shop:</p>
 

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   put '/admin/order' => 'users#update_order'
   get '/admin/order/:id' => 'users#admin_show'
   get '/supplies' => 'users#supplies'
-  get '/dashboard' => 'orders#dashboard'
+  get '/reports' => 'orders#reports'
   get '/invoice/:id' => 'orders#invoice_details'
 
   get '/login' => 'sessions#new'

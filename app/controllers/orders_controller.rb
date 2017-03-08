@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   end
 
 
-  def dashboard
+  def reports
 
     @tailors = User.where.not(email: "test@burberry.com")
     @total = 0
