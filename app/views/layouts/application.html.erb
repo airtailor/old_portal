@@ -19,9 +19,12 @@
   <aside>
 
   <% if current_user.is_burberry? %>
-    <a href="/admin"><img src="/assets/burberry-logo.png" alt="burberry logo" id="burberry-logo"></a>
-    <h5 id="burb-subtitle" class="caps burberry-black">Alterations Portal</h5>
-    <hr>
+    <div class="aside-logo-area">
+      <a href="/admin"><img src="/assets/burberry-logo.png" alt="burberry logo" id="burberry-logo"></a>
+      <h5 id="burb-subtitle" class="caps burberry-black">Alterations Portal</h5>
+    </div>
+
+
     <nav>
     <!-- SEARCH BAR BEGIN -->
 
@@ -47,9 +50,10 @@
 
   <% else %>
 
-    <a href="/admin"><img src="/assets/logo.png" alt="air tailor logo" id="logo"></a>
-    <h5 class="caps">Shop Portal</h5>
-    <hr>
+    <div class="aside-logo-area">
+      <a href="/admin"><img src="/assets/logo.png" alt="air tailor logo" id="logo"></a>
+      <h5 class="caps">Shop Portal</h5>
+    </div>
     <nav>
     <!-- SEARCH BAR BEGIN -->
       <% if @user %>
