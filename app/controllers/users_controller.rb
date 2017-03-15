@@ -236,6 +236,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def dashboard
+    if current_user.is_admin?
+      @user = current_user
+      @kits = Order.where(welcome: true)
+      @orders = Order.where.not(welcome: true)
+      if params[:search]
+        @orders = @orders.search(params[:search]).order("created_at DESC")
+        @kits = @kits.search(params[:search]).order("created_at DESC")
+      end
+      @total = 0
+      @profit = 0
+    else
+      redirect_to current_user
+    end
+
+  end
+
   def supplies
     @user = User.find_by(id: params[:id])
   end

@@ -1,0 +1,39 @@
+<main>
+  <div class="section-header">
+    <h2>Dashboard</h2>
+  </div>
+
+  <div class="container">
+
+    <div id="data-dashboard">
+      <%= form_tag(dashboard_path(@kits), :method => "get", :id => "date-search") do %>
+        <%= month_field_tag :search, params[:search], placeholder: "Select Month" %><br>
+        <%= submit_tag "Search", :name => nil %>
+      <% end %>
+
+      <br><br>
+
+      Number of Signups: <%= @kits.length %><br>
+      Number of Orders: <%= @orders.length %><br>
+      <% if @kits.length > 0 %>
+        Conversion Rate: <%= ((@orders.length)/(@kits.length)*100) %>%
+      <% else %>
+        Conversion Rate: <%= ((@orders.length)/1)*100 %>%
+      <% end %>
+
+      <br><br>
+
+      <div id="date-output">
+        <% @orders.each do |order| %>
+          <% @total += order.total.to_f %>
+          <% @profit += (((order.total.to_f - 6)*0.35)-5) %>
+        <% end %>
+      </div>
+
+      Total Revenue: $<%= @total %><br>
+      Avg. Order Revenue: $<%= "%.2f" % (@total / @orders.length) %><br>
+      Estimated Profit: $<%= "%.2f" % @profit %>
+
+    </div>
+  </div>
+</main>

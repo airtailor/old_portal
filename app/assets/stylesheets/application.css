@@ -253,7 +253,7 @@ aside {
   top: 0;
   border-right: #000033 1px solid;
   height: 100vh;
-  min-height: 620px;
+  min-height: 665px;
   background-color: white;
 }
 
@@ -1578,7 +1578,7 @@ input.measurement {
 
 
 
-/* DASHBOARD */
+/* REPORTING */
 
 #invoice-icon-section {
   float: left;
@@ -1704,7 +1704,7 @@ input.measurement {
   float: left;
 }
 
-/* DASHBOARD LEVEL 2 */
+/* REPORTING LEVEL 2 */
 
 .invoice-details {
   margin-left: 10%;
@@ -1746,7 +1746,19 @@ input.measurement {
 }
 
 
+/* DASHBOARD */
 
+#data-dashboard {
+  padding-left: 50px;
+}
+
+#date-search {
+  width: 250px;
+}
+
+#date-search input {
+  margin-left: 0;
+}
 
 
 
