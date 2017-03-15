@@ -15,10 +15,10 @@
 
       Number of Signups: <%= @kits.length %><br>
       Number of Orders: <%= @orders.length %><br>
-      <% if @kits.length > 0 %>
-        Conversion Rate: <%= ((@orders.length)/(@kits.length)*100) %>%
+      <% if @kits.length.to_f > 0 %>
+        Conversion Rate: <%= ((@orders.length.to_f/@kits.length.to_f)*100).to_i %>%
       <% else %>
-        Conversion Rate: <%= ((@orders.length)/1)*100 %>%
+        Conversion Rate: <%= (((@orders.length.to_f)/1)*100).to_i %>%
       <% end %>
 
       <br><br>
@@ -31,7 +31,12 @@
       </div>
 
       Total Revenue: $<%= "%.2f" % @total %><br>
-      Avg. Order Revenue: $<%= "%.2f" % (@total / @orders.length) %><br>
+      <% if @orders.length.to_f > 0 %>
+        Avg. Order Revenue: $<%= "%.2f" % (@total / @orders.length.to_f) %>
+      <% else %>
+        Avg. Order Revenue: $<%= "%.2f" % (@total / 1) %>
+      <% end %>
+      <br>
       Estimated Profit: $<%= "%.2f" % @profit %>
 
     </div>
