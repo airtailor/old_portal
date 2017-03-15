@@ -30,7 +30,7 @@
         <% end %>
       </div>
 
-      Total Revenue: $<%= @total %><br>
+      Total Revenue: $<%= "%.2f" % @total %><br>
       Avg. Order Revenue: $<%= "%.2f" % (@total / @orders.length) %><br>
       Estimated Profit: $<%= "%.2f" % @profit %>
 
