@@ -19,14 +19,14 @@ class ItemsController < ApplicationController
 
     # sonar shit
     if @order.arrived == true && @order.counter == 0
-      if @order.phone
+      if @customer.phone
         SendSonar.message_customer(text: "Hi " + @customer.first_name.capitalize + ", just a heads up that your Air Tailor order (" + @order.shopify_id + ") has been received! We're going to get to work. In the meantime, stay well :)", to: @customer.phone)
       end
       @order.update_attribute(:counter, 1)
     end
 
     if @order.complete == true && @order.counter == 1
-      if @order.phone
+      if @customer.phone
         SendSonar.message_customer(text: "Good news " + @customer.first_name.capitalize + " — your Air Tailor order (" + @order.shopify_id + ") is finished and on its way to you! Here's your USPS tracking number: " + @order.tracking_number, to: @customer.phone)
       end
       @order.update_attribute(:counter, 2)
