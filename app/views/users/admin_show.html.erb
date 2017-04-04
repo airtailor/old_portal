@@ -111,7 +111,7 @@
 
 <% if @order.inbound_label == "" && @order.user_id != nil %>
   <% @order.update_attribute(:user_id, nil) %><br>
-  <i class="red">Error with Kit Label Creation. <%= @order.error_message %></i>
+  <i class="red">Error with Inbound Label Creation. <%= @order.error_message %></i>
 <% elsif @order.inbound_label != nil && @order.inbound_label != "" %>
       <% if @order.welcome == false %>
         <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a><br><br>
@@ -141,8 +141,8 @@
 
     <% end %>
 
-<% if @order.counter == 2 && @order.shipping_label.blank? %>
-  <i class="red">Error with Inbound Label Creation: <%= @order.error_message %></i>
+<% if @order.counter == 2 && @order.shipping_label.blank? %><br>
+  <i class="red">Error with Kit Label Creation: <%= @order.error_message %></i>
   <% @order.update_attribute(:counter, 0) %>
 <% elsif @order.counter == 2 %>
   <img id="welcome-kit-label" style="display:none;" src="<%= @order.shipping_label %>">
