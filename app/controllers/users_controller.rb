@@ -141,7 +141,7 @@ class UsersController < ApplicationController
       end
       @order = Order.find_by(id: params[:id])
       @owner = User.find_by(id: @order.user_id)
-      @kits = @orders.where(welcome: true).where(shipping_label: nil).where(total: "0.00").where(user: 1).where.not(counter: 2)
+      @kits = @orders.where(welcome: true).where(shipping_label: nil).where(total: "0.00").where.not(counter: 2)
 
       if @order.counter != 2
         @order.update_attribute(:counter, 0)

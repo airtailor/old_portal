@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
         end
       end
 
-      @kits = Order.where(welcome: true).where(user_id: 1).where(shipping_label: nil).where.not(counter: 2)
+      @kits = Order.where(welcome: true).where(shipping_label: nil).where.not(counter: 2)
 
 
     else
