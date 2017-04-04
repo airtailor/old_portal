@@ -19,6 +19,17 @@
         <% end %>
       <% end %>
     <% end %>
+
+
+    <br>
+    <h3>Manage New Kits</h3>
+    <% if @kits.length == 0 %>
+      No New Signups
+    <% else %>
+      <% @kits.order("id").each do |order| %>
+        <a href="/admin/order/<%=order.id%>"><p><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></p></a>
+      <% end %>
+    <% end %>
   </div>
 <!-- end list of new orders -->
 
@@ -115,31 +126,7 @@
 
   <div id="welcome-kit-section">
 
-      <% if @order.welcome == nil %>
-        <% if @alterations.any? { |s| s.include?('Welcome') } %>
-          <% if @order.user_id %>
-            <p>This order contains a welcome kit. Is it <b>just a kit</b>? Or is it a <b>kit + order</b>?</p>
-
-            <%= form_for [@owner, @order], {action: 'update'} do |f| %>
-              <%= f.text_field :welcome, :value => 'true', :type => "hidden" %>
-              <%= f.text_field :arrived, :value => 'true', :type => 'hidden' %>
-              <%= f.text_field :complete, :value => 'true', :type => 'hidden' %>
-              <%= f.text_field :due_date, :value => Time.current + 5.days, :type => 'hidden' %>
-              <button id="kit-only" class="caps"><%= f.submit "Just Kit" %></button>
-            <% end %>
-
-            <%= form_for [@owner, @order], {action: 'update'} do |f| %>
-              <%= f.text_field :welcome, :value => 'false', :type => "hidden" %>
-              <button id="kit-order" class="caps"><%= f.submit "Kit + Order" %></button>
-            <% end %>
-          <% end %>
-        <% else %>
-          <% @order.update_attribute(:welcome, false) %>
-        <% end %>
-      <% end %>
-
-
-    <% if @order.welcome == true && @order.complete == true && @order.counter == 0 && @order.shipping_label == nil %>
+      <% if @order.welcome && @order.counter == 0 && @order.shipping_label.blank? %>
       <form method='post' action='/shipment/create'>
         <%= csrf_meta_tag %>
         <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
@@ -152,13 +139,15 @@
 
     <% end %>
 
-<% if @order.shipping_label %>
-<% @order.update_attribute(:counter, 2) %>
+<% if @order.counter == 2 && @order.shipping_label.blank? %>
+  <i class="red">Error with Inbound Label Creation: <%= @order.error_message %></i>
+  <% @order.update_attribute(:counter, 0) %>
+<% elsif @order.counter == 2 %>
   <img id="welcome-kit-label" style="display:none;" src="<%= @order.shipping_label %>">
-
-        <button id="welcome-kit-button">
-          Print Shipping Label
-        </button>
+<br>
+  <button id="welcome-kit-button">
+    Print Shipping Label
+  </button>
 <% end %>
 
 

@@ -26,6 +26,19 @@ class OrdersController < ApplicationController
   def new_orders
     if current_user.is_admin?
       @orders = Order.where(user_id: nil)
+      @orders.each do |order|
+        @items = JSON.parse(order.alterations)
+        if order.total == "0.00" && @items.any? { |s| s.include?('Welcome') }
+          order.update_attribute(:welcome, true)
+          order.update_attribute(:user_id, 1)
+          order.update_attribute(:arrived, true)
+          order.update_attribute(:complete, true)
+        end
+      end
+
+      @kits = Order.where(welcome: true).where(user_id: 1).where(shipping_label: nil).where.not(counter: 2)
+
+
     else
       redirect_to "/"
     end

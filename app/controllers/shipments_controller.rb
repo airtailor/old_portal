@@ -6,7 +6,9 @@ class ShipmentsController < ApplicationController
     @customer = Customer.where(order_id: @order.shopify_id).first
     @user = User.where(id: @order.user_id).first
     @order.update_attribute(:fulfill_date, Time.current)
-
+    if @order.welcome == true
+      @order.update_attribute(:counter, 2)
+    end
 
 
     Shippo.api_token = ENV["SHIPPO_KEY"]
