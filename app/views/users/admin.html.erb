@@ -19,9 +19,8 @@
           <% if kit.shipping_label.blank? && kit.counter != 2 %>
             <% @counter = @counter + 1 %>
           <% end %>
-          <%= @counter %>
         <% end %>
-
+        <%= @counter %>
       </div>
 
       <div id="admin-messages">
