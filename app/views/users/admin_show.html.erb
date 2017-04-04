@@ -27,7 +27,9 @@
       No New Signups
     <% else %>
       <% @kits.order("id").each do |order| %>
-        <a href="/admin/order/<%=order.id%>"><p><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></p></a>
+        <% if order.shipping_label.blank? %>
+          <a href="/admin/order/<%=order.id%>"><p><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></p></a>
+        <% end %>
       <% end %>
     <% end %>
   </div>
