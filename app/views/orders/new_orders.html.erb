@@ -14,13 +14,17 @@
         <a href="/admin/order/<%=order.id%>"><p><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></p></a>
       <% end %>
     <% end %>
+
     <br>
+
     <h3>Manage New Kits</h3>
     <% if @kits.length == 0 %>
       No New Signups
     <% else %>
       <% @kits.order("id").each do |order| %>
-        <a href="/admin/order/<%=order.id%>"><p><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></p></a>
+        <% if order.shipping_label.blank? && order.counter != 2 %>
+          <a href="/admin/order/<%=order.id%>"><p><%= order.shopify_id %> - <%= order.name %> - $<%= order.total %></p></a>
+        <% end %>
       <% end %>
     <% end %>
 

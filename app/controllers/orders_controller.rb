@@ -33,10 +33,11 @@ class OrdersController < ApplicationController
           order.update_attribute(:user_id, 1)
           order.update_attribute(:arrived, true)
           order.update_attribute(:complete, true)
+          order.update_attribute(:counter, 0)
         end
       end
 
-      @kits = Order.where(welcome: true).where(shipping_label: nil).where.not(counter: 2)
+      @kits = Order.where(welcome: true).where(counter: 0)
 
 
     else

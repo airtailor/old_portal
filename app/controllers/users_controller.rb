@@ -6,6 +6,19 @@ class UsersController < ApplicationController
     if current_user.is_admin?
       @users = User.all
       @orders = Order.where(user_id: nil)
+      @orders.each do |order|
+        @items = JSON.parse(order.alterations)
+        if order.total == "0.00" && @items.any? { |s| s.include?('Welcome') }
+          order.update_attribute(:welcome, true)
+          order.update_attribute(:user_id, 1)
+          order.update_attribute(:arrived, true)
+          order.update_attribute(:complete, true)
+          order.update_attribute(:counter, 0)
+        end
+      end
+
+      @kits = Order.where(welcome: true).where(counter: 0).where(shipping_label: nil)
+
       @messages = Message.where(read: false)
 
       @paid_orders = Order.where.not(welcome: true)
@@ -137,12 +150,13 @@ class UsersController < ApplicationController
           order.update_attribute(:user_id, 1)
           order.update_attribute(:arrived, true)
           order.update_attribute(:complete, true)
+          order.update_attribute(:counter, 0)
         end
       end
       @order = Order.find_by(id: params[:id])
       @owner = User.find_by(id: @order.user_id)
 
-      @kits = Order.where(welcome: true)
+      @kits = Order.where(welcome: true).where(counter: 0)
 
       if @order.counter != 2
         @order.update_attribute(:counter, 0)
