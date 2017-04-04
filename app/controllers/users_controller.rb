@@ -130,9 +130,18 @@ class UsersController < ApplicationController
     if current_user.is_admin?
       @users = User.all
       @orders = Order.where(user_id: nil)
+      @orders.each do |order|
+        @items = JSON.parse(order.alterations)
+        if order.total == "0.00" && @items.any? { |s| s.include?('Welcome') }
+          order.update_attribute(:welcome, true)
+          order.update_attribute(:user_id, 1)
+          order.update_attribute(:arrived, true)
+          order.update_attribute(:complete, true)
+        end
+      end
       @order = Order.find_by(id: params[:id])
       @owner = User.find_by(id: @order.user_id)
-      @kits = Order.where(welcome: true).where(shipping_label: nil).where(total: "0.00").where(user: 1).where.not(counter: 2)
+      @kits = @orders.where(welcome: true).where(shipping_label: nil).where(total: "0.00").where(user: 1).where.not(counter: 2)
 
       if @order.counter != 2
         @order.update_attribute(:counter, 0)
