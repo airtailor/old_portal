@@ -14,8 +14,14 @@
 
       <div id="admin-orders">
         <a href="/orders/new_orders"><button class="caps">Manage<br> New Orders</button></a><br><br>
-        <%= @orders.count %> unassigned orders
-        <%= @kits.count %> unsent kits
+        <%= @orders.count %> unassigned orders <br>
+        <% @kits.each do |kit| %>
+          <% if kit.shipping_label.blank? && kit.counter != 2 %>
+            <% @counter = @counter + 1 %>
+          <% end %>
+          <%= @counter %>
+        <% end %>
+
       </div>
 
       <div id="admin-messages">

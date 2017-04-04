@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
         end
       end
 
-      @kits = Order.where(welcome: true).where(counter: 0)
+      @kits = Order.where(welcome: true)
 
 
     else
