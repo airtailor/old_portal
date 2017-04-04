@@ -112,7 +112,7 @@ class ShipmentsController < ApplicationController
 
     # binding.pry
     if transaction.object_state == "INVALID"
-      order.update_attribute(:error_message, transaction.messages[0].text)
+      @order.update_attribute(:error_message, transaction.messages[0].text)
     end
 
     @order.update_attribute(:shipping_label, transaction.label_url)
