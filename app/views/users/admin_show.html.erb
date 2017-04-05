@@ -114,7 +114,7 @@
     <% @order.update_attribute(:user_id, nil) %><br>
     <i class="red">Error with Inbound Label Creation. <%= @order.error_message %></i>
   <% elsif @order.inbound_label != nil && @order.inbound_label != "" %>
-        <% if @order.welcome == false %>
+        <% if @order.welcome == false %><br>
           <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a><br><br>
         <% end %>
     <% if @order.user_id == 6 %>
