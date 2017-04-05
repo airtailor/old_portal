@@ -152,6 +152,8 @@ class UsersController < ApplicationController
           order.update_attribute(:arrived, true)
           order.update_attribute(:complete, true)
           order.update_attribute(:counter, 0)
+        else
+          order.update_attribute(:welcome, false)
         end
       end
       @order = Order.find_by(id: params[:id])

@@ -103,32 +103,32 @@
           <button type="submit" id="change-tailor">Change Tailor</button><br>
         </form><br>
 
-    <hr>
+      <hr>
 
+    <% end %>
   <% end %>
-<% end %>
+
   </div>
 
-<% if @order.inbound_label == "" && @order.user_id != nil %>
-  <% @order.update_attribute(:user_id, nil) %><br>
-  <i class="red">Error with Inbound Label Creation. <%= @order.error_message %></i>
-<% elsif @order.inbound_label != nil && @order.inbound_label != "" %>
-      <% if @order.welcome == false %>
-        <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a><br><br>
-      <% end %>
-  <% if @order.user_id == 6 %>
-    <i class="red">Messenger Order. Handle Manually.</i>
-  <% else %>
-    <i class="green">Inbound Label Created and Sent!</i>
+  <% if @order.inbound_label == "" && @order.user_id != nil %>
+    <% @order.update_attribute(:user_id, nil) %><br>
+    <i class="red">Error with Inbound Label Creation. <%= @order.error_message %></i>
+  <% elsif @order.inbound_label != nil && @order.inbound_label != "" %>
+        <% if @order.welcome == false %>
+          <a href="/users/<%= @order.user_id %>/orders/<%= @order.id %>/items"><button id="go-to-order">Go to Order</button></a><br><br>
+        <% end %>
+    <% if @order.user_id == 6 %>
+      <i class="red">Messenger Order. Handle Manually.</i>
+    <% else %>
+      <i class="green">Inbound Label Created and Sent!</i>
+    <% end %>
   <% end %>
-<% end %>
 
 
 <!-- begin area to deal with welcome kits -->
-
   <div id="welcome-kit-section">
 
-      <% if @order.welcome && @order.counter == 0 && @order.shipping_label.blank? %>
+    <% if @order.welcome && @order.counter == 0 && @order.shipping_label.blank? %>
       <form method='post' action='/shipment/create'>
         <%= csrf_meta_tag %>
         <input name='id' value='<%= @order['shopify_id'] %>' type='hidden'>
@@ -136,31 +136,22 @@
           Create Shipping Label
         </button>
       </form>
-
-      <%# SendSonar.message_customer(text: "Hi " + @customer.first_name.capitalize + ", just a heads up that your Air Tailor Welcome Kit is on its way! :)", to: @customer.phone) %>
-
     <% end %>
 
-<% if @order.counter == 2 && @order.shipping_label.blank? %><br>
-  <i class="red">Error with Kit Label Creation: <%= @order.error_message %></i>
-  <% @order.update_attribute(:counter, 0) %>
-<% elsif @order.counter == 2 %>
-  <img id="welcome-kit-label" style="display:none;" src="<%= @order.shipping_label %>">
-<br>
-  <button id="welcome-kit-button">
-    Print Shipping Label
-  </button>
-<% end %>
-
-
-
-
-<!-- end area to deal with welcome kits -->
+    <% if @order.counter == 2 && @order.shipping_label.blank? %><br>
+      <i class="red">Error with Kit Label Creation: <%= @order.error_message %></i>
+      <% @order.update_attribute(:counter, 0) %>
+    <% elsif @order.counter == 2 %>
+      <img id="welcome-kit-label" style="display:none;" src="<%= @order.shipping_label %>">
+      <br>
+      <button id="welcome-kit-button">
+        Print Shipping Label
+      </button>
+    <% end %>
   </div>
-<!-- end order assignment area -->
-
-
+<!-- end area to deal with welcome kits -->
 </div>
+<!-- end order assignment area -->
 
 <div id="customer-details">
       <h3>Customer Details:</h3>
