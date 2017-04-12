@@ -150,6 +150,14 @@
     <% end %>
   </div>
 <!-- end area to deal with welcome kits -->
+  <div>
+    <% if @order.user_id? %>
+    <br><br>
+    <button id="delete-order"><%= link_to "Delete Order", [@owner, @order], method: :delete,
+                                  data: { confirm: "Are you sure?" } %></button>
+    <% end %>
+
+  </div>
 </div>
 <!-- end order assignment area -->
 
