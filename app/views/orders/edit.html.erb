@@ -13,6 +13,9 @@
             <p>Name:</p> <%= f.text_field :name %>
             <p>Alterations:</p> <%= f.text_field :alterations %>
             <p>Total: $<%= f.text_field :total %></p>
+            <p>Weight (grams): <%= f.text_field :weight %></p>
+            <% pounds = (@order.weight.to_f*0.00220462).round(2) %>
+            <p>Weight (pounds): <%= pounds %>
             <p>Note:</p> <%= f.text_field :note %>
             <p>Tailor Shop:</p>
 
