@@ -30,6 +30,8 @@ class ShipmentsController < ApplicationController
       }
     end
 
+    parcel[:weight] = @order.weight
+
     if parcel[:weight] == "0"
       parcel[:weight] = "28"
     end

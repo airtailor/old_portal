@@ -1593,7 +1593,7 @@ input.measurement {
 /* REPORTING */
 
 #invoice-icon-section {
-  float: left;
+  float: right;
   width: 30%;
 }
 
