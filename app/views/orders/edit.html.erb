@@ -22,7 +22,7 @@
             <%= f.select(:user_id) do %>
               <option value="<%= @user.id %>"><%= @user.business_name %> - <%= @user.id %></option>
               <% @users.each do |user| %>
-                <option value="<%= user.id %>"><%= user.business_name %> - <%= @user.id %></option>
+                <option value="<%= user.id %>"><%= user.business_name %> - <%= user.id %></option>
               <% end %>
               <option value="">Return to Routing Page</option>
             <% end %>
