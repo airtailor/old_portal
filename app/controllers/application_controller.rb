@@ -161,9 +161,9 @@ class ApplicationController < ActionController::Base
     order.update_attribute(:inbound_label, transaction.label_url)
     order.update_attribute(:tracker, transaction.tracking_url_provider)
 
-
-
   end
+
+
 
   def kitShippingInfo(user, order, customer)
     Shippo::api_token = ENV["SHIPPO_KEY"]
@@ -248,6 +248,7 @@ class ApplicationController < ActionController::Base
 
     order.update_attribute(:shipping_label, transaction.label_url)
     order.update_attribute(:tracker, transaction.tracking_url_provider)
+    order.update_attribute(:tracking_number, transaction.tracking_number)
 
 
 
