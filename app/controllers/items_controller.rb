@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
       if @customer.phone.blank?
       else
         SendSonar.message_customer(text: "Hi " + @customer.first_name.capitalize + ", just a heads up that your Air Tailor order (" + @order.shopify_id + ") has been received! We're going to get to work.", to: @customer.phone)
-        SendSonar.message_customer(text: "When we're done, we'll ship it directly to " + @customer.address1 + ", " + @customer.address2 + ", " + @customer.city ", " + @customer.state + " " + @customer.zip ". Is that still correct? Thank you!", to: @customer.phone)
+        SendSonar.message_customer(text: "When we're done, we'll ship it directly to " + @customer.address1 + ", " + @customer.address2 + ", " + @customer.city ", " + @customer.state + " " + @customer.zip + ". Is that still correct? Thank you!", to: @customer.phone)
       end
       @order.update_attribute(:counter, 1)
     end
