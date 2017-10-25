@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   before_filter :authorize
 
-
   def index
     @order = Order.find_by(id: params[:order_id])
     @customer = Customer.where(order_id: @order.shopify_id).first
