@@ -241,7 +241,7 @@ class DataExtractor
           puts eval(alterations)
           alterations = eval(alterations).except!("Air Tailor Welcome Kit ")
           update(order, "alterations", alterations)
-          byebug
+          #byebug
           update(order, "type", "TailorOrder")
         end
       end
@@ -373,7 +373,7 @@ class DataExtractor
         if order["alterations"].include? "WelcomeKit"
           add(order, "type", "WelcomeKit")
           puts order["alterations"]
-          byebug
+          #byebug
         else
           add(order, "type", "TailorOrder")
         end
@@ -395,10 +395,21 @@ class DataExtractor
     end
   end
 
+
+  def add_tie_amount_to_notes order
+    if order["note"].present?
+      order['note'] << ", "
+    end
+    order["note"] ||= ""
+    new_notes = order["note"] + "Number of Ties: #{order["tie_amount"]}"
+    update(order, "note", new_notes)
+  end
+
   def format_orders
     @orders = @orders.map do |order|
       # byebug if order["id"] == 1901
 
+      add_tie_amount_to_notes(order) if !order["tie_amount"].nil?
       remove(order, "tie_amount")
       remove(order, "error_message")
       remove(order, "counter")
@@ -448,7 +459,7 @@ class DataExtractor
         update(order, "name", no_doc.join(" "))
       end
 
-      byebug if order["name"].include? "Dr."
+      #byebug if order["name"].include? "Dr."
 
       # remove suffixes
       suffix = ""
@@ -576,6 +587,7 @@ class DataExtractor
   # finish handling ties
   def format_alterations(order)
     order_alts = JSON.parse(order["alterations"])
+
     order_alts = remove_dummy_item(order_alts)
     order_alts = remove_welcome_kit(order_alts) if order_alts != ["Air Tailor Welcome Kit "]
 
@@ -600,15 +612,16 @@ class DataExtractor
         alteration = curr.split(/\d /)[1] # example: Add Collar Buttons
       end
 
-      binding.pry if curr.include? "Gift Card"
+      # binding.pry if curr.include? "Gift Card"
 
       if prev[key]
-        prev[key][:alterations].push(variant_title: alteration)
+        prev[key][:alterations].push(variant_title: alteration) unless /sample/i.match(alteration)
       else
         hash = { title: type, alterations: [{ variant_title: alteration }] }
         prev[key] = hash
       end
     end
+
     order['alterations'] = alt_hash
     order
   end
@@ -635,7 +648,7 @@ data.customers.each do |cust|
   #puts "#{cust['first_name']} #{cust['last_name']}"
 end
 
-binding.pry
+# binding.pry
 
 # require 'FileUtils'
 require 'json'
